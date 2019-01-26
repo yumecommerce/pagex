@@ -1,2 +1,2 @@
 # pagex
-Theme Builder
+Theme Builder for WordPress

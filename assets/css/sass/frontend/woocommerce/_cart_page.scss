@@ -1,0 +1,150 @@
+.woocommerce-cart {
+  .woocommerce {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .woocommerce-notices-wrapper {
+    width: 100%;
+  }
+
+  .woocommerce-cart-form {
+    width: 100%;
+    margin-bottom: 40px;
+
+    @include media-breakpoint-up(md) {
+      width: 70%;
+      padding-right: 50px;
+    }
+  }
+
+  .cart-collaterals {
+    width: 100%;
+    margin-bottom: 40px;
+    border: 0 solid #dee2e6;
+
+    @include media-breakpoint-up(md) {
+      width: 30%;
+    }
+
+    th {
+      width: 30%;
+    }
+
+    td {
+      text-align: right;
+      padding-right: 0;
+    }
+
+    // hide cross-sells since we are not going to have style for default product lists
+    .cross-sells {
+      display: none;
+    }
+  }
+
+  .shop_table {
+
+    thead th {
+      border: 0;
+    }
+
+    td, th {
+      padding: 10px 10px 10px 0;
+    }
+
+    .product-remove {
+      width: 40px;
+    }
+
+    .remove {
+      font-family: Arial !important;
+      display: flex;
+      width: 21px;
+      height: 21px;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      border-radius: 21px;
+    }
+
+    .product-quantity {
+      width: 60px;
+
+      input {
+        width: 60px;
+
+        @include media-breakpoint-down(md) {
+          padding: 0;
+          text-align: center;
+          height: auto;
+          border: 0;
+        }
+      }
+    }
+
+    .product-thumbnail {
+      width: 85px;
+      display: none;
+      padding-right: 15px;
+
+      img {
+        width: 85px;
+      }
+
+      @include media-breakpoint-up(md) {
+        display: table-cell;
+      }
+    }
+
+    .actions {
+      padding: 20px 0;
+    }
+
+    .coupon {
+      display: inline-flex;
+
+      label {
+        display: none;
+      }
+
+      input {
+        width: auto;
+        margin-right: 10px;
+      }
+    }
+
+    [name="update_cart"] {
+      float: right;
+      width: 100%;
+      margin-top: 20px;
+
+      @include media-breakpoint-up(md) {
+        width: auto;
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.woocommerce-shipping-destination {
+  font-size: 90%;
+  opacity: .7;
+  margin: 0 0 8px;
+  line-height: 1.35;
+}
+
+.cart-collaterals {
+  th {
+    width: 200px;
+  }
+
+  .checkout-button {
+    width: 100%;
+    padding: 17px;
+  }
+}
+
+.cart-empty {
+  width: 100%;
+}

@@ -1,0 +1,188 @@
+
+ul.products {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+// no click on menu cart for cart page
+body.woocommerce-cart,
+body.woocommerce-checkout {
+  .pagex-menu-cart {
+    pointer-events: none;
+  }
+}
+
+.woocommerce-form-row.form-row,
+.woocommerce-FormRow.form-row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+// hide default review stars since we replace them with svg
+#review_form .stars {
+  display: none !important;
+}
+
+// remove margin from paragraphs
+.woocommerce-result-count {
+  margin: 0;
+}
+
+.price {
+  margin: 0;
+
+  ins {
+    text-decoration: none;
+  }
+}
+
+// custom class for star rating review
+
+// add default flex attr without display since its position can be changed via settings
+.woocommerce-product-rating {
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.pagex-woo-stars {
+  position: relative;
+  > div {
+    display: flex;
+
+    > * {
+      pointer-events: none;
+    }
+  }
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .pagex-star-rating {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    &:hover,
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  .star-1 {
+    z-index: 5;
+  }
+
+  .star-2 {
+    z-index: 4;
+  }
+
+  .star-3 {
+    z-index: 3;
+  }
+
+  .star-4 {
+    z-index: 2;
+  }
+
+  .star-5 {
+    z-index: 1;
+  }
+}
+
+.star-rating {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+.woocommerce-review-link {
+  line-height: 1;
+}
+
+// make sale flash overlay other elements by default
+[data-type="woo_sale_flash"] {
+  z-index: 12 !important;
+  pointer-events: none;
+}
+
+.single-product div.product .woocommerce-product-gallery img {
+  width: 100%;
+}
+
+.woocommerce-input-wrapper {
+  display: block;
+  width: 100%;
+}
+
+
+.woocommerce-notices-wrapper {
+  margin: 0 0 30px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.woocommerce-info,
+.woocommerce-error {
+  a {
+    float: right;
+  }
+}
+
+.woocommerce-info,
+.woocommerce-message,
+.woocommerce-Message,
+.woocommerce-error {
+  padding: 12px 0;
+  border: 1px solid #EFEFEF;
+  border-left: none;
+  border-right: none;
+  color: #555;
+  width: 100%;
+  margin: 0;
+  list-style: none;
+
+  a {
+    margin-left: 20px;
+  }
+}
+
+.woocommerce-message,
+.woocommerce-Message {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  a {
+    order: 2;
+  }
+}
+
+.woocommerce-error {
+  border-color: #de002b;
+  color: #de002b;
+}
+
+.woocommerce-variation-add-to-cart {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@import "account";
+@import "poduct_page";
+@import "cart_page";
+@import "widgets";
+@import "checkout";
+@import "reviews";
+@import "tables";

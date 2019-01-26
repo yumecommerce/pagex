@@ -1,0 +1,174 @@
+
+#pagex-backend-editor .pagex-bc,
+#pagex-backend-editor .handlediv,
+#pagex-backend-editor .pagex-shape,
+body.wp-admin #pagex-settings {
+  display: none !important;
+}
+
+#pagex-backend-editor .d-none,
+#pagex-backend-editor .d-sm-none,
+#pagex-backend-editor .d-md-none,
+#pagex-backend-editor .d-lg-none,
+#pagex-backend-editor .d-xl-none {
+  display: inherit !important;
+}
+
+#pagex-backend-editor {
+  * {
+    box-sizing: border-box;
+  }
+
+  .inside {
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+    display: block !important;
+  }
+
+  [data-type] {
+    min-height: 40px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    position: relative !important;
+  }
+
+  [data-type="section"] {
+    margin: 0 0 20px !important;
+    background: #fafafa !important;
+    padding: 0 !important;
+    position: relative;
+  }
+
+  [data-type="container"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    background: #fafafa !important;
+  }
+
+  [data-type="column"] {
+    outline: #d5dadf dashed 1px;
+    padding: 0 15px !important;
+    margin: 0 !important;
+    background: #F5F5F5 !important;
+    box-shadow: 0 0 0 5px #fff inset, 0 0 0 6px #d5dadf inset !important;
+
+    &:empty:after {
+      outline: none !important;
+    }
+  }
+
+  [data-type="inner-row"] {
+    margin: 20px 0px 15px !important;
+    padding: 0 !important;
+  }
+
+  .element {
+    background: #FFFFFF !important;
+    margin: 15px 0px !important;
+    padding: 0 !important;
+    outline: 1px solid #d5dadf !important;
+    min-height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+
+    .element-wrap {
+      display: none;
+      width: 100%;
+      padding: 0 10px;
+      margin-top: 10px;
+    }
+
+    &:before {
+      display: block !important;
+      padding: 0 10px !important;
+      opacity: .9 !important;
+      font-size: 12px !important;
+      color: #42527b !important;
+      font-weight: 500 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+    }
+  }
+}
+
+#pagex-backend-content .pagex-accordion-item {
+  background: #f9f9fa;
+  border: 1px solid #00aef0;
+  margin-bottom: 15px;
+}
+
+#pagex-backend-content .pagex-accordion-item-content-wrapper {
+  padding: 0 20px;
+  display: none;
+}
+
+#pagex-backend-content .pagex-accordion-item.pagex-item-active .pagex-accordion-item-content-wrapper {
+  display: block;
+}
+
+#pagex-backend-content .pagex-accordion-item-header {
+  background: #00aef0;
+  color: #fff;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 11px !important;
+}
+
+#pagex-backend-content .pagex-accordion-toggle {
+  display: none;
+}
+
+#pagex-backend-content .element[data-type="accordion"],
+#pagex-backend-content .element[data-type="tabs"] {
+  padding: 10px 0 0 !important;
+}
+
+#pagex-backend-content [data-type="tabs"] > .element-wrap,
+#pagex-backend-content [data-type="accordion"] > .element-wrap {
+  display: block;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-pane {
+  display: none;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-pane.pagex-item-active {
+  display: block;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-nav-items {
+  display: flex;
+  margin: 0 0 -1px 0 !important;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-nav-item {
+  padding: 10px 15px !important;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-nav-item * {
+  pointer-events: none;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-nav-item.pagex-item-active {
+  background: #f9f9f9;
+  border-color: #dee2e6;
+  border-bottom-color: #f9f9f9;
+}
+
+#pagex-backend-content .element[data-type="tabs"] .pagex-tabs-panes {
+  border: 1px solid #dee2e6;
+  background: #f9f9f9;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}

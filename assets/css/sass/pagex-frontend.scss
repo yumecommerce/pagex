@@ -1,0 +1,25 @@
+// some custom changes in bootstrap for better compatibility
+// change $input-btn-focus-width: 0 !default;
+// change $input-btn-focus-box-shadow: none !default;
+// change $label-margin-bottom: .3rem !default;
+// change $gray-300: #ececec !default;
+// change $btn-disabled-opacity: .4 !default;
+// remove :active state form buttons
+// also remove some @import files: check bootstrap.scss
+@import "bootstrap/scss/bootstrap.scss";
+
+// remove swiper navigation icons and change arrow width and top offset to transform property
+@import "vendors/swiper";
+
+// frontend
+@import "frontend/basic";
+@import "frontend/preloader";
+@import "frontend/admin_menu";
+@import "frontend/animations";
+@import "frontend/helpers";
+@import "frontend/layout";
+@import "frontend/wordpress";
+@import "frontend/woocommerce/basic";
+@import "frontend/basic_elements";
+@import "frontend/theme_elements";
+@import "frontend/elements";

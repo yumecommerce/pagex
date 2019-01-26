@@ -1,0 +1,16 @@
+
+// import some bootstrap elements which are not presented in frontend style
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/list-group";
+
+@import "builder/basic";
+@import "builder/settings";
+@import "builder/tabs";
+@import "builder/modal";
+@import "builder/sortable";
+@import "builder/options";
+@import "builder/repeater";
+@import "builder/color_picker";

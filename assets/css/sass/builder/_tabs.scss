@@ -1,0 +1,44 @@
+.pagex-params-tab-content {
+  padding: 20px;
+  max-height: 400px;
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  .form-row {
+    width: 100%;
+  }
+
+  .pagex-form-heading-control:first-child {
+    margin-top: 0;
+  }
+}
+
+.pagex-params-tab-title * {
+  pointer-events: none;
+}
+
+.pagex-params-tabs {
+  background: #58c2ff;
+  background-image: linear-gradient(90deg, #58c2ff 0%, #8080ff 100%);
+  padding: 0 25px;
+  color: #999;
+
+  div {
+    margin-right: 25px;
+    padding: 0 0 12px;
+    color: #fff;
+    opacity: .7;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.active {
+      opacity: 1;
+      border-color: #fff;
+    }
+  }
+}

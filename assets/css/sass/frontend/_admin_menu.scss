@@ -1,0 +1,26 @@
+#wp-admin-bar-pagex {
+  > a {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHN0eWxlPSJmaWxsOiM4Mjg3OGMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGQ9Ik0xMywzMnYtN2g2LjRjMCwwLDkuOC0xLjMsOS44LTEyLjRDMjkuMSwxLjgsMTkuNCwwLDE5LjQsMEg0djlsMTMuNCwwYzEuOSwwLDMuNSwxLjQsMy41LDMuNmMwLDItMS41LDMuNC0zLjUsMy40bC04LDAgTDQsMjN2OUgxM3oiLz48L3N2Zz4K") !important;
+    background-repeat: no-repeat !important;
+    background-position: 7px center !important;
+    background-size: 15px auto !important;
+    padding-left: 28px !important;
+  }
+
+  ul a {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .pagex-nav-template-name {
+    background: rgba(255,255,255,.2);
+    padding: 3px 6px !important;
+    border-radius: 3px !important;
+    font-size: 10px !important;
+    line-height: 14px !important;
+    margin-left: 15px !important;
+  }
+}
+
+

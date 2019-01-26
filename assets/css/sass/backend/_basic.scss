@@ -1,0 +1,74 @@
+#pagex-backend-editor {
+  display: none !important;
+  margin: 15px 0 20px;
+  border: 1px solid #e2e4e7;
+}
+
+#pagex-switch-editors {
+  display: inline-block;
+}
+
+.pagex-switch-editor-wordpress,
+.pagex-switch-editor-frontend {
+  margin-right: 10px !important;
+  display: none !important;
+}
+
+body.pagex-builder-editor-active {
+  .pagex-switch-editor-builder {
+    display: none !important;
+  }
+
+  .pagex-switch-editor-frontend,
+  .pagex-switch-editor-wordpress {
+    display: inline-block !important;
+  }
+
+  #pagex-backend-editor {
+    display: block !important;
+  }
+}
+
+body.pagex-builder-editor-active {
+  .editor-block-list__layout,
+  .editor-post-text-editor,
+  .editor-post-preview,
+  .editor-inserter,
+  .wp-editor-container,
+  .wp-editor-tabs,
+  #insert-media-button,
+  #post-status-info,
+  .editor-writing-flow__click-redirect,
+  #add_pod_button {
+    display: none !important;
+  }
+
+  // hide gutenberg editor buttons
+  .edit-post-header-toolbar {
+    .components-button {
+      display: none !important;
+    }
+  }
+}
+
+body.pagex-builder-editor-active .edit-post-visual-editor {
+  padding-bottom: 0;
+}
+
+body.pagex-builder-editor-active .edit-post-visual-editor {
+  flex-grow: 0;
+  flex-basis: 0;
+}
+
+body.pagex-builder-editor-active .editor-post-title__block {
+  max-width: 100%;
+}
+
+body.pagex-builder-editor-active .editor-post-title {
+  padding-left: 20px;
+}
+
+body.pagex-builder-editor-active .edit-post-text-editor {
+  padding-left: 20px;
+  padding-right: 20px;
+}

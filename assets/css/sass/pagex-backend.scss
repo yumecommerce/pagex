@@ -1,0 +1,40 @@
+@at-root {
+  @-ms-viewport { width: device-width; } // stylelint-disable-line at-rule-no-vendor-prefix
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+// basic backend builder style
+@import "backend/basic";
+@import "backend/builder";
+@import "backend/excerpt_preview";
+
+/**
+ * Import only required styles of bootstrap for backend editor
+ */
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/custom-forms";
+@import "bootstrap/scss/input-group";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/dropdown";
+
+

@@ -1,0 +1,36 @@
+#pagex-excerpt-preview-frame {
+  display: block;
+  margin: 0 auto 25px;
+  width: 100%;
+  transition: 150ms;
+}
+
+.pagex-preview-loading {
+  opacity: .4;
+}
+
+.pagex-excerpt-preview-settings {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+  margin-bottom: 30px;
+}
+
+.pagex-excerpt-preview-setting {
+  display: inline-block;
+  margin: 0 20px 20px 0;
+}
+
+.pagex-excerpt-preview-window-width {
+  &-small {
+    max-width: 300px;
+  }
+
+  &-medium {
+    max-width: 450px;
+  }
+
+  &-large {
+    max-width: 100%;
+  }
+}
+

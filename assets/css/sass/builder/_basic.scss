@@ -1,0 +1,235 @@
+#pagex-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+#pagex-builder-wrapper {
+  background: #292b2f;
+  height: 100%;
+}
+
+#pagex-builder-responsive-wrapper {
+  box-sizing: content-box;
+  margin: 0 auto;
+  height: 100%;
+  transition: width .2s;
+}
+
+html,
+body.pagex-builder-active,
+.pagex-builder-active #page,
+.pagex-builder-active #main {
+  height: 100%;
+}
+
+.pagex-hide {
+  display: none !important;
+}
+
+.pagex-hide.active {
+  display: block !important;
+}
+
+.pagex-builder-active {
+  overflow: hidden;
+}
+
+[data-conditional] {
+  display: none;
+}
+
+[data-type] {
+  outline-color: transparent;
+}
+
+[data-type="woo_sale_flash"] {
+  pointer-events: all !important;
+}
+
+body:not(.pagex-element-removed) .pagex-undo-remove {
+  display: none;
+}
+
+/* Third party */
+.tippy-popper {
+  font-family: Arial !important;
+  z-index: 999999 !important;
+}
+
+.pagex-undo-remove {
+  font-family: Arial !important;
+  position: fixed;
+  z-index: 99;
+  top: calc(100% - 70px);
+  right: 20px;
+  width: auto;
+  font-size: 14px !important;
+
+  * {
+    pointer-events: none;
+  }
+
+  i {
+    font-size: 13px;
+  }
+}
+
+.pagex-builder-frame-active:not(.single-pagex_layout_builder) {
+  #header {
+    pointer-events: none;
+  }
+}
+
+.pagex-builder-frame-active:not(.pagex-preview-mode) {
+  .pagex-modal {
+    .pagex-modal-window-content:hover {
+      .pagex-modal-window-close {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+body:not(.pagex-preview-mode) {
+  .pagex-builder-area,
+  .pagex-modal-builder-area {
+    .element-wrap:empty:after {
+      display: flex;
+      min-width: 100px;
+    }
+
+    [data-type="container"]:hover [data-type="column"],
+    &.pagex-inner-row-holder:hover [data-type="column"] {
+      outline: #00aef0 solid 1px;
+    }
+
+    [data-type="column"]:hover {
+      z-index: 999;
+    }
+
+    [data-type="section"]:hover,
+    [data-type="container"]:hover,
+    .element:hover {
+      outline: #00aef0 solid 2px;
+    }
+
+    [data-type] {
+      min-height: 10px;
+      min-width: 20px;
+
+      &:empty {
+        min-height: 40px;
+        min-width: 40px;
+      }
+
+      &:hover {
+        z-index: 11;
+      }
+    }
+
+    [data-type="column"]:empty:after {
+      content: '+';
+      display: flex;
+      position: absolute;
+      width: calc(100% - 10px);
+      transform: translateX(5px);
+      height: calc(100% - 10px);
+      outline: #d5dadf dashed 1px;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: #979fa7;
+      left: 0;
+      top: 5px;
+    }
+  }
+}
+
+.pagex-builder-area {
+  position: relative;
+
+  .element-wrap:empty:after {
+    content: "\f15b";
+    font-family: 'Font Awesome 5 Free';
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    background: #ecf0f5;
+    color: #97a9bb;
+    padding: 12px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    min-height: 40px;
+    box-sizing: border-box;
+    margin: 5px 0;
+    display: none;
+  }
+
+  [data-callback] [data-callback] .element-wrap:empty:after {
+    display: none;
+  }
+
+  [data-type="image"] .element-wrap:empty:after {
+    content: "\f1c5";
+    min-height: 80px;
+  }
+
+  [data-type="video"] .element-wrap:empty:after {
+    content: "\f1c8";
+  }
+
+  /* no hover effects for builder elements of dynamic elements */
+  [data-callback] .element-wrap {
+    [data-type="column"],
+    [data-type="row"],
+    [data-type="section"],
+    [data-type="container"],
+    .element {
+      outline: none !important;
+    }
+  }
+}
+
+.pagex-element-updating {
+  opacity: .3 !important;
+}
+
+.pagex-scroll {
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cad4de;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #a3b5c7;
+  }
+}
+
+.pagex-video-video-wrapper .pagex-element-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* no style of empty elements for a content post in a template builder */
+body.single-pagex_post_tmp [data-type="post_content"] [data-type]:empty {
+  visibility: hidden;
+  min-height: 0 !important;
+}
+
+body:not(.single-pagex_post_tmp) [data-callback="pagex_post_content"] {
+  z-index: 99;
+}

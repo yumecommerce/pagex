@@ -1,0 +1,211 @@
+ul.product_list_widget {
+  list-style: none outside;
+  padding: 0;
+  margin: 0;
+
+  li {
+    padding: 0 0 4px;
+    margin: 0 0 4px;
+    list-style: none;
+    display: block;
+    width: 100%;
+
+    &:after {
+      content: ' ';
+      display: table;
+      clear: both;
+    }
+
+    a {
+      display: block;
+    }
+
+    img {
+      float: left;
+      margin-right: 15px;
+      width: 50px;
+      height: auto;
+      box-shadow: none;
+    }
+
+    dl {
+      margin: 0;
+      padding-left: 1em;
+      border-left: 2px solid rgba(0, 0, 0, 0.1);
+
+      dt,
+      dd {
+        display: inline-block;
+        float: left;
+        margin-bottom: 1em;
+      }
+
+      dt {
+        font-weight: 700;
+        padding: 0 0 0.25em;
+        margin: 0 4px 0 0;
+        clear: left;
+      }
+
+      dd {
+        padding: 0 0 0.25em;
+
+        p:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .star-rating {
+      float: none;
+    }
+  }
+}
+
+ul.cart_list {
+  max-height: calc(100vh - 250px);
+  overflow: auto;
+}
+
+.widget_shopping_cart {
+  .total {
+    border-top: 1px solid #ececec;
+    padding: 4px 0 0;
+
+    strong {
+      min-width: 40px;
+      display: inline-block;
+    }
+  }
+
+  // removing item block ui
+  .blockUI {
+    opacity: 0 !important;
+  }
+
+  li[style="zoom: 1;"] {
+    opacity: .4;
+  }
+
+  .widget_shopping_cart_content {
+    width: 100%;
+  }
+
+  p.buttons {
+    display: flex;
+    flex-wrap: wrap;
+
+    a {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 5px;
+      margin-bottom: 8px;
+
+      &.checkout {
+        margin-right: 0;
+      }
+    }
+  }
+
+  p.total {
+    padding: 20px 0;
+    margin-top: 10px;
+    display: block;
+  }
+
+  .cart_list li {
+    padding-right: 25px;
+    position: relative;
+    padding-top: 0;
+
+    a.remove {
+      position: absolute;
+      top: 0;
+      right: 10px;
+    }
+  }
+}
+
+/* Rating Filter */
+
+.widget_rating_filter {
+  a {
+    display: flex;
+  }
+}
+
+
+/* Price Filter */
+
+.widget_price_filter {
+  .price_slider {
+    margin: 20px 0 25px;
+  }
+
+  .price_slider_amount {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+
+    .clear {
+      display: none;
+    }
+  }
+
+  .ui-slider {
+    position: relative;
+
+    .ui-slider-handle {
+      position: absolute;
+      z-index: 2;
+      width: 14px;
+      height: 14px;
+      background-color: #a46497;
+      border-radius: 1em;
+      cursor: ew-resize;
+      outline: 0;
+      top: -5px;
+
+      &:last-child {
+        margin-left: -14px;
+      }
+    }
+
+    .ui-slider-range {
+      position: absolute;
+      z-index: 1;
+      font-size: .7em;
+      display: block;
+      border: 0;
+      border-radius: 1em;
+      background-color: #a46497
+    }
+  }
+
+  .price_slider_wrapper .ui-widget-content {
+    border-radius: 1em;
+    background-color: #602053;
+    border: 0
+  }
+
+  .ui-slider-horizontal {
+    height: 5px;
+
+    .ui-slider-range {
+      top: 0;
+      height: 100%
+    }
+
+    .ui-slider-range-min {
+      left: -1px
+    }
+
+    .ui-slider-range-max {
+      right: -1px
+    }
+  }
+}

@@ -1,0 +1,18 @@
+<wpml-config>
+    <custom-types>
+        <custom-type translate="1">pagex_layout_builder</custom-type>
+        <custom-type translate="1">pagex_post_tmp</custom-type>
+        <custom-type translate="1">pagex_excerpt_tmp</custom-type>
+    </custom-types>
+    <shortcodes>
+        <shortcode>
+            <tag>pagex_lang_str</tag>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_post_title</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+    </shortcodes>
+</wpml-config>

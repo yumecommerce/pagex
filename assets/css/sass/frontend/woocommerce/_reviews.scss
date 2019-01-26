@@ -1,0 +1,130 @@
+#reviews {
+  h2 small {
+    float: right;
+    color: #eee;;
+    font-size: 15px;
+    margin: 10px 0 0;
+
+    a {
+      text-decoration: none;
+      color: #eee;
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  #respond {
+    margin: 0;
+    border: 0;
+    padding: 0;
+  }
+
+  #comment {
+    height: 75px;
+  }
+
+  #comments {
+
+    h2 {
+      clear: none;
+    }
+
+    ol.commentlist {
+      margin: 0;
+      width: 100%;
+      background: none;
+      list-style: none;
+      padding: 0;
+
+      li {
+        padding: 0;
+        margin: 0 0 20px;
+        border: 0;
+        position: relative;
+        background: 0;
+        border: 0;
+
+        img.avatar {
+          float: left;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 32px;
+          height: auto;
+          margin: 0;
+          box-shadow: none;
+        }
+
+        .star-rating {
+          margin-bottom: 4px;
+
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+
+        .comment-text {
+          margin: 0 0 0 50px;
+
+          p {
+            margin: 0 0 1em;
+          }
+
+          p.meta {
+            font-size: 0.83em;
+            color: #b7b7b7;
+          }
+        }
+      }
+
+      ul.children {
+        list-style: none outside;
+        margin: 20px 0 0 50px;
+
+        .star-rating {
+          display: none;
+        }
+      }
+
+      #respond {
+        border: 1px solid #eee;
+        border-radius: 4px;
+        padding: 1em 1em 0;
+        margin: 20px 0 0 50px;
+      }
+    }
+
+    .commentlist > li::before {
+      content: '';
+    }
+  }
+}
+
+.comment-form-rating {
+  margin: 10px 0 15px;
+}
+
+#review_form #respond {
+  position: static;
+  margin: 0;
+  width: auto;
+  padding: 0;
+  background: transparent none;
+  border: 0;
+
+  p {
+    margin: 0 0 10px;
+  }
+
+  .form-submit input {
+    left: auto;
+  }
+
+  textarea {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}

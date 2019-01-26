@@ -1,0 +1,209 @@
+
+#page > * {
+  position: relative;
+}
+
+#header {
+  z-index: 3;
+}
+
+#main {
+  z-index: 2;
+}
+
+#footer {
+  z-index: 1;
+}
+
+.pagex-section-position-fixed,
+.pagex-section-position-absolute {
+  position: absolute !important;
+  width: 100%;
+  z-index: 99 !important;
+  transform: translate3d(0,0,0);
+  -webkit-transform: translate3d(0,0,0);
+  -webkit-backface-visibility: hidden;
+}
+
+.pagex-section-position-fixed.pagex-section-fixed {
+  position: fixed !important;
+  top: 0;
+}
+
+.pagex-section-position-fixed.pagex-position-fixed-transparent:not(.pagex-section-fixed) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+body.admin-bar .pagex-section-position-fixed.pagex-section-fixed {
+  top: 32px;
+}
+
+/* Masonry Layout */
+
+// main masonry
+.pagex-masonry-size {
+  &-6 {
+    width: 16.666%;
+  }
+
+  &-5 {
+    width: 20%;
+  }
+
+  &-4 {
+    width: 25%;
+  }
+
+  &-3 {
+    width: 33.333%;
+  }
+
+  &-2 {
+    width: 50%;
+  }
+
+  &-1 {
+    width: 100%;
+  }
+}
+
+// default masonry style
+[data-columns]:before {
+  display: block;
+  visibility: hidden;
+  position: absolute;
+  font-size: 1px;
+}
+
+/* Forms */
+
+.btn:focus,
+.btn.focus {
+  box-shadow: none;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea.form-control {
+  transition: 300ms;
+
+  // these rules must be added separately
+  &::-webkit-input-placeholder {
+    color: inherit;
+    font-family: inherit;
+    opacity: .6
+  }
+
+  &::-moz-placeholder {
+    color: inherit;
+    font-family: inherit;
+    opacity: .6
+  }
+
+  &:-ms-input-placeholder,
+  &::-ms-input-placeholder {
+    color: inherit;
+    font-family: inherit;
+    opacity: .6
+  }
+
+  &::placeholder {
+    color: inherit;
+    font-family: inherit;
+    opacity: .6
+  }
+}
+
+/* Layout Breakpoints */
+
+.pagex-breakpoint-mobile {
+  display: none;
+}
+
+@media (max-width: 577px) {
+  .pagex-breakpoint-sm {
+    .pagex-breakpoint-desktop {
+      display: none !important;
+    }
+
+    .pagex-breakpoint-mobile {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 769px) {
+  .pagex-breakpoint-md {
+    .pagex-breakpoint-desktop {
+      display: none !important;
+    }
+
+    .pagex-breakpoint-mobile {
+      display: flex;
+    }
+  }
+}
+
+@media (max-width: 1025px) {
+  .pagex-breakpoint-lg {
+    .pagex-breakpoint-desktop {
+      display: none !important;
+    }
+
+    .pagex-breakpoint-mobile {
+      display: flex;
+    }
+  }
+}
+
+.pagex-breakpoint-xl {
+  .pagex-breakpoint-desktop {
+    display: none !important;
+  }
+
+  .pagex-breakpoint-mobile {
+    display: flex;
+  }
+}
+
+/* Blend Mode */
+
+.pagex-blend-mode {
+  &-multiply {
+    mix-blend-mode: multiply;
+  }
+
+  &-screen {
+    mix-blend-mode: screen;
+  }
+
+  &-overlay {
+    mix-blend-mode: overlay;
+  }
+
+  &-darken {
+    mix-blend-mode: darken;
+  }
+
+  &-lighten {
+    mix-blend-mode: lighten;
+  }
+
+  &-color-dodge {
+    mix-blend-mode: color-dodge;
+  }
+
+  &-saturation {
+    mix-blend-mode: saturation;
+  }
+
+  &-color {
+    mix-blend-mode: color;
+  }
+
+  &-luminosity {
+    mix-blend-mode: luminosity;
+  }
+}
+
+

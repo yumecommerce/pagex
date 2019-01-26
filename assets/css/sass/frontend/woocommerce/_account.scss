@@ -1,0 +1,139 @@
+.woocommerce-account {
+
+  .woocommerce,
+  .u-columns {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+
+  .u-columns .col-1 {
+    @include media-breakpoint-up(md) {
+      margin-right: 50px;
+    }
+  }
+
+  #customer_login {
+    .col-1,
+    .col-2 {
+      padding: 0;
+      width: 300px;
+      max-width: 300px;
+      flex: 0 0 300px;
+    }
+  }
+
+  .woocommerce-MyAccount-content {
+    flex-grow: 1;
+    flex-basis: 0;
+
+    .form-row {
+      margin-left: 0;
+      margin-right: 0;
+
+      em {
+        font-size: 90%;
+        opacity: .7;
+        margin-top: 5px;
+        display: block;
+      }
+    }
+
+    .woocommerce-Addresses {
+      display: flex;
+      width: 100%;
+    }
+
+    .col-1,
+    .col-2 {
+      padding: 0;
+      width: 50%;
+      max-width: 50%;
+      flex: 0 0 50%;
+    }
+
+    abbr {
+      text-decoration: none;
+    }
+  }
+
+  .woocommerce-MyAccount-navigation {
+    min-width: 250px;
+    padding-right: 30px;
+    margin-bottom: 40px;
+
+    a {
+      display: block;
+      padding: 0 0 5px;
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+  }
+
+  .addresses .title {
+
+  }
+
+  ol.commentlist.notes li.note {
+    p.meta {
+      font-weight: 700;
+      margin-bottom: 0;
+    }
+
+    .description p:last-child {
+      margin-bottom: 0;
+    }
+  }
+  ul.digital-downloads {
+    margin-left: 0;
+    padding-left: 0;
+
+    li {
+      list-style: none;
+      margin-left: 0;
+      padding-left: 0;
+
+      .count {
+        float: right;
+      }
+    }
+  }
+}
+
+.woocommerce-password-strength {
+  margin-top: 10px;
+}
+
+.woocommerce-password-hint {
+  opacity: .8;
+}
+
+.woocommerce-form-login {
+  .form-row {
+    margin-right: 0;
+    margin-left: 0;
+    align-items: center;
+    max-width: 320px;
+  }
+
+  p:nth-of-type(3) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .woocommerce-form__label-for-checkbox {
+    margin: 0;
+  }
+
+  [type="submit"] {
+    margin-right: 10px;
+  }
+
+  .lost_password {
+    margin-bottom: 40px;
+  }
+}

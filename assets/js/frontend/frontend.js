@@ -578,7 +578,7 @@ var pagexSlider = {
                 slideChangeTransitionEnd: function () {
                     for (let item of selector.querySelectorAll('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active) .pagex-animated')) {
                         setTimeout(function () {
-                        item.classList.remove('pagex-animated');
+                            item.classList.remove('pagex-animated');
                         }, 60);
                     }
 
@@ -907,6 +907,44 @@ var pagexNavMenu = {
     }
 };
 
+var pagexCookie = {
+    applyGDPR: function () {
+        let mod = document.getElementById('pagex-gdpr-notice');
+        mod.remove();
+        this.set('pagex_gdpr', 'yes', 31536000);
+    },
+
+    get: function (name) {
+        var matches = document.cookie.match(new RegExp(
+            "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+        ));
+        return matches ? decodeURIComponent(matches[1]) : undefined;
+    },
+
+    set: function (name, value, expires, path, domain, secure) {
+        var d = new Date();
+
+        if (typeof(expires) === 'object' && expires.toGMTString) {
+            expires = expires.toGMTString();
+        } else if (parseInt(expires, 10)) {
+            d.setTime(d.getTime() + (parseInt(expires, 10) * 1000)); // time must be in milliseconds
+            expires = d.toGMTString();
+        } else {
+            expires = '';
+        }
+
+        document.cookie = name + '=' + encodeURIComponent(value) +
+            (expires ? '; expires=' + expires : '') +
+            (path ? '; path=' + path : '') +
+            (domain ? '; domain=' + domain : '') +
+            (secure ? '; secure' : '');
+    },
+
+    remove: function (name) {
+        this.set(name, '', -1000);
+    }
+};
+
 
 window.addEventListener('pagexElementUpdated', function (data) {
 
@@ -957,7 +995,7 @@ window.addEventListener('pagexElementUpdated', function (data) {
 }, false);
 
 document.addEventListener('click', function (e) {
-    if (!e.target) return;
+    if (!e.target) v;
     let el = e.target;
 
     // video
@@ -992,6 +1030,11 @@ document.addEventListener('click', function (e) {
     // woocommerce rating review
     if (el.matches('.pagex-star-rating')) {
         pagexWooCommerce.applyRating(el);
+    }
+
+    // GDPR notice
+    if (el.matches('#pagex-gdpr-notice-close')) {
+        pagexCookie.applyGDPR();
     }
 });
 

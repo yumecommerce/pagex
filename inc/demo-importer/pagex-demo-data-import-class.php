@@ -2,9 +2,57 @@
 
 class Pagex_Demo_Data_Import {
 
+	protected $existing_post;
+
 	public function __construct() {
+		// force the post to be imported
+		add_filter( 'wp_import_existing_post', array( $this, 'wp_import_existing_post' ), 10, 2 );
+		add_filter( 'wp_import_post_data_processed', array( $this, 'wp_import_post_data_processed' ), 10, 2 );
+
+		// admin import demo notice
 		add_action( 'admin_notices', array( $this, 'alert' ) );
+
+		// ajax function for import
 		add_action( 'wp_ajax_pagex_demo_content_import', array( $this, 'import' ) );
+	}
+
+	/**
+	 * Force the post to be imported
+	 *
+	 * @param $post_id
+	 * @param $post
+	 *
+	 * @return int
+	 */
+	function wp_import_existing_post( $post_id, $post ) {
+		if ( $this->existing_post = $post_id ) {
+			if ( get_post_type( $post_id ) != 'attachment' ) {
+				global $wpdb;
+				// delete existing meta
+				$wpdb->delete( 'wp_postmeta', array( 'post_id' => $post_id ) );
+
+				// force the post to be imported
+				$post_id = 0;
+			}
+		}
+
+		return $post_id;
+	}
+
+	/**
+	 * Add the post meta to import for forced post
+	 *
+	 * @param $postdata
+	 * @param $post
+	 *
+	 * @return mixed
+	 */
+	function wp_import_post_data_processed( $postdata, $post ) {
+		if ( $this->existing_post ) {
+			$postdata['ID'] = $this->existing_post;
+		}
+
+		return $postdata;
 	}
 
 	/**

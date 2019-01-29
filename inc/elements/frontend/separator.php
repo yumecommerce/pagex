@@ -8,7 +8,7 @@
  * @return array
  */
 function pagex_register_separator_element( $elements ) {
-	$template = '<div class="pagex-separator"><div class="pagex-separator-line pagex-separator-left-line"></div><% if (data.icon_before && data.icon_before.length) { %><div class="pagex-separator-icon pagex-separator-icon-before d-flex"><% print(pagex.genIcon("icon_before", data)) %></div> <% } %><% if (data.title && data.title.length) { %><div class="pagex-separator-title pagex-lang-str"><%= data.title %></div><% } %><% if (data.icon_after && data.icon_after.length) { %><div class="pagex-separator-icon pagex-separator-icon-after d-flex"><% print(pagex.genIcon("icon_after", data)) %></div> <% } %><% if(data.icon_before.length || data.icon_after.length || data.title.length) { %><div class="pagex-separator-line pagex-separator-right-line"></div><% } %></div>';
+	$template = '<div class="pagex-separator-wrapper"><div class="pagex-separator"><div class="pagex-separator-line pagex-separator-left-line"></div><% if (data.icon_before && data.icon_before.length) { %><div class="pagex-separator-icon pagex-separator-icon-before d-flex"><% print(pagex.genIcon("icon_before", data)) %></div> <% } %><% if (data.title && data.title.length) { %><div class="pagex-separator-title pagex-lang-str"><%= data.title %></div><% } %><% if (data.icon_after && data.icon_after.length) { %><div class="pagex-separator-icon pagex-separator-icon-after d-flex"><% print(pagex.genIcon("icon_after", data)) %></div> <% } %><% if(data.icon_before.length || data.icon_after.length || data.title.length) { %><div class="pagex-separator-line pagex-separator-right-line"></div><% } %></div></div>';
 
 	$elements[] = array(
 		'id'          => 'separator',
@@ -46,12 +46,24 @@ function pagex_register_separator_element( $elements ) {
 						'type'     => 'text',
 					),
 					array(
+						'id'         => 'wq',
+						'title'      => __( 'Max. Width', 'pagex' ),
+						'action'     => 'css',
+						'selector'   => '[el] .pagex-separator {max-width: [val]}',
+						'responsive' => true,
+						'class'      => 'col-4',
+						'type'       => 'text',
+					),
+					array(
 						'id'       => 'er',
 						'title'    => __( 'Border Color', 'pagex' ),
 						'action'   => 'css',
 						'selector' => '[el] .pagex-separator-line {border-color: [val]}',
 						'class'    => 'col-4',
 						'type'     => 'color',
+					),
+					array(
+						'type'     => 'clear',
 					),
 					array(
 						'id'       => 'rt',

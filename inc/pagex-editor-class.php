@@ -70,16 +70,16 @@ class Pagex_Editor {
 
 		register_post_type( 'pagex_post_tmp', array(
 			'labels'              => array(
-				'name'           => __( 'Post Template', 'pagex' ),
-				'singular_name'  => __( 'Post Template', 'pagex' ),
-				'menu_name'      => __( 'Post Template', 'pagex' ),
-				'name_admin_bar' => __( 'Post Template', 'pagex' ),
+				'name'           => __( 'Theme Template', 'pagex' ),
+				'singular_name'  => __( 'Theme Template', 'pagex' ),
+				'menu_name'      => __( 'Theme Template', 'pagex' ),
+				'name_admin_bar' => __( 'Theme Template', 'pagex' ),
 				'add_new'        => __( 'Add Template', 'pagex' ),
 				'add_new_item'   => __( 'Add Template', 'pagex' ),
 				'new_item'       => __( 'New Template', 'pagex' ),
 				'edit_item'      => __( 'Edit Template', 'pagex' ),
 				'view_item'      => __( 'View Template', 'pagex' ),
-				'all_items'      => __( 'Post Templates', 'pagex' ),
+				'all_items'      => __( 'Theme Templates', 'pagex' ),
 			),
 			'public'              => true,
 			'show_in_nav_menus'   => false,
@@ -704,7 +704,6 @@ class Pagex_Editor {
 		// close layouts modal
 		$layouts_modal .= '</div>';
 
-
 		// select element form
 		$all_elements_form = '<div id="pagex-all-elements-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head d-flex align-items-center"><div class="pagex-all-elements-modal-title">' . __( 'All Elements', 'pagex' ) . '</div><div class="pagex-params-modal-controls d-flex align-items-center ml-auto"><div class="input-group"><input type="text" id="pagex-search-elements" placeholder="' . __( 'Search elements', 'pagex' ) . '" class="form-control pagex-modal-search-input"><div class="input-group-append"><i class="fas fa-search input-group-text"></i></div></div><div class="pagex-params-modal-close"><i class="fas fa-times"></i></div></div></div>';
 
@@ -783,12 +782,12 @@ class Pagex_Editor {
 							<li class="pagex-responsive-mode" onclick="this.nextElementSibling.classList.toggle(\'active\')"><span><i class="fas fa-desktop mr-2"></i>' . __( 'Responsive Mode', 'pagex' ) . '</span><i class="fas fa-angle-down"></i></li>
 	
 							<ul class="pagex-hide pagex-responsive-mode-list">
-								<li class="pagex-device-switcher" data-device-switcher="default"><i class="far fa-window-restore"></i><span>' . __( 'Default', 'pagex' ) . ' </span><span></span></li>
-								<li class="pagex-device-switcher" data-device-switcher="xs"><i class="fas fa-mobile-alt"></i><span>' . __( 'Mobile', 'pagex' ) . ' </span><small>< 576px</small></li>
-								<li class="pagex-device-switcher" data-device-switcher="sm"><i class="fas fa-mobile-alt fa-rotate-90"></i><span>' . __( 'Mobile (landscape)', 'pagex' ) . '</span> <small>≥ 576px</small></li>
-								<li class="pagex-device-switcher" data-device-switcher="md"><i class="fas fa-tablet-alt"></i><span>' . __( 'Tablet', 'pagex' ) . '</span> <small>≥ 768px</small></li>
-								<li class="pagex-device-switcher" data-device-switcher="lg"><i class="fas fa-tablet-alt fa-rotate-90"></i><span>' . __( 'Tablet (landscape)', 'pagex' ) . '</span> <small>≥ 992px</small></li>
-								<li class="pagex-device-switcher" data-device-switcher="xl"><i class="fas fa-desktop"></i><span>' . __( 'Desktop', 'pagex' ) . '</span> <small>≥ 1200px</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="default"><i class="far fa-window-restore"></i><span>' . __( 'Default', 'pagex' ) . ' </span><small>' . __( 'No media query', 'pagex' ) . '</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="xs"><i class="fas fa-mobile-alt"></i><span>' . __( 'Mobile', 'pagex' ) . ' <sup>xs</sup></span><small>' . __( 'No media query', 'pagex' ) . '</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="sm"><i class="fas fa-mobile-alt fa-rotate-90"></i><span>' . __( 'Mobile (landscape)', 'pagex' ) . ' <sup>sm</sup></span> <small>≥ 576px</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="md"><i class="fas fa-tablet-alt"></i><span>' . __( 'Tablet', 'pagex' ) . ' <sup>md</sup></span> <small>≥ 768px</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="lg"><i class="fas fa-tablet-alt fa-rotate-90"></i><span>' . __( 'Tablet (landscape)', 'pagex' ) . ' <sup>lg</sup></span> <small>≥ 992px</small></li>
+								<li class="pagex-device-switcher" data-device-switcher="xl"><i class="fas fa-desktop"></i><span>' . __( 'Desktop', 'pagex' ) . ' <sup>xl</sup></span> <small>≥ 1200px</small></li>
 							</ul>
 							
 							<li class="" onclick="this.nextElementSibling.classList.toggle(\'active\')"><span><i class="far fa-eye mr-2"></i>' . __( 'Preview Mode', 'pagex' ) . '</span><i class="fas fa-angle-down"></i></li>
@@ -821,7 +820,6 @@ class Pagex_Editor {
 	 * Create global query based on preview query
 	 */
 	public static function setup_query_posts() {
-
 		if ( isset( $_REQUEST['pagex-query-preview'] ) ) {
 			// when post query preview loads at the first time
 			query_posts( $_REQUEST['pagex-query-preview'] );
@@ -837,8 +835,6 @@ class Pagex_Editor {
 				);
 			}
 		}
-
-
 
 		// setup data for woocommerce
 		if ( function_exists( 'wc_setup_loop' ) ) {

@@ -108,7 +108,14 @@ function pagex_get_builder_layouts() {
  * @return array
  */
 function pagex_get_layout_templates() {
-	$data = array( '0' => __( 'None', 'pagex' ) );
+
+	static $data = array();
+
+	if ( ! empty( $data ) ) {
+		return $data;
+	}
+
+	$data['0'] = __( 'None', 'pagex' );
 
 	$query = get_posts( array(
 		'post_type'   => 'pagex_layout_builder',

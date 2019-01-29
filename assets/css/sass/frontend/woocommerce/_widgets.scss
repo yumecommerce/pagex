@@ -4,11 +4,12 @@ ul.product_list_widget {
   margin: 0;
 
   li {
-    padding: 0 0 4px;
-    margin: 0 0 4px;
+    margin: 0 0 15px;
     list-style: none;
     display: block;
     width: 100%;
+    padding: 0 30px 0 75px;
+    position: relative;
 
     &:after {
       content: ' ';
@@ -19,46 +20,52 @@ ul.product_list_widget {
     a {
       display: block;
     }
+  }
 
-    img {
+  img {
+    margin-right: 15px;
+    width: 50px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  dl {
+    margin: 0;
+    padding-left: 1em;
+    border-left: 2px solid rgba(0, 0, 0, 0.1);
+
+    dt,
+    dd {
+      display: inline-block;
       float: left;
-      margin-right: 15px;
-      width: 50px;
-      height: auto;
-      box-shadow: none;
+      margin-bottom: 1em;
     }
 
-    dl {
-      margin: 0;
-      padding-left: 1em;
-      border-left: 2px solid rgba(0, 0, 0, 0.1);
-
-      dt,
-      dd {
-        display: inline-block;
-        float: left;
-        margin-bottom: 1em;
-      }
-
-      dt {
-        font-weight: 700;
-        padding: 0 0 0.25em;
-        margin: 0 4px 0 0;
-        clear: left;
-      }
-
-      dd {
-        padding: 0 0 0.25em;
-
-        p:last-child {
-          margin-bottom: 0;
-        }
-      }
+    dt {
+      font-weight: 700;
+      padding: 0 0 0.25em;
+      margin: 0 4px 0 0;
+      clear: left;
     }
 
-    .star-rating {
-      float: none;
+    dd {
+      padding: 0 0 0.25em;
+
+      p:last-child {
+        margin-bottom: 0;
+      }
     }
+  }
+
+  .star-rating {
+    display: inline-flex;
+  }
+
+  .reviewer {
+    font-size: 90%;
+    position: relative;
+    top: -2px;
   }
 }
 
@@ -115,16 +122,10 @@ ul.cart_list {
     display: block;
   }
 
-  .cart_list li {
-    padding-right: 25px;
-    position: relative;
-    padding-top: 0;
-
-    a.remove {
-      position: absolute;
-      top: 0;
-      right: 10px;
-    }
+  a.remove {
+    position: absolute;
+    top: 0;
+    right: 10px;
   }
 }
 
@@ -162,16 +163,16 @@ ul.cart_list {
     .ui-slider-handle {
       position: absolute;
       z-index: 2;
-      width: 14px;
-      height: 14px;
-      background-color: #a46497;
-      border-radius: 1em;
+      width: 12px;
+      height: 12px;
+      background-color: #384891;
+      border-radius: 13px;
       cursor: ew-resize;
       outline: 0;
       top: -5px;
 
       &:last-child {
-        margin-left: -14px;
+        margin-left: -11px;
       }
     }
 
@@ -182,18 +183,18 @@ ul.cart_list {
       display: block;
       border: 0;
       border-radius: 1em;
-      background-color: #a46497
+      background-color: #384891
     }
   }
 
   .price_slider_wrapper .ui-widget-content {
     border-radius: 1em;
-    background-color: #602053;
+    background-color: #ececec;
     border: 0
   }
 
   .ui-slider-horizontal {
-    height: 5px;
+    height: 3px;
 
     .ui-slider-range {
       top: 0;

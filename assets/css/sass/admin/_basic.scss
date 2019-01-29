@@ -25,6 +25,15 @@
     font-size: 12px;
     margin-top: 4px !important;
   }
+
+  #pagex-export-settings-area {
+    font-size: 12px;
+    font-family: monospace;
+    max-width: 700px;
+    width: 100%;
+    word-break: break-all;
+    margin-top: 10px;
+  }
 }
 
 .pagex-tab-section {
@@ -79,7 +88,7 @@
   }
 
   th {
-    width: 250px;
+    width: 220px;
   }
 
   td {

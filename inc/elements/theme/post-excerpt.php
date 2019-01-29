@@ -31,6 +31,7 @@ function pagex_register_post_excerpt_element( $elements ) {
 						'class'   => 'col-4',
 						'options' => array(
 							'p',
+							'em',
 							'h1',
 							'h2',
 							'h3',
@@ -64,21 +65,11 @@ function pagex_register_post_excerpt_element( $elements ) {
  * @return string
  */
 function pagex_post_excerpt( $atts ) {
-	$data = Pagex::get_dynamic_data( $atts );
-	$data = wp_parse_args( $data, array(
+	$data = wp_parse_args( Pagex::get_dynamic_data( $atts ), array(
 		'tag' => 'p',
 	) );
 
-	$status  = get_post_meta( get_the_ID(), '_pagex_status', true );
-	$content = get_the_excerpt();
+	$content = '<' . $data['tag'] . ' class="pagex-post-excerpt">' . get_the_excerpt() . '</' . $data['tag'] . '>';
 
-	ob_start();
-
-	if ( $status != 'true' ) {
-		echo '<' . $data['tag'] . ' class="pagex-post-excerpt">' . $content . '</' . $data['tag'] . '>';
-	} else {
-		echo '<div class="pagex-post-excerpt">' . apply_filters( 'pagex_content', do_shortcode( $content ) ) . '</div>';
-	}
-
-	return ob_get_clean();
+	return $content;
 }

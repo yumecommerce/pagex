@@ -25,81 +25,71 @@
     height: 75px;
   }
 
-  #comments {
+  h2 {
+    clear: none;
+  }
 
-    h2 {
-      clear: none;
-    }
+  ol.commentlist {
+    margin: 30px 0 0;
+    width: 100%;
+    background: none;
+    list-style: none;
+    padding: 0;
 
-    ol.commentlist {
-      margin: 0;
-      width: 100%;
-      background: none;
-      list-style: none;
+    li {
       padding: 0;
+      margin: 0 0 35px;
+      border: 0;
+      position: relative;
 
-      li {
-        padding: 0;
-        margin: 0 0 20px;
-        border: 0;
-        position: relative;
-        background: 0;
-        border: 0;
+      img.avatar {
+        float: left;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 35px;
+        height: auto;
+        margin: 0;
+        box-shadow: none;
+      }
 
-        img.avatar {
-          float: left;
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 32px;
-          height: auto;
-          margin: 0;
-          box-shadow: none;
-        }
+      .star-rating {
+        margin-bottom: 4px;
 
-        .star-rating {
-          margin-bottom: 4px;
-
-          svg {
-            width: 14px;
-            height: 14px;
-          }
-        }
-
-        .comment-text {
-          margin: 0 0 0 50px;
-
-          p {
-            margin: 0 0 1em;
-          }
-
-          p.meta {
-            font-size: 0.83em;
-            color: #b7b7b7;
-          }
+        svg {
+          width: 14px;
+          height: 14px;
         }
       }
 
-      ul.children {
-        list-style: none outside;
-        margin: 20px 0 0 50px;
+      .comment-text {
+        margin: 0 0 0 55px;
 
-        .star-rating {
-          display: none;
+        p.meta {
+          font-size: 90%;
         }
-      }
-
-      #respond {
-        border: 1px solid #eee;
-        border-radius: 4px;
-        padding: 1em 1em 0;
-        margin: 20px 0 0 50px;
       }
     }
 
-    .commentlist > li::before {
-      content: '';
+    ul.children {
+      list-style: none outside;
+      margin: 20px 0 0 50px;
+
+      .star-rating {
+        display: none;
+      }
     }
+
+    #respond {
+      border: 1px solid #eee;
+      border-radius: 4px;
+      padding: 1em 1em 0;
+      margin: 20px 0 0 50px;
+    }
+  }
+
+  .commentlist > li::before {
+    content: '';
   }
 }
 
@@ -114,10 +104,6 @@
   padding: 0;
   background: transparent none;
   border: 0;
-
-  p {
-    margin: 0 0 10px;
-  }
 
   .form-submit input {
     left: auto;

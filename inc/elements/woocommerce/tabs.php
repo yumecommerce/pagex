@@ -162,7 +162,6 @@ function pagex_register_woo_product_data_tabs_element( $elements ) {
 						)
 					),
 
-
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Tab Content', 'pagex' ),
@@ -180,7 +179,34 @@ function pagex_register_woo_product_data_tabs_element( $elements ) {
 						'selector' => '.panel',
 					),
 
-
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Reviews Tab', 'pagex' ),
+					),
+					array(
+						'id'       => 'wq',
+						'title'    => __( 'Rating Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .star-rating, [el] .pagex-woo-stars {color: [val]}',
+					),
+					array(
+						'id'       => 'ew',
+						'title'    => __( 'Avatar Size', 'pagex' ),
+						'type'     => 'text',
+						'class'    => 'col-4',
+						'action'   => 'css',
+						'selector' => '[el] #reviews img.avatar {width: [val] !important} [el] #reviews .comment-text {margin-left: calc([val] + 20px) !important}',
+					),
+					array(
+						'id'       => 're',
+						'title'    => __( 'Avatar Border Radius', 'pagex' ),
+						'type'     => 'text',
+						'class'    => 'col-4',
+						'action'   => 'css',
+						'selector' => '[el] #reviews img.avatar {border-radius: [val]}',
+					),
 				),
 			),
 		),

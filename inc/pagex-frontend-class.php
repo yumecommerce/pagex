@@ -9,6 +9,7 @@ class Pagex_Frontend {
 		add_filter( 'body_class', array( $this, 'builder_classes' ) );
 
 		// add preloader layout
+		// add GDPR layout
 		add_action( 'wp_footer', array( $this, 'after_layout' ) );
 
 		// main filter for builder content
@@ -90,6 +91,7 @@ class Pagex_Frontend {
 
 	/**
 	 * Print preloader layout
+	 * Print GDPR notice
 	 */
 	public function after_layout() {
 		if ( Pagex::is_frontend_builder_active() ) {
@@ -98,6 +100,7 @@ class Pagex_Frontend {
 
 		$settings = Pagex::get_settings();
 
+		// Preloader
 		$use_preloader   = isset( $settings['design']['preloader']['active'] );
 		$preloader_pages = $settings['design']['preloader']['pages'];
 		$preloader_color = $settings['design']['preloader']['color'];
@@ -110,6 +113,24 @@ class Pagex_Frontend {
 			if ( ( $preloader_pages == 'main' && is_front_page() ) || $preloader_pages == 'all' ) {
 				echo '<div id="pagex-main-preloader"><div class="pagex-main-preloader-icon">' . $icon . '</div></div>';
 			}
+		}
+
+		// GDPR
+		$use_gdpr            = isset( $settings['advanced']['gdpr']['active'] );
+		$gdpr_page_id        = $settings['advanced']['gdpr']['id'];
+		$gdpr_custom_message = $settings['advanced']['gdpr']['message'];
+
+		if ( $use_gdpr && ! isset( $_COOKIE['pagex_gdpr'] ) ) {
+			if ( ! $gdpr_custom_message ) {
+				$message = sprintf(
+				/* translators: %1$s: link attributes. */
+					__( 'This site uses cookies. By continuing to use this website, you consent to the use of cookies in accordance with our %1$s Cookie Policy.%2$s', 'pagex' ),
+					'<a href="' . esc_url( get_permalink( $gdpr_page_id ) ) . '">', '</a>' );
+			} else {
+				$message = $gdpr_custom_message;
+			}
+
+			echo '<div id="pagex-gdpr-notice"><div id="pagex-gdpr-notice-close"><svg class="pagex-icon"><use xlink:href="#pagex-close-icon"></use></svg></div><div class="pagex-gdpr-notice-message">' . $message . '</div></div>';
 		}
 	}
 
@@ -228,11 +249,12 @@ class Pagex_Frontend {
 			array(
 				'selector' => 'body',
 				'rules'    => array(
-					'font-family' => $settings['design']['main_font']['name'],
-					'font-size'   => $settings['design']['main_font']['size'],
-					'font-weight' => $settings['design']['main_font']['weight'],
-					'line-height' => $settings['design']['main_font']['lineheight'],
-					'color'       => $settings['design']['main_font']['color'],
+					'font-family'    => $settings['design']['main_font']['name'],
+					'font-size'      => $settings['design']['main_font']['size'],
+					'font-weight'    => $settings['design']['main_font']['weight'],
+					'line-height'    => $settings['design']['main_font']['lineheight'],
+					'letter-spacing' => $settings['design']['main_font']['letterspacing'],
+					'color'          => $settings['design']['main_font']['color'],
 				)
 			),
 			array(
@@ -244,9 +266,10 @@ class Pagex_Frontend {
 			array(
 				'selector' => 'h1,h2,h3,h4,h5,h6',
 				'rules'    => array(
-					'font-family' => $settings['design']['heading_font']['name'],
-					'font-weight' => $settings['design']['heading_font']['weight'],
-					'color'       => $settings['design']['heading_font']['color'],
+					'font-family'    => $settings['design']['heading_font']['name'],
+					'letter-spacing' => $settings['design']['heading_font']['letterspacing'],
+					'font-weight'    => $settings['design']['heading_font']['weight'],
+					'color'          => $settings['design']['heading_font']['color'],
 				)
 			),
 			array(
@@ -288,13 +311,13 @@ class Pagex_Frontend {
 			array(
 				'selector' => '[type="submit"]:after, .button:after',
 				'rules'    => array(
-					'color'          => $settings['design']['button']['color'],
+					'color' => $settings['design']['button']['color'],
 				)
 			),
 			array(
 				'selector' => '[type="submit"]:hover:after, .button:hover:after',
 				'rules'    => array(
-					'color'          => $settings['design']['button']['color_hover'],
+					'color' => $settings['design']['button']['color_hover'],
 				)
 			),
 
@@ -525,6 +548,11 @@ class Pagex_Frontend {
                 <symbol id="pagex-tilt-opacity" viewBox="0 0 1280 140" preserveAspectRatio="none">
                     <path fill="currentColor" d="M1280 0L640 70 0 0v140l640-70 640 70V0z" fill-opacity=".5"></path>
                     <path fill="currentColor" d="M1280 0H0l640 70 640-70z"></path>
+                </symbol>
+
+                <symbol id="pagex-wave-small-border" viewBox="0 0 336 25" preserveAspectRatio="xMidYMin slice">
+                    <path fill="currentColor"
+                          d="M336,0v5.6c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0 c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0c-1.9-1.9-3.7-1.9-5.6,0c-1.9,1.9-3.7,1.9-5.6,0 C3.7,3.7,1.9,3.7,0,5.6V0H336z"></path>
                 </symbol>
             </defs>
         </svg>

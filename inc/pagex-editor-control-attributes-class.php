@@ -680,7 +680,7 @@ class Pagex_Editor_Control_Attributes {
 				// overlay background
 				array(
 					'id'        => 'pagex_background_ov',
-					'title'     => __( 'Overlay Background', 'pagex' ),
+					'title'     => __( 'Overlay For Background', 'pagex' ),
 					'type'      => 'select',
 					'options'   => array(
 						''      => __( 'None', 'pagex' ),
@@ -691,7 +691,6 @@ class Pagex_Editor_Control_Attributes {
 						'pagex_background' => array( 'color', 'image', 'dynamic', 'video' )
 					),
 				),
-
 				array(
 					'id'        => 'pagex_bg_color_ov',
 					'title'     => __( 'Background', 'pagex' ),

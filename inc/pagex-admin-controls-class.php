@@ -301,7 +301,7 @@ class Pagex_Admin_Controls {
 			$this,
 			'default_layouts'
 		), 'pagex_page', 'pagex_section' );
-		add_settings_field( 'post_templates', __( 'Post Templates', 'pagex' ), array(
+		add_settings_field( 'post_templates', __( 'Theme Templates', 'pagex' ), array(
 			$this,
 			'post_templates'
 		), 'pagex_page', 'pagex_section' );
@@ -346,6 +346,10 @@ class Pagex_Admin_Controls {
 		add_settings_field( 'advanced_multilingual', __( 'Multilingual', 'pagex' ), array(
 			$this,
 			'advanced_multilingual'
+		), 'pagex_advanced', 'pagex_section' );
+		add_settings_field( 'advanced_gdpr', __( 'GDPR Notice', 'pagex' ), array(
+			$this,
+			'advanced_gdpr'
 		), 'pagex_advanced', 'pagex_section' );
 		add_settings_field( 'advanced_export', __( 'Export', 'pagex' ), array(
 			$this,
@@ -484,7 +488,7 @@ class Pagex_Admin_Controls {
 		?>
 
         <p><?php _e( 'Define template layouts based on page type. You can create and change layouts via', 'pagex' ) ?>
-            <a href="<?php echo admin_url( 'edit.php?post_type=pagex_post_tmp' ); ?>"><?php _e( 'Post Templates Builder', 'pagex' ); ?></a>
+            <a href="<?php echo admin_url( 'edit.php?post_type=pagex_post_tmp' ); ?>"><?php _e( 'Theme Templates', 'pagex' ); ?></a>
         </p>
         <h2>WordPress</h2>
         <table class="pagex-post-templates-table">
@@ -538,7 +542,7 @@ class Pagex_Admin_Controls {
 							echo '<option value="' . $key . '" ' . selected( $key, $page_archive, false ) . '>' . $value . '</option>';
 						} ?>
                     </select>
-                    <p  class="description"><?php _e( 'If none is selected the Blog Page template will be used instead.', 'pagex' ) ?></p>
+                    <p class="description"><?php _e( 'If none is selected the Blog Page template will be used instead.', 'pagex' ) ?></p>
                 </td>
             </tr>
             <tr>
@@ -550,7 +554,7 @@ class Pagex_Admin_Controls {
 							echo '<option value="' . $key . '" ' . selected( $key, $page_search_results, false ) . '>' . $value . '</option>';
 						} ?>
                     </select>
-                    <p  class="description"><?php _e( 'If none is selected the Blog Page template will be used instead.', 'pagex' ) ?></p>
+                    <p class="description"><?php _e( 'If none is selected the Blog Page template will be used instead.', 'pagex' ) ?></p>
                 </td>
             </tr>
             <tr>
@@ -698,6 +702,11 @@ class Pagex_Admin_Controls {
 				'id'    => 'lineheight',
 				'label' => __( 'Line Height', 'pagex' ),
 				'type'  => 'text',
+			),
+			array(
+				'id'    => 'letterspacing',
+				'label' => __( 'Letter Spacing', 'pagex' ),
+				'type'  => 'text',
 				'clear' => true,
 			),
 			array(
@@ -744,7 +753,12 @@ class Pagex_Admin_Controls {
 				'label'   => __( 'Font Weight', 'pagex' ),
 				'type'    => 'select',
 				'options' => $font_weights,
-				'clear'   => true,
+			),
+			array(
+				'id'    => 'letterspacing',
+				'label' => __( 'Letter Spacing', 'pagex' ),
+				'type'  => 'text',
+				'clear' => true,
 			),
 			array(
 				'id'    => 'color',
@@ -1010,7 +1024,7 @@ class Pagex_Admin_Controls {
 		);
 
 		$this->make_form( $controls, array( 'design', 'form' ) );
-    }
+	}
 
 	/**
 	 * Preloader style and activation option
@@ -1121,6 +1135,34 @@ class Pagex_Admin_Controls {
 		$this->make_form( $controls, array( 'advanced' ) );
 	}
 
+	public function advanced_gdpr() {
+		$controls = array(
+			array(
+				'id'          => 'active',
+				'label'       => __( 'Activate GDPR notice', 'pagex' ),
+				'description' => __( 'Add European privacy regulations notice', 'pagex' ),
+				'type'        => 'checkbox',
+				'value'       => 'yes',
+				'clear'       => true,
+			),
+			array(
+				'id'          => 'id',
+				'label'       => __( 'Privacy and policy page', 'pagex' ),
+				'description' => __( 'Select privacy and policy page', 'pagex' ),
+				'type'        => 'select',
+				'options'     => $this->get_pages(),
+			),
+			array(
+				'id'          => 'message',
+				'label'       => __( 'Custom Message', 'pagex' ),
+				'description' => __( 'If field is empty the default message will be displayed.', 'pagex' ),
+				'type'        => 'text',
+			),
+		);
+
+		$this->make_form( $controls, array( 'advanced', 'gdpr' ) );
+	}
+
 	/**
 	 * Export Advanced Tab
 	 */
@@ -1134,6 +1176,7 @@ class Pagex_Admin_Controls {
 
 		echo '<input type="hidden" name="pagex_settings[demo_data_imported]" value="' . $imported . '">';
 		echo '<button type="button" id="pagex-export-settings" class="button">' . __( 'Export Settings', 'pagex' ) . '</button>';
+		echo '<div id="pagex-export-settings-area"></div>';
 	}
 
 	/**
@@ -1215,6 +1258,20 @@ class Pagex_Admin_Controls {
 
 		echo $form;
 	}
+
+	/**
+	 * Get WP pages
+	 */
+	public function get_pages() {
+		$_pages = get_pages();
+		$pages  = array( '' => __( 'None', 'pagex' ) );
+
+		foreach ( $_pages as $page ) {
+			$pages[ $page->ID ] = $page->post_title;
+		}
+
+		return $pages;
+    }
 
 	/**
 	 * Export main settings via ajax

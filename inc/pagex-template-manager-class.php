@@ -12,13 +12,6 @@ class Pagex_Template_Manager {
 	public function builder_redirect() {
 		$post_type = get_query_var( 'post_type' );
 
-		if ( $post_type == 'pagex_layout_builder' ) {
-			if ( ! is_super_admin() ) {
-				wp_redirect( home_url() );
-				exit();
-			}
-		}
-
 		if ( $post_type == 'pagex_post_tmp' ) {
 			if ( ! is_super_admin() ) {
 				wp_redirect( home_url() );
@@ -152,16 +145,22 @@ class Pagex_Template_Manager {
 			// print post template based on preview query
 			if ( Pagex::is_frontend_builder_frame_active() ) {
 				if ( isset( $_REQUEST['pagex-query-preview'] ) ) {
-					add_action( 'pagex_post_content', function () use ( $post ) {
+					// get layout post id before it being changed by preview setup_query_posts()
+					$layout_id = $post->ID;
 
-						$layout_id = $post->ID;
-
+					// setup query before pagex_post_content action so pagex_before_post_content also was triggered
+					add_action( 'pagex_before_page_layout', function () {
 						Pagex_Editor::setup_query_posts();
+						Pagex_WooCommerce::maybe_enqueue_scripts();
+					} );
 
-						$template = Pagex_Template_Manager::get_current_post_template();
+					add_action( 'pagex_post_content', function () {
+						$template = self::get_current_post_template();
 						echo apply_filters( 'pagex_content', do_shortcode( get_post_field( 'post_content', $template ) ) );
+					} );
 
-						// restore default query for proper footer scripts
+					// restore default query for proper footer scripts
+					add_action( 'pagex_after_page_layout', function () use ( $layout_id ) {
 						query_posts( array(
 							'p'         => $layout_id,
 							'post_type' => 'pagex_layout_builder',
@@ -188,7 +187,7 @@ class Pagex_Template_Manager {
 				return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
 			}
 		} else {
-			$template = Pagex_Template_Manager::get_current_post_template();
+			$template = self::get_current_post_template();
 
 			if ( ! $template ) {
 				return $default_template;
@@ -269,11 +268,7 @@ class Pagex_Template_Manager {
 
 		$settings = $settings['post_templates'];
 
-		static $template = '';
-
-		if ( $template ) {
-			return $template;
-		}
+		$template = '';
 
 		$post_type = get_query_var( 'post_type' );
 
@@ -293,21 +288,17 @@ class Pagex_Template_Manager {
 		} elseif ( is_tax() ) {
 			$template = self::get_post_template( $post_type, 'taxonomy' );
 		} elseif ( is_singular() ) {
-			if ( is_singular( 'page' ) ) {
-				// check if page has custom post template
-				$page_template_slug = get_page_template_slug( $post->ID );
+			// check if single post has custom post template
+			$page_template_slug = get_page_template_slug( $post->ID );
 
-				// if page has blank template remove all header/footer layouts
-				if ( $page_template_slug == 'pagex-blank-template' ) {
-					return 'pagex-blank-template';
-				}
+			// if page has blank template remove all header/footer layouts
+			if ( $page_template_slug == 'pagex-blank-template' ) {
+				return 'pagex-blank-template';
+			}
 
-				if ( strpos( $page_template_slug, 'pagex-post-template' ) === 0 ) {
-					// get template id from slug name
-					$template = preg_replace( '/pagex-post-template-/', '', $page_template_slug );
-				} else {
-					$template = self::get_post_template( 'page', 'single', true );
-				}
+			if ( strpos( $page_template_slug, 'pagex-post-template' ) === 0 ) {
+				// get template id from slug name
+				$template = preg_replace( '/pagex-post-template-/', '', $page_template_slug );
 			} else {
 				$template = self::get_post_template( $post_type, 'single', true );
 			}

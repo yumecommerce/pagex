@@ -498,7 +498,13 @@ body .pagex-modal {
 
 /* Separator */
 
+.pagex-separator-wrapper {
+  justify-content: center;
+  display: flex;
+}
+
 .pagex-separator {
+  width: 100%;
   justify-content: center;
   display: flex;
   align-items: center;

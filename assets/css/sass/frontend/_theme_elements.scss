@@ -9,6 +9,7 @@
     color: inherit;
     display: block;
     text-decoration: none;
+    transition: none;
 
     &:hover {
       color: inherit;
@@ -207,7 +208,7 @@
   .avatar {
     float: left;
     height: 28px;
-    margin-right: 0.875em;
+    margin-right: 15px;
     position: relative;
     width: 28px;
 
@@ -238,13 +239,6 @@
   }
 }
 
-.comment-metadata a:hover,
-.comment-metadata a:focus,
-.pingback .comment-edit-link:hover,
-.pingback .comment-edit-link:focus {
-  color: #007acc;
-}
-
 .comment-metadata .edit-link,
 .pingback .edit-link {
   display: inline-block;
@@ -261,7 +255,6 @@
 }
 
 .comment-reply-link {
-  color: #007acc;
   display: inline-block;
   font-size: 13px;
   line-height: 1;
@@ -270,7 +263,6 @@
 .comment-reply-link:hover,
 .comment-reply-link:focus {
   border-color: currentColor;
-  color: #007acc;
   outline: 0;
 }
 
@@ -278,6 +270,7 @@
   label {
     display: block;
     margin-bottom: 3px;
+    font-size: 90%;
   }
 
   .form-submit {
@@ -338,12 +331,9 @@
   font-family: Inconsolata, monospace;
 }
 
-
-
 .comment-reply-title {
   display: flex;
   align-items: center;
-  line-height: 1;
   justify-content: space-between;
 
   a {
@@ -367,6 +357,32 @@
   opacity: 0.7;
   padding: 0 5px;
   margin-right: 2px;
+}
+
+/* Post Navigation */
+
+.post-navigation {
+  .nav-links {
+    display: flex;
+
+    // make sure text not to right when only next link is presented
+    > .nav-next:first-child {
+      text-align: left;
+    }
+  }
+
+  .nav-previous {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
+
+  .nav-next {
+    text-align: right;
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+  }
 }
 
 /* Dynamic Image Gallery */

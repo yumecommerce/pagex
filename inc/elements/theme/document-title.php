@@ -89,7 +89,7 @@ function pagex_document_title( $atts ) {
 	$title = pagex_get_document_title( $data['context'], $data['paged'] );
 
 	if ( $title ) {
-		$title = '<' . $data['tag'] . ' class="pagex-document-title">' . $title . '</' . $data['tag'] . '>';
+		$title = '<' . $data['tag'] . ' class="pagex-document-title m-0">' . $title . '</' . $data['tag'] . '>';
 	}
 
 	return $title;

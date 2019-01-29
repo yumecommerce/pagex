@@ -190,3 +190,28 @@ form.woocommerce-checkout {
   height: 55px;
   margin-top: 20px;
 }
+
+// Order Received
+
+// reset woocommerce-column which has same class with bootstrap
+.woocommerce-column {
+  &.col-1, &.col-2 {
+    flex: 0 0 auto;
+    width: auto;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+.woocommerce-columns--addresses {
+  display: flex;
+  flex-wrap: wrap;
+
+  .col-1 {
+    margin: 0 50px 50px 0;
+  }
+
+  h2 {
+    font-size: 25px;
+  }
+}

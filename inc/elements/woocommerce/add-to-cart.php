@@ -35,7 +35,7 @@ function pagex_register_woo_add_to_cart_element( $elements ) {
 					array(
 						'id'       => 'a',
 						'type'     => 'button_style',
-						'selector' => '.add_to_cart_button',
+						'selector' => '[type="submit"]',
 					),
 					array(
 						'id'       => 'ma',
@@ -57,6 +57,9 @@ function pagex_register_woo_add_to_cart_element( $elements ) {
 							'flex-start' => __( 'Left', 'pagex' ),
 							'center'     => __( 'Center', 'pagex' ),
 							'flex-end'   => __( 'Right', 'pagex' ),
+						),
+						'condition'  => array(
+							'type' => array( 'archive' )
 						)
 					),
 					array(

@@ -48,6 +48,13 @@ function pagex_register_woo_product_meta_element( $elements ) {
 						'type'     => 'typography',
 						'selector' => '',
 					),
+					array(
+						'id'    => 'wq',
+						'label' => __( 'Make element inline', 'pagex' ),
+						'type'  => 'checkbox',
+						'action'   => 'css',
+						'selector' => '[el] .product_meta {display: flex; flex-wrap: wrap;} [el] .product_meta > * {margin: 0 15px 10px 0;}',
+					),
 				),
 			),
 		),

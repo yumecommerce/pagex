@@ -1171,6 +1171,11 @@ var pagex = {
         this.switchersControl.querySelector('[data-device-switcher="' + device + '"]').classList.add('active');
 
         this.switchersControl.classList.add('pagex-hide');
+
+        // make sure slider init right positioning
+        setTimeout(function () {
+            window.dispatchEvent(new Event("resize"));
+        }, 400);
     },
 
     showSwitcher: function (e) {

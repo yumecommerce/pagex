@@ -20,13 +20,7 @@ jQuery('#pagex-export-settings').click(function () {
     jQuery.post(ajaxurl, {
         action: 'pagex_export_settings',
     }, function (data) {
-        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(data));
-        var downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href", dataStr);
-        downloadAnchorNode.setAttribute("download", "pagex-settings.json");
-        document.body.appendChild(downloadAnchorNode); // required for firefox
-        downloadAnchorNode.click();
-        downloadAnchorNode.remove();
+        jQuery('#pagex-export-settings-area').html(JSON.stringify(data));
     }).fail(function () {
         console.error('Fail to export the settings');
     });

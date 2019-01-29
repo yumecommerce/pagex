@@ -77,6 +77,7 @@ function pagex_register_section_element( $elements ) {
 							'pagex-flipped-triangle'       => __( 'Triangle (flipped)', 'pagex' ),
 							'pagex-wave'                   => __( 'Wave', 'pagex' ),
 							'pagex-wave-opacity'           => __( 'Wave Opacity', 'pagex' ),
+							'pagex-wave-small-border'      => __( 'Wave Border', 'pagex' ),
 						),
 					),
 					array(
@@ -159,6 +160,7 @@ function pagex_register_section_element( $elements ) {
 							'pagex-flipped-triangle'       => __( 'Triangle (flipped)', 'pagex' ),
 							'pagex-wave'                   => __( 'Wave', 'pagex' ),
 							'pagex-wave-opacity'           => __( 'Wave Opacity', 'pagex' ),
+							'pagex-wave-small-border'      => __( 'Wave Border', 'pagex' ),
 						),
 					),
 					array(

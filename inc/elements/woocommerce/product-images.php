@@ -33,6 +33,49 @@ function pagex_register_woo_product_images_element( $elements ) {
 						'description' => __( 'This option will be applied only after saving and refreshing the page.', 'pagex' ),
 						'value'       => 'off',
 					),
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Lightbox', 'pagex' ),
+					),
+					array(
+						'id'       => 'qw',
+						'type'     => 'checkbox',
+						'label'    => __( 'Hide Caption', 'pagex' ),
+						'action'   => 'css',
+						'selector' => '.pswp__caption {display: none !important}'
+					),
+					array(
+						'id'       => 'we',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '.pswp__bg {background: [val] !important}',
+					),
+					array(
+						'id'       => 'er',
+						'title'    => __( 'Caption Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '.pswp__top-bar, .pswp__caption {background: [val] !important}',
+					),
+					array(
+						'id'       => 'rt',
+						'title'    => __( 'Caption Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '.pswp__caption {color: [val] !important}',
+					),
+					array(
+						'id'         => 'ty',
+						'title'      => __( 'Image Border Radius', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'class'      => 'col-4',
+						'selector'   => '.pswp__img {border-radius: [val]}',
+					),
 				),
 			),
 		),
@@ -52,7 +95,7 @@ function pagex_woo_product_images( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'zoom' => 'on',
+		'zoom'     => 'on',
 		'lightbox' => 'on',
 	) );
 

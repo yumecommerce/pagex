@@ -152,7 +152,6 @@ function pagex_get_taxonomies() {
 /**
  * Generate html icon based on passed data
  * Used by dynamic elements with icons.
- * If dynamic element has an icon param it must contain key "dynamic" so SVG param does not apply action attribute
  *
  * @param $id - string with id of the option
  * @param $data - array with parameters of the element or repeater item
@@ -168,7 +167,8 @@ function pagex_generate_icon( $id, $data ) {
 	}
 
 	if ( $data[ $id ] === 'svg' && isset( $data[ $id . '_svg' ] ) ) {
-		$html = preg_replace( '/((svg|img).*?)(class=".*?")/m', '$1', $data[ $id . '_svg' ] );
+		$html = urldecode( $data[ $id . '_svg' ] );
+		$html = preg_replace( '/((svg|img).*?)(class=".*?")/m', '$1', $html );
 		$html = preg_replace( '/((svg|img).*?)(>)/m', '$1 class="pagex-icon" $3', $html );
 	}
 
@@ -305,6 +305,8 @@ function pagex_comments_template( $comment_template ) {
  * @return array
  */
 function pagex_get_post_custom_keys( $type = 'text' ) {
+	$groups = array();
+
 	if ( function_exists( 'pods_api' ) ) {
 		$media = array( 'file' );
 
@@ -312,8 +314,6 @@ function pagex_get_post_custom_keys( $type = 'text' ) {
 			'table_info' => true,
 			'fields'     => true,
 		) );
-
-		$groups = array();
 
 		foreach ( $all_pods as $group ) {
 			$options = [];
@@ -342,11 +342,9 @@ function pagex_get_post_custom_keys( $type = 'text' ) {
 				'options' => $options,
 			);
 		}
-
-		return $groups;
 	}
 
-	return array();
+	return $groups;
 }
 
 /**

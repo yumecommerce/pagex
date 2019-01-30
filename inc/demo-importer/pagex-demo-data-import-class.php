@@ -26,17 +26,17 @@ class Pagex_Demo_Data_Import {
 	 */
 	function wp_import_existing_post( $post_id, $post ) {
 		if ( $this->existing_post = $post_id ) {
-			if ( get_post_type( $post_id ) != 'attachment' ) {
+			if ( $post['post_type'] != 'attachment' ) {
 				global $wpdb;
-				// delete existing meta
-				$wpdb->delete( 'wp_postmeta', array( 'post_id' => $post_id ) );
 
+				// delete existing meta (assumes import contains all meta needed for post)
+				$wpdb->delete( 'wp_postmeta', array( 'post_id' => $post_id ) );
 				// force the post to be imported
 				$post_id = 0;
 			}
-		}
 
-		return $post_id;
+			return $post_id;
+		}
 	}
 
 	/**
@@ -49,6 +49,7 @@ class Pagex_Demo_Data_Import {
 	 */
 	function wp_import_post_data_processed( $postdata, $post ) {
 		if ( $this->existing_post ) {
+			// update the existing post
 			$postdata['ID'] = $this->existing_post;
 		}
 
@@ -112,16 +113,6 @@ class Pagex_Demo_Data_Import {
 	 * Import demo via ajax
 	 */
 	public function import() {
-		///
-		///
-		///
-		///
-		wp_send_json_success( __( 'All Done! Demo data was successfully installed.', 'pagex' ) );
-		///
-		///
-		///
-		///
-
 		// try to update PHP memory limit
 		ini_set( 'memory_limit', '350M' );
 		set_time_limit( 300 );
@@ -166,9 +157,9 @@ class Pagex_Demo_Data_Import {
 		// import additional third party plugin settings
 		if ( isset( $demo_data['migration'] ) ) {
 			if ( isset( $demo_data['migration']['pods'] ) ) {
-				if ( class_exists( 'Pods_Migrate_Packages' ) ) {
+				if ( function_exists( 'pods_api' ) ) {
 					// import pods with second parameter as true to replace old settings
-					$pods_imported = Pods_Migrate_Packages::import( $demo_data['migration']['pods'], true );
+					$pods_imported = $this->import_pods( $demo_data['migration']['pods'], true );
 				}
 			}
 		}
@@ -180,11 +171,11 @@ class Pagex_Demo_Data_Import {
 
 		// update Pagex plugin settings
 		if ( isset( $demo_data['settings'] ) ) {
-			update_option( 'pagex_settings', json_decode( $demo_data['settings'] ) );
+			update_option( 'pagex_settings', json_decode( $demo_data['settings'], true ) );
 		}
 
 		// after import action
-		do_action( 'pagex_after_import_demo_content' );
+		do_action( 'pagex_after_import_demo_data' );
 
 		// make all meta boxes available for nav menu
 		// it makes all custom post types visible
@@ -210,13 +201,14 @@ class Pagex_Demo_Data_Import {
 
 	/**
 	 * Import widget JSON data
-	 * Code from https://wordpress.org/plugins/widget-importer-exporter/ v 1.5.5
+	 * Code from https://wordpress.org/plugins/widget-importer-exporter/ v1.5.5
 	 *
 	 * @param $data
 	 */
 	public function import_widgets( $data ) {
-		global $wp_registered_sidebars;
-		global $wp_registered_widget_controls;
+		global $wp_registered_sidebars, $wp_registered_widget_controls;
+
+		$data = json_decode( $data );
 
 		// Get all available widgets site supports.
 		$widget_controls = $wp_registered_widget_controls;
@@ -258,7 +250,7 @@ class Pagex_Demo_Data_Import {
 			} else {
 				$use_sidebar_id       = 'wp_inactive_widgets'; // Add to inactive if sidebar does not exist in theme.
 				$sidebar_message_type = 'error';
-				$sidebar_message      = esc_html__( 'Widget area does not exist in theme (using Inactive)', 'widget-importer-exporter' );
+				$sidebar_message      = esc_html__( 'Widget area does not exist in theme (using Inactive)', 'pagex' );
 			}
 
 			// Result for sidebar
@@ -371,6 +363,451 @@ class Pagex_Demo_Data_Import {
 				}
 			}
 		}
+	}
+
+	/**
+	 * Import Pods
+	 * Code from Import a Package https://ru.wordpress.org/plugins/pods/ v 2.7.12
+	 *
+	 * @param $data
+	 * @param bool $replace
+	 *
+	 * @return array|bool
+	 */
+	public function import_pods( $data, $replace = false ) {
+		if ( ! defined( 'PODS_FIELD_STRICT' ) ) {
+			define( 'PODS_FIELD_STRICT', false );
+		}
+
+		if ( ! is_array( $data ) ) {
+			$json_data = @json_decode( $data, true );
+
+			if ( ! is_array( $json_data ) ) {
+				$json_data = @json_decode( pods_unslash( $data ), true );
+			}
+
+			$data = $json_data;
+		}
+
+		if ( ! is_array( $data ) || empty( $data ) ) {
+			return false;
+		}
+
+		$api = pods_api();
+
+		if ( ! isset( $data['meta'] ) || ! isset( $data['meta']['version'] ) || empty( $data['meta']['version'] ) ) {
+			return false;
+		}
+
+		if ( false === strpos( $data['meta']['version'], '.' ) && (int) $data['meta']['version'] < 1000 ) {
+			// Pods 1.x < 1.10
+			$data['meta']['version'] = implode( '.', str_split( $data['meta']['version'] ) );
+		} elseif ( false === strpos( $data['meta']['version'], '.' ) ) {
+			// Pods 1.10 <= 2.0
+			$data['meta']['version'] = pods_version_to_point( $data['meta']['version'] );
+		}
+
+		$found = array();
+
+		if ( isset( $data['pods'] ) && is_array( $data['pods'] ) ) {
+			foreach ( $data['pods'] as $pod_data ) {
+				if ( isset( $pod_data['id'] ) ) {
+					unset( $pod_data['id'] );
+				}
+
+				$pod = $api->load_pod( array( 'name' => $pod_data['name'] ), false );
+
+				$existing_fields = array();
+
+				if ( ! empty( $pod ) ) {
+					// Delete Pod if it exists
+					if ( $replace ) {
+						$api->delete_pod( array( 'id' => $pod['id'] ) );
+
+						$pod = array( 'fields' => array() );
+					} else {
+						$existing_fields = $pod['fields'];
+					}
+				} else {
+					$pod = array( 'fields' => array() );
+				}
+
+				// Backwards compatibility
+				if ( version_compare( $data['meta']['version'], '2.0', '<' ) ) {
+					$core_fields = array(
+						array(
+							'name'    => 'created',
+							'label'   => 'Date Created',
+							'type'    => 'datetime',
+							'options' => array(
+								'datetime_format'      => 'ymd_slash',
+								'datetime_time_type'   => '12',
+								'datetime_time_format' => 'h_mm_ss_A',
+							),
+							'weight'  => 1,
+						),
+						array(
+							'name'    => 'modified',
+							'label'   => 'Date Modified',
+							'type'    => 'datetime',
+							'options' => array(
+								'datetime_format'      => 'ymd_slash',
+								'datetime_time_type'   => '12',
+								'datetime_time_format' => 'h_mm_ss_A',
+							),
+							'weight'  => 2,
+						),
+						array(
+							'name'        => 'author',
+							'label'       => 'Author',
+							'type'        => 'pick',
+							'pick_object' => 'user',
+							'options'     => array(
+								'pick_format_type'   => 'single',
+								'pick_format_single' => 'autocomplete',
+								'default_value'      => '{@user.ID}',
+							),
+							'weight'      => 3,
+						),
+					);
+
+					$found_fields = array();
+
+					if ( ! empty( $pod_data['fields'] ) ) {
+						foreach ( $pod_data['fields'] as $k => $field ) {
+							$field_type = $field['coltype'];
+
+							if ( 'txt' === $field_type ) {
+								$field_type = 'text';
+							} elseif ( 'desc' === $field_type ) {
+								$field_type = 'wysiwyg';
+							} elseif ( 'code' === $field_type ) {
+								$field_type = 'paragraph';
+							} elseif ( 'bool' === $field_type ) {
+								$field_type = 'boolean';
+							} elseif ( 'num' === $field_type ) {
+								$field_type = 'number';
+							} elseif ( 'date' === $field_type ) {
+								$field_type = 'datetime';
+							}
+
+							$multiple = min( max( (int) $field['multiple'], 0 ), 1 );
+
+							$new_field = array(
+								'name'        => trim( $field['name'] ),
+								'label'       => trim( $field['label'] ),
+								'description' => trim( $field['comment'] ),
+								'type'        => $field_type,
+								'weight'      => (int) $field['weight'],
+								'options'     => array(
+									'required'     => min( max( (int) $field['required'], 0 ), 1 ),
+									'unique'       => min( max( (int) $field['unique'], 0 ), 1 ),
+									'input_helper' => $field['input_helper'],
+								),
+							);
+
+							if ( in_array( $new_field['name'], $found_fields, true ) ) {
+								unset( $pod_data['fields'][ $k ] );
+
+								continue;
+							}
+
+							$found_fields[] = $new_field['name'];
+
+							if ( 'pick' === $field_type ) {
+								$new_field['pick_object'] = 'pod';
+								$new_field['pick_val']    = $field['pickval'];
+
+								if ( 'wp_user' === $field['pickval'] ) {
+									$new_field['pick_object'] = 'user';
+								} elseif ( 'wp_post' === $field['pickval'] ) {
+									$new_field['pick_object'] = 'post_type-post';
+								} elseif ( 'wp_page' === $field['pickval'] ) {
+									$new_field['pick_object'] = 'post_type-page';
+								} elseif ( 'wp_taxonomy' === $field['pickval'] ) {
+									$new_field['pick_object'] = 'taxonomy-category';
+								}
+
+								// This won't work if the field doesn't exist
+								// $new_field[ 'sister_id' ] = $field[ 'sister_field_id' ];
+								$new_field['options']['pick_filter']  = $field['pick_filter'];
+								$new_field['options']['pick_orderby'] = $field['pick_orderby'];
+								$new_field['options']['pick_display'] = '';
+								$new_field['options']['pick_size']    = 'medium';
+
+								if ( 1 == $multiple ) {
+									$new_field['options']['pick_format_type']  = 'multi';
+									$new_field['options']['pick_format_multi'] = 'checkbox';
+									$new_field['options']['pick_limit']        = 0;
+								} else {
+									$new_field['options']['pick_format_type']   = 'single';
+									$new_field['options']['pick_format_single'] = 'dropdown';
+									$new_field['options']['pick_limit']         = 1;
+								}
+							} elseif ( 'file' === $field_type ) {
+								$new_field['options']['file_format_type'] = 'multi';
+								$new_field['options']['file_type']        = 'any';
+							} elseif ( 'number' === $field_type ) {
+								$new_field['options']['number_decimals'] = 2;
+							} elseif ( 'desc' === $field['coltype'] ) {
+								$new_field['options']['wysiwyg_editor'] = 'tinymce';
+							} elseif ( 'text' === $field_type ) {
+								$new_field['options']['text_max_length'] = 128;
+							}//end if
+
+							if ( isset( $pod['fields'][ $new_field['name'] ] ) ) {
+								$new_field = array_merge( $pod['fields'][ $new_field['name'] ], $new_field );
+							}
+
+							$pod_data['fields'][ $k ] = $new_field;
+						}//end foreach
+					}//end if
+
+					if ( pods_var( 'id', $pod, 0 ) < 1 ) {
+						$pod_data['fields'] = array_merge( $core_fields, $pod_data['fields'] );
+					}
+
+					if ( empty( $pod_data['label'] ) ) {
+						$pod_data['label'] = ucwords( str_replace( '_', ' ', $pod_data['name'] ) );
+					}
+
+					if ( isset( $pod_data['is_toplevel'] ) ) {
+						$pod_data['show_in_menu'] = ( 1 == $pod_data['is_toplevel'] ? 1 : 0 );
+
+						unset( $pod_data['is_toplevel'] );
+					}
+
+					if ( isset( $pod_data['detail_page'] ) ) {
+						$pod_data['detail_url'] = $pod_data['detail_page'];
+
+						unset( $pod_data['detail_page'] );
+					}
+
+					if ( isset( $pod_data['before_helpers'] ) ) {
+						$pod_data['pre_save_helpers'] = $pod_data['before_helpers'];
+
+						unset( $pod_data['before_helpers'] );
+					}
+
+					if ( isset( $pod_data['after_helpers'] ) ) {
+						$pod_data['post_save_helpers'] = $pod_data['after_helpers'];
+
+						unset( $pod_data['after_helpers'] );
+					}
+
+					if ( isset( $pod_data['pre_drop_helpers'] ) ) {
+						$pod_data['pre_delete_helpers'] = $pod_data['pre_drop_helpers'];
+
+						unset( $pod_data['pre_drop_helpers'] );
+					}
+
+					if ( isset( $pod_data['post_drop_helpers'] ) ) {
+						$pod_data['post_delete_helpers'] = $pod_data['post_drop_helpers'];
+
+						unset( $pod_data['post_drop_helpers'] );
+					}
+
+					$pod_data['name'] = pods_clean_name( $pod_data['name'] );
+
+					$pod_data = array(
+						'name'    => $pod_data['name'],
+						'label'   => $pod_data['label'],
+						'type'    => 'pod',
+						'storage' => 'table',
+						'fields'  => $pod_data['fields'],
+						'options' => array(
+							'pre_save_helpers'    => pods_var_raw( 'pre_save_helpers', $pod_data ),
+							'post_save_helpers'   => pods_var_raw( 'post_save_helpers', $pod_data ),
+							'pre_delete_helpers'  => pods_var_raw( 'pre_delete_helpers', $pod_data ),
+							'post_delete_helpers' => pods_var_raw( 'post_delete_helpers', $pod_data ),
+							'show_in_menu'        => ( 1 == pods_var_raw( 'show_in_menu', $pod_data, 0 ) ? 1 : 0 ),
+							'detail_url'          => pods_var_raw( 'detail_url', $pod_data ),
+							'pod_index'           => 'name',
+						),
+					);
+				}//end if
+
+				$pod = array_merge( $pod, $pod_data );
+
+				foreach ( $pod['fields'] as $k => $field ) {
+					if ( isset( $field['id'] ) && ! isset( $existing_fields[ $field['name'] ] ) ) {
+						unset( $pod['fields'][ $k ]['id'] );
+					}
+
+					if ( isset( $field['pod_id'] ) ) {
+						unset( $pod['fields'][ $k ]['pod_id'] );
+					}
+
+					if ( isset( $existing_fields[ $field['name'] ] ) ) {
+						$existing_field = pods_api()->load_field(
+							array(
+								'name' => $field['name'],
+								'pod'  => $pod['name'],
+							)
+						);
+						if ( $existing_field ) {
+							$pod['fields'][ $k ]['id'] = $existing_field['id'];
+						}
+					}
+
+					if ( isset( $field['pod'] ) ) {
+						unset( $pod['fields'][ $k ]['pod'] );
+					}
+				}//end foreach
+
+				$api->save_pod( $pod );
+
+				if ( ! isset( $found['pods'] ) ) {
+					$found['pods'] = array();
+				}
+
+				$found['pods'][ $pod['name'] ] = $pod['label'];
+			}//end foreach
+		}//end if
+
+		if ( isset( $data['templates'] ) && is_array( $data['templates'] ) ) {
+			foreach ( $data['templates'] as $template_data ) {
+				if ( isset( $template_data['id'] ) ) {
+					unset( $template_data['id'] );
+				}
+
+				$template = $api->load_template( array( 'name' => $template_data['name'] ) );
+
+				if ( ! empty( $template ) ) {
+					// Delete Template if it exists
+					if ( $replace ) {
+						$api->delete_template( array( 'id' => $template['id'] ) );
+
+						$template = array();
+					}
+				} else {
+					$template = array();
+				}
+
+				$template = array_merge( $template, $template_data );
+
+				$api->save_template( $template );
+
+				if ( ! isset( $found['templates'] ) ) {
+					$found['templates'] = array();
+				}
+
+				$found['templates'][ $template['name'] ] = $template['name'];
+			}//end foreach
+		}//end if
+
+		// Backwards compatibility
+		if ( isset( $data['pod_pages'] ) ) {
+			$data['pages'] = $data['pod_pages'];
+
+			unset( $data['pod_pages'] );
+		}
+
+		if ( isset( $data['pages'] ) && is_array( $data['pages'] ) ) {
+			foreach ( $data['pages'] as $page_data ) {
+				if ( isset( $page_data['id'] ) ) {
+					unset( $page_data['id'] );
+				}
+
+				$page = $api->load_page( array( 'name' => pods_var_raw( 'name', $page_data, pods_var_raw( 'uri', $page_data ), null, true ) ) );
+
+				if ( ! empty( $page ) ) {
+					// Delete Page if it exists
+					if ( $replace ) {
+						$api->delete_page( array( 'id' => $page['id'] ) );
+
+						$page = array();
+					}
+				} else {
+					$page = array();
+				}
+
+				// Backwards compatibility
+				if ( isset( $page_data['uri'] ) ) {
+					$page_data['name'] = $page_data['uri'];
+
+					unset( $page_data['uri'] );
+				}
+
+				if ( isset( $page_data['phpcode'] ) ) {
+					$page_data['code'] = $page_data['phpcode'];
+
+					unset( $page_data['phpcode'] );
+				}
+
+				$page = array_merge( $page, $page_data );
+
+				$page['name'] = trim( $page['name'], '/' );
+
+				$api->save_page( $page );
+
+				if ( ! isset( $found['pages'] ) ) {
+					$found['pages'] = array();
+				}
+
+				$found['pages'][ $page['name'] ] = $page['name'];
+			}//end foreach
+		}//end if
+
+		if ( isset( $data['helpers'] ) && is_array( $data['helpers'] ) ) {
+			foreach ( $data['helpers'] as $helper_data ) {
+				if ( isset( $helper_data['id'] ) ) {
+					unset( $helper_data['id'] );
+				}
+
+				$helper = $api->load_helper( array( 'name' => $helper_data['name'] ) );
+
+				if ( ! empty( $helper ) ) {
+					// Delete Helper if it exists
+					if ( $replace ) {
+						$api->delete_helper( array( 'id' => $helper['id'] ) );
+
+						$helper = array();
+					}
+				} else {
+					$helper = array();
+				}
+
+				// Backwards compatibility
+				if ( isset( $helper_data['phpcode'] ) ) {
+					$helper_data['code'] = $helper_data['phpcode'];
+
+					unset( $helper_data['phpcode'] );
+				}
+
+				if ( isset( $helper_data['type'] ) ) {
+					if ( 'before' === $helper_data['type'] ) {
+						$helper_data['type'] = 'pre_save';
+					} elseif ( 'after' === $helper_data['type'] ) {
+						$helper_data['type'] = 'post_save';
+					}
+				}
+
+				$helper = array_merge( $helper, $helper_data );
+
+				if ( isset( $helper['type'] ) ) {
+					$helper['helper_type'] = $helper['type'];
+
+					unset( $helper['helper_type'] );
+				}
+
+				$api->save_helper( $helper );
+
+				if ( ! isset( $found['helpers'] ) ) {
+					$found['helpers'] = array();
+				}
+
+				$found['helpers'][ $helper['name'] ] = $helper['name'];
+			}//end foreach
+		}//end if
+
+		$found = apply_filters( 'pods_packages_import', $found, $data, $replace );
+
+		if ( ! empty( $found ) ) {
+			return $found;
+		}
+
+		return false;
 	}
 }
 

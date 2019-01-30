@@ -328,7 +328,11 @@ var pagex = {
                                 } else {
                                     let repKeyParam = that.paramsForm.querySelectorAll('[name="' + key + '[][]' + k + '"]')[repeaterKey];
                                     if (repKeyParam) {
-                                        repKeyParam.value = v;
+                                        if (k.substr(-4) === '_svg') {
+                                            repKeyParam.value = decodeURIComponent(v);
+                                        } else {
+                                            repKeyParam.value = v;
+                                        }
                                     }
                                 }
                             });
@@ -353,7 +357,11 @@ var pagex = {
                 } else {
                     let paramInput = that.paramsForm.querySelector('[name=' + key + ']');
                     if (!_.isNull(paramInput)) {
-                        paramInput.value = param;
+                        if (key.substr(-4) === '_svg') {
+                            paramInput.value = decodeURIComponent(param);
+                        } else {
+                            paramInput.value = param;
+                        }
                     }
                 }
             });
@@ -913,6 +921,11 @@ var pagex = {
             // do no remove class param since we need to keep previous value
             if (prop === 'pagex_custom_class') return;
 
+            // encode svg field for dynamic elements
+            if (prop.substr(-4) === '_svg') {
+                form[prop] = encodeURIComponent(form[prop]);
+            }
+
             if (_.isObject(form[prop])) {
                 let notEmpty = false;
                 Object.keys(form[prop]).forEach((propVal) => {
@@ -922,6 +935,11 @@ var pagex = {
                         Object.keys(form[prop][propVal]).forEach((propValRes) => {
                             if (form[prop][propVal][propValRes].length) {
                                 notEmpty = true;
+
+                                // encode svg field for dynamic elements inside repeater
+                                if (propValRes.substr(-4) === '_svg') {
+                                    form[prop][propVal][propValRes] = encodeURIComponent(form[prop][propVal][propValRes]);
+                                }
                             }
                         });
                     } else if (form[prop][propVal].length) {

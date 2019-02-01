@@ -19,7 +19,7 @@ class Pagex_Demo_Data_Import {
 		$settings = Pagex::get_settings();
 
 		if ( isset( $settings['demo_data_imported'] ) && $settings['demo_data_imported'] == 'yes' ) {
-			//return;
+			return;
 		}
 
 		$import_data = apply_filters( 'pagex_import_demo_data', array() );

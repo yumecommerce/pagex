@@ -168,6 +168,7 @@ function pagex_register_image_element( $elements ) {
 	return $elements;
 }
 
+
 /**
  * Image shortcode
  *
@@ -230,6 +231,11 @@ function pagex_image( $atts ) {
 		if ( $image_id ) {
 			$image = wp_get_attachment_image( $image_id, $data['size'] );
 		}
+	}
+
+	// if impossible to get attachment post setup image if URL is provided
+	if ( ! $image && $data['image'] ) {
+		$image = '<img src="' . $data['image'] . '" alt="">';
 	}
 
 	if ( $image && $data['aspect_ratio'] ) {

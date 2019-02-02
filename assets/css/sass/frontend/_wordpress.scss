@@ -293,14 +293,20 @@ object {
 
 /* Password Form */
 
-.post-password-form [type="submit"] {
-  position: absolute;
-  bottom: 0;
-  width: auto;
-  right: 0;
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
-  font-size: inherit;
+.post-password-form {
+  [type="submit"] {
+    position: absolute;
+    bottom: 0;
+    width: auto;
+    right: 0;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+  }
+
+  label {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .post-password-form [name="post_password"] {

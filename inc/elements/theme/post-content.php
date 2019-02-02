@@ -113,5 +113,7 @@ function pagex_post_content( $atts ) {
 		echo do_shortcode( $content );
 	}
 
+	wp_link_pages();
+
 	return ob_get_clean();
 }

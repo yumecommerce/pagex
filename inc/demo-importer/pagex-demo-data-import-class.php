@@ -2,8 +2,6 @@
 
 class Pagex_Demo_Data_Import {
 
-	protected $existing_post;
-
 	public function __construct() {
 		// admin import demo notice
 		add_action( 'admin_notices', array( $this, 'alert' ) );

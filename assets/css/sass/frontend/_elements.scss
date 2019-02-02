@@ -437,6 +437,7 @@ body .pagex-modal {
 }
 
 .pagex-slider-navigation {
+  display: flex;
   background-image: none !important;
   width: auto !important;
   height: auto !important;
@@ -1051,7 +1052,9 @@ body .pagex-modal {
 }
 
 .pagex-search-form-icon {
-  transition: .25s;
+  .pagex-icon {
+    transition: 300ms;
+  }
 }
 
 .pagex-search-form-overlay {

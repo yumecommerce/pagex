@@ -133,7 +133,7 @@ class Pagex_Admin_Controls {
 		) );
 
 		$current_header = apply_filters( 'pagex_admin_menu_header_layout_id', '' );
-		if ( $current_header ) {
+		if ( $current_header && ! is_404() ) {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'pagex',
 				'id'     => 'pagex-header-layout',
@@ -232,7 +232,7 @@ class Pagex_Admin_Controls {
 		}
 
 		$current_footer = apply_filters( 'pagex_admin_menu_footer_layout_id', '' );
-		if ( $current_footer ) {
+		if ( $current_footer && ! is_404() ) {
 			$wp_admin_bar->add_menu( array(
 				'parent' => 'pagex',
 				'id'     => 'pagex-footer-layout',

@@ -190,16 +190,16 @@ img.pagex-icon {
   top: -1px;
 
   &.pagex-shape-flip {
-    transform: rotateY(180deg);
+    transform: scaleX(-1);
   }
 }
 
 .pagex-shape-bottom {
   bottom: -1px;
-  transform: rotateX(180deg);
+  transform: rotate(180deg);
 
   &.pagex-shape-flip {
-    transform: rotate(180deg);
+    transform: rotate(180deg) scaleX(-1);
   }
 }
 
@@ -212,5 +212,39 @@ img.pagex-icon {
   .pagex-bg-animation-zoom {
     animation-play-state: paused;
   }
+}
+
+// alerts style when api key is not set and etc
+.pagex-alert {
+  padding: 50px 20px;
+
+  a {
+    text-decoration: underline;
+  }
+
+  h3 {
+    font-family: inherit;
+    color: inherit;
+    font-size: 20px;
+    font-weight: inherit;
+    text-transform: capitalize;
+  }
+
+  &.pagex-alert-warning {
+    .pagex-alert-wrapper {
+      color: #856404;
+      background-color: #fff3cd;
+      border-color: #ffeeba;
+
+      a {
+        color: #1183ed;
+      }
+    }
+  }
+}
+
+.pagex-alert-wrapper {
+  padding: 20px;
+  border-radius: 4px;
 }
 

@@ -140,7 +140,7 @@ function pagex_google_maps( $atts ) {
 	$api = isset( $settings['apis']['google_maps'] ) ? $settings['apis']['google_maps'] : '';
 
 	if ( ! $api ) {
-		return '<div class="alert alert-warning">' . __( 'Google Maps API Key is required for "Google Maps" element.', 'pagex' ) . ' <a href="' . admin_url( 'admin.php?page=pagex' ) . '" class="text-underline" target="_blank">' . __( 'Enter API key', 'pagex' ) . '</a> ' . __( 'and then refresh page to apply changes.', 'pagex' ) . '</div>';
+		return '<div class="pagex-alert pagex-alert-warning"><div class="pagex-alert-wrapper"><h3>' . __( 'API key is not set', 'pagex' ) . '</h3>' . __( 'Google Maps API Key is required for "Google Maps" element.', 'pagex' ) . ' <a href="' . admin_url( 'admin.php?page=pagex' ) . '" class="text-underline" target="_blank">' . __( 'Enter API key', 'pagex' ) . '</a> ' . __( 'and then refresh page to apply changes.', 'pagex' ) . '</div></div>';
 	}
 
 	if ( $data['type'] == 'dynamic' ) {

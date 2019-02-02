@@ -332,7 +332,7 @@ class Pagex_Frontend {
 				)
 			),
 			array(
-				'selector' => 'textarea:focus, select:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus',
+				'selector' => '.form-control:focus, textarea:focus, select:focus, input[type="email"]:focus, input[type="number"]:focus, input[type="password"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="text"]:focus, input[type="url"]:focus',
 				'rules'    => array(
 					'border-color' => $settings['design']['form']['border_color_focus'],
 				)

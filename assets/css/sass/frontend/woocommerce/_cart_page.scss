@@ -127,6 +127,12 @@
   }
 }
 
+.cart_totals {
+  h2 {
+    text-transform: capitalize;
+  }
+}
+
 .woocommerce-shipping-destination {
   font-size: 90%;
   opacity: .7;

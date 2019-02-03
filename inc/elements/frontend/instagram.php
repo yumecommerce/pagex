@@ -86,7 +86,7 @@ function pagex_register_instagram_element( $elements ) {
 						'responsive' => true,
 						'action'     => 'css',
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-instagram-item-wrapper {width: calc(100% / [val])}',
+						'selector'   => '[el] .pagex-instagram-item-wrapper {width: calc(100% / [val] - 0.1px)}', // 0.1px fix IE issue
 					),
 					array(
 						'id'         => 'we',

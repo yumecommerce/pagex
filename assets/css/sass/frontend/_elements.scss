@@ -559,7 +559,8 @@ body .pagex-modal {
   align-items: center;
   width: 100%;
 
-  a {
+  // link for whole list item cover icon and label
+  > a {
     position: absolute;
     left: 0;
     top: 0;

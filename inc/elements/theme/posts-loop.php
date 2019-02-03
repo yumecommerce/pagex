@@ -65,7 +65,7 @@ function pagex_register_posts_loop_element( $elements ) {
 						'class'      => 'col-4',
 						'type'       => 'select',
 						'action'     => 'css',
-						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val])}',
+						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val] - 0.1px)}', // 0.1px fix IE
 						'responsive' => true,
 						'options'    => array(
 							// we need space before value so browsers do not change options order

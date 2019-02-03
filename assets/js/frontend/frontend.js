@@ -1,3 +1,71 @@
+"use strict";
+
+// element.matches polyfill for ie
+;(function(e) {
+    var matches = e.matches || e.matchesSelector || e.webkitMatchesSelector || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector;
+    !matches ? (e.matches = e.matchesSelector = function matches(selector) {
+        var matches = document.querySelectorAll(selector);
+        var th = this;
+        return Array.prototype.some.call(matches, function(e) {
+            return e === th;
+        });
+    }) : (e.matches = e.matchesSelector = matches);
+})(Element.prototype);
+
+// closest polyfill for ie
+(function(e) {
+    e.matches = e.matches || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector || e.webkitMatchesSelector;
+    e.closest = e.closest || function closest(selector) {
+        if (!this) return null;
+        if (this.matches(selector)) return this;
+        if (!this.parentElement) {return null}
+        else return this.parentElement.closest(selector)
+    };
+}(Element.prototype));
+
+// Preloader
+function pagexHidePreloader() {
+    // check in case hide was forced by timeout to prevent second calling
+    if (document.body.matches('.pagex-preloader-body-active')) {
+        pagexSlider.initElements();
+        setTimeout(function () {
+            document.body.classList.remove('pagex-preloader-body-active');
+        }, 100);
+        setTimeout(function () {
+            document.body.classList.remove('pagex-preloader-body');
+        }, 300);
+        setTimeout(function () {
+            pagexEntranceAnimation.initElements();
+        }, 450);
+    }
+}
+
+if (document.getElementById('pagex-main-preloader')) {
+    document.addEventListener("DOMContentLoaded", function () {
+        let pageGoogleFonts = document.getElementById('pagex-google-fonts');
+        setTimeout(function () {
+            if (pageGoogleFonts && document.fonts !== undefined) {
+                let timerId = setInterval(function () {
+                    if (document.fonts.status === 'loaded') {
+                        pagexHidePreloader();
+                        clearInterval(timerId);
+                    }
+                }, 50);
+            } else {
+                pagexHidePreloader();
+            }
+        }, 200);
+    });
+
+    //force to hide preloader
+    setTimeout(function () {
+        pagexHidePreloader();
+    }, 5000);
+} else {
+    pagexSlider.initElements();
+    pagexEntranceAnimation.initElements();
+}
+
 // WordPress comment-reply script
 var addComment = {
     moveForm: function (a, b, c, d) {
@@ -44,8 +112,10 @@ window.onYouTubePlayerAPIReady = function () {
 };
 
 function initBackgroundVideos() {
-    for (let item of document.querySelectorAll('[data-video-bg]')) {
-        let id = item.querySelector('.pagex-video-youtube').getAttribute('id'),
+    let v = document.querySelectorAll('[data-video-bg]');
+    for (let i = 0; i < v.length; i++) {
+        let item = v[i],
+            id = item.querySelector('.pagex-video-youtube').getAttribute('id'),
             url = item.getAttribute('data-video-bg'),
             timeline = item.getAttribute('data-video-timeline');
 
@@ -131,7 +201,10 @@ var pagexVideo = {
     },
 
     initElements: function () {
-        for (let item of document.querySelectorAll('.pagex-video')) {
+        let v = document.querySelectorAll('.pagex-video');
+        for (let i = 0; i < v.length; i++) {
+            let item = v[i];
+
             if (item.querySelector('.pagex-video-overlay')) {
                 return;
             }
@@ -145,7 +218,10 @@ var pagexVideo = {
     },
 
     initBackgrounds: function () {
-        for (let item of document.querySelectorAll('.pagex-video-youtube')) {
+        let v = document.querySelectorAll('.pagex-video-youtube');
+        for (let i = 0; i < v.length; i++) {
+            let item = v[i];
+
             if (!item.src.length) {
                 let src = item.getAttribute('data-lazy-load');
 
@@ -179,10 +255,12 @@ pagexVideo.initElements();
 
 var pagexForm = {
     init: function () {
-        for (let form of document.querySelectorAll('.pagex-form')) {
-            form.addEventListener("submit", function (e) {
+        let v = document.querySelectorAll('.pagex-form');
+        for (let i = 0; i < v.length; i++) {
+            let item = v[i];
+            item.addEventListener("submit", function (e) {
                 e.preventDefault();
-                pagexForm.send(form);
+                pagexForm.send(item);
             });
         }
     },
@@ -196,8 +274,10 @@ var pagexForm = {
             form: []
         };
 
-        for (let item of form.querySelectorAll('.pagex-form-item')) {
-            let formItem = {
+        let v = form.querySelectorAll('.pagex-form-item');
+        for (let i = 0; i < v.length; i++) {
+            let item = v[i],
+                formItem = {
                     label: '',
                     value: [],
                 },
@@ -213,16 +293,16 @@ var pagexForm = {
             }
 
             // radio and checkboxes
-            for (let input of item.querySelectorAll('.pagex-form-check:checked')) {
-                formItem.value.push(input.value);
+            let checkControls = item.querySelectorAll('.pagex-form-check:checked');
+            for (let i = 0; i < checkControls.length; i++) {
+                formItem.value.push(checkControls[i].value);
             }
 
             // inputs and select
-            for (let input of item.querySelectorAll('.form-control')) {
-                formItem.value.push(input.value);
+            let inputControls = item.querySelectorAll('.form-control');
+            for (let i = 0; i < inputControls.length; i++) {
+                formItem.value.push(inputControls[i].value);
             }
-
-            let request = new XMLHttpRequest();
 
             if (formItem.value.length) {
                 data.form.push(formItem);
@@ -277,10 +357,11 @@ pagexForm.init();
 
 var pagexLoginForm = {
     init: function () {
-        for (let form of document.querySelectorAll('.pagex-login-form')) {
-            form.addEventListener("submit", function (e) {
+        let v = document.querySelectorAll('.pagex-login-form');
+        for (let i = 0; i < v.length; i++) {
+            v[i].addEventListener("submit", function (e) {
                 e.preventDefault();
-                pagexLoginForm.send(form);
+                pagexLoginForm.send(v[i]);
             });
         }
     },
@@ -289,11 +370,10 @@ var pagexLoginForm = {
         let submitButton = form.querySelector('.pagex-login-form-submit-button');
         let data = {action: 'pagex_form_ajax_send_login_form',};
 
-        for (let item of form.querySelectorAll('[name]')) {
-            data[item.getAttribute('name')] = item.value;
+        let v = form.querySelectorAll('[name]');
+        for (let i = 0; i < v.length; i++) {
+            data[v[i].getAttribute('name')] = v[i].value;
         }
-
-        console.log(data);
 
         submitButton.classList.add('loading');
 
@@ -306,7 +386,6 @@ var pagexLoginForm = {
                 let res = JSON.parse(this.response);
 
                 if (res.success !== true) {
-                    console.log(res);
                     form.querySelector('.pagex-login-form-message').innerHTML = res.data.message;
                 } else {
                     location.reload();
@@ -322,8 +401,6 @@ var pagexLoginForm = {
 
         request.send(pagexForm.serialize(data));
     }
-
-
 };
 pagexLoginForm.init();
 
@@ -358,7 +435,7 @@ var pagexModal = {
         }, 150);
     },
 
-    close: function (el, timeout = 400) {
+    close: function (el, timeout) {
         let modalActive = el.closest('.pagex-modal'),
             modalActiveId = modalActive.getAttribute('data-id'),
             initialWrap = this.modals[modalActiveId];
@@ -379,14 +456,14 @@ var pagexModal = {
                 modalActive.classList.remove('pagex-modal-show');
 
                 initialWrap.appendChild(modalActive);
-            }, timeout);
+            }, 400);
         }
-
     },
 
     closeAll: function () {
-        for (let item of document.querySelectorAll('.pagex-modal-show')) {
-            pagexModal.close(item.querySelector('.pagex-modal-window'), 0);
+        let v = document.querySelectorAll('.pagex-modal-show');
+        for (let i = 0; i < v.length; i++) {
+            pagexModal.close(v[i].querySelector('.pagex-modal-window'), 0);
         }
     }
 };
@@ -499,12 +576,14 @@ var pagexSlider = {
     sliders: [],
 
     initElements: function () {
-        for (let item of document.querySelectorAll('[data-slider]')) {
-            this.init(item);
+        let s = document.querySelectorAll('[data-slider]');
+        for (let i = 0; i < s.length; i++) {
+            this.init(s[i]);
         }
 
-        for (let item of document.querySelectorAll('.pagex-gallery-slider')) {
-            new Swiper(item, {
+        let g = document.querySelectorAll('.pagex-gallery-slider');
+        for (let i = 0; i < g.length; i++) {
+            new Swiper(g[i], {
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -570,20 +649,21 @@ var pagexSlider = {
             slider.on = {
                 init: function () {
                     setTimeout(function () {
-                        for (let item of selector.querySelectorAll('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active) .pagex-animated')) {
-                            item.classList.remove('pagex-animated');
+                        let v = selector.querySelectorAll('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active) .pagex-animated');
+                        for (let i = 0; i < v.length; i++) {
+                            v[i].classList.remove('pagex-animated');
                         }
                     }, 1000);
                 },
                 slideChangeTransitionEnd: function () {
-                    for (let item of selector.querySelectorAll('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active) .pagex-animated')) {
-                        setTimeout(function () {
-                            item.classList.remove('pagex-animated');
-                        }, 60);
+                    let v = selector.querySelectorAll('.swiper-slide:not(.swiper-slide-active):not(.swiper-slide-duplicate-active) .pagex-animated');
+                    for (let i = 0; i < v.length; i++) {
+                        v[i].classList.remove('pagex-animated');
                     }
 
-                    for (let item of selector.querySelectorAll('.swiper-slide-active [data-animate]')) {
-                        item.classList.add('pagex-animated');
+                    let a = selector.querySelectorAll('.swiper-slide-active [data-animate]');
+                    for (let i = 0; i < a.length; i++) {
+                        a[i].classList.add('pagex-animated');
                     }
                 }
             }
@@ -621,8 +701,9 @@ var pagexSlider = {
 
 var pagexCountdown = {
     initElements: function () {
-        for (let item of document.querySelectorAll('.pagex-countdown')) {
-            this.init(item);
+        let v = document.querySelectorAll('.pagex-countdown');
+        for (let i = 0; i < v.length; i++) {
+            this.init(v[i]);
         }
     },
 
@@ -732,12 +813,14 @@ var pagexShare = {
 
 var pagexUtils = {
     refreshWaypoint: function () {
-        for (let item of document.querySelectorAll('.pagex-section-fixed')) {
-            item.classList.remove('pagex-section-fixed');
+        let v = document.querySelectorAll('.pagex-section-fixed');
+        for (let i = 0; i < v.length; i++) {
+            v[i].classList.remove('pagex-section-fixed');
         }
 
-        for (let item of document.querySelectorAll('.pagex-animated')) {
-            item.classList.remove('pagex-animated');
+        let a = document.querySelectorAll('.pagex-animated');
+        for (let i = 0; i < a.length; i++) {
+            a[i].classList.remove('pagex-animated');
         }
 
         Waypoint.destroyAll();
@@ -747,8 +830,9 @@ var pagexUtils = {
 
     refreshCurrentElementWaypoint: function () {
         if (typeof pagex !== "undefined") {
-            for (let item of pagex.currentElement.querySelectorAll('.pagex-animated')) {
-                item.classList.remove('pagex-animated');
+            let v = pagex.currentElement.querySelectorAll('.pagex-animated');
+            for (let i = 0; i < v.length; i++) {
+                v[i].classList.remove('pagex-animated');
             }
 
             this.setupRefresh();
@@ -770,10 +854,11 @@ var pagexUtils = {
 
 var pagexSticky = {
     initElements: function () {
-        for (let item of document.querySelectorAll('.pagex-section-position-fixed')) {
+        let v = document.querySelectorAll('.pagex-section-position-fixed');
+        for (let i = 0; i < v.length; i++) {
             let frontOffset = document.body.matches('.admin-bar') ? 31 : -1;
             new Waypoint({
-                element: item,
+                element: v[i],
                 handler: function (direction) {
 
                     // prevent wrong calculation of triggerPoint
@@ -797,8 +882,11 @@ pagexSticky.initElements();
 
 var pagexEntranceAnimation = {
     initElements: function () {
-        for (let item of document.querySelectorAll('[data-animate]')) {
-            let delay = item.getAttribute('data-animate-delay');
+        let v = document.querySelectorAll('[data-animate]');
+        for (let i = 0; i < v.length; i++) {
+            let item = v[i],
+                delay = item.getAttribute('data-animate-delay');
+
             delay = delay ? Number(delay) : 1;
 
             item.setAttribute('style', 'animation-delay: ' + delay + 'ms');
@@ -829,13 +917,15 @@ var pagexGoogleMaps = {
 
     initElements: function () {
         // init google maps with js API
-        for (let item of document.querySelectorAll('.pagex-google-maps-embed')) {
-            this.renderAPIMap(item);
+        let v = document.querySelectorAll('.pagex-google-maps-embed');
+        for (let i = 0; i < v.length; i++) {
+            this.renderAPIMap(v[i]);
         }
 
         // init google maps with iframe API
-        for (let item of document.querySelectorAll('.pagex-google-maps-iframe')) {
-            item.src = item.getAttribute('data-lazy-load');
+        let a = document.querySelectorAll('.pagex-google-maps-iframe');
+        for (let i = 0; i < a.length; i++) {
+            a[i].src = a[i].getAttribute('data-lazy-load');
         }
     },
 
@@ -890,8 +980,9 @@ pagexGoogleMaps.initElements();
 
 var pagexWooCommerce = {
     applyRating: function (el) {
-        for (let item of document.querySelectorAll('.pagex-star-rating')) {
-            item.classList.remove('active');
+        let v = document.querySelectorAll('.pagex-star-rating');
+        for (let i = 0; i < v.length; i++) {
+            v[i].classList.remove('active');
         }
 
         el.classList.add('active');
@@ -1020,7 +1111,8 @@ document.addEventListener('click', function (e) {
         e.preventDefault();
         pagexScrollTo.scroll(el);
     }
-    if (hr = el.closest('[href]')) {
+    let hr = el.closest('[href]');
+    if (hr) {
         if (hr.getAttribute('href').indexOf('scroll-to') !== -1) {
             e.preventDefault();
             pagexScrollTo.scroll(hr);
@@ -1037,46 +1129,3 @@ document.addEventListener('click', function (e) {
         pagexCookie.applyGDPR();
     }
 });
-
-// Preloader
-if (document.getElementById('pagex-main-preloader')) {
-    function pagexHidePreloader() {
-        // check in case hide was forced by timeout to prevent second calling
-        if (document.body.matches('.pagex-preloader-body-active')) {
-            pagexSlider.initElements();
-            setTimeout(function () {
-                document.body.classList.remove('pagex-preloader-body-active');
-            }, 100);
-            setTimeout(function () {
-                document.body.classList.remove('pagex-preloader-body');
-            }, 300);
-            setTimeout(function () {
-                pagexEntranceAnimation.initElements();
-            }, 450);
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", function () {
-        let pageGoogleFonts = document.getElementById('pagex-google-fonts');
-        setTimeout(function () {
-            if (pageGoogleFonts && document.fonts !== undefined) {
-                let timerId = setInterval(function () {
-                    if (document.fonts.status === 'loaded') {
-                        pagexHidePreloader();
-                        clearInterval(timerId);
-                    }
-                }, 50);
-            } else {
-                pagexHidePreloader();
-            }
-        }, 200);
-    });
-
-    //force to hide preloader
-    setTimeout(function () {
-        pagexHidePreloader();
-    }, 5000);
-} else {
-    pagexSlider.initElements();
-    pagexEntranceAnimation.initElements();
-}

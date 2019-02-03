@@ -100,7 +100,7 @@ function pagex_register_features_element( $elements ) {
 						'responsive' => true,
 						'class'      => 'col-4',
 						'action'     => 'css',
-						'selector'   => '[el] .pagex-feature-item-wrapper {width: calc(100% / [val])}',
+						'selector'   => '[el] .pagex-feature-item-wrapper {width: calc(100% / [val] - 0.1px)}', // -0.1px to fix IE issue
 					),
 					array(
 						'id'         => 'ws',

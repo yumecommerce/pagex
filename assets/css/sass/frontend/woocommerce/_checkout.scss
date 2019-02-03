@@ -47,6 +47,11 @@ form.woocommerce-checkout {
     }
   }
 
+  #order_review,
+  .woocommerce-billing-fields__field-wrapper {
+    margin-top: 20px;
+  }
+
   #order_review_heading,
   #order_review {
     width: 100%;
@@ -71,7 +76,17 @@ form.woocommerce-checkout {
   .woocommerce-checkout-review-order-table {
     th, td {
       border: 0;
-      padding: 0 5px 10px 0;
+      padding: 0 5px 6px 0;
+    }
+
+    .cart_item {
+      font-size: 90%;
+    }
+
+    .woocommerce-shipping-totals {
+      td, th {
+        padding: 0 5px 15px 0;
+      }
     }
 
     .product-name {

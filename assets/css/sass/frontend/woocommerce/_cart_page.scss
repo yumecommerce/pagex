@@ -130,8 +130,18 @@
 .woocommerce-shipping-destination {
   font-size: 90%;
   opacity: .7;
-  margin: 0 0 8px;
+  margin: 8px 0;
   line-height: 1.35;
+}
+
+.shipping-calculator-button {
+  font-size: 90%;
+}
+
+.shipping-calculator-form {
+  .form-row > * {
+    width: 100%; // fix IE issue
+  }
 }
 
 .cart-collaterals {

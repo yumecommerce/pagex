@@ -1086,7 +1086,7 @@ window.addEventListener('pagexElementUpdated', function (data) {
 }, false);
 
 document.addEventListener('click', function (e) {
-    if (!e.target) v;
+    if (!e.target) return;
     let el = e.target;
 
     // video

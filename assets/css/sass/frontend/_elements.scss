@@ -170,6 +170,8 @@ body .pagex-modal {
   display: table-cell;
   overflow: hidden;
   vertical-align: middle;
+  // pointer makes it possible to trigger click even on iPhone
+  cursor: pointer;
 }
 
 .pagex-modal-window-close {
@@ -250,8 +252,9 @@ body .pagex-modal {
   box-shadow: 0 4px 30px rgba(0, 0, 0, .17);
   border-radius: 6px;
   pointer-events: auto;
-  transform: translate3d(0);
+  transform: translate3d(0,0,0);
   transition: .3s;
+  cursor: auto;
 }
 
 /* Accordion */
@@ -1048,6 +1051,10 @@ body .pagex-modal {
 
   .pagex-search-input {
     margin: 0 14px 0 0;
+  }
+
+  .btn {
+    flex: 0 0 auto;
   }
 }
 

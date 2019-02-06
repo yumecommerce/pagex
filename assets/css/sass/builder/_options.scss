@@ -36,6 +36,7 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   font-family: Arial !important;
 
   .btn {
+    margin: 0 !important;
     text-transform: none !important;
     font-size: 11px !important;
     max-height: 23px;
@@ -115,8 +116,8 @@ body.pagex-preview-mode-hide-controls .pagex-options {
 
 .pagex-options.pagex-inner-row-options {
   .btn {
-    background-color: #42c861 !important;
-    border-color: #42c861 !important;
+    background-color: #4dce6a !important;
+    border-color: #4dce6a !important;
 
     &:hover {
       background-color: #28a745 !important;

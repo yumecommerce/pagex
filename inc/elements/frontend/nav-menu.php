@@ -289,7 +289,6 @@ function pagex_register_nav_menu_element( $elements ) {
 						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {background: [val]}',
 					),
 
-
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Style for Desktop Sub Menu Items', 'pagex' ),

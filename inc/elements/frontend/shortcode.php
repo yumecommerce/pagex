@@ -51,5 +51,5 @@ function pagex_shortcode( $atts ) {
 		return;
 	}
 
-	return apply_filters( 'pagex_content', do_shortcode( $data['shortcode'] ) );
+	return do_shortcode( $data['shortcode'] );
 }

@@ -31,59 +31,6 @@ class Pagex_Admin_Controls {
 	}
 
 	/**
-	 * Add all created post templates to a select of the Page Templates attributes
-	 *
-	 * @param $post_templates
-	 * @param $wp_theme
-	 * @param $post
-	 * @param $post_type
-	 *
-	 * @return mixed
-	 */
-	public function assign_post_templates_to_pages( $post_templates, $wp_theme, $post, $post_type ) {
-		$args  = array(
-			'post_type'   => 'pagex_post_tmp',
-			'numberposts' => - 1,
-			'meta_query'  => array(
-				array(
-					'key'   => '_pagex_template_type',
-					'value' => 'single'
-				),
-				array(
-					'key'   => '_pagex_template_post_type',
-					'value' => $post_type
-				)
-			)
-		);
-		$query = get_posts( $args );
-		if ( $query ) {
-			foreach ( $query as $post ) {
-				setup_postdata( $post );
-				$post_templates[ 'pagex-post-template-' . $post->ID ] = esc_attr( $post->post_title );
-			}
-		}
-		wp_reset_postdata();
-
-		return $post_templates;
-	}
-
-	/**
-	 * Add blank template for pages
-	 *
-	 * @param $post_templates
-	 * @param $wp_theme
-	 * @param $post
-	 * @param $post_type
-	 *
-	 * @return mixed
-	 */
-	public function page_post_template( $post_templates, $wp_theme, $post, $post_type ) {
-		$post_templates['pagex-blank-template'] = __( 'Pagex Blank Template', 'pagex' );
-
-		return $post_templates;
-	}
-
-	/**
 	 * Add links to main admin top bar
 	 *
 	 * @param $wp_admin_bar

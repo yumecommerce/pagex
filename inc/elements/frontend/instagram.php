@@ -45,10 +45,11 @@ function pagex_register_instagram_element( $elements ) {
 						'class'       => 'col-4',
 					),
 					array(
-						'id'      => 'cache',
-						'title'   => __( 'Cache Timeout', 'pagex' ),
-						'type'    => 'select',
-						'options' => array(
+						'id'          => 'cache',
+						'title'       => __( 'Cache Timeout', 'pagex' ),
+						'description' => __( 'If set "None" the cache will never be expired.', 'pagex' ),
+						'type'        => 'select',
+						'options'     => array(
 							''     => __( 'None', 'pagex' ),
 							'hour' => __( 'Hour', 'pagex' ),
 							'day'  => __( 'Day', 'pagex' ),
@@ -86,7 +87,8 @@ function pagex_register_instagram_element( $elements ) {
 						'responsive' => true,
 						'action'     => 'css',
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-instagram-item-wrapper {width: calc(100% / [val] - 0.1px)}', // 0.1px fix IE issue
+						'selector'   => '[el] .pagex-instagram-item-wrapper {width: calc(100% / [val] - 0.1px)}',
+						// 0.1px fix IE issue
 					),
 					array(
 						'id'         => 'we',
@@ -98,12 +100,12 @@ function pagex_register_instagram_element( $elements ) {
 						'selector'   => '[el] .pagex-instagram-item-wrapper {padding: [val]} [el] .pagex-instagram {margin: 0 -[val]}',
 					),
 					array(
-						'id'         => 'er',
-						'title'      => __( 'Border Radius', 'pagex' ),
-						'type'       => 'text',
-						'action'     => 'css',
-						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-instagram-item {border-radius: [val]}',
+						'id'       => 'er',
+						'title'    => __( 'Border Radius', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-instagram-item {border-radius: [val]}',
 					),
 					array(
 						'id'       => 'rt',
@@ -149,7 +151,7 @@ function pagex_instagram( $atts ) {
 		'likes'    => false,
 	) );
 
-	$data['user'] = trim($data['user']);
+	$data['user'] = trim( $data['user'] );
 
 	if ( ! $data['user'] ) {
 		return __( 'Please, enter Username.', 'pagex' );
@@ -249,7 +251,7 @@ function pagex_instagram( $atts ) {
 		$html .= '<div class="pagex-instagram-item-wrapper">';
 		$html .= '<div class="pagex-instagram-item">';
 		if ( $data['link'] ) {
-			$html .= '<a href="https://www.instagram.com/p/'.$photo['shortcode'].'" target="_blank">';
+			$html .= '<a href="https://www.instagram.com/p/' . $photo['shortcode'] . '" target="_blank">';
 		}
 		$html .= '<div class="pagex-instagram-item-meta">';
 		if ( $data['likes'] ) {

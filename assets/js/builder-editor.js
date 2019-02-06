@@ -735,6 +735,7 @@ var pagex = {
                         }
                     } else {
                         _.forEach(that.currentParam.options, function (v) {
+                            v.value = v.value.trim();
                             // do not check empty values
                             if (!v.value.length) return;
                             // check only values of currently changed param

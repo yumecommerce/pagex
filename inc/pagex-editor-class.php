@@ -3,7 +3,7 @@
 class Pagex_Editor {
 	public function __construct() {
 		// register custom post types for builder
-		add_action( 'init', array( $this, 'add_post_type' ), 5 );
+		add_action( 'init', array( $this, 'register_post_types' ), 5 );
 
 		// add and manage columns for custom post types
 		add_filter( 'manage_pagex_post_tmp_posts_columns', array( $this, 'add_columns' ) );
@@ -41,7 +41,7 @@ class Pagex_Editor {
 	/**
 	 * Register all post types
 	 */
-	public function add_post_type() {
+	public static function register_post_types() {
 		register_post_type( 'pagex_layout_builder', array(
 			'labels'              => array(
 				'name'           => __( 'Layout Builder', 'pagex' ),

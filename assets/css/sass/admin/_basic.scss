@@ -1,3 +1,57 @@
+#wpfooter {
+  position: relative !important;
+}
+
+.pagex-settings-wrapper {
+  display: flex;
+
+  a:focus {
+    box-shadow: none;
+  }
+
+  .pagex-settings {
+    flex-grow: 1;
+
+    .form-table th {
+      width: 150px;
+    }
+  }
+
+  .pagex-settings-sidebar {
+    flex: 0 0 250px;
+    padding: 0 20px 0 40px;
+    margin-top: 45px;
+  }
+
+  .pagex-settings-sidebar-notice {
+    padding: 16px;
+    margin-bottom: 16px;
+    background: #fff;
+    border: 1px solid #E8EBEE;
+    border-left: 2px solid #1EADBF;
+    border-radius: 0 3px 3px 0;
+    color: #666;
+    letter-spacing: -0.1px;
+    font-size: 12px;
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 14px;
+    }
+
+    a {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      line-height: 1.81818;
+      color: #02707F;
+      text-transform: uppercase;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  }
+}
+
 .pagex-admin-settings {
   [type="text"], [type="number"], select {
     height: 34px;

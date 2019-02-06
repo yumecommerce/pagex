@@ -1,14 +1,13 @@
 <?php
 /*
 Plugin Name: Pagex
-Description: Theme Builder
-Author: YumeCommerce Team
+Description: Theme Builder for WordPress. Design your theme templates dynamically with front-end and back-end builder.
+Author: YumeCommerce
+Plugin URI: https://github.com/komarovartem/pagex
+Text Domain: pagex
+Domain Path: /languages
 Version: 0.1
 */
-
-//$before = microtime(true);
-//$after = microtime(true);
-//echo ($after-$before) . " sec/serialize\n";
 
 define( 'PAGEX_VERSION', '0.1' );
 define( 'PAGEX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -23,9 +22,6 @@ class Pagex {
 
 		// main init. add all plugin's classes and functions
 		$this->init();
-
-		// initialize activation after main init
-		register_activation_hook( PAGEX_PLUGIN_BASE, array( $this, 'activation' ) );
 	}
 
 	/**
@@ -47,14 +43,6 @@ class Pagex {
 
 		// register all bundled elements
 		include_once( PAGEX_DIR_NAME . '/inc/elements.php' );
-	}
-
-	/**
-	 * Initialize plugin activation functions
-	 */
-	public function activation() {
-		// make sure custom post types works after changing themes
-		flush_rewrite_rules();
 	}
 
 	/**
@@ -87,8 +75,19 @@ class Pagex {
 
 		// demo importer
 		include_once( PAGEX_DIR_NAME . '/inc/demo-importer/pagex-demo-data-import-class.php' );
+
+		// initialize activation after main init
+		register_activation_hook( PAGEX_FILE, array( $this, 'activation' ) );
 	}
 
+	/**
+	 * Initialize plugin activation functions
+	 * Refresh WordPress permalinks when a plugin registers a custom post type. This gets rid of the nasty 404 errors.
+	 */
+	public function activation() {
+		Pagex_Editor::register_post_types();
+		flush_rewrite_rules();
+	}
 
 	/**
 	 * Returns the translation for given post id

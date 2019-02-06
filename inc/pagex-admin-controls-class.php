@@ -5,9 +5,6 @@ class Pagex_Admin_Controls {
 		// add scripts for main settings page
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_style' ) );
 
-		// make created post templates selectable from page template attribute
-		add_action( 'init', array( $this, 'assign_templates_to_posts' ) );
-
 		// add builder links to the admin bar
 		add_action( 'admin_bar_menu', array( $this, 'toolbar_links' ), 100 );
 
@@ -31,24 +28,6 @@ class Pagex_Admin_Controls {
 				wp_enqueue_style( 'pagex-admin-page' );
 			}
 		}
-	}
-
-	/**
-	 * Assign post templates for all wordpress and selected custom post types
-	 */
-	public function assign_templates_to_posts() {
-		$settings               = Pagex::get_settings();
-		$custom_active_posts    = isset( $settings['active_post_templates'] ) ? $settings['active_post_templates'] : array();
-		$default_post_templates = array( 'page' => 'page', 'post' => 'post' );
-
-		$all_post_types = array_merge( $custom_active_posts, $default_post_templates );
-
-		foreach ( $all_post_types as $post_type ) {
-			add_filter( 'theme_' . $post_type . '_templates', array( $this, 'assign_post_templates_to_pages' ), 10, 4 );
-		}
-
-		// add blank template for pages
-		add_filter( 'theme_page_templates', array( $this, 'page_post_template' ), 10, 4 );
 	}
 
 	/**
@@ -258,6 +237,8 @@ class Pagex_Admin_Controls {
 	 */
 	public function admin_menu() {
 		echo '<h1>' . get_admin_page_title() . '</h1>';
+		echo '<div class="pagex-settings-wrapper">';
+		echo '<div class="pagex-settings">';
 		echo '<form class="pagex-admin-settings" method="POST" action="options.php">';
 		settings_fields( 'pagex_group' );
 		echo '<h2 class="nav-tab-wrapper">
@@ -266,7 +247,6 @@ class Pagex_Admin_Controls {
 				<a href="#tab_apis" class="nav-tab">APIs</a>
 				<a href="#tab_advanced" class="nav-tab">' . __( 'Advanced', 'pagex' ) . '</a>
 				</h2>';
-
 		echo '<div class="pagex-tabs-options">';
 		echo '<div class="pagex-tab-section active" id="tab_basic">';
 		do_settings_sections( 'pagex_page' );
@@ -283,6 +263,13 @@ class Pagex_Admin_Controls {
 		echo '</div>';
 		submit_button();
 		echo '</form>';
+		echo '</div>';
+		echo '<div class="pagex-settings-sidebar">';
+		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Documentation', 'pagex' ) . '</h3>' . __( 'Learn how to use Pagex. It is a great starting point.', 'pagex' ) . '<a href="https://github.com/komarovartem/pagex/wiki" target="_blank">' . __( 'Read our guide', 'pagex' ) . '</a></div>';
+		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Report Issue', 'pagex' ) . '</h3>' . __( 'Create a report to help us improve.', 'pagex' ) . '<a href="https://github.com/komarovartem/pagex/issues" target="_blank">' . __( 'Report', 'pagex' ) . '</a></div>';
+		echo '</div>';
+		echo '</div>';
+		echo '</div>';
 	}
 
 	public function settings_sections() {
@@ -1066,7 +1053,7 @@ class Pagex_Admin_Controls {
 		$controls = array(
 			array(
 				'id'          => 'mailchimp_key',
-				'label'       => __( 'Mailchimp API Key is required for "Mailchimp Form" element', 'pagex' ),
+				'label'       => __( 'Mailchimp API Key is required for a "Form" element with "Mailchimp" action', 'pagex' ),
 				'description' => '<a target="_blank" href="https://admin.mailchimp.com/account/api">' . __( 'Get MailChimp API key', 'pagex' ) . '</a>',
 				'type'        => 'text',
 			),
@@ -1271,7 +1258,7 @@ class Pagex_Admin_Controls {
 		}
 
 		return $pages;
-    }
+	}
 
 	/**
 	 * Export main settings via ajax

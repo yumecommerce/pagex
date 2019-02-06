@@ -198,6 +198,10 @@ body:not(.pagex-preview-mode) {
 
 .pagex-element-updating {
   opacity: .3 !important;
+
+  &.pagex-animated {
+    animation-fill-mode: none;
+  }
 }
 
 .pagex-scroll {

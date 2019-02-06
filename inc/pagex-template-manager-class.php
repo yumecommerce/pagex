@@ -2,8 +2,29 @@
 
 class Pagex_Template_Manager {
 	public function __construct() {
+		// make created post templates selectable from page template attribute
+		add_action( 'init', array( $this, 'assign_templates_to_posts' ) );
+
 		add_action( 'template_redirect', array( $this, 'builder_redirect' ) );
 		add_filter( 'template_include', array( $this, 'page_template' ), 99 );
+	}
+
+	/**
+	 * Assign post templates for all wordpress and selected custom post types
+	 */
+	public function assign_templates_to_posts() {
+		$settings               = Pagex::get_settings();
+		$custom_active_posts    = isset( $settings['active_post_templates'] ) ? $settings['active_post_templates'] : array();
+		$default_post_templates = array( 'page' => 'page', 'post' => 'post' );
+
+		$all_post_types = array_merge( $custom_active_posts, $default_post_templates );
+
+		foreach ( $all_post_types as $post_type ) {
+			add_filter( 'theme_' . $post_type . '_templates', array( $this, 'assign_post_templates_to_pages' ), 10, 4 );
+		}
+
+		// add blank template for pages
+		add_filter( 'theme_page_templates', array( $this, 'page_post_template' ), 10, 4 );
 	}
 
 	/**

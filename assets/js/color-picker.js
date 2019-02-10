@@ -474,7 +474,7 @@ var colorPicker = {
 
         item.parentNode.appendChild(wrapper);
 
-        wrapper.appendChild(item)
+        wrapper.appendChild(item);
 
         return wrapper.appendChild(thumb);
     },

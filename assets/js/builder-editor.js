@@ -1433,8 +1433,8 @@ var pagex = {
         this.allElementsModal.classList.add('pagex-hide');
     },
 
-    toggleSectionOptions: function (e) {
-        e.target.closest('.pagex-options').classList.toggle('pagex-hide-options-set');
+    toggleSectionOptions: function (el) {
+        el.closest('.pagex-options').classList.toggle('pagex-hide-options-set');
     },
 
     cloneElement: function (e) {
@@ -2026,7 +2026,7 @@ document.addEventListener('click', function (e) {
 
     // section options control
     if (el.matches('.pagex-section-set')) pagex.switchSectionOptions(e);
-    if (el.matches('.pagex-options-toggle')) pagex.toggleSectionOptions(e);
+    if (el.matches('.pagex-options-toggle')) pagex.toggleSectionOptions(el);
 });
 
 window.parent.document.addEventListener('click', function (e) {
@@ -2159,6 +2159,7 @@ window.parent.addEventListener('colorPickerChange', function (data) {
     }, '.pagex-builder-area .element, .pagex-modal-builder-area .element');
     $(document).on({
         mouseenter: function () {
+            if ($(this).children('.pagex-options').length) return;
             $(this).prepend(columnOptions);
         },
         mouseleave: function () {

@@ -42,11 +42,11 @@
 
 .pagex-sortable-placeholder {
   display: block !important;
-  border-radius: 2px !important;
   width: auto !important;
   min-height: 40px !important;
   position: relative !important;
   z-index: 9999 !important;
+  border-radius: 4px !important;
 
   &:hover {
     box-shadow: none !important;
@@ -60,6 +60,7 @@
     left: 5px;
     top: 5px;
     width: calc(100% - 10px);
+    border-radius: 4px !important;
     background: #71d7f7 !important;
   }
 }

@@ -353,8 +353,8 @@ class Pagex_Editor {
 		$controls['textarea'] = '<textarea class="pagex-control-field form-control" name="<% print(data.id); if(data.action == "content") {print(":skip")} %>"></textarea>';
 
 		// color is simple color picker; background control can create gradients
-		$controls['color']      = '<input type="text" class="pagex-control-field pagex-control-option-color clpi form-control" name="<%= data.id %>">';
-		$controls['background'] = '<input type="text" class="pagex-control-field pagex-control-option-background clpi clpi-gradient form-control" name="<%= data.id %>">';
+		$controls['color']      = '<div class="pagex-clpi"><input type="text" class="pagex-control-field pagex-control-option-color clpi form-control" name="<%= data.id %>"></div>';
+		$controls['background'] = '<div class="pagex-clpi"><input type="text" class="pagex-control-field pagex-control-option-background clpi clpi-gradient form-control" name="<%= data.id %>"></div>';
 
 		$controls['url'] = '<div class="input-group"><input type="text" class="pagex-control-field form-control pagex-control-url" name="<%- data.id %>"><div class="input-group-append"><button type="button" class="btn btn-outline-secondary pagex-url-control-insert">' . __( ' Media Gallery', 'pagex' ) . '</button></div></div>';
 

@@ -16,14 +16,16 @@ class Pagex_Backend_Editor {
 	public function add_meta_boxes() {
 		$settings = Pagex::get_settings();
 
-		add_meta_box(
-			'pagex-backend-editor',
-			'Pagex',
-			array( $this, 'backend_editor' ),
-			isset( $settings['builder'] ) ? $settings['builder'] : array(),
-			'advanced',
-			'high'
-		);
+		if ( ! empty( $settings ) ) {
+			add_meta_box(
+				'pagex-backend-editor',
+				'Pagex',
+				array( $this, 'backend_editor' ),
+				isset( $settings['builder'] ) ? $settings['builder'] : array(),
+				'advanced',
+				'high'
+			);
+		}
 
 		// todo custom header/footer for templates and posts
 //		add_meta_box(

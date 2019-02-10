@@ -138,6 +138,7 @@ function pagex_register_image_element( $elements ) {
 						'type'     => 'checkbox',
 						'title'    => __( 'Full Width', 'pagex' ),
 						'label'    => __( 'Make Image Full Width', 'pagex' ),
+						'description'   => __( 'For some image dimensions and aspect ratios you need to set full width option', 'pagex' ),
 						'action'   => 'css',
 						'value'    => '100%',
 						'selector' => '[el] img {width: [val] !important; height: auto !important;}',

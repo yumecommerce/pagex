@@ -1,4 +1,4 @@
-Pagex is visual theme builder. It takes control over all theme templates and let you create not only standard content layouts but also dynamic template layouts for any type of pages including archive templates, search results, single page templates, taxonomy templates, 404, coming soon, and etc. Plus header and footer layouts now fully under your control. Pagex supports custom post types including WooCommerce products and custom meta fields, so no more limits of predefined options and design settings.
+Pagex is visual theme builder. It takes control over all theme templates and let you create not only standard content layouts but also dynamic templates for any type of pages including archive templates, search results, single page templates, taxonomy templates, 404, coming soon, and etc. Plus header and footer layouts now fully under your control. Pagex supports custom post types including WooCommerce products and custom meta fields, so no more limits of predefined options and design settings.
 
 ### Features
 - 100% responsive design based on Bootstrap 4
@@ -18,9 +18,9 @@ Pagex is visual theme builder. It takes control over all theme templates and let
 
 ### FAQ
 ##### Is it compatible with my theme?
-The short answer is yes. But technically speaking theme should not interfere with the website in any way. To avoid issues with styles it must not unique any styles or add custom functions which affecting default WordPress behavior. The ideal theme for Pagex will be completely empty functions.php and no CSS or JS presented.
+The short answer is yes. But technically speaking theme should not interfere with the website in any way. To avoid issues with website style it must not unique any CSS/JS or add custom functions which affecting default WordPress behavior.
 ##### What plugins for custom content types are supported?
-Currently only Pods Plugin is supported but work in progress.
+Currently only Pods plugin is supported but work in progress.
 
 ### Support
 Documentation and video tutorials cover all options and settings. Please don't use issue tracker for support requests, but for core Pagex issues only.

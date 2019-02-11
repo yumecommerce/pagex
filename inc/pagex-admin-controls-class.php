@@ -263,7 +263,7 @@ class Pagex_Admin_Controls {
 		), 'pagex_page_design', 'pagex_section' );
 
 		// apis
-		add_settings_field( 'apis_mailchimp', 'Mailchimp', array(
+		add_settings_field( 'apis_mailchimp', 'MailChimp', array(
 			$this,
 			'apis_mailchimp'
 		), 'pagex_apis', 'pagex_section' );
@@ -1000,7 +1000,7 @@ class Pagex_Admin_Controls {
 		$controls = array(
 			array(
 				'id'          => 'mailchimp_key',
-				'label'       => __( 'Mailchimp API Key is required for a "Form" element with "Mailchimp" action', 'pagex' ),
+				'label'       => __( 'MailChimp API Key is required for a "Form" element with "MailChimp" action', 'pagex' ),
 				'description' => '<a target="_blank" href="https://admin.mailchimp.com/account/api">' . __( 'Get MailChimp API key', 'pagex' ) . '</a>',
 				'type'        => 'text',
 			),

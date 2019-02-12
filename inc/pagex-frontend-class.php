@@ -70,7 +70,9 @@ class Pagex_Frontend {
 	 * @return array
 	 */
 	public function builder_classes( $classes ) {
-		$settings = Pagex::get_settings();
+		if ( ! $settings = Pagex::get_settings() ) {
+			return;
+		}
 
 		$use_preloader   = isset( $settings['design']['preloader']['active'] );
 		$preloader_pages = $settings['design']['preloader']['pages'];
@@ -98,7 +100,9 @@ class Pagex_Frontend {
 			return;
 		}
 
-		$settings = Pagex::get_settings();
+		if ( ! $settings = Pagex::get_settings() ) {
+			return;
+		}
 
 		// Preloader
 		$use_preloader   = isset( $settings['design']['preloader']['active'] );

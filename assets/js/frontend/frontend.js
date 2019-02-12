@@ -23,49 +23,6 @@
     };
 }(Element.prototype));
 
-// Preloader
-function pagexHidePreloader() {
-    // check in case hide was forced by timeout to prevent second calling
-    if (document.body.matches('.pagex-preloader-body-active')) {
-        pagexSlider.initElements();
-        setTimeout(function () {
-            document.body.classList.remove('pagex-preloader-body-active');
-        }, 100);
-        setTimeout(function () {
-            document.body.classList.remove('pagex-preloader-body');
-        }, 300);
-        setTimeout(function () {
-            pagexEntranceAnimation.initElements();
-        }, 450);
-    }
-}
-
-if (document.getElementById('pagex-main-preloader')) {
-    document.addEventListener("DOMContentLoaded", function () {
-        let pageGoogleFonts = document.getElementById('pagex-google-fonts');
-        setTimeout(function () {
-            if (pageGoogleFonts && document.fonts !== undefined) {
-                let timerId = setInterval(function () {
-                    if (document.fonts.status === 'loaded') {
-                        pagexHidePreloader();
-                        clearInterval(timerId);
-                    }
-                }, 50);
-            } else {
-                pagexHidePreloader();
-            }
-        }, 200);
-    });
-
-    //force to hide preloader
-    setTimeout(function () {
-        pagexHidePreloader();
-    }, 5000);
-} else {
-    pagexSlider.initElements();
-    pagexEntranceAnimation.initElements();
-}
-
 // WordPress comment-reply script
 var addComment = {
     moveForm: function (a, b, c, d) {
@@ -1129,3 +1086,46 @@ document.addEventListener('click', function (e) {
         pagexCookie.applyGDPR();
     }
 });
+
+// Preloader
+function pagexHidePreloader() {
+    // check in case hide was forced by timeout to prevent second calling
+    if (document.body.matches('.pagex-preloader-body-active')) {
+        pagexSlider.initElements();
+        setTimeout(function () {
+            document.body.classList.remove('pagex-preloader-body-active');
+        }, 100);
+        setTimeout(function () {
+            document.body.classList.remove('pagex-preloader-body');
+        }, 300);
+        setTimeout(function () {
+            pagexEntranceAnimation.initElements();
+        }, 450);
+    }
+}
+
+if (document.getElementById('pagex-main-preloader')) {
+    document.addEventListener("DOMContentLoaded", function () {
+        let pageGoogleFonts = document.getElementById('pagex-google-fonts');
+        setTimeout(function () {
+            if (pageGoogleFonts && document.fonts !== undefined) {
+                let timerId = setInterval(function () {
+                    if (document.fonts.status === 'loaded') {
+                        pagexHidePreloader();
+                        clearInterval(timerId);
+                    }
+                }, 50);
+            } else {
+                pagexHidePreloader();
+            }
+        }, 200);
+    });
+
+    //force to hide preloader
+    setTimeout(function () {
+        pagexHidePreloader();
+    }, 5000);
+} else {
+    pagexSlider.initElements();
+    pagexEntranceAnimation.initElements();
+}

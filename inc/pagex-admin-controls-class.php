@@ -212,8 +212,8 @@ class Pagex_Admin_Controls {
 		echo '</form>';
 		echo '</div>';
 		echo '<div class="pagex-settings-sidebar">';
-		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Documentation', 'pagex' ) . '</h3>' . __( 'Learn how to use Pagex. It is a great starting point.', 'pagex' ) . '<a href="https://github.com/komarovartem/pagex/wiki" target="_blank">' . __( 'Read our guide', 'pagex' ) . '</a></div>';
-		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Report Issue', 'pagex' ) . '</h3>' . __( 'Create a report to help us improve.', 'pagex' ) . '<a href="https://github.com/komarovartem/pagex/issues" target="_blank">' . __( 'Report', 'pagex' ) . '</a></div>';
+		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Documentation', 'pagex' ) . '</h3>' . __( 'Learn how to use Pagex. It is a great starting point.', 'pagex' ) . '<a href="https://github.com/yumecommerce/pagex/wiki" target="_blank">' . __( 'Read our guide', 'pagex' ) . '</a></div>';
+		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Report Issue', 'pagex' ) . '</h3>' . __( 'Create a report to help us improve.', 'pagex' ) . '<a href="https://github.com/yumecommerce/pagex/issues" target="_blank">' . __( 'Report', 'pagex' ) . '</a></div>';
 		echo '</div>';
 		echo '</div>';
 		echo '</div>';

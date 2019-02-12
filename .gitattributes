@@ -3,3 +3,4 @@
 
 # Files to ignore from release archives
 .* export-ignore
+README.md export-ignore

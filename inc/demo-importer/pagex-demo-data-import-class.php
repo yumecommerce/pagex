@@ -102,6 +102,9 @@ class Pagex_Demo_Data_Import {
 
 		$demo_data = apply_filters( 'pagex_import_demo_data', array() );
 
+		// before import action
+		do_action( 'pagex_before_import_demo_data' );
+
 		// First Step
 		// import migration settings for first step since it can contains custom post types which will be required for main importer
 		if ( $_POST['step'] == '1' ) {

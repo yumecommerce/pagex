@@ -2,6 +2,8 @@
   display: none !important;
   margin: 15px 0 20px;
   border: 1px solid #e2e4e7;
+  z-index: 999;
+  position: relative;
 }
 
 #pagex-switch-editors {

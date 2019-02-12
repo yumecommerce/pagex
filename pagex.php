@@ -3,7 +3,7 @@
 Plugin Name: Pagex
 Description: Theme Builder for WordPress. Design your theme templates dynamically with front-end and back-end builder.
 Author: YumeCommerce
-Plugin URI: https://github.com/komarovartem/pagex
+Plugin URI: https://github.com/yumecommerce/pagex
 Text Domain: pagex
 Domain Path: /languages
 Version: 0.1

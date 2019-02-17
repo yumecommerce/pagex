@@ -5,24 +5,18 @@ if ( post_password_required() ) {
 }
 
 echo ' <div id="comments" class="comments-area">';
+
 if ( have_comments() ) {
 	echo '<h2 class="comments-title">';
 
-	$comment_count = get_comments_number();
-	if ( 1 === $comment_count ) {
-		printf(
-		/* translators: 1: title. */
-			esc_html_e( 'One thought on &ldquo;%1$s&rdquo;', 'pagex' ),
-			'<span>' . get_the_title() . '</span>'
-		);
-	} else {
-		printf(
-		/* translators: 1: comment count number, 2: title. */
-			esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comment_count, 'comments title', 'pagex' ) ),
-			intval( $comment_count ),
-			'<span>' . get_the_title() . '</span>'
-		);
-	}
+	$comment_count = intval( get_comments_number() );
+
+	printf(
+	/* translators: 1: comment count number, 2: title. */
+		_n( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $comment_count, 'pagex' ),
+		$comment_count,
+		'<span>' . get_the_title() . '</span>'
+	);
 
 	echo '</h2>';
 

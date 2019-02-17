@@ -652,7 +652,6 @@ function pagex_form( $atts ) {
 
 		$item .= $v['label'] ? '<label class="pagex-form-label">' . esc_attr( $v['label'] ) . '</label>' : '';
 
-		//$attr .= $v['name'] ? 'name="' . esc_attr( $v['name'] ) . '" ' : 'name="' . uniqid() . '" ';
 		$attr .= $v['placeholder'] ? 'placeholder="' . esc_attr( $v['placeholder'] ) . '" ' : '';
 		$attr .= 'class="form-control" ';
 		$attr .= isset( $v['required'] ) ? $v['required'] : '';

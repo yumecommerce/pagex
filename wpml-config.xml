@@ -14,5 +14,41 @@
                 <attribute encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
+        <shortcode>
+            <tag>pagex_form</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_login_form</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_posts</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_search_form</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_post_data</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
+        <shortcode>
+            <tag>pagex_post_title</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
     </shortcodes>
 </wpml-config>

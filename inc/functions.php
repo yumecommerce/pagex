@@ -277,7 +277,8 @@ function pagex_get_document_title( $context = false, $use_page = false ) {
 
 	// Add a page number if necessary.
 	if ( $use_page && ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title = $title . ' - ' . sprintf( __( 'Page %s', 'pagex' ), max( $paged, $page ) );
+		/* translators: %d: page number */
+		$title = $title . ' - ' . sprintf( __( 'Page %d', 'pagex' ), max( $paged, $page ) );
 	}
 
 	remove_filter( 'document_title_parts', 'pagex_remove_document_title_parts' );

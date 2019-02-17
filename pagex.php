@@ -39,7 +39,7 @@ class Pagex {
 	 */
 	public function plugins_loaded() {
 		// load textdomain
-		load_plugin_textdomain( 'pagex', false, PAGEX_PLUGIN_URL . 'languages' );
+		load_plugin_textdomain( 'pagex', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 		// register all bundled elements
 		include_once( PAGEX_DIR_NAME . '/inc/elements.php' );

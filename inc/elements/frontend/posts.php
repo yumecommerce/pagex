@@ -323,7 +323,7 @@ function pagex_posts( $atts ) {
 
 	$args = array(
 		'post_status'         => 'publish',
-		'suppress_filters'    => true,
+		'suppress_filters'    => false, // must be false to get right translation for multilingual
 		'ignore_sticky_posts' => true,
 		'no_found_rows'       => 1,
 	);

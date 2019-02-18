@@ -50,5 +50,11 @@
                 <attribute encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
+        <shortcode>
+            <tag>pagex_woo_menu_cart</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
     </shortcodes>
 </wpml-config>

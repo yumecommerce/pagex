@@ -632,7 +632,6 @@ function pagex_form( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'success_msg' => '',
 		'button_text' => __( 'Send', 'pagex' ),
 		'success_msg' => __( 'The form was sent successfully.', 'pagex' ),
 		'items'       => array(),

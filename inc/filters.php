@@ -48,7 +48,7 @@ function pagex_wpml_shortcode_decode( $string, $encoding, $original_string ) {
 
 		foreach ( $rows as $i => $row ) {
 			// if repeated param
-			if ( is_array( $row ) ) {
+			if ( is_array( $row ) && $i == 'items' ) {
 				foreach ( $row as $key => $value ) {
 					if ( is_array( $value ) ) {
 						foreach ( $value as $k => $v ) {
@@ -82,7 +82,7 @@ function pagex_wpml_shortcode_decode( $string, $encoding, $original_string ) {
 					'label_username',
 					'label_password',
 
-					// posts
+					// posts, menu cart
 					'title',
 
 					// post title

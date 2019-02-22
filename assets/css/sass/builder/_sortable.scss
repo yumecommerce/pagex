@@ -43,6 +43,7 @@
 .pagex-sortable-placeholder {
   display: block !important;
   width: auto !important;
+  min-width: 40px !important;
   min-height: 40px !important;
   position: relative !important;
   z-index: 9999 !important;
@@ -63,4 +64,9 @@
     border-radius: 4px !important;
     background: #71d7f7 !important;
   }
+}
+
+// fix issue with sortable and bootstrap display class which has !important attr
+.pagex-sortable-start .pagex-sortable-element-start {
+  display: none !important;
 }

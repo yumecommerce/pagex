@@ -166,7 +166,12 @@ class Pagex_Template_Manager {
 				if ( $temp_type == 'archive' ) {
 					// if blog page set attributes for a blog preview template
 					if ( $post_type == 'post' ) {
-						$href_preview['pagex-query-preview']['pagename'] = get_post_field( 'post_name', get_option( 'page_for_posts' ) );
+						if ( $page_for_posts = get_option( 'page_for_posts' ) ) {
+							$href_preview['pagex-query-preview']['pagename'] = get_post_field( 'post_name', $page_for_posts );
+						} else {
+							// in case blog page is not set and we open template via admin
+							die( __('No Blog page is selected. Set your Home and Blog pages to static ones.', 'pagex') );
+						}
 					}
 
 					wp_redirect( add_query_arg( $href_preview, get_permalink( $template_id ) ) );

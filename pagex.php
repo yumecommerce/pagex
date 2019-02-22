@@ -161,6 +161,34 @@ class Pagex {
 		return false;
 	}
 
+	/**
+	 * Check if builder is active for a theme
+	 * Used in a theme function to find out when dummy style and functions should be loaded
+	 *
+	 * @return bool
+	 */
+	public static function is_theme_builder_active() {
+		if ( is_admin() ) {
+			$settings = self::get_settings();
+			if ( ! empty( $settings ) ) {
+				return true;
+			}
+		} else {
+			if ( Pagex_Template_Manager::get_current_post_template() ) {
+				return true;
+			}
+		}
+
+		if ( self::is_frontend_builder_active() || self::is_frontend_builder_frame_active() || self::is_excerpt_preview_frame_active() ) {
+			return true;
+		}
+
+		if ( is_singular( 'pagex_layout_builder' ) ) {
+			return true;
+		}
+
+		return false;
+	}
 }
 
 new Pagex();

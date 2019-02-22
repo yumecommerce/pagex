@@ -90,7 +90,6 @@ class Pagex_Admin_Controls {
 					'href'   => add_query_arg( $href_preview, get_permalink( $post_id ) ),
 				) );
 			}
-
 		}
 
 		// get page template based on current query
@@ -338,7 +337,7 @@ class Pagex_Admin_Controls {
                     <select name="pagex_settings[default_header]">
 						<?php
 						foreach ( $data as $key => $value ) {
-							echo '<option value="' . $key . '" ' . selected( $key, $default_header ) . '>' . $value . '</option>';
+							echo '<option value="' . $key . '" ' . selected( $key, $default_header, false ) . '>' . $value . '</option>';
 						}
 						?>
                     </select>
@@ -350,7 +349,7 @@ class Pagex_Admin_Controls {
                     <select name="pagex_settings[default_footer]">
 						<?php
 						foreach ( $data as $key => $value ) {
-							echo '<option value="' . $key . '" ' . selected( $key, $default_footer ) . '>' . $value . '</option>';
+							echo '<option value="' . $key . '" ' . selected( $key, $default_footer, false ) . '>' . $value . '</option>';
 						}
 						?>
                     </select>

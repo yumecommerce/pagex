@@ -14,6 +14,36 @@
   border: 0;
 }
 
+.pagex-params-modal-head {
+  input.form-control {
+    height: 32px !important;
+    min-height: 32px;
+    margin: 0 !important;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+
+    &:focus {
+      border-color: #80bdff;
+    }
+  }
+
+  .pagex-modal-search-input {
+    font-size: 11px !important;
+    box-shadow: none !important;
+    border: 0;
+  }
+
+  .input-group-text {
+    color: #6d7882;
+    font-size: 12px;
+    line-height: 20px;
+    background: #fff;
+    height: 32px;
+    font-weight: 900;
+    border: 0;
+  }
+}
+
 .pagex-params-modal {
   font-family: Arial !important;
   font-size: 11px !important;
@@ -28,29 +58,37 @@
   height: auto !important;
 
   button,
-  input,
+  input[type="text"],
+  input[type="number"],
   select,
   textarea {
     font-weight: 400;
     font-family: Arial !important;
     font-size: 12px !important;
     box-shadow: none !important;
+    padding: .375rem .75rem !important;
+    line-height: 1.5 !important;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    min-height: 32px !important;
+    height: auto;
+    margin: 0;
+    letter-spacing: normal !important;
+    text-transform: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  textarea:focus,
+  select:focus {
+    border-color: #80bdff;
   }
 
   [name="pagex_custom_css"] {
     font-family: monospace !important;
-  }
-
-  input.form-control {
-    height: 32px !important;
-    min-height: 32px;
-    margin: 0 !important;
-    border-radius: .25rem;
-    border: 1px solid #ced4da;
-
-    &:focus {
-      border-color: #80bdff;
-    }
   }
 
   .input-group-text {
@@ -61,7 +99,7 @@
   .text-muted {
     opacity: .8;
     font-size: 9px !important;
-    line-height: 1.3;
+    line-height: 14px;
     margin-top: 5px;
     font-weight: 400;
 
@@ -78,8 +116,9 @@
   .form-row label {
     display: inline-block;
     margin-bottom: 5px;
-    vertical-align: top;
+    vertical-align: baseline;
     font-weight: 400;
+    line-height: 13px;
     color: #525f7f !important;
   }
 
@@ -280,22 +319,6 @@ body:not(.wp-admin) #pagex-params-modal {
   .pagex-params-modal-head {
     cursor: auto;
   }
-
-  .pagex-modal-search-input {
-    font-size: 11px !important;
-    box-shadow: none !important;
-    border: 0;
-  }
-
-  .input-group-text {
-    color: #6d7882;
-    font-size: 12px;
-    line-height: 20px;
-    background: #fff;
-    height: 32px;
-    font-weight: 900;
-    border: 0;
-  }
 }
 
 .pagex-elements-item {
@@ -358,15 +381,17 @@ body:not(.wp-admin) #pagex-params-modal {
 
   .pagex-params-library-layout-action {
     margin-left: auto;
+  }
+}
 
-    button {
-      i {
-        margin-right: 8px;
-      }
+#pagex-layouts-modal {
+  button {
+    i {
+      margin-right: 8px;
+    }
 
-      * {
-        pointer-events: none;
-      }
+    * {
+      pointer-events: none;
     }
   }
 }
@@ -501,4 +526,102 @@ body:not(.wp-admin) #pagex-params-modal {
     }
   }
 }
+
+.pagex-layouts-modal-filter {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  select {
+    width: 200px;
+  }
+
+  .input-group {
+    width: 200px;
+  }
+
+  i {
+    line-height: 24px;
+  }
+}
+
+.pagex-layouts-modal-content {
+  column-count: 3;
+  column-gap: 30px;
+  margin-top: 20px;
+
+  &.pagex-layouts-modal-content-excerpts {
+    column-count: 4;
+  }
+
+  div {
+    break-inside: avoid;
+    margin-bottom: 30px;
+    border-radius: 4px;
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #fff;
+      border-radius: 4px;
+      opacity: 0;
+      transition: .3s;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      padding: 10px;
+      background-color: #fff;
+      border: 1px solid #ecf2f4;
+      box-shadow: 0 1px 20px 0 rgba(0,0,0,.07);
+      transition: box-shadow 0.2s;
+      pointer-events: none;
+    }
+
+    &:hover {
+      img {
+        box-shadow: 0 1px 20px 0 rgba(0,0,0,.2);
+      }
+
+      button {
+        opacity: 1;
+      }
+
+      &:after {
+        opacity: .85;
+      }
+    }
+  }
+
+  button {
+    opacity: 0;
+    z-index: 3;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+/* WP Media Modal */
+
+.media-modal-content {
+  button {
+    min-height: auto !important;
+    letter-spacing: normal !important;
+    line-height: 17px !important;
+    text-transform: none !important;
+    padding: 0 35px !important;
+    font-size: 14px !important;
+  }
+}
+
 

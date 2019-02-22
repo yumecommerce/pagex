@@ -679,10 +679,25 @@ class Pagex_Editor {
 		$save_layouts_modal = '<div id="pagex-save-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Save Custom Layout', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close"><i class="fas fa-times"></i></div></div></div><div class="pagex-params-tab-content"><div class="input-group mt-2 mb-1"><input type="text" name="pagex-custom-layout-title" id="pagex-custom-layout-title" class="form-control" placeholder="' . __( 'Enter Layout Name', 'pagex' ) . '"><div class="input-group-append"><button type="button" class="btn btn-outline-secondary pagex-params-button pagex-save-custom-layout"><i class="fas fa-save"></i><span>' . __( 'Save Layout', 'pagex' ) . '</span></button></div></div><p>' . __( 'Layout will be saved in Layout Builder Library.', 'pagex' ) . ' <a href="' . admin_url( 'edit.php?post_type=pagex_layout_builder' ) . '" target="_blank">' . __( 'Layout Builder', 'pagex' ) . '</a></p></div></div>';
 
 		// modal with layouts, pages and templates
-		$layouts_modal = '<div id="pagex-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Layouts', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close trn-300 ml-4" ><i class="fas fa-times"></i></div></div></div>';
+		$layouts_modal = '<div id="pagex-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Library', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close trn-300 ml-4" ><i class="fas fa-times"></i></div></div></div>';
 
 		// tabs titles with a list of all created builder layouts
-		$layouts_modal .= '<div class="pagex-params-tabs d-flex"><div class="pagex-params-tab-title active">' . __( 'All Created', 'pagex' ) . '</div></div>';
+		$layouts_modal .= '<div class="pagex-params-tabs d-flex"><div class="pagex-params-tab-title active">' . __( 'All Created', 'pagex' ) . '</div>';
+
+		$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-layouts">' . __( 'Layouts', 'pagex' ) . '</div>';
+
+		// theme templates layout library
+		if ( $post->post_type == 'pagex_post_tmp' ) {
+			$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-templates">' . __( 'Theme Templates', 'pagex' ) . '</div>';
+		}
+
+		// excerpt layout library
+		if ( $post->post_type == 'pagex_excerpt_tmp' ) {
+			$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-excerpts">' . __( 'Excerpts', 'pagex' ) . '</div>';
+		}
+
+		// close tabs titles
+		$layouts_modal .= '</div>';
 
 		$all_layouts = pagex_get_builder_layouts();
 
@@ -697,11 +712,99 @@ class Pagex_Editor {
 
 				$layouts_modal .= '</div>';
 			}
+		} else {
+			$layouts_modal .= __( 'No layouts found.', 'pagex' );
 		}
 		// close tabs with all layouts
 		$layouts_modal .= '</div>';
 
-		// close layouts modal
+		// layouts library
+		$layouts_modal .= '<div class="pagex-params-tab-content pagex-hide">';
+
+		$layout_categories = array(
+			''            => __( 'All', 'pagex' ),
+//			'404'            => __( '404 page', 'pagex' ),
+			'about'       => __( 'About', 'pagex' ),
+//			'call_to_action' => __( 'Call to Action', 'pagex' ),
+//			'clients'        => __( 'Clients', 'pagex' ),
+			'coming_soon' => __( 'Coming Soon', 'pagex' ),
+			'contacts'    => __( 'Contacts', 'pagex' ),
+//			'faq'            => __( 'FAQ', 'pagex' ),
+//			'features'    => __( 'Features', 'pagex' ),
+			'footer'      => __( 'Footer', 'pagex' ),
+			'header'      => __( 'Header', 'pagex' ),
+//			'pricing'        => __( 'Pricing', 'pagex' ),
+		);
+
+		$layouts_modal .= '<div class="pagex-layouts-modal-filter">';
+		$layouts_modal .= '<select class="pagex-layouts-modal-filter-cat custom-select">';
+		foreach ( $layout_categories as $k => $v ) {
+			$layouts_modal .= '<option value="' . $k . '">' . $v . '</option>';
+		}
+		$layouts_modal .= '</select>';
+		$layouts_modal .= '</div>';
+
+		$layouts_modal .= '<div class="pagex-layouts-modal-content pagex-layouts-modal-content-layouts">';
+		$layouts_modal .= __( 'Loading...', 'pagex' );
+		$layouts_modal .= '</div>';
+
+		// close tab
+		$layouts_modal .= '</div>';
+
+		// theme templates library
+
+		if ( $post->post_type == 'pagex_post_tmp' ) {
+			$layouts_modal       .= '<div class="pagex-params-tab-content pagex-hide">';
+			$template_categories = array(
+				''                => __( 'All', 'pagex' ),
+				'archive'         => __( 'Archive', 'pagex' ),
+				'product_archive' => __( 'Product Archive', 'pagex' ),
+				'single_page'     => __( 'Single Page', 'pagex' ),
+				'single_post'     => __( 'Single Post', 'pagex' ),
+				'single_product'  => __( 'Single Product', 'pagex' ),
+			);
+
+			$layouts_modal .= '<div class="pagex-layouts-modal-filter">';
+			$layouts_modal .= '<select class="pagex-layouts-modal-filter-cat custom-select">';
+			foreach ( $template_categories as $k => $v ) {
+				$layouts_modal .= '<option value="' . $k . '">' . $v . '</option>';
+			}
+			$layouts_modal .= '</select>';
+			$layouts_modal .= '</div>';
+
+			$layouts_modal .= '<div class="pagex-layouts-modal-content pagex-layouts-modal-content-templates">';
+			$layouts_modal .= __( 'Loading...', 'pagex' );
+			$layouts_modal .= '</div>';
+
+			// close tab
+			$layouts_modal .= '</div>';
+		}
+
+		// excerpt templates library
+		if ( $post->post_type == 'pagex_excerpt_tmp' ) {
+			$layouts_modal      .= '<div class="pagex-params-tab-content pagex-hide">';
+			$excerpt_categories = array(
+				''        => __( 'All', 'pagex' ),
+				'post'    => __( 'Post', 'pagex' ),
+				'product' => __( 'Product', 'pagex' ),
+			);
+			$layouts_modal      .= '<div class="pagex-layouts-modal-filter">';
+			$layouts_modal      .= '<select class="pagex-layouts-modal-filter-cat custom-select">';
+			foreach ( $excerpt_categories as $k => $v ) {
+				$layouts_modal .= '<option value="' . $k . '">' . $v . '</option>';
+			}
+			$layouts_modal .= '</select>';
+			$layouts_modal .= '</div>';
+
+			$layouts_modal .= '<div class="pagex-layouts-modal-content pagex-layouts-modal-content-excerpts">';
+			$layouts_modal .= __( 'Loading...', 'pagex' );
+			$layouts_modal .= '</div>';
+
+			// close tab
+			$layouts_modal .= '</div>';
+		}
+
+		// close library modal
 		$layouts_modal .= '</div>';
 
 		// select element form
@@ -823,7 +926,7 @@ class Pagex_Editor {
 		if ( isset( $_REQUEST['pagex-query-preview'] ) ) {
 			// when post query preview loads at the first time
 			query_posts( $_REQUEST['pagex-query-preview'] );
-		} else {
+		} elseif ( isset( $_POST['url'] ) ) {
 			// when dynamic element gets updated
 			parse_str( $_POST['url'], $query );
 			if ( isset( $query['pagex-query-preview'] ) ) {
@@ -900,7 +1003,9 @@ class Pagex_Editor {
 				'pagex_save_layout',
 				'pagex_save_as_layout',
 				'pagex_excerpt_preview',
-				'pagex_import_post_layout'
+				'pagex_import_post_layout',
+				'pagex_get_layouts_from_library',
+				'pagex_export_layout'
 			) as $action
 		) {
 			add_action( 'wp_ajax_' . $action, array( $this, $action ) );
@@ -908,18 +1013,121 @@ class Pagex_Editor {
 	}
 
 	/**
-	 *  Importing created layouts and pages
+	 * Return all layouts from library
 	 *
+	 * @return string
+	 */
+	public function pagex_get_layouts_from_library() {
+		if ( ! is_super_admin() ) {
+			return;
+		}
+
+		$all_layouts = '';
+		$url         = 'https://raw.githubusercontent.com/yumecommerce/pagexLibrary/master/';
+		$type        = $_REQUEST['type'];
+
+		$remote_response = wp_remote_get( $url . $type . '.json' );
+		$headers         = wp_remote_retrieve_headers( $remote_response );
+		if ( ! $headers ) {
+			wp_send_json_error( array(
+				'content' => __( 'Error. Something wrong with library server', 'pagex' ),
+			) );
+
+			return;
+		}
+
+		$remote_response_code = wp_remote_retrieve_response_code( $remote_response );
+
+		if ( $remote_response_code != '200' ) {
+			wp_send_json_error( array(
+				'content' => __( 'Error. Library server response code:', 'pagex' ) . ' ' . $remote_response_code
+			) );
+
+			return;
+		}
+
+		$layouts = json_decode( wp_remote_retrieve_body( $remote_response ), true );
+
+		foreach ( $layouts as $layout ) {
+			foreach ( $layout['paths'] as $path ) {
+				$img_src     = $url . $type . '/' . $layout['cat'] . '/' . $path . '/' . 'img.png';
+				$data_path   = $url . $type . '/' . $layout['cat'] . '/' . $path . '/' . 'data.json';
+				$all_layouts .= '<div data-library-cat="' . $layout['cat'] . '"><img src="' . $img_src . '"><button type="button" class="btn btn-outline-secondary pagex-library-post-layout-import" data-import-post-layout="' . $data_path . '"><i class="fas fa-file-import"></i><span>' . __( 'Import Layout', 'pagex' ) . '</span></button></div>';
+			}
+		}
+
+		wp_send_json_success( array(
+			'content' => $all_layouts,
+		) );
+
+		return;
+	}
+
+	/**
+	 *  Importing layouts from local site or from library
 	 */
 	function pagex_import_post_layout() {
+		if ( ! is_super_admin() ) {
+			return;
+		}
+
 		Pagex_Editor::setup_query_posts();
 
-		$post_id = $_REQUEST['post_id'];
+		$post_layout = $_REQUEST['post_layout'];
 
-		wp_send_json( array(
-			'params'  => get_post_meta( $post_id, '_pagex_elements_params', true ),
-			'content' => do_shortcode( get_post_field( 'post_content', $post_id ) ),
+		// check if we are going to import post id
+		if ( is_numeric( $post_layout ) ) {
+			wp_send_json_success( array(
+				'params'  => get_post_meta( $post_layout, '_pagex_elements_params', true ),
+				'content' => do_shortcode( get_post_field( 'post_content', $post_layout ) ),
+			) );
+
+			return;
+		}
+
+		// request a data from layout library
+		$remote_response = wp_remote_get( $post_layout );
+		$headers         = wp_remote_retrieve_headers( $remote_response );
+		if ( ! $headers ) {
+			wp_send_json_error( array(
+				'content' => __( 'Error. Something wrong with library server', 'pagex' ),
+			) );
+
+			return;
+		}
+
+		$remote_response_code = wp_remote_retrieve_response_code( $remote_response );
+
+		if ( $remote_response_code != '200' ) {
+			wp_send_json_error( array(
+				'content' => __( 'Error. Library server response code:', 'pagex' ) . ' ' . $remote_response_code
+			) );
+
+			return;
+		}
+
+		$layout = json_decode( wp_remote_retrieve_body( $remote_response ), true );
+
+		wp_send_json_success( array(
+			'params'  => json_encode( $layout['params'] ),
+			'content' => do_shortcode( $layout['layout'] ),
 		) );
+	}
+
+	/**
+	 * Prepare layout for export.
+	 */
+	public function pagex_export_layout() {
+		if ( ! is_super_admin() ) {
+			return;
+		}
+
+		// replace dynamic elements with shortcodes and remove all frontend builder classes
+		$content = Pagex_Editor::pre_save_post( $_POST['content'], true );
+
+		wp_send_json_success(
+			wp_unslash( $content )
+		);
 	}
 
 	/**
@@ -931,6 +1139,8 @@ class Pagex_Editor {
 		}
 
 		$content = Pagex_Editor::pre_save_post( $_POST['content'] );
+
+		// prevent link click inside excerpt preview window
 		$content = preg_replace( '/(<a.*?href=")(.*?)(")/s', '$1#$3', $content );
 
 		$args = array(
@@ -1110,10 +1320,11 @@ class Pagex_Editor {
 	 * Remove all builder elements before save the post content
 	 *
 	 * @param $content
+	 * @param bool $ignore_multilingual
 	 *
 	 * @return string
 	 */
-	public static function pre_save_post( $content ) {
+	public static function pre_save_post( $content, $ignore_multilingual = false ) {
 		$settings     = Pagex::get_settings();
 		$multilingual = isset( $settings['advanced']['multilingual'] ) ? $settings['advanced']['multilingual'] : '';
 
@@ -1191,7 +1402,7 @@ class Pagex_Editor {
 		}
 
 		// wrap each string with shortcode to make it available for translation in multilingual plugins
-		if ( $multilingual ) {
+		if ( $multilingual && ! $ignore_multilingual ) {
 			foreach ( $html->find( '.pagex-lang-str' ) as $element ) {
 				if ( strpos( $element->innertext, 'pagex_lang_str' ) === false ) {
 					$element->innertext = '[pagex_lang_str]' . $element->innertext . '[/pagex_lang_str]';

@@ -42,6 +42,9 @@ body.pagex-preview-mode-hide-controls .pagex-options {
     max-height: 23px;
     padding: 3px 5px !important;
     box-shadow: none !important;
+    min-height: auto !important;
+    letter-spacing: normal !important;
+    line-height: 17px !important;
 
     i {
       pointer-events: none;
@@ -279,6 +282,16 @@ body:not(.pagex-preview-mode) {
   > [data-type="container"] > .row > [data-type="column"] > .element > .pagex-options {
     display: none !important;
   }
+}
+
+.pagex-undo-remove {
+  box-shadow: none !important;
+  min-height: auto !important;
+  letter-spacing: normal !important;
+  line-height: 17px !important;
+  text-transform: none !important;
+  height: 42px !important;
+  max-height: 42px !important;
 }
 
 

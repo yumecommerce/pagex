@@ -4,6 +4,13 @@
         <custom-type translate="1">pagex_post_tmp</custom-type>
         <custom-type translate="1">pagex_excerpt_tmp</custom-type>
     </custom-types>
+    <custom-fields>
+        <custom-field action="copy">_pagex_template_type</custom-field>
+        <custom-field action="copy">_pagex_template_post_type</custom-field>
+        <custom-field action="copy">_pagex_layout_type</custom-field>
+        <custom-field action="copy">_pagex_elements_params</custom-field>
+        <custom-field action="copy">_pagex_status</custom-field>
+    </custom-fields>
     <shortcodes>
         <shortcode>
             <tag>pagex_lang_str</tag>

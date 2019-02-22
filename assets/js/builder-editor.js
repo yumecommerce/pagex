@@ -1222,6 +1222,49 @@ var pagex = {
 
         e.target.classList.add('active');
         tabs.querySelectorAll('.pagex-params-tab-content')[index].classList.remove('pagex-hide');
+
+        // load library layouts
+        if (e.target.matches('.pagex-layouts-modal-layouts') && ! e.target.matches('.loaded')) {
+            e.target.classList.add('loaded');
+            this.loadLibraryLayouts('layouts');
+        }
+
+        if (e.target.matches('.pagex-layouts-modal-templates') && ! e.target.matches('.loaded')) {
+            e.target.classList.add('loaded');
+            this.loadLibraryLayouts('templates');
+        }
+
+        if (e.target.matches('.pagex-layouts-modal-excerpts') && ! e.target.matches('.loaded')) {
+            e.target.classList.add('loaded');
+            this.loadLibraryLayouts('excerpts');
+        }
+    },
+
+    loadLibraryLayouts: function(type) {
+        jQuery.post(pagexLocalize.ajaxUrl, {
+            action: 'pagex_get_layouts_from_library',
+            type: type,
+        }, function (response) {
+            window.parent.document.querySelector('.pagex-layouts-modal-content-' + type).innerHTML = response.data.content;
+        }).fail(function () {
+            alert('error');
+        });
+    },
+
+    filterLibraryLayout: function(value) {
+        let area = window.parent.document.querySelectorAll('.pagex-params-tab-content:not(.pagex-hide) [data-library-cat]');
+
+        for (let item of area) {
+            item.classList.remove('pagex-hide');
+        }
+
+        if (value !== '') {
+            for (let item of area) {
+                if (item.getAttribute('data-library-cat') !== value) {
+                    item.classList.add('pagex-hide');
+                }
+            }
+        }
     },
 
     insertImage: function (e) {
@@ -1470,15 +1513,20 @@ var pagex = {
     },
 
     cloneNewIds: function (cloned) {
-        for (let item of cloned.querySelectorAll('[data-id]')) {
+        for (let item of cloned.querySelectorAll('[data-type]')) {
             let oldId = item.getAttribute('data-id'),
                 newId = this.genID(),
                 inParam = pagexLocalize.all_params[oldId],
-                style = item.querySelector('#' + oldId);
+                style = item.querySelector('#' + oldId),
+                modal = item.querySelector('[data-id="'+ oldId+'"]');
 
             if (!_.isNull(style)) {
                 style.id = newId;
                 style.innerHTML = style.innerHTML.replace(new RegExp(oldId, 'g'), newId);
+            }
+
+            if (!_.isNull(modal)) {
+                modal.setAttribute('data-id', newId);
             }
 
             item.setAttribute('data-id', newId);
@@ -1674,11 +1722,13 @@ var pagex = {
             start: function (event, ui) {
                 ui.placeholder.addClass(ui.item.attr('class'));
                 jQuery('body').addClass('pagex-sortable-start');
+                ui.item.addClass('pagex-sortable-element-start');
             },
             helper: function () {
                 return jQuery('<div class="pagex-sortable-helper"><i class="fas fa-arrows-alt"></i></div>');
             },
             stop: function (event, ui) {
+                ui.item.removeClass('pagex-sortable-element-start');
                 jQuery('body').removeClass('pagex-sortable-start');
                 that.validateEmptyElements();
             },
@@ -1688,7 +1738,6 @@ var pagex = {
         jQuery('.pagex-builder-area > [data-type="section"] > [data-type="container"] > [data-type="row"] > [data-type="column"]').sortable(sortableObj);
         jQuery('.pagex-builder-area [data-type="inner-row"] [data-type="column"]').sortable(sortableObj);
         jQuery('.pagex-modal-builder-area [data-type="column"]').sortable(sortableObj);
-
 
         // sortable columns of the inner row
         let innercolumns = jQuery('.pagex-builder-area [data-type="inner-row"]');
@@ -1914,7 +1963,7 @@ var pagex = {
     },
 
     importPostLayout: function (el) {
-        let postID = el.getAttribute('data-import-post-layout'),
+        let layout = el.getAttribute('data-import-post-layout'),
             that = this;
 
         let button_text = el.querySelector('span'),
@@ -1926,14 +1975,21 @@ var pagex = {
         jQuery.post(pagexLocalize.ajaxUrl, {
             action: 'pagex_import_post_layout',
             url: location.search.substring(1),
-            post_id: postID,
+            post_layout: layout,
             "pagex-frame": true, // skip pagex content filter
-        }, function (data) {
-            // use jQuery to run inline script if presented
-            jQuery(data.content).insertAfter(jQuery(that.currentSection));
+        }, function (response) {
+            if (!response.success) {
+                alert(response.data.content);
+                return;
+            }
 
-            if (data.params) {
-                pagexLocalize.all_params = Object.assign(pagexLocalize.all_params, JSON.parse(data.params));
+            let newData = that.genNewImportedParams(response.data);
+
+            // use jQuery to run inline script if presented
+            jQuery(newData.content).insertAfter(jQuery(that.currentSection));
+
+            if (newData.params) {
+                pagexLocalize.all_params = Object.assign(pagexLocalize.all_params, newData.params);
             }
 
             that.layoutsModal.classList.add('pagex-hide');
@@ -1949,9 +2005,45 @@ var pagex = {
                 }, 1500);
             }
 
+            that.elementSortable();
+
         }).fail(function () {
             console.error('Fail to import layout');
         });
+    },
+
+    genNewImportedParams: function (data) {
+        let content = jQuery('<div>' + data.content + '</div>'),
+            params = JSON.parse(data.params),
+            newParams = {};
+
+        content = content[0];
+
+        // check only elements only with [data-type] since modal windows also have [data-id]
+        for (let item of content.querySelectorAll('[data-type]')) {
+            let oldId = item.getAttribute('data-id'),
+                newId = this.genID(),
+                inParam = params[oldId],
+                style = item.querySelector('#' + oldId),
+                modal = item.querySelector('[data-id="'+ oldId+'"]');
+
+            if (!_.isNull(style)) {
+                style.id = newId;
+                style.innerHTML = style.innerHTML.replace(new RegExp(oldId, 'g'), newId);
+            }
+
+            if (!_.isNull(modal)) {
+                modal.setAttribute('data-id', newId);
+            }
+
+            item.setAttribute('data-id', newId);
+
+            if (!_.isUndefined(inParam)) {
+                newParams[newId] = inParam;
+            }
+        }
+
+        return {content: content.innerHTML, params: newParams};
     },
 
     pagexSetting: function (el) {
@@ -1996,6 +2088,18 @@ var pagex = {
         }, 300);
     },
 
+    export: function () {
+        jQuery.post(pagexLocalize.ajaxUrl, {
+            action: 'pagex_export_layout',
+            content: document.querySelector('.pagex-builder-area').innerHTML,
+            pagex_elements_params: JSON.stringify(pagexLocalize.all_params),
+            pagex_page_status: true
+        }, function (data) {
+            console.log(JSON.stringify({params: pagexLocalize.all_params, layout: data.data}));
+        }).fail(function () {
+            console.error('Error exporting layout');
+        });
+    },
 };
 
 pagex.validateEmptyElements();
@@ -2122,18 +2226,23 @@ window.parent.document.addEventListener('keyup', function (e) {
 
 window.parent.document.addEventListener('change', function (e) {
     if (!e.target) return;
-    if (e.target.matches('.pagex-image-sizes')) pagex.changeImageUrlSize(e);
-    if (e.target.matches('.pagex-link-control-field')) pagex.fillLinkUrl(e);
+    let el = e.target;
+    if (el.matches('.pagex-image-sizes')) pagex.changeImageUrlSize(e);
+    if (el.matches('.pagex-link-control-field')) pagex.fillLinkUrl(e);
 
-    if (e.target.matches('.pagex-control-option')) {
-        pagex.currentParam = e.target;
-        setTimeout(pagex.setFormConditions(e.target), 0);
+    if (el.matches('.pagex-control-option')) {
+        pagex.currentParam = el;
+        setTimeout(pagex.setFormConditions(el), 0);
         setTimeout(pagex.renderElement(), 100);
     }
 
+    // layout library filter
+    if (el.matches('.pagex-layouts-modal-filter-cat')) pagex.filterLibraryLayout(el.value);
+
+
     // backend
-    if (e.target.matches('#pagex-excerpt-preview-post-type')) pagex.updatePostContent();
-    if (e.target.matches('#pagex-excerpt-preview-width')) pagex.excerptPreviewWidth(e.target);
+    if (el.matches('#pagex-excerpt-preview-post-type')) pagex.updatePostContent();
+    if (el.matches('#pagex-excerpt-preview-width')) pagex.excerptPreviewWidth(el);
 });
 
 window.parent.addEventListener('colorPickerChange', function (data) {

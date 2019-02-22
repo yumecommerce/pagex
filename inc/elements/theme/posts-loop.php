@@ -63,7 +63,8 @@ function pagex_register_posts_loop_element( $elements ) {
 						'class'      => 'col-4',
 						'type'       => 'select',
 						'action'     => 'css',
-						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val] - 0.1px)}', // 0.1px fix IE
+						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val] - 0.1px)}',
+						// 0.1px fix IE
 						'responsive' => true,
 						'options'    => array(
 							// we need space before value so browsers do not change options order
@@ -247,6 +248,13 @@ function pagex_posts_loop( $atts ) {
 	$excerpt   = Pagex::get_translation_id( $data['template'], 'pagex_excerpt_tmp' );
 	$item_data = $data['layout'] == 'masonry' ? 'data-columns' : '';
 
+	$excerpt_content = get_post_field( 'post_content', $excerpt );
+
+	// if layout does not exist (deleted for example)
+	if ( ! $excerpt_content ) {
+		return __( 'Template is not set.', 'pagex' );
+	}
+
 	ob_start();
 
 	if ( have_posts() ) {
@@ -256,7 +264,7 @@ function pagex_posts_loop( $atts ) {
 			the_post();
 
 			echo '<div class="pagex-posts-item-wrapper"><div class="pagex-posts-item">';
-			echo do_shortcode( get_post_field( 'post_content', $excerpt ) );
+			echo do_shortcode( $excerpt_content );
 			echo '</div></div>';
 
 		}

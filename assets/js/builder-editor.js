@@ -2361,7 +2361,7 @@ window.parent.addEventListener('colorPickerChange', function (data) {
         },
         mouseleave: function () {
             for (const popper of document.querySelectorAll('.tippy-popper')) {
-                const instance = popper._tippy
+                const instance = popper._tippy;
 
                 if (instance.state.visible) {
                     instance.popperInstance.disableEventListeners();

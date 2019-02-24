@@ -16,6 +16,9 @@ class Pagex_Admin_Controls {
 
 		// export pagex settings
 		add_action( 'wp_ajax_pagex_export_settings', array( $this, 'ajax_pagex_export_settings' ) );
+
+		// synchronize Adobe fonts
+		add_action( 'wp_ajax_pagex_sync_adobe_fonts', array( $this, 'ajax_pagex_sync_adobe_fonts' ) );
 	}
 
 	public function admin_style() {
@@ -603,7 +606,8 @@ class Pagex_Admin_Controls {
 	 * Typography settings
 	 */
 	public function design_typography() {
-		$fonts = Pagex_Editor_Control_Attributes::get_fonts();
+		$fonts    = Pagex_Editor_Control_Attributes::get_fonts();
+		$settings = Pagex::get_settings();
 
 		$font_weights = array(
 			''     => __( 'Default', 'pagex' ),
@@ -754,8 +758,6 @@ class Pagex_Admin_Controls {
 
 		$this->make_form( $controls, array( 'design', 'google_fonts_subsets' ) );
 
-		$settings = Pagex::get_settings();
-
 		$main_font_weight = isset( $settings['design']['main_font']['google_weight'] ) ? $settings['design']['main_font']['google_weight'] : array();
 
 		$heading_font_weight = isset( $settings['design']['heading_font']['google_weight'] ) ? $settings['design']['heading_font']['google_weight'] : array();
@@ -803,6 +805,87 @@ class Pagex_Admin_Controls {
             </tr>
             </tbody>
         </table>
+
+        <br>
+        <p><?php _e( 'Custom Fonts', 'pagex' ); ?></p>
+        <p class="description"><?php _e( 'Self-hosted fonts. Once you upload your font variations, you’ll be able to choose the font inside Pagex.', 'pagex' ); ?></p>
+
+		<?php
+
+		$custom_fonts        = '';
+		$custom_fonts_weight = array_merge( array( 'normal', 'bold' ), range( 100, 900, 100 ) );
+		$custom_fonts_style  = array( 'normal', 'italic', 'oblique' );
+
+		if ( isset( $settings['design']['custom_font'] ) ) {
+			foreach ( $settings['design']['custom_font'] as $k => $font ) {
+				$custom_fonts .= '<div class="pagex-row custom-font-row"><div><label>Font Family:</label><input name="pagex_settings[design][custom_font][' . $k . '][name]" value="' . $font['name'] . '" type="text" placeholder="Font Name" data-font-id="' . $k . '"><div class="delete-font">Delete</div></div> <div class="pagex-row custom-font-variations">';
+
+				foreach ( $font['weight'] as $v_key => $v_val ) {
+					$weights = $styles = '';
+
+					foreach ( $custom_fonts_weight as $weight ) {
+						$weights .= '<option value="' . $weight . '" ' . selected( $weight, $font['weight'][ $v_key ], false ) . '>' . $weight . '</option>';
+					}
+
+					foreach ( $custom_fonts_style as $weight ) {
+						$styles .= '<option value="' . $weight . '" ' . selected( $weight, $font['style'][ $v_key ], false ) . '>' . $weight . '</option>';
+					}
+
+					$file = $font['woff'][ $v_key ];
+
+					$custom_fonts .= '<div class="pagex-row custom-font-variation"><p><label>Weight</label><select name="pagex_settings[design][custom_font][' . $k . '][weight][]">' . $weights . '</select></p><p><label>Style</label><select name="pagex_settings[design][custom_font][' . $k . '][style][]">' . $styles . '</select></p><p><label>WOFF File</label><input name="pagex_settings[design][custom_font][' . $k . '][woff][]" type="text" value="' . $file . '"><button type="button" class="button button-primary select-font-file">Select</button></p><div><button type="button" class="button delete-font-variation" title="Delete Font Variation">×</button></div></div>';
+				}
+
+				$custom_fonts .= '<button type="button" class="button add-font-variation">Add Font Variation</button></div></div>';
+			}
+		}
+
+		?>
+
+        <div class="pagex-custom-fonts"><?php echo $custom_fonts; ?></div>
+
+        <script>
+            var pagexCustomFont = '<div class="pagex-row custom-font-row"><div><label>Font Family:</label><input name="pagex_settings[design][custom_font][uniqid][name]" type="text" placeholder="Font Name" data-font-id="uniqid"><div class="delete-font">Delete</div></div> <div class="pagex-row custom-font-variations"><div class="pagex-row custom-font-variation"><p><label>Weight</label><select name="pagex_settings[design][custom_font][uniqid][weight][]"><option value="normal">normal</option><option value="bold">bold</option><option value="100">100</option><option value="200">200</option><option value="300">300</option><option value="400">400</option><option value="500">500</option><option value="600">600</option><option value="700">700</option><option value="800">800</option><option value="900">900</option></select></p><p><label>Style</label><select name="pagex_settings[design][custom_font][uniqid][style][]"><option value="normal">normal</option><option value="italic">italic</option><option value="oblique">oblique</option></select></p><p><label>WOFF File</label><input name="pagex_settings[design][custom_font][uniqid][woff][]" type="text"><button type="button" class="button button-primary select-font-file">Select</button></p><div><button type="button" class="button delete-font-variation" title="Delete Font Variation">×</button></div></div><button type="button" class="button add-font-variation">Add Font Variation</button></div></div>';
+
+            var pagexCustomFontVariation = '<div class="pagex-row custom-font-variation"><p><label>Weight</label><select name="pagex_settings[design][custom_font][uniqid][weight][]"><option value="normal">normal</option><option value="bold">bold</option><option value="100">100</option><option value="200">200</option><option value="300">300</option><option value="400">400</option><option value="500">500</option><option value="600">600</option><option value="700">700</option><option value="800">800</option><option value="900">900</option></select></p><p><label>Style</label><select name="pagex_settings[design][custom_font][uniqid][style][]"><option value="normal">normal</option><option value="italic">italic</option><option value="oblique">oblique</option></select></p><p><label>WOFF File</label><input name="pagex_settings[design][custom_font][uniqid][woff][]" type="text"><button type="button" class="button button-primary select-font-file">Select</button></p><div><button type="button" class="button delete-font-variation" title="Delete Font Variation">×</button></div></div>';
+        </script>
+
+        <div class="pagex-row">
+            <button type="button" class="button add-new-font">Add New Font</button>
+        </div>
+        <br>
+
+        <p>Adobe Fonts (Typekit)</p>
+        <p class="description"><?php _e( 'Adobe Fonts (formerly Typekit) is an online service which offers a subscription library
+            of high-quality fonts.', 'pagex' ); ?></p>
+        <br>
+
+		<?php
+		$adobe_fonts = $adobe_fonts_id = '';
+
+		if ( isset( $settings['design']['adobe_font'] ) ) {
+			$adobe_fonts_id = $settings['design']['adobe_font']['id'];
+
+			if ( $adobe_fonts_id ) {
+				$adobe_fonts_values = $settings['design']['adobe_font']['fonts'];
+				$adobe_fonts        .= __( 'The next fonts were added to library:', 'pagex' ) . ' ' . implode( ', ', $adobe_fonts_values );
+				foreach ( $adobe_fonts_values as $font ) {
+					$adobe_fonts .= '<input type="hidden" name="pagex_settings[design][adobe_font][fonts][]" value="' . $font . '">';
+				}
+			}
+		}
+		?>
+
+        <div class="adobe-fonts"><?php echo $adobe_fonts; ?></div>
+
+        <div class="pagex-row">
+            <div>
+                <label>Project ID (Kit ID)</label>
+                <input type="text" id="adobe_fonts_id" value="<?php echo $adobe_fonts_id; ?>" name="pagex_settings[design][adobe_font][id]">
+                <button type="button" class="button sync-adobe-fonts"><?php _e( 'Synchronize', 'pagex' ) ?></button>
+            </div>
+        </div>
+        <br>
 
 		<?php
 	}
@@ -1224,6 +1307,59 @@ class Pagex_Admin_Controls {
 		$settings['demo_data_imported'] = 'yes';
 
 		wp_send_json( $settings );
+	}
+
+	/**
+	 * Synchronize Adobe fonts from remote CSS file
+	 */
+	public function ajax_pagex_sync_adobe_fonts() {
+		if ( ! is_super_admin() ) {
+			wp_die();
+		}
+
+		$id = isset( $_REQUEST['id'] ) ? trim( $_REQUEST['id'] ) : null;
+
+		if ( ! $id || $id == '' ) {
+			wp_die( __( 'ID is not provided', 'pagex' ) );
+		}
+
+		$url = 'https://use.typekit.net/' . $id . '.css';
+
+		$remote_response = wp_remote_get( $url );
+		$headers         = wp_remote_retrieve_headers( $remote_response );
+		if ( ! $headers ) {
+			wp_die( __( 'No connection.', 'pagex' ) );
+		}
+
+		$remote_response_code = wp_remote_retrieve_response_code( $remote_response );
+
+		if ( $remote_response_code != '200' ) {
+			wp_die( __( 'No connection.', 'pagex' ) );
+		}
+
+		$body = wp_remote_retrieve_body( $remote_response );
+
+		preg_match_all( '/font-family:"(.*?)"/', $body, $matches );
+
+		$fonts = array();
+
+		if ( ! isset( $matches[1] ) ) {
+			wp_die( __( 'No fonts found.', 'pagex' ) );
+		}
+
+		foreach ( $matches[1] as $match ) {
+			$fonts[ $match ] = $match;
+		}
+
+		$response = __( 'The next fonts were added to library:', 'pagex' ) . ' ' . implode( ', ', $fonts );
+
+		foreach ( $fonts as $font ) {
+			$response .= '<input type="hidden" name="pagex_settings[design][adobe_font][fonts][]" value="' . $font . '">';
+		}
+
+		$response .= '<br>' . __( 'Save changes to apply new settings.', 'pagex' );
+
+		wp_send_json( $response );
 	}
 }
 

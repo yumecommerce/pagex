@@ -50,6 +50,83 @@
       font-weight: bold;
     }
   }
+
+  .custom-font-row {
+    flex-wrap: nowrap;
+    border: 1px solid #dee2e6;
+    background: #fff;
+    padding: 20px 20px 5px;
+    margin-top: -1px;
+  }
+
+  button {
+    height: 32px !important;
+    line-height: 30px !important;
+  }
+
+  .pagex-custom-fonts {
+    margin-top: 20px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  .custom-font-variations {
+    padding-left: 10px;
+    margin-right: 0 !important;
+  }
+
+  .select-font-file {
+    margin-left: 6px;
+  }
+
+  .custom-font-variation {
+    border-bottom: 1px solid #dee2e6;
+    padding-bottom: 7px;
+    margin-bottom: 15px !important;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    width: 100%;
+    margin-right: 0 !important;
+
+    :last-child {
+      margin-right: 0 !important;
+    }
+
+    input, select {
+      max-width: 120px;
+    }
+  }
+
+  .delete-font {
+    font-size: 12px;
+    color: #5f1111;
+    opacity: .5;
+    cursor: pointer;
+    margin-top: 6px;
+    width: 100%;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  .delete-font-variation {
+    margin-left: 10px;
+  }
+
+  .add-new-font {
+    margin: 20px 0 30px !important;
+  }
+  
+  .adobe-fonts {
+    margin-bottom: 20px;
+    
+    &:empty {
+      display: none;
+    }
+  }
 }
 
 .pagex-admin-settings {
@@ -102,6 +179,7 @@
   display: flex;
   flex-wrap: wrap;
   max-width: 800px;
+  line-height: 1.5;
 
   label {
     display: block;
@@ -109,7 +187,7 @@
     font-size: 13px;
   }
 
-  p {
+  > * {
     margin: 0 10px 10px 0 !important;
   }
 

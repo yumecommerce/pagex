@@ -249,7 +249,7 @@ class Pagex_Frontend {
 			return;
 		}
 
-		$body_style = array(
+		$style = array(
 			array(
 				'selector' => 'body',
 				'rules'    => array(
@@ -355,24 +355,46 @@ class Pagex_Frontend {
 			),
 		);
 
-		$style = '';
-
-		if ( $settings['design']['max_width_xl'] ) {
-			$style .= '@media (min-width: 1200px) {.container { max-width: ' . $settings['design']['max_width_xl'] . ' }}';
-		}
-
-		foreach ( $body_style as $css ) {
-			$style .= $css['selector'] . '{';
-			foreach ( $css['rules'] as $k => $v ) {
-				if ( $v != '' ) {
-					$style .= $k . ':' . $v . ';';
+		// custom fonts
+		if ( isset( $settings['design']['custom_font'] ) ) {
+			foreach ( $settings['design']['custom_font'] as $font ) {
+				foreach ( $font['weight'] as $k => $v ) {
+					$style[] = array(
+						'selector' => '@font-face',
+						'rules'    => array(
+							'font-family' => '\'' . $font['name'] . '\'',
+							'src'         => 'url(\'' . $font['woff'][ $k ] . '\') format(\'woff\')',
+							'font-weight' => $font['weight'][ $k ],
+							'font-style'  => $font['style'][ $k ],
+						)
+					);
 				}
 			}
-			$style .= '}';
 		}
 
-		if ( $style ) {
-			echo '<style class="pagex-default-style">' . $style . '</style>';
+		// adobe fonts
+		if ( isset( $settings['design']['adobe_font'] ) && $settings['design']['adobe_font']['id'] ) {
+			echo '<link rel="stylesheet" href="https://use.typekit.net/' . $settings['design']['adobe_font']['id'] . '.css">';
+		}
+
+		$css_style = '';
+
+		if ( $settings['design']['max_width_xl'] ) {
+			$css_style .= '@media (min-width: 1200px) {.container { max-width: ' . $settings['design']['max_width_xl'] . ' }}';
+		}
+
+		foreach ( $style as $css ) {
+			$css_style .= $css['selector'] . '{';
+			foreach ( $css['rules'] as $k => $v ) {
+				if ( $v != '' ) {
+					$css_style .= $k . ':' . $v . ';';
+				}
+			}
+			$css_style .= '}';
+		}
+
+		if ( $css_style ) {
+			echo '<style class="pagex-default-style">' . $css_style . '</style>';
 		}
 	}
 

@@ -1,6 +1,14 @@
 <?php
 
 class Pagex_Editor_Control_Attributes {
+	/**
+	 * Set of button params
+	 *
+	 * @param $id
+	 * @param $selector
+	 *
+	 * @return array
+	 */
 	public static function get_button_style( $id, $selector ) {
 		return array(
 			array(
@@ -83,6 +91,11 @@ class Pagex_Editor_Control_Attributes {
 		);
 	}
 
+	/**
+	 * Slider settings for any element which layout can be set as slider
+	 *
+	 * @return array
+	 */
 	public static function get_slider_params() {
 		return array(
 			array(
@@ -375,6 +388,11 @@ class Pagex_Editor_Control_Attributes {
 		);
 	}
 
+	/**
+	 * Settings of design tab for builder elements
+	 *
+	 * @return array
+	 */
 	public static function get_design_params() {
 		return array(
 			'title'  => __( 'Design', 'pagex' ),
@@ -865,8 +883,8 @@ class Pagex_Editor_Control_Attributes {
 					'type' => 'clear',
 				),
 				array(
-					'type' => 'heading',
-					'title'    => __( 'Border', 'pagex' ),
+					'type'  => 'heading',
+					'title' => __( 'Border', 'pagex' ),
 				),
 				array(
 					'id'       => 'pagex_border_style',
@@ -925,8 +943,8 @@ class Pagex_Editor_Control_Attributes {
 					),
 				),
 				array(
-					'type' => 'heading',
-					'title'    => __( 'Other', 'pagex' ),
+					'type'  => 'heading',
+					'title' => __( 'Other', 'pagex' ),
 				),
 				array(
 					'id'          => 'pagex_box_shadow',
@@ -1111,6 +1129,12 @@ class Pagex_Editor_Control_Attributes {
 		);
 	}
 
+	/**
+	 * @param $id
+	 * @param $selector
+	 *
+	 * @return array
+	 */
 	public static function get_typography_control( $id, $selector ) {
 		return array(
 			// clear to make sure option starts with a new line
@@ -1144,6 +1168,7 @@ class Pagex_Editor_Control_Attributes {
 				'selector' => '[el] ' . $selector . ' {font-weight:[val]}',
 				'options'  => array(
 					''     => __( 'Default', 'pagex' ),
+					'bold' => __( 'Bold', 'pagex' ),
 					' 100' => '100',
 					' 200' => '200',
 					' 300' => '300',
@@ -1191,9 +1216,9 @@ class Pagex_Editor_Control_Attributes {
 			),
 			array(
 				'id'       => $id . '_text_transform',
-				'title'    => __( 'Text Transform', 'pagex' ),
+				'title'    => __( 'Transform', 'pagex' ),
 				'type'     => 'select',
-				'class'    => 'col-3',
+				'class'    => 'col-2',
 				'action'   => 'css',
 				'selector' => '[el] ' . $selector . ' {text-transform: [val]}',
 				'options'  => array(
@@ -1206,9 +1231,9 @@ class Pagex_Editor_Control_Attributes {
 			),
 			array(
 				'id'       => $id . '_text_decoration',
-				'title'    => __( 'Text Decoration', 'pagex' ),
+				'title'    => __( 'Decoration', 'pagex' ),
 				'type'     => 'select',
-				'class'    => 'col-3',
+				'class'    => 'col-2',
 				'action'   => 'css',
 				'selector' => '[el] ' . $selector . ' {text-decoration: [val]}',
 				'options'  => array(
@@ -1219,9 +1244,33 @@ class Pagex_Editor_Control_Attributes {
 					'none'         => __( 'None', 'pagex' ),
 				)
 			),
+			array(
+				'id'       => $id . '_style',
+				'title'    => __( 'Style', 'pagex' ),
+				'type'     => 'select',
+				'class'    => 'col-2',
+				'action'   => 'css',
+				'selector' => '[el] ' . $selector . ' {font-style: [val]}',
+				'options'  => array(
+					''        => __( 'Default', 'pagex' ),
+					'normal'  => __( 'Normal', 'pagex' ),
+					'italic'  => __( 'Italic', 'pagex' ),
+					'oblique' => __( 'Oblique', 'pagex' ),
+				)
+			),
 		);
 	}
 
+	/**
+	 * Set of settings for icon param
+	 *
+	 * @param $id
+	 * @param $selector
+	 * @param $dynamic
+	 * @param bool $style
+	 *
+	 * @return array
+	 */
 	public static function get_icon_control( $id, $selector, $dynamic, $style = true ) {
 		$svg_param = array(
 			'id'          => $id . '_svg',
@@ -1321,6 +1370,11 @@ class Pagex_Editor_Control_Attributes {
 		return $basic_icon;
 	}
 
+	/**
+	 * List of Google fonts
+	 *
+	 * @return array
+	 */
 	public static function get_google_fonts() {
 		return array(
 			'google_fonts' => array(
@@ -2084,14 +2138,78 @@ class Pagex_Editor_Control_Attributes {
 		);
 	}
 
+	/**
+	 * Custom fonts can be set via main design settings
+	 *
+	 * @return array
+	 */
+	public static function get_custom_fonts() {
+		$settings = Pagex::get_settings();
+
+		if ( isset( $settings['design']['custom_font'] ) ) {
+			$options = array();
+
+			foreach ( $settings['design']['custom_font'] as $font ) {
+				$options[] = $font['name'];
+			}
+
+			return array(
+				'custom_fonts' => array(
+					'label'   => __( 'Custom Fonts', 'pagex' ),
+					'options' => $options
+				)
+			);
+		}
+
+		return array();
+	}
+
+	/**
+	 * Custom fonts can be set via main design settings
+	 *
+	 * @return array
+	 */
+	public static function get_adobe_fonts() {
+		$settings = Pagex::get_settings();
+
+		if ( isset( $settings['design']['adobe_font'] ) && $settings['design']['adobe_font']['id'] ) {
+			$options = array();
+
+			foreach ( $settings['design']['adobe_font']['fonts'] as $font ) {
+				$options[] = $font;
+			}
+
+			return array(
+				'adobe_fonts' => array(
+					'label'   => __( 'Adobe Fonts', 'pagex' ),
+					'options' => $options
+				)
+			);
+		}
+
+		return array();
+	}
+
+	/**
+	 * Returns all available fonts for a builder
+	 *
+	 * @return array
+	 */
 	public static function get_fonts() {
 		$default_font = array( '' => __( 'Default', 'pagex' ) );
 		$web_fonts    = self::get_web_fonts();
 		$google_fonts = self::get_google_fonts();
+		$custom_fonts = self::get_custom_fonts();
+		$adobe_fonts  = self::get_adobe_fonts();
 
-		return array_merge( $default_font, $web_fonts, $google_fonts );
+		return array_merge( $default_font, $custom_fonts, $adobe_fonts, $web_fonts, $google_fonts );
 	}
 
+	/**
+	 * Font Awesome icons
+	 *
+	 * @return array
+	 */
 	public static function get_font_awesome() {
 		$regular = array(
 			'far fa-address-book'           => 'Address Book',

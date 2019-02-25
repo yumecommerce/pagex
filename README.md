@@ -13,6 +13,7 @@ Pagex is a visual theme builder. It takes control over all theme templates and l
 - WPML support
 - Support custom post types and custom meta fields
 - Layouts and Theme Templates library
+- Advanced Typography (Google, Adobe (TypeKit), and Custom Fonts)
 
 ### Documentation
 [Pagex Documentation](https://github.com/komarovartem/pagex/wiki)

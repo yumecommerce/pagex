@@ -610,16 +610,17 @@ class Pagex_Admin_Controls {
 		$settings = Pagex::get_settings();
 
 		$font_weights = array(
-			''     => __( 'Default', 'pagex' ),
-			' 100' => '100',
-			' 200' => '200',
-			' 300' => '300',
-			' 400' => '400',
-			' 500' => '500',
-			' 600' => '600',
-			' 700' => '700',
-			' 800' => '800',
-			' 900' => '900',
+			''      => __( 'Default', 'pagex' ),
+			'bold' => __( 'Bold', 'pagex' ),
+			'100'  => '100',
+			'200'  => '200',
+			'300'  => '300',
+			'400'  => '400',
+			'500'  => '500',
+			'600'  => '600',
+			'700'  => '700',
+			'800'  => '800',
+			'900'  => '900',
 		);
 
 		$main_font_controls = array(
@@ -881,7 +882,8 @@ class Pagex_Admin_Controls {
         <div class="pagex-row">
             <div>
                 <label>Project ID (Kit ID)</label>
-                <input type="text" id="adobe_fonts_id" value="<?php echo $adobe_fonts_id; ?>" name="pagex_settings[design][adobe_font][id]">
+                <input type="text" id="adobe_fonts_id" value="<?php echo $adobe_fonts_id; ?>"
+                       name="pagex_settings[design][adobe_font][id]">
                 <button type="button" class="button sync-adobe-fonts"><?php _e( 'Synchronize', 'pagex' ) ?></button>
             </div>
         </div>

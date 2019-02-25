@@ -29,14 +29,8 @@ function pagex_register_posts_element( $elements ) {
 			'id'      => 'post_type',
 			'title'   => __( 'Type', 'pagex' ),
 			'type'    => 'select',
-			'class'   => 'col-6',
+			'class'   => 'col-12',
 			'options' => $post_types
-		),
-		array(
-			'id'    => 'title',
-			'title' => __( 'Title', 'pagex' ),
-			'type'  => 'text',
-			'class' => 'col-6',
 		),
 	);
 
@@ -245,10 +239,15 @@ function pagex_register_posts_element( $elements ) {
 					array(
 						'type' => 'row-end',
 					),
-
+				)
+			),
+			array(
+				'title'  => __( 'Title', 'pagex' ),
+				'params' => array(
 					array(
-						'type'  => 'heading',
+						'id'    => 'title',
 						'title' => __( 'Title', 'pagex' ),
+						'type'  => 'text',
 					),
 					array(
 						'id'       => 't_t',
@@ -272,8 +271,8 @@ function pagex_register_posts_element( $elements ) {
 						'class'      => 'col-4',
 						'selector'   => '[el] .pagex-posts-title {margin: [val]}',
 					),
-				)
-			),
+				),
+			)
 		),
 	);
 

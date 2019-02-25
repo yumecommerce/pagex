@@ -17,9 +17,9 @@ function pagex_wpml_shortcode_encode( $string, $encoding, $original_string ) {
 			$parts = explode( '__', $key );
 			// if repeated value
 			if ( count( $parts ) > 1 ) {
-				$output[$parts[0]][$parts[1]][$parts[2]] = $value;
+				$output[ $parts[0] ][ $parts[1] ][ $parts[2] ] = $value;
 			} else {
-				$output[$key] = $value;
+				$output[ $key ] = $value;
 			}
 		}
 
@@ -109,3 +109,54 @@ add_filter( 'wpml_pb_shortcode_decode', 'pagex_wpml_shortcode_decode', 10, 3 );
  *
  */
 add_filter( 'pods_meta_handler_get', '__return_false' );
+
+
+/**
+ * A workaround for upload validation
+ *
+ * @param $data
+ * @param $file
+ * @param $filename
+ * @param $mimes
+ *
+ * @return array
+ */
+function pagex_check_filetype_and_ext( $data, $file, $filename, $mimes ) {
+	if ( ! empty( $data['ext'] ) && ! empty( $data['type'] ) ) {
+		return $data;
+	}
+
+	$registered_file_types = array(
+		'woff' => 'font/woff|application/font-woff|application/x-font-woff|application/octet-stream',
+	);
+
+	$filetype = wp_check_filetype( $filename, $mimes );
+
+	if ( ! isset( $registered_file_types[ $filetype['ext'] ] ) ) {
+		return $data;
+	}
+
+	return array(
+		'ext'             => $filetype['ext'],
+		'type'            => $filetype['type'],
+		'proper_filename' => $data['proper_filename'],
+	);
+}
+
+add_filter( 'wp_check_filetype_and_ext', 'pagex_check_filetype_and_ext', 10, 4 );
+
+
+/**
+ * Add allowed mime types and file extensions
+ *
+ * @param $mine_types
+ *
+ * @return mixed
+ */
+function pagex_upload_mimes( $mine_types ) {
+	$mine_types['woff'] = 'font/woff|application/font-woff|application/x-font-woff|application/octet-stream';
+
+	return $mine_types;
+}
+
+add_filter( 'upload_mimes', 'pagex_upload_mimes' );

@@ -298,7 +298,6 @@ var pagex = {
                             });
                         });
                     } else if (type === 'repeater') {
-
                         // create numbers of repeater items based on saved setting
                         let repContainer = that.paramsForm.querySelector('.pagex-repeater-items'),
                             repItem = repContainer.innerHTML;
@@ -337,16 +336,33 @@ var pagex = {
                                 }
                             });
                         });
-
-
                     } else {
-                        // if responsive css inputs
-                        _.forEach(param, function (v, k) {
-                            let paramInput = that.paramsForm.querySelector('[name="' + key + '[' + k + ']"]');
-                            if (!_.isNull(paramInput)) {
-                                paramInput.value = v;
-                            }
-                        });
+                        if (_.isArray(param)) {
+                            // multiselect
+                            _.forEach(param, function (multiselectObj, k) {
+                                _.forEach(multiselectObj, function (selectValue, selectKey) {
+                                    let paramSelect = that.paramsForm.querySelector('[name="' + key + '[][' + selectKey + '][]"]');
+                                    if (!_.isNull(paramSelect)) {
+                                        for (var i = 0; i < paramSelect.options.length; i++) {
+                                            paramSelect.options[i].selected = selectValue.indexOf(paramSelect.options[i].value) >= 0;
+                                        }
+                                    }
+                                });
+                            });
+                        } else {
+                            // if responsive css inputs
+                            _.forEach(param, function (v, k) {
+                                let paramInput = that.paramsForm.querySelector('[name="' + key + '[' + k + ']"]');
+                                if (!_.isNull(paramInput)) {
+                                    if (v === 'true' || v === 'pagex-checkbox-true') {
+                                        paramInput.checked = true;
+                                    } else {
+                                        paramInput.value = v;
+                                    }
+
+                                }
+                            });
+                        }
                     }
                 } else if (type === 'checkbox' || param === 'pagex-checkbox-true') {
                     // if checkbox or custom option checkbox from link type
@@ -1224,23 +1240,23 @@ var pagex = {
         tabs.querySelectorAll('.pagex-params-tab-content')[index].classList.remove('pagex-hide');
 
         // load library layouts
-        if (e.target.matches('.pagex-layouts-modal-layouts') && ! e.target.matches('.loaded')) {
+        if (e.target.matches('.pagex-layouts-modal-layouts') && !e.target.matches('.loaded')) {
             e.target.classList.add('loaded');
             this.loadLibraryLayouts('layouts');
         }
 
-        if (e.target.matches('.pagex-layouts-modal-templates') && ! e.target.matches('.loaded')) {
+        if (e.target.matches('.pagex-layouts-modal-templates') && !e.target.matches('.loaded')) {
             e.target.classList.add('loaded');
             this.loadLibraryLayouts('templates');
         }
 
-        if (e.target.matches('.pagex-layouts-modal-excerpts') && ! e.target.matches('.loaded')) {
+        if (e.target.matches('.pagex-layouts-modal-excerpts') && !e.target.matches('.loaded')) {
             e.target.classList.add('loaded');
             this.loadLibraryLayouts('excerpts');
         }
     },
 
-    loadLibraryLayouts: function(type) {
+    loadLibraryLayouts: function (type) {
         jQuery.post(pagexLocalize.ajaxUrl, {
             action: 'pagex_get_layouts_from_library',
             type: type,
@@ -1251,7 +1267,7 @@ var pagex = {
         });
     },
 
-    filterLibraryLayout: function(value) {
+    filterLibraryLayout: function (value) {
         let area = window.parent.document.querySelectorAll('.pagex-params-tab-content:not(.pagex-hide) [data-library-cat]');
 
         for (let item of area) {
@@ -1518,7 +1534,7 @@ var pagex = {
                 newId = this.genID(),
                 inParam = pagexLocalize.all_params[oldId],
                 style = item.querySelector('#' + oldId),
-                modal = item.querySelector('[data-id="'+ oldId+'"]');
+                modal = item.querySelector('[data-id="' + oldId + '"]');
 
             if (!_.isNull(style)) {
                 style.id = newId;
@@ -2025,7 +2041,7 @@ var pagex = {
                 newId = this.genID(),
                 inParam = params[oldId],
                 style = item.querySelector('#' + oldId),
-                modal = item.querySelector('[data-id="'+ oldId+'"]');
+                modal = item.querySelector('[data-id="' + oldId + '"]');
 
             if (!_.isNull(style)) {
                 style.id = newId;

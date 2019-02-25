@@ -12,7 +12,7 @@ function pagex_register_accordion_element( $elements ) {
 	<% data.tabs.forEach( function(tab) {
 		%>
 			<div class="pagex-accordion-item">
-				<div class="pagex-accordion-item-header d-flex align-items-center trn-300 cursor-pointer pointer-events-none-holder"><div class="pagex-accordion-item-title trn-300 w-100 pagex-lang-str"><% if (tab.title && tab.title.length) { print(tab.title) } else { %>' . __( 'Title', 'pagex' ) . '<% } %></div><div class="pagex-accordion-toggle trn-300 ml-4"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-down-icon" /></svg></div></div>
+				<div class="pagex-accordion-item-header trn-300"><div class="pagex-accordion-item-title trn-300 w-100"><% if (tab.icon && tab.icon.length) { %><div class="pagex-accordion-item-icon"><% print(pagex.genIcon("icon", tab)) %></div><% } %><div class="pagex-lang-str"><% if (tab.title && tab.title.length) { print(tab.title) } else { %>' . __( 'Title', 'pagex' ) . '<% } %></div></div><div class="pagex-accordion-toggle trn-300 ml-4"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-down-icon" /></svg></div></div>
 				<div class="pagex-accordion-item-content-wrapper"><div class="pagex-accordion-item-content pagex-inner-row-holder"><% if (tab.content && tab.content.length) { print(tab.content) } else { %><div class="row" data-id="<%= pagex.genID() %>" data-type="inner-row"><div class="col" data-id="<%= pagex.genID() %>" data-type="column"></div></div><% } %></div></div>
 			</div>
 		<%
@@ -38,7 +38,14 @@ function pagex_register_accordion_element( $elements ) {
 							array(
 								'id'    => 'title',
 								'title' => __( 'Title', 'pagex' ),
+								'class' => 'col pagex-repeater-value',
 								'type'  => 'text',
+							),
+							array(
+								'id'       => 'icon',
+								'title'    => __( 'Icon', 'pagex' ),
+								'selector' => '.pagex-accordion-item-icon',
+								'type'     => 'icon',
 							),
 							array(
 								'id'       => 'content',
@@ -92,7 +99,7 @@ function pagex_register_accordion_element( $elements ) {
 					),
 					array(
 						'id'         => 'box_shadow_hover',
-						'title'      => __( 'Box Shadow', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'      => __( 'Box Shadow on Hover', 'pagex' ),
 						'type'       => 'text',
 						'action'     => 'css',
 						'responsive' => true,
@@ -150,7 +157,7 @@ function pagex_register_accordion_element( $elements ) {
 					),
 					array(
 						'id'       => 'bg_hover',
-						'title'    => __( 'Background Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'    => __( 'Background Color on Hover', 'pagex' ),
 						'class'    => 'col-8',
 						'type'     => 'background',
 						'action'   => 'css',
@@ -166,11 +173,48 @@ function pagex_register_accordion_element( $elements ) {
 					),
 					array(
 						'id'       => 'border_color_hover',
-						'title'    => __( 'Border Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'    => __( 'Border Color on Hover', 'pagex' ),
 						'class'    => 'col-8',
 						'type'     => 'background',
 						'action'   => 'css',
 						'selector' => '[el] .pagex-accordion-item-header:hover {border-color: [val]}',
+					),
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Icon', 'pagex' ),
+					),
+					array(
+						'id'         => 'sd',
+						'title'      => __( 'Size', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'class'      => 'col-6',
+						'selector'   => '[el] .pagex-accordion-item-icon .pagex-icon {width: [val]; height: [val]; font-size: [val]}',
+					),
+					array(
+						'id'       => 'df',
+						'title'    => __( 'Margin', 'pagex' ),
+						'type'     => 'dimension',
+						'class'    => 'col-6',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-accordion-item-icon {margin: [val]}',
+					),
+					array(
+						'id'       => 'fg',
+						'title'    => __( 'Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-accordion-item-icon {color: [val]}',
+					),
+					array(
+						'id'       => 'gh',
+						'title'    => __( 'Color on Hover', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-accordion-item-header:hover .pagex-accordion-item-icon {color: [val]}',
 					),
 
 					array(
@@ -248,7 +292,7 @@ function pagex_register_accordion_element( $elements ) {
 					),
 					array(
 						'id'       => 'bg_toggle_hover',
-						'title'    => __( 'Background Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'    => __( 'Background Color on Hover', 'pagex' ),
 						'class'    => 'col-8',
 						'type'     => 'background',
 						'action'   => 'css',

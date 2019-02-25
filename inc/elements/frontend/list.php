@@ -167,7 +167,7 @@ function pagex_register_list_element( $elements ) {
 					),
 					array(
 						'id'       => 'as',
-						'title'    => __( 'Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'    => __( 'Color on Hover', 'pagex' ),
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
@@ -205,7 +205,7 @@ function pagex_register_list_element( $elements ) {
 					),
 					array(
 						'id'       => 'gh',
-						'title'    => __( 'Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
+						'title'    => __( 'Color on Hover', 'pagex' ),
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',

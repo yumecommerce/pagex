@@ -189,7 +189,7 @@ function pagex_image_gallery( $atts ) {
 		$meta = array();
 		foreach ( $data['images'] as $image ) {
 			$image_id     = attachment_url_to_postid( $image['image'] );
-			$meta[]['ID'] = $image_id;
+			$meta[] = $image_id;
 		}
 	} else {
 		$meta = pagex_get_custom_meta_value( $data['meta_key'], false );
@@ -214,11 +214,9 @@ function pagex_image_gallery( $atts ) {
 	foreach ( $meta as $k => $image ) {
 		echo '<div class="' . $item_wrapper_class . '">';
 		echo '<div class="' . $item_class . '" data-gallery-item="' . intval( $k + 1 ) . '">';
-		if ( is_array( $image ) && isset( $image['ID'] ) ) {
-			echo wp_get_attachment_image( $image['ID'], $data['size'] );
-			if ( $data['lightbox'] ) {
-				$lightbox_gallery[] = wp_get_attachment_image( $image['ID'], 'full' );
-			}
+		echo wp_get_attachment_image( $image, $data['size'] );
+		if ( $data['lightbox'] ) {
+			$lightbox_gallery[] = wp_get_attachment_image( $image, 'full' );
 		}
 		echo '</div>';
 		echo '</div>';
@@ -228,6 +226,7 @@ function pagex_image_gallery( $atts ) {
 	if ( $data['layout'] == 'pagex_slider' ) {
 		echo '<div class="swiper-pagination pagex-slider-pagination"></div><div class="swiper-button-prev pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-left-icon" /></svg></div><div class="swiper-button-next pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-right-icon" /></svg></div>';
 	}
+
 	echo '</div>';
 
 	if ( $lightbox_gallery ) {
@@ -246,9 +245,6 @@ function pagex_image_gallery( $atts ) {
 			'class'   => 'pagex-image-lightbox-window'
 		) );
 	}
-
-
-	//var_dump();
 
 	return ob_get_clean();
 }

@@ -87,10 +87,12 @@ function pagex_register_list_element( $elements ) {
 						'action'     => 'class',
 						'selector'   => '.pagex-list-align',
 						'options'    => array(
-							''                            => __( 'Default', 'pagex' ),
-							'justify-content[pref]start'  => __( 'Left', 'pagex' ),
-							'justify-content[pref]center' => __( 'Center', 'pagex' ),
-							'justify-content[pref]end'    => __( 'Right', 'pagex' ),
+							''                             => __( 'Default', 'pagex' ),
+							'justify-content[pref]start'   => __( 'Left', 'pagex' ),
+							'justify-content[pref]center'  => __( 'Center', 'pagex' ),
+							'justify-content[pref]end'     => __( 'Right', 'pagex' ),
+							'justify-content[pref]between' => __( 'Between', 'pagex' ),
+							'justify-content[pref]around'  => __( 'Around', 'pagex' ),
 						)
 					),
 

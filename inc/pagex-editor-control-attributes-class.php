@@ -407,7 +407,7 @@ class Pagex_Editor_Control_Attributes {
 					'type'     => 'dimension',
 					'class'    => 'col-6',
 					'action'   => 'css',
-					'selector' => '[el] {padding: [val]}',
+					'selector' => '[el] {padding: [val] !important}', // important to override no-gutter in row columns padding
 				),
 				array(
 					'id'       => 'pagex_margin',
@@ -417,7 +417,6 @@ class Pagex_Editor_Control_Attributes {
 					'action'   => 'css',
 					'selector' => '[el] {margin: [val] !important}',
 				),
-
 				array(
 					'id'         => 'pagex_display',
 					'title'      => __( 'Display', 'pagex' ),

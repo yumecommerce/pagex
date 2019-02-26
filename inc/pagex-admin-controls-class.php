@@ -610,7 +610,7 @@ class Pagex_Admin_Controls {
 		$settings = Pagex::get_settings();
 
 		$font_weights = array(
-			''      => __( 'Default', 'pagex' ),
+			''     => __( 'Default', 'pagex' ),
 			'bold' => __( 'Bold', 'pagex' ),
 			'100'  => '100',
 			'200'  => '200',

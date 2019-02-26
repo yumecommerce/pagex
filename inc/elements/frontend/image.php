@@ -134,14 +134,14 @@ function pagex_register_image_element( $elements ) {
 						)
 					),
 					array(
-						'id'       => 'fw',
-						'type'     => 'checkbox',
-						'title'    => __( 'Full Width', 'pagex' ),
-						'label'    => __( 'Make Image Full Width', 'pagex' ),
-						'description'   => __( 'For some image dimensions and aspect ratios you need to set full width option', 'pagex' ),
-						'action'   => 'css',
-						'value'    => '100%',
-						'selector' => '[el] img {width: [val] !important; height: auto !important;}',
+						'id'          => 'fw',
+						'type'        => 'checkbox',
+						'title'       => __( 'Full Width', 'pagex' ),
+						'label'       => __( 'Make Image Full Width', 'pagex' ),
+						'description' => __( 'For some image dimensions and aspect ratios you need to set full width option', 'pagex' ),
+						'action'      => 'css',
+						'value'       => '100%',
+						'selector'    => '[el] img {width: [val] !important; height: auto !important;}',
 					),
 					array(
 						'id'         => 'zx',
@@ -220,7 +220,7 @@ function pagex_image( $atts ) {
 					$image = wp_get_attachment_image( $image_id, $data['size'] );
 				} else {
 					// in case direct src like avatars
-					$image = '<img src="'.$meta.'">';
+					$image = '<img src="' . $meta . '">';
 				}
 			}
 		}
@@ -248,7 +248,7 @@ function pagex_image( $atts ) {
 	}
 
 	if ( $image && $data['link'] ) {
-		if ( $data['link-dynamic'] ) {
+		if ( isset( $data['link-dynamic'] ) ) {
 			$dynamic_href = pagex_dynamic_link( array( $data['link-dynamic'] ) );
 			$link         = preg_replace( '/href=".*?"/m', 'href="' . $dynamic_href . '"', $data['link'] );
 		} else {

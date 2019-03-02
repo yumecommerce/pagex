@@ -75,6 +75,21 @@ function pagex_register_post_title_element( $elements ) {
 						'selector' => '[el] .pagex-post-title:hover {color: [val]}',
 					),
 					array(
+						'id'       => 'wq',
+						'title'    => __( 'Text Decoration on Hover', 'pagex' ),
+						'type'     => 'select',
+						'class'    => 'col-4',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-post-title:hover {text-decoration: [val]}',
+						'options'  => array(
+							''             => __( 'Default', 'pagex' ),
+							'line-through' => __( 'Line-through', 'pagex' ),
+							'overline'     => __( 'Overline', 'pagex' ),
+							'underline'    => __( 'Underline', 'pagex' ),
+							'none'         => __( 'None', 'pagex' ),
+						)
+					),
+					array(
 						'type'     => 'clear',
 					),
 

@@ -248,13 +248,17 @@ function pagex_image( $atts ) {
 	}
 
 	if ( $image && $data['link'] ) {
+		$image_class = 'pagex-image-link';
+
 		if ( isset( $data['link-dynamic'] ) ) {
 			$dynamic_href = pagex_dynamic_link( array( $data['link-dynamic'] ) );
 			$link         = preg_replace( '/href=".*?"/m', 'href="' . $dynamic_href . '"', $data['link'] );
 		} else {
-			$link = $data['link'];
+			$link         = $data['link'];
+			$image_class .= ' pagex-static-link';
 		}
-		$image = '<a ' . $link . ' class="pagex-image-link">' . $image . '</a>';
+
+		$image = '<a ' . $link . ' class="' . $image_class . '">' . $image . '</a>';
 	}
 
 	if ( $image ) {

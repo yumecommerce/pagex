@@ -73,8 +73,7 @@
   color: #fff;
   line-height: 1;
   border: 0 solid transparent;
-  cursor: pointer;
-  display: flex;
+  display: inline-flex;
   justify-content: center;
   align-items: center;
   transition: .3s;
@@ -91,6 +90,11 @@
   &.order-2 {
     margin: 0 0 0 10px;
   }
+}
+
+.pagex-button-link {
+  width: 100%;
+  display: block;
 }
 
 .pagex-modal-trigger {
@@ -614,7 +618,7 @@ body .pagex-modal {
     border-top-width: 0 !important;
     border-bottom-width: 0 !important;
     border-right-width: 0 !important;
-    width: 1px !important;
+    width: 1px;
     margin: 0 10px;
   }
 }
@@ -1103,22 +1107,6 @@ body .pagex-modal {
 
   .pagex-modal-window-close {
     display: none;
-  }
-}
-
-/* Breadcrumb */
-
-.pagex-breadcrumb {
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 13px;
-
-  .delimiter {
-    margin: 0 5px;
-  }
-
-  a {
-    text-decoration: none;
   }
 }
 

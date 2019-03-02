@@ -63,21 +63,49 @@ class Pagex_Frontend {
 	}
 
 	/**
-	 * Add frontend classes for a frontend
+	 * Add frontend classes
 	 *
 	 * @param $classes
 	 *
 	 * @return array
 	 */
 	public function builder_classes( $classes ) {
-		if ( ! $settings = Pagex::get_settings() ) {
-			return;
+		$classes[] = 'pagex-' . PAGEX_VERSION;
+
+		// check for visually impaired accessibility module [pagex_visually_impaired_module]
+		if ( isset( $_COOKIE['pagex_visually_impaired'] ) ) {
+			$classes[] = 'pagex-visually-impaired-is-on';
+			// font size
+			if ( isset( $_COOKIE['pagex-vi-fs-is-big'] ) ) {
+				$classes[] = 'pagex-vi-fs-is-big';
+			}
+			if ( isset( $_COOKIE['pagex-vi-fs-is-huge'] ) ) {
+				$classes[] = 'pagex-vi-fs-is-huge';
+			}
+
+			// main color
+			if ( isset( $_COOKIE['pagex-vi-cl-is-bw'] ) ) {
+				$classes[] = 'pagex-vi-cl-is-bw';
+			}
+			if ( isset( $_COOKIE['pagex-vi-cl-is-bb'] ) ) {
+				$classes[] = 'pagex-vi-cl-is-bb';
+			}
+
+			// if images are off
+			if ( isset( $_COOKIE['pagex-vi-img-is-off'] ) ) {
+				$classes[] = 'pagex-vi-img-is-off';
+			}
 		}
 
-		$use_preloader   = isset( $settings['design']['preloader']['active'] );
-		$preloader_pages = $settings['design']['preloader']['pages'];
+		if ( ! $settings = Pagex::get_settings() ) {
+			return $classes;
+		}
+
+		$use_preloader = isset( $settings['design']['preloader']['active'] );
 
 		if ( $use_preloader ) {
+			$preloader_pages = $settings['design']['preloader']['pages'];
+
 			if ( ( $preloader_pages == 'main' && is_front_page() ) || $preloader_pages == 'all' ) {
 				if ( ! Pagex::is_frontend_builder_active() ) {
 					$classes[] = 'pagex-preloader-body';
@@ -85,8 +113,6 @@ class Pagex_Frontend {
 				}
 			}
 		}
-
-		$classes[] = 'pagex-' . str_replace( '.', '-', PAGEX_VERSION );
 
 		return $classes;
 	}
@@ -212,6 +238,31 @@ class Pagex_Frontend {
 		// remove contenteditable attribute
 		foreach ( $html->find( '.pagex-content-editable' ) as $element ) {
 			$element->contenteditable = null;
+		}
+
+		// replace static href with translated one
+		if ( defined( 'ICL_LANGUAGE_CODE' ) ) {
+			$site_url = get_site_url();
+			global $sitepress;
+			$default_lang = $sitepress->get_default_language();
+			// only if set language which is different from default one
+			if ( $default_lang != ICL_LANGUAGE_CODE ) {
+				foreach ( $html->find( '.pagex-static-link' ) as $element ) {
+					// do not filter dynamic links since they already have the right url
+					if ( $element->{'data-dynamic-link'} ) {
+						continue;
+					}
+
+					$href = $element->{'href'};
+					if ( $site_url == rtrim( $href, '/' ) && get_option( 'page_on_front' ) ) {
+						// resole url for main page since it will not be filtered via wpml
+						$element->{'href'} = apply_filters( 'wpml_permalink', get_permalink( get_option( 'page_on_front' ) ), ICL_LANGUAGE_CODE, true );
+					} else {
+						// set true to make wpml resolve the object behind the URL and try to find the matching translation's URL.
+						$element->{'href'} = apply_filters( 'wpml_permalink', $href, ICL_LANGUAGE_CODE, true );
+					}
+				}
+			}
 		}
 
 		$html->save();
@@ -384,13 +435,15 @@ class Pagex_Frontend {
 		}
 
 		foreach ( $style as $css ) {
-			$css_style .= $css['selector'] . '{';
+			$design_style = '';
 			foreach ( $css['rules'] as $k => $v ) {
 				if ( $v != '' ) {
-					$css_style .= $k . ':' . $v . ';';
+					$design_style .= $k . ':' . $v . ';';
 				}
 			}
-			$css_style .= '}';
+			if ( $design_style ) {
+				$css_style .= $css['selector'] . '{' . $design_style . '}';
+			}
 		}
 
 		if ( $css_style ) {

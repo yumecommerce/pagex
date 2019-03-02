@@ -433,7 +433,7 @@ function pagex_post_data( $atts ) {
 				}
 				break;
 			case 'post_meta':
-				$meta = isset($v['post_meta_key']) ? pagex_get_custom_meta_value( $v['post_meta_key'] ) : '';
+				$meta = isset( $v['post_meta_key'] ) ? pagex_get_custom_meta_value( $v['post_meta_key'] ) : '';
 
 				if ( $meta ) {
 					$item .= $meta;
@@ -457,7 +457,7 @@ function pagex_post_data( $atts ) {
 			$item = '<div class="pagex-post-data-value">' . $item . '</div>';
 			if ( $v['before'] ) {
 				$v['before'] = $data['tag'] ? '<' . $data['tag'] . ' class="pagex-post-data-wrapper-tag">' . $v['before'] . '</' . $data['tag'] . '>' : $v['before'];
-				$item = '<div class="pagex-post-data-prefix">' . $v['before'] . '</div> ' . $item;
+				$item        = '<div class="pagex-post-data-prefix">' . $v['before'] . '</div> ' . $item;
 			}
 
 			if ( $v['icon'] ) {
@@ -469,13 +469,16 @@ function pagex_post_data( $atts ) {
 
 
 			if ( $v['link'] && $v['type'] != 'taxonomy' ) {
-				if ( $v['link-dynamic'] ) {
+				$a_class = 'pagex-post-data-link';
+
+				if ( isset( $v['link-dynamic'] ) ) {
 					$dynamic_href = pagex_dynamic_link( array( $v['link-dynamic'] ) );
 					$link         = preg_replace( '/href=".*?"/m', 'href="' . $dynamic_href . '"', $v['link'] );
 				} else {
-					$link = $v['link'];
+					$link    = $v['link'];
+					$a_class .= ' pagex-static-link';
 				}
-				$item = '<a ' . $link . ' class="pagex-post-data-link">' . $item . '</a>';
+				$item = '<a ' . $link . ' class="' . $a_class . '">' . $item . '</a>';
 			}
 
 			$html .= '<div class="pagex-post-data-item pagex-post-data-' . $v['type'] . '-type">' . $item . '</div>';

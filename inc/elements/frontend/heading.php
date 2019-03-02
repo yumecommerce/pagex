@@ -8,7 +8,7 @@
  * @return array
  */
 function pagex_register_heading_element( $elements ) {
-	$template = '<% if (data.link != "") { %><a <%= data.link %>> <% } %><<%= data.tag %> class="pagex-heading pagex-content-editable pagex-lang-str" contenteditable="true"><% if (data.content && data.content.length) { print(data.content) } else { print("' . __( 'Heading or small paragraph', 'pagex' ) . '")  } %></<%= data.tag %>><% if (data.link != "") { %></a><% } %>';
+	$template = '<% if (data.link != "") { %><a class="pagex-static-link" <%= data.link %>> <% } %><<%= data.tag %> class="pagex-heading pagex-content-editable pagex-lang-str" contenteditable="true"><% if (data.content && data.content.length) { print(data.content) } else { print("' . __( 'Heading or small paragraph', 'pagex' ) . '")  } %></<%= data.tag %>><% if (data.link != "") { %></a><% } %>';
 
 	$elements[] = array(
 		'id'          => 'heading',

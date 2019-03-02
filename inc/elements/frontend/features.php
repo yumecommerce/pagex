@@ -14,7 +14,7 @@ function pagex_register_features_element( $elements ) {
 		<% data.features.forEach( function(feature, index) { %>
 			<div class="pagex-feature-item-wrapper" <% if (data.anim) { %> data-animate="<%= data.anim %>" <% } %> <% if (data.anim) { %> data-animate-delay="<% if (index == 0) { print(data.anim_delay) } else { data.anim_delay = data.anim_delay * 1.5; print(data.anim_delay) } %>" <% } %>>
 				<div class="pagex-feature-item">
-					<% if (data.link_block && feature.link) { %><a class="pagex-feature-item-link-block" <%= feature.link %>></a><% } %>
+					<% if (data.link_block && feature.link) { %><a class="pagex-feature-item-link-block pagex-static-link" <%= feature.link %>></a><% } %>
 					<% if (data.position == "title") { %> <div class="pagex-feature-item-content"> <% } %>
 					<% if (feature.icon && feature.icon.length) { %>
 					<div class="pagex-feature-item-icon-wrapper"><div class="pagex-feature-item-icon"><% print(pagex.genIcon("icon", feature)) %></div></div>

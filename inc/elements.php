@@ -54,6 +54,7 @@ foreach (
 		'column',
 		'container',
 		'countdown',
+		'child_pages',
 		'document_title',
 		'features',
 		'form',
@@ -102,6 +103,7 @@ function pagex_register_bundled_dynamic_callbacks( $callbacks ) {
 	$dynamic_callbacks = array(
 		'pagex_archive_data',
 		'pagex_breadcrumb',
+		'pagex_child_pages',
 		'pagex_document_title',
 		'pagex_form',
 		'pagex_google_maps',

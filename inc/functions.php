@@ -317,7 +317,7 @@ function pagex_get_post_custom_keys( $type = 'text' ) {
 		) );
 
 		foreach ( $all_pods as $group ) {
-			$options = [];
+			$options = array();
 
 			foreach ( $group['fields'] as $field ) {
 				if ( $type != 'all' ) {

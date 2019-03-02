@@ -8,7 +8,7 @@
  * @return array
  */
 function pagex_register_icon_element( $elements ) {
-	$template = '<% if (data.link != "") { %><a <%= data.link %>> <% } %><div class="pagex-icon-element d-flex"><div class="pagex-icon-wrapper d-flex trn-300"><% if (data.icon && data.icon.length) { print(pagex.genIcon("icon", data)) } else { print("<i class=\'fas fa-thumbs-up\'></i>")  } %></div><% if (data.link != "") { print("</a>") } %>';
+	$template = '<% if (data.link != "") { %><a class="pagex-static-link" <%= data.link %>> <% } %><div class="pagex-icon-element d-flex"><div class="pagex-icon-wrapper d-flex trn-300"><% if (data.icon && data.icon.length) { print(pagex.genIcon("icon", data)) } else { print("<i class=\'fas fa-thumbs-up\'></i>")  } %></div><% if (data.link != "") { print("</a>") } %>';
 
 	$elements[] = array(
 		'id'          => 'icon',

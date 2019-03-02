@@ -52,6 +52,7 @@ function pagex_register_tabs_element( $elements ) {
 							array(
 								'id'    => 'title',
 								'title' => __( 'Title', 'pagex' ),
+								'class' => 'col pagex-repeater-value',
 								'type'  => 'text',
 							),
 							array(

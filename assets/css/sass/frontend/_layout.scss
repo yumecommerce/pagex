@@ -241,3 +241,66 @@ textarea.form-control {
   }
 }
 
+/* Visually Impaired Accessibility */
+
+.pagex-visually-impaired-module {
+  font-size: 16px !important;
+
+  .btn {
+    font-weight: bold;
+    height: 40px;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #000;
+
+    &.active {
+      box-shadow: 0 0 0 1px #000 inset, 0 0 0 3px #fff inset, 0 0 0 6px #000 inset;
+    }
+  }
+}
+
+body.pagex-visually-impaired-is-on {
+  word-break: break-word;
+  color: #000 !important;
+  font-size: 15px !important;
+
+  .pagex-bc {
+    display: none;
+  }
+
+  &.pagex-vi-img-is-off {
+    img, .pagex-icon, .pagex-image-ar {
+      display: none !important;
+    }
+  }
+
+  * {
+    color: inherit !important;
+    font-size: inherit !important;
+    background: transparent !important;
+    transition: none !important;
+  }
+
+  h1, h2 {
+    font-size: 50px !important;
+  }
+
+  &.pagex-vi-fs-is-big {
+    font-size: 18px !important;
+  }
+
+  &.pagex-vi-fs-is-huge {
+    font-size: 22px !important;
+  }
+
+  &.pagex-vi-cl-is-bw {
+    background: #0a0a0a;
+    color: #fff !important;
+  }
+
+  &.pagex-vi-cl-is-bb {
+    background: #9dd1ff;
+    color: #14305e !important;
+  }
+}

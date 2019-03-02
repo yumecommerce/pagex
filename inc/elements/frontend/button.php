@@ -12,7 +12,7 @@ function pagex_register_button_element( $elements ) {
 		var link = data.link && data.link.length && data.modal != "true" ? true : false;
 	%>
 	<div class="pagex-button-wrapper">
-	<% if (link) print("<a class=\'pagex-button-link\' " + data.link + ">");  %>
+	<% if (link) print("<a class=\'pagex-button-link pagex-static-link\' " + data.link + ">");  %>
 		<div class="pagex-button <% if (data.modal == "true") { %>pagex-modal-trigger<% } %>">
 			<% if (data.icon && data.icon.length) { %>
 			<div class="pagex-button-icon"><%= pagex.genIcon("icon", data) %></div>

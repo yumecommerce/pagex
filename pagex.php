@@ -70,6 +70,9 @@ class Pagex {
 		// control WordPress templates
 		include_once( PAGEX_DIR_NAME . '/inc/pagex-template-manager-class.php' );
 
+		// mega menu
+		include_once( PAGEX_DIR_NAME . '/inc/mega-menu/pagex-mega-menu-class.php' );
+
 		// coming soon
 		include_once( PAGEX_DIR_NAME . '/inc/coming-soon/pagex-coming-soon-class.php' );
 

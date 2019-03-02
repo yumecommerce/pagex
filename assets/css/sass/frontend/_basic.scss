@@ -188,5 +188,9 @@ input:focus {
 table {
   @extend .table;
   border-spacing: 0;
+
+  p {
+    margin: 0;
+  }
 }
 

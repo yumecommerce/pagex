@@ -11,7 +11,7 @@ function pagex_register_list_element( $elements ) {
 	$template = '<div class="pagex-list pagex-list-align d-flex flex-wrap">
 		<% data.items.forEach( function(item, index) { %>
 			<div class="pagex-list-item pagex-list-align">
-				<% if (item.link != "") { print("<a "+item.link+"></a>") } %>
+				<% if (item.link != "") { print("<a class=\"pagex-static-link\" "+item.link+"></a>") } %>
 				<% if (item.icon && item.icon.length) { %>
 				<div class="pagex-list-item-icon">
 					<% print(pagex.genIcon("icon", item)) %>
@@ -125,7 +125,6 @@ function pagex_register_list_element( $elements ) {
 					array(
 						'id'          => 'ty',
 						'title'       => __( 'Width', 'pagex' ),
-						'description' => __( 'Width of divider for vertical layout.', 'pagex' ),
 						'type'        => 'text',
 						'action'      => 'css',
 						'responsive'  => true,
@@ -174,6 +173,21 @@ function pagex_register_list_element( $elements ) {
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] .pagex-list-item:hover .pagex-list-item-title {color: [val]}',
+					),
+					array(
+						'id'       => 'wq',
+						'title'    => __( 'Text Decoration on Hover', 'pagex' ),
+						'type'     => 'select',
+						'class'    => 'col-4',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-list-item:hover .pagex-list-item-title {text-decoration: [val]}',
+						'options'  => array(
+							''             => __( 'Default', 'pagex' ),
+							'line-through' => __( 'Line-through', 'pagex' ),
+							'overline'     => __( 'Overline', 'pagex' ),
+							'underline'    => __( 'Underline', 'pagex' ),
+							'none'         => __( 'None', 'pagex' ),
+						)
 					),
 
 					array(

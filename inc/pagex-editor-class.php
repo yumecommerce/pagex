@@ -56,7 +56,7 @@ class Pagex_Editor {
 				'all_items'      => __( 'Layout Builder', 'pagex' ),
 			),
 			'public'              => true,
-			'show_in_nav_menus'   => false,
+			'show_in_nav_menus'   => true,
 			'show_in_admin_bar'   => true,
 			'query_var'           => true,
 			'show_ui'             => true,

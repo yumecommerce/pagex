@@ -255,7 +255,8 @@ body.pagex-preview-mode-hide-controls .pagex-options {
 
 body:not(.pagex-preview-mode) {
   .pagex-section-hover {
-    z-index: 20 !important;
+    // bigger than pagex-section-position classes
+    z-index: 100 !important;
 
     .pagex-shape-above {
       z-index: 8 !important;
@@ -263,7 +264,15 @@ body:not(.pagex-preview-mode) {
   }
 }
 
-/* change position of options for elements with repeater */
+// to fit options in the center; default for nav_menu is static
+[data-type="nav_menu"] {
+  > .pagex-options {
+    top: auto !important;
+    bottom: auto !important;
+  }
+}
+
+// change position of options for elements with repeater
 [data-type="accordion"] > .pagex-options,
 [data-type="slider"] > .pagex-options,
 [data-type="tabs"] > .pagex-options {

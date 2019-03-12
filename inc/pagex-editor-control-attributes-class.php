@@ -407,7 +407,8 @@ class Pagex_Editor_Control_Attributes {
 					'type'     => 'dimension',
 					'class'    => 'col-6',
 					'action'   => 'css',
-					'selector' => '[el] {padding: [val] !important}', // important to override no-gutter in row columns padding
+					'selector' => '[el] {padding: [val] !important}',
+					// important to override no-gutter in row columns padding
 				),
 				array(
 					'id'       => 'pagex_margin',
@@ -1092,12 +1093,13 @@ class Pagex_Editor_Control_Attributes {
 					'class' => 'col-4',
 				),
 				array(
-					'id'       => 'pagex_z_index',
-					'title'    => 'Z-Index',
-					'type'     => 'number',
-					'class'    => 'col-4',
-					'action'   => 'css',
-					'selector' => '[el] {z-index: [val]}',
+					'id'          => 'pagex_z_index',
+					'title'       => 'Z-Index',
+					'description' => __( 'Default is 10', 'pagex' ),
+					'type'        => 'number',
+					'class'       => 'col-4',
+					'action'      => 'css',
+					'selector'    => '[el] {z-index: [val]}',
 				),
 				array(
 					'id'          => 'pagex_custom_css',
@@ -1274,7 +1276,7 @@ class Pagex_Editor_Control_Attributes {
 		$svg_param = array(
 			'id'          => $id . '_svg',
 			'title'       => __( 'Icon HTML Code', 'pagex' ),
-			'description' => __( 'Insert inline SVG code or inline HTML with encoded image. If you wish SVG inherits color from current settings add attribute fill="currentColor" to each SVG path.', 'pagex' ),
+			'description' => __( 'Insert inline SVG code or inline HTML with encoded image. If you wish SVG inherits color from element settings add attribute fill="currentColor" to each SVG path.', 'pagex' ),
 			'type'        => 'textarea',
 			'condition'   => array(
 				$id => array( 'svg' )

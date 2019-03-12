@@ -256,7 +256,7 @@ body .pagex-modal {
   box-shadow: 0 4px 30px rgba(0, 0, 0, .17);
   border-radius: 6px;
   pointer-events: auto;
-  transform: translate3d(0,0,0);
+  transform: translate3d(0, 0, 0);
   transition: .3s;
   cursor: auto;
 }
@@ -810,23 +810,19 @@ body .pagex-modal {
   margin: 0;
   padding: 0;
   line-height: normal;
-  position: relative;
   font-size: 14px;
 
-  a {
+  .nav-link {
     color: #95979a;
     border: 0 solid #95979a;
-    padding: 6px 0;
     display: flex;
     align-items: center;
     transition: 200ms;
-    justify-content: space-between;
   }
 
-  li {
+  .menu-item {
     position: relative;
     display: block;
-    list-style: none;
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -843,14 +839,19 @@ body .pagex-modal {
       }
     }
 
-    ul {
+    .sub-menu {
       display: block;
       min-width: 200px;
+      width: 100%;
       margin: 0;
       padding: 0;
     }
 
     &.menu-item-has-children > a {
+
+      span {
+        padding-right: 15px;
+      }
 
       &[href="#"] {
         pointer-events: none;
@@ -861,66 +862,54 @@ body .pagex-modal {
         display: block;
         width: 6px;
         height: 6px;
-        margin-left: 15px;
+        margin-left: auto;
         border-bottom: 1px solid;
         border-right: 1px solid;
         transform: rotate(45deg);
-        transform-origin: top;
+        transform-origin: center;
+        position: relative;
+        right: 1px; // fix overflow issue
+        flex: 0 0 auto;
+        transition: 200ms;
       }
     }
   }
 }
 
-// dropdown layout also mobile menu by default
-.pagex-nav-menu-dropdown > ul {
-  li {
-    width: 100%;
+// static position to spread the width for mega menu items
+[data-type="nav_menu"] {
+  position: static;
 
-    &.menu-item-has-children {
-      > a {
-        pointer-events: none;
-      }
-    }
+  > .element-wrap {
+    position: static;
+  }
+}
 
-    ul {
-      text-indent: 15px;
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      transition: 200ms 50ms;
+.pagex-nav-item-icon {
+  margin-right: 15px;
+}
 
-      ul {
-        text-indent: 30px;
-        ul {
-          text-indent: 45px;
-          ul {
-            text-indent: 55px;
-            ul {
-              text-indent: 65px;
-            }
-          }
-        }
-      }
-    }
+.pagex-nav-menu-horizontal {
+  .has-mega-menu:not(.mega-menu-custom-width) {
+    position: static;
+  }
 
-    // open sub menu by click on li.menu-item-has-children
-    &.pagex-menu-nav-active {
-      > ul {
-        max-height: 400px;
-        opacity: 1;
-      }
+  .mega-menu-position-right {
+    > ul {
+      right: 0;
+      left: auto;
     }
   }
 }
 
 // horizontal desktop menu
-.pagex-nav-menu-horizontal > ul,
-.pagex-nav-menu-vertical > ul {
-  a {
+.pagex-nav-menu-horizontal,
+.pagex-nav-menu-vertical {
+  .nav-link {
     padding: 12px 20px;
   }
 
-  ul {
+  .sub-menu {
     position: absolute;
     visibility: hidden;
     opacity: 0;
@@ -929,50 +918,100 @@ body .pagex-modal {
     border-radius: 4px;
   }
 
-  li:hover > ul {
+  .menu-item:hover > .sub-menu {
     visibility: visible;
     opacity: 1;
     transition-delay: 200ms;
   }
-
 }
 
-.pagex-nav-menu-horizontal > ul {
+.pagex-nav-menu-horizontal {
   // first submenu level
-  li {
-    > ul {
-      left: 0;
-      top: 100%;
-      // second and etc submenu levels
-      ul {
-        left: 100%;
-        top: 0;
-      }
+  .sub-menu {
+    left: 0;
+    top: 100%;
+    // second and etc submenu levels
+    .sub-menu {
+      left: 100%;
+      top: 0;
     }
+  }
 
-    ul {
-      li.menu-item-has-children > a:after {
-        transform: rotate(-45deg);
-        transform-origin: top;
-      }
+  .sub-menu {
+    .menu-item-has-children > a:after {
+      transform: rotate(-45deg);
     }
   }
 }
 
 // vertical desktop menu
 .pagex-nav-menu-vertical > ul {
-  li {
+  .menu-item {
     width: 100%;
 
     &.menu-item-has-children > a:after {
       transform: rotate(-45deg);
-      transform-origin: top;
     }
   }
 
-  ul {
-    left: calc(100% + 5px);
+  .sub-menu {
+    left: 100%;
     top: 0;
+  }
+}
+
+// dropdown layout also mobile menu by default
+.pagex-nav-menu-dropdown {
+  .nav-link {
+    padding: 6px 0;
+  }
+
+  .menu-item {
+    width: 100%;
+
+    &.menu-item-has-children {
+      > a {
+        pointer-events: none;
+
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    .sub-menu {
+      padding-left: 15px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: 200ms 50ms;
+      // overwrite mega menu custom fixed width and style
+      min-width: 100% !important;
+      border-radius: 0;
+      position: relative;
+      visibility: visible;
+      background: transparent;
+      left: 0;
+      top: 0;
+    }
+
+    &.has-mega-menu {
+      > .sub-menu {
+        padding-left: 0;
+      }
+    }
+
+    // open sub menu by click on li.menu-item-has-children
+    &.pagex-menu-nav-active {
+      > ul {
+        max-height: 100%;
+        opacity: 1;
+      }
+
+      > a:after {
+        transform: rotate(45deg);
+      }
+    }
   }
 }
 
@@ -988,11 +1027,11 @@ body .pagex-modal {
   }
 
   &.pagex-nav-menu-dropdown > ul {
-    a {
+    .nav-link {
       justify-content: center;
     }
 
-    ul {
+    .sub-menu {
       text-indent: 0 !important;
     }
   }
@@ -1010,7 +1049,7 @@ body .pagex-modal {
   }
 
   &.pagex-nav-menu-dropdown > ul {
-    a {
+    .nav-link {
       justify-content: flex-end;
     }
   }

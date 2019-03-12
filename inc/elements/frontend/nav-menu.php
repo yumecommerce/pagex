@@ -13,11 +13,11 @@ function pagex_register_nav_menu_element( $elements ) {
 	$menu_options = array();
 
 	foreach ( $menus as $menu ) {
-		$menu_options[ $menu->slug ] = $menu->name;
+		$menu_options[ $menu->term_id ] = $menu->name;
 	}
 
 	if ( empty( $menu_options ) ) {
-		$menu_options = array( '' => __( 'There are no menus in your site.', 'pagex' ) );
+		$menu_options = array( '' => __( 'There are no menus on your site.', 'pagex' ) );
 	}
 
 	$elements[] = array(
@@ -74,7 +74,7 @@ function pagex_register_nav_menu_element( $elements ) {
 					array(
 						'id'       => 'qw',
 						'type'     => 'typography',
-						'selector' => '.pagex-nav-menu-desktop > ul > li > a',
+						'selector' => '> .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a',
 					),
 					array(
 						'id'       => 'we',
@@ -82,7 +82,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {margin: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {margin: [val]}',
 					),
 					array(
 						'id'       => 'er',
@@ -90,7 +90,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {padding: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {padding: [val]}',
 					),
 					array(
 						'id'       => 'rt',
@@ -98,7 +98,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {border-radius: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {border-radius: [val]}',
 					),
 					array(
 						'id'       => 'ty',
@@ -106,7 +106,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'class'    => 'col-3',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {border-width: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {border-width: [val]}',
 					),
 					array(
 						'type' => 'clear',
@@ -118,7 +118,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {color: [val]}',
 					),
 					array(
 						'id'       => 'ui',
@@ -126,7 +126,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li:hover > a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:hover > a {color: [val]}',
 					),
 					array(
 						'id'       => 'io',
@@ -134,7 +134,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li.current-menu-item > a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li.current-menu-item > a {color: [val]}',
 					),
 
 					array(
@@ -143,7 +143,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {background: [val]}',
 					),
 					array(
 						'id'       => 'as',
@@ -151,7 +151,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li:hover > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:hover > a {background: [val]}',
 					),
 					array(
 						'id'       => 'sd',
@@ -159,7 +159,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li.current-menu-item > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li.current-menu-item > a {background: [val]}',
 					),
 					array(
 						'id'       => 'df',
@@ -167,7 +167,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li > a {border-color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {border-color: [val]}',
 					),
 					array(
 						'id'       => 'fg',
@@ -175,7 +175,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li:hover > a {border-color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:hover > a {border-color: [val]}',
 					),
 					array(
 						'id'       => 'gh',
@@ -183,7 +183,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul > li.current-menu-item > a {border-color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li.current-menu-item > a {border-color: [val]}',
 					),
 					array(
 						'id'          => 'hj',
@@ -193,7 +193,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'action'      => 'css',
 						'responsive'  => true,
 						'class'       => 'col-4',
-						'selector'    => '[el] .pagex-nav-menu-desktop > ul > li > a {box-shadow: [val]}',
+						'selector'    => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {box-shadow: [val]}',
 					),
 					array(
 						'id'         => 'jk',
@@ -202,7 +202,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'action'     => 'css',
 						'responsive' => true,
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-nav-menu-desktop > ul > li:hover > a {box-shadow: [val]}',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:hover > a {box-shadow: [val]}',
 					),
 					array(
 						'id'         => 'kl',
@@ -211,16 +211,16 @@ function pagex_register_nav_menu_element( $elements ) {
 						'action'     => 'css',
 						'responsive' => true,
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-nav-menu-desktop > ul > li.current-menu-item > a {box-shadow: [val]}',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li.current-menu-item > a {box-shadow: [val]}',
 					),
 					array(
-						'id'          => 'wq',
-						'title'       => __( 'Opacity', 'pagex' ),
+						'id'         => 'wq',
+						'title'      => __( 'Opacity', 'pagex' ),
 						'type'       => 'number',
 						'attributes' => 'min="0" max="1" step="0.1"',
-						'action'      => 'css',
-						'class'       => 'col-4',
-						'selector'    => '[el] .pagex-nav-menu-desktop > ul > li > a {opacity: [val]}',
+						'action'     => 'css',
+						'class'      => 'col-4',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {opacity: [val]}',
 					),
 					array(
 						'id'         => 'ew',
@@ -229,7 +229,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'attributes' => 'min="0" max="1" step="0.1"',
 						'action'     => 'css',
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-nav-menu-desktop > ul > li:hover > a {opacity: [val]}',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:hover > a {opacity: [val]}',
 					),
 					array(
 						'id'         => 're',
@@ -238,7 +238,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'attributes' => 'min="0" max="1" step="0.1"',
 						'action'     => 'css',
 						'class'      => 'col-4',
-						'selector'   => '[el] .pagex-nav-menu-desktop > ul > li.current-menu-item > a {opacity: [val]}',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li.current-menu-item > a {opacity: [val]}',
 					),
 				)
 			),
@@ -255,7 +255,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {border-radius: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {border-radius: [val]}',
 					),
 					array(
 						'id'       => 'xc',
@@ -263,7 +263,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {padding: [val] 0} [el] .pagex-nav-menu-desktop > ul ul ul {top: -[val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {padding: [val] 0} [el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu .sub-menu {top: -[val]}',
 					),
 					array(
 						'id'       => 'cv',
@@ -271,7 +271,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {box-shadow: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {box-shadow: [val]}',
 					),
 					array(
 						'id'       => 'vb',
@@ -279,14 +279,14 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {min-width: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) ul {min-width: [val]}',
 					),
 					array(
 						'id'       => 'bn',
 						'title'    => __( 'Background', 'pagex' ),
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {background: [val]}',
 					),
 
 					array(
@@ -296,7 +296,7 @@ function pagex_register_nav_menu_element( $elements ) {
 					array(
 						'id'       => 'nm',
 						'type'     => 'typography',
-						'selector' => '.pagex-nav-menu-desktop > ul > li > ul',
+						'selector' => '> .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu',
 					),
 					array(
 						'id'         => 'aq',
@@ -305,7 +305,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'responsive' => true,
 						'class'      => 'col-6',
 						'action'     => 'css',
-						'selector'   => '[el] .pagex-nav-menu-desktop > ul > li > ul a {padding: [val]}',
+						'selector'   => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu a {padding: [val]}',
 					),
 
 					array(
@@ -318,7 +318,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu a {color: [val]}',
 					),
 					array(
 						'id'       => 'de',
@@ -326,7 +326,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li:hover > a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li:hover > a {color: [val]}',
 					),
 					array(
 						'id'       => 'fr',
@@ -334,7 +334,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li.current-menu-item > a {color: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li.current-menu-item > a {color: [val]}',
 					),
 
 					array(
@@ -343,7 +343,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu a {background: [val]}',
 					),
 					array(
 						'id'       => 'hy',
@@ -351,7 +351,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li:hover > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li:hover > a {background: [val]}',
 					),
 					array(
 						'id'       => 'ju',
@@ -359,7 +359,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'class'    => 'col-4',
 						'type'     => 'background',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li.current-menu-item > a {background: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li.current-menu-item > a {background: [val]}',
 					),
 					array(
 						'id'          => 'ki',
@@ -368,7 +368,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'        => 'text',
 						'action'      => 'css',
 						'class'       => 'col-4',
-						'selector'    => '[el] .pagex-nav-menu-desktop > ul ul li > a {box-shadow: [val]}',
+						'selector'    => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu a {box-shadow: [val]}',
 					),
 					array(
 						'id'       => 'lo',
@@ -376,7 +376,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-4',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li:hover > a {box-shadow: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li:hover > a {box-shadow: [val]}',
 					),
 					array(
 						'id'       => 'qa',
@@ -384,7 +384,116 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-4',
-						'selector' => '[el] .pagex-nav-menu-desktop > ul ul li.current-menu-item > a {box-shadow: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu li.current-menu-item > a {box-shadow: [val]}',
+					),
+				)
+			),
+			array(
+				'title'  => __( 'Mega Menu', 'pagex' ),
+				'params' => array(
+					array(
+						'type'        => 'heading',
+						'title'       => __( 'Mega Menu', 'pagex' ),
+						'description' => __( 'Mega menu nav is Layout Builder items added as nav submenu. Each Layout can have its own style but also some global styles can be added via these options.', 'pagex' ),
+					),
+					array(
+						'id'         => 'nb',
+						'title'      => __( 'Padding', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'class'      => 'col-4',
+						'selector'   => '[el] li.has-mega-menu > .sub-menu {padding: [val]}',
+					),
+					array(
+						'type'        => 'heading',
+						'title'       => __( 'Style for Desktops', 'pagex' ),
+					),
+					array(
+						'id'       => 'mn',
+						'title'    => __( 'Border Radius', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu > .sub-menu {border-radius: [val]}',
+					),
+					array(
+						'id'       => 'ml',
+						'title'    => __( 'Box Shadow', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu > .sub-menu {box-shadow: [val]}',
+					),
+					array(
+						'id'       => 'bv',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu > .sub-menu {background: [val]}',
+					),
+					array(
+						'id'       => 'xz',
+						'title'    => __( 'Text Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu .sub-menu {color: [val]}',
+					),
+					array(
+						'id'       => 'cx',
+						'title'    => __( 'Links Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu .sub-menu a {color: [val]}',
+					),
+					array(
+						'id'       => 'vc',
+						'title'    => __( 'Links Color on Hover', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-desktop li.has-mega-menu .sub-menu li:hover > a {color: [val]}',
+					),
+
+					array(
+						'type'        => 'heading',
+						'title'       => __( 'Style for Mobiles', 'pagex' ),
+					),
+
+					array(
+						'id'       => 'az',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-mobile li.has-mega-menu > .sub-menu {background: [val]}',
+					),
+					array(
+						'id'       => 'sx',
+						'title'    => __( 'Text Color', 'pagex' ),
+						'class'    => 'col-8',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-mobile li.has-mega-menu .sub-menu {color: [val]}',
+					),
+					array(
+						'id'       => 'dc',
+						'title'    => __( 'Links Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-mobile li.has-mega-menu .sub-menu a {color: [val]}',
+					),
+					array(
+						'id'       => 'fv',
+						'title'    => __( 'Links Color on Hover', 'pagex' ),
+						'class'    => 'col-8',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-nav-menu-mobile li.has-mega-menu .sub-menu li:hover > a {color: [val]}',
 					),
 				)
 			),
@@ -586,11 +695,9 @@ function pagex_nav_menu( $atts ) {
 	ob_start();
 
 	echo '<div class="pagex-nav-menu-wrapper ' . $data['breakpoint'] . '">';
-	echo '<div class="pagex-breakpoint-desktop pagex-nav-menu-desktop ' . $data['nav_layout'] . ' ' . $data['align'] . '">';
-	echo $menu;
-	echo '</div>';
 
 	// mobile menu
+	// mobile menu should print first so if we have modal window inside mega menu it would not be triggered instead
 	if ( $data['breakpoint'] ) {
 		echo '<div class="pagex-nav-menu-mobile-trigger-wrapper pagex-breakpoint-mobile pagex-modal-trigger"><div class="pagex-nav-menu-mobile-trigger"><svg class="pagex-icon"><use xlink:href="#pagex-nav-menu-icon" /></svg></div></div>';
 		echo '<div class="pagex-nav-menu-mobile-wrapper">';
@@ -600,7 +707,10 @@ function pagex_nav_menu( $atts ) {
 		) );
 		echo '</div>';
 	}
-	echo '</div>';
+
+	echo '<div class="pagex-breakpoint-desktop pagex-nav-menu-desktop ' . $data['nav_layout'] . ' ' . $data['align'] . '">';
+	echo $menu;
+	echo '</div></div>';
 
 	return ob_get_clean();
 }

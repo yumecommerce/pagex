@@ -6,12 +6,14 @@ body.wp-admin #pagex-settings {
   display: none !important;
 }
 
-#pagex-backend-editor .d-none,
-#pagex-backend-editor .d-sm-none,
-#pagex-backend-editor .d-md-none,
-#pagex-backend-editor .d-lg-none,
-#pagex-backend-editor .d-xl-none {
-  display: inherit !important;
+#pagex-backend-editor {
+  .d-none,
+  .d-sm-none,
+  .d-md-none,
+  .d-lg-none,
+  .d-xl-none {
+    display: block !important;
+  }
 }
 
 #pagex-backend-editor {
@@ -81,6 +83,7 @@ body.wp-admin #pagex-settings {
     transform: none !important;
     filter: none !important;
     font-family: Arial !important;
+    align-self: flex-start !important;
 
     .element-wrap {
       display: none;

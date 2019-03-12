@@ -404,12 +404,11 @@ var pagexModal = {
         if (timeout === 0) {
             modalActive.classList.remove('pagex-modal-show');
 
-            if (document.querySelector('.element[data-id="' + modalActiveId + '"] .pagex-modal')) {
+            if (initialWrap.querySelector('.pagex-modal')) {
                 modalActive.remove();
             } else {
                 initialWrap.appendChild(modalActive);
             }
-
         } else {
             setTimeout(function () {
                 modalActive.classList.remove('pagex-modal-show');
@@ -420,9 +419,9 @@ var pagexModal = {
     },
 
     closeAll: function () {
-        let v = document.querySelectorAll('.pagex-modal-show');
+        let v = document.querySelectorAll('.pagex-modal-show > .pagex-modal-window-wrapper > .pagex-modal-window');
         for (let i = 0; i < v.length; i++) {
-            pagexModal.close(v[i].querySelector('.pagex-modal-window'), 0);
+            pagexModal.close(v[i], 0);
         }
     }
 };

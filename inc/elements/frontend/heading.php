@@ -33,6 +33,7 @@ function pagex_register_heading_element( $elements ) {
 						'title'   => 'HTML ' . __( 'Tag', 'pagex' ),
 						'type'    => 'select',
 						'options' => array(
+							'div', // since element can accept html tag the div should be default
 							'p',
 							'h1',
 							'h2',
@@ -49,7 +50,6 @@ function pagex_register_heading_element( $elements ) {
 							'strong',
 							'sup',
 							'sub',
-							'div'
 						),
 					),
 					array(

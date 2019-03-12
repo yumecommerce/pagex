@@ -4,6 +4,11 @@ class Pagex_Backend_Editor {
 	function __construct() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_meta' ) );
+
+		// limit num of revisions for pagex post types
+		// todo curently wp does not allow to save meta with post data
+		//add_filter( 'wp_revisions_to_keep', array( $this, 'revisions_to_keep' ), 10, 2 );
+
 		add_filter( 'wp_insert_post_data', array( $this, 'save_post_data' ), 99, 2 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_style' ) );
 	}
@@ -108,7 +113,7 @@ class Pagex_Backend_Editor {
 	public function layout_type( $post ) {
 		$option = get_post_meta( $post->ID, '_pagex_layout_type', true );
 
-		echo '<p>' . __( 'Type of current layout', 'pagex' ) . '</p><select name="pagex_layout_type"><option value="custom" ' . selected( 'custom', $option, false ) . '>' . __( 'Custom', 'pagex' ) . '</option><option value="header" ' . selected( 'header', $option, false ) . '>' . __( 'Header', 'pagex' ) . '</option><option value="footer" ' . selected( 'footer', $option, false ) . '>' . __( 'Footer', 'pagex' ) . '</option></select>';
+		echo '<p>' . __( 'Type of current layout', 'pagex' ) . '</p><select name="pagex_layout_type"><option value="custom" ' . selected( 'custom', $option, false ) . '>' . __( 'Custom', 'pagex' ) . '</option><option value="header" ' . selected( 'header', $option, false ) . '>' . __( 'Header', 'pagex' ) . '</option><option value="footer" ' . selected( 'footer', $option, false ) . '>' . __( 'Footer', 'pagex' ) . '</option><option value="megamenu" ' . selected( 'megamenu', $option, false ) . '>' . __( 'Mega Menu Item', 'pagex' ) . '</option></select>';
 	}
 
 	/**
@@ -259,6 +264,30 @@ class Pagex_Backend_Editor {
 		}
 	}
 
+	/**
+	 * Limit the number of revisions to store for custom post types
+	 *
+	 * @param $num
+	 * @param $post
+	 *
+	 * @return int
+	 */
+	public function revisions_to_keep( $num, $post ) {
+		$post_type = get_post_type( $post );
+
+		if ( $post_type && in_array( $post_type, array( 'pagex_layout_builder', 'pagex_post_tmp', 'pagex_excerpt_tmp' ) ) ) {
+			return 10;
+		}
+
+		return $num;
+	}
+
+	/**
+	 * @param $data
+	 * @param $post
+	 *
+	 * @return mixed
+	 */
 	public function save_post_data( $data, $post ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $data;

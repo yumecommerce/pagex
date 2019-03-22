@@ -108,7 +108,7 @@ class Pagex_Template_Manager {
 			$content = apply_filters( 'pagex_content', do_shortcode( get_post_field( 'post_content', $id ) ) );
 
 			// add builder area wrapper when we editing header/footer layout with preview
-			if ( Pagex::is_frontend_builder_frame_active() && isset( $_REQUEST['pagex-query-preview'] ) && $id == $post->ID ) {
+			if ( Pagex::is_frontend_builder_frame_active() && isset( $_REQUEST['pagex-query-preview'] ) && $post && $id == $post->ID ) {
 				$content = '<div class="pagex-builder-area">' . $content . '</div>';
 			}
 

@@ -100,11 +100,11 @@ class Pagex_Editor {
 				'singular_name'  => __( 'Excerpt Template', 'pagex' ),
 				'menu_name'      => __( 'Excerpt Template', 'pagex' ),
 				'name_admin_bar' => __( 'Excerpt Template', 'pagex' ),
-				'add_new'        => __( 'Add Layout', 'pagex' ),
-				'add_new_item'   => __( 'Add Layout', 'pagex' ),
-				'new_item'       => __( 'New Layout', 'pagex' ),
-				'edit_item'      => __( 'Edit Layout', 'pagex' ),
-				'view_item'      => __( 'View Layout', 'pagex' ),
+				'add_new'        => __( 'Add Template', 'pagex' ),
+				'add_new_item'   => __( 'Add Template', 'pagex' ),
+				'new_item'       => __( 'New Template', 'pagex' ),
+				'edit_item'      => __( 'Edit Template', 'pagex' ),
+				'view_item'      => __( 'View Template', 'pagex' ),
 				'all_items'      => __( 'Excerpt Templates', 'pagex' ),
 			),
 			'public'              => false,
@@ -598,7 +598,11 @@ class Pagex_Editor {
 				return;
 			}
 
-			if ( ! isset( $settings['builder'][ $current_screen->post_type ] ) ) {
+			if ( ! isset( $settings['builder'][ $current_screen->post_type ] ) && ! in_array( $current_screen->post_type, array(
+					'pagex_layout_builder',
+					'pagex_post_tmp',
+					'pagex_excerpt_tmp'
+				) ) ) {
 				return;
 			}
 		} elseif ( ! ( Pagex::is_frontend_builder_active() || Pagex::is_frontend_builder_frame_active() ) ) {

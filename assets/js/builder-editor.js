@@ -134,6 +134,8 @@ var pagex = {
 
         if (data.pagex_slider_autoplay) obj.autoplay = {delay: data.pagex_slider_autoplay_delay ? Number(data.pagex_slider_autoplay_delay) : 2000};
 
+        if (data.pagex_slider_pa_type) obj.paginationtype = 'fraction';
+
         if (data.pagex_slider_spaceBetween.sm) obj.breakpoints[576].spaceBetween = Number(data.pagex_slider_spaceBetween.sm);
         if (data.pagex_slider_slidesPerView.sm) obj.breakpoints[576].slidesPerView = Number(data.pagex_slider_slidesPerView.sm);
         if (data.pagex_slider_slidesPerGroup.sm) obj.breakpoints[576].slidesPerGroup = Number(data.pagex_slider_slidesPerGroup.sm);
@@ -751,9 +753,9 @@ var pagex = {
                         }
                     } else {
                         _.forEach(that.currentParam.options, function (v) {
-                            v.value = v.value.trim();
+                            //v.value = v.value.trim(); // comment due to issue with space before select option value (ex. font weight)
                             // do not check empty values
-                            if (!v.value.length) return;
+                            if (!v.value.trim().length) return;
                             // check only values of currently changed param
                             if (that.currentParam.getAttribute('name').indexOf(param.id) === -1) return;
                             // if we apply class to parent element we need to remove all classes from select values

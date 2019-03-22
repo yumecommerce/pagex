@@ -11,7 +11,7 @@ function pagex_register_tabs_element( $elements ) {
 	$template = '<div class="pagex-tabs">
 		<div class="pagex-tabs-nav-items">
 		<% data.tabs.forEach( function(tab, index) { %>
-			<div class="pagex-tabs-nav-item nav-item <% if (index == 0) { print("pagex-item-active"); } %>">
+			<div class="pagex-tabs-nav-item <% if (index == 0) { print("pagex-item-active"); } %>">
 				<% if (tab.icon && tab.icon.length) { %>
 				<div class="pagex-tabs-nav-item-icon">
 					<% print(pagex.genIcon("icon", tab)) %>

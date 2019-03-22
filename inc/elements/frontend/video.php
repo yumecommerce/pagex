@@ -233,9 +233,6 @@ function pagex_video( $atts ) {
 		'meta_key'  => '',
 	) );
 
-	if ( ! $data['video_url'] ) {
-		return '';
-	}
 
 	$file_src = '';
 	$video_id = '';

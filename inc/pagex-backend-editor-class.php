@@ -6,7 +6,7 @@ class Pagex_Backend_Editor {
 		add_action( 'save_post', array( $this, 'save_meta' ) );
 
 		// limit num of revisions for pagex post types
-		// todo curently wp does not allow to save meta with post data
+		// todo currently wp 5.1 does not allow to save meta with post data
 		//add_filter( 'wp_revisions_to_keep', array( $this, 'revisions_to_keep' ), 10, 2 );
 
 		add_filter( 'wp_insert_post_data', array( $this, 'save_post_data' ), 99, 2 );
@@ -21,16 +21,18 @@ class Pagex_Backend_Editor {
 	public function add_meta_boxes() {
 		$settings = Pagex::get_settings();
 
-		if ( ! empty( $settings ) ) {
-			add_meta_box(
-				'pagex-backend-editor',
-				'Pagex',
-				array( $this, 'backend_editor' ),
-				isset( $settings['builder'] ) ? $settings['builder'] : array(),
-				'advanced',
-				'high'
-			);
-		}
+		add_meta_box(
+			'pagex-backend-editor',
+			'Pagex',
+			array( $this, 'backend_editor' ),
+			isset( $settings['builder'] ) ? $settings['builder'] : array(
+				'pagex_post_tmp',
+				'pagex_layout_builder',
+				'pagex_excerpt_tmp'
+			),
+			'advanced',
+			'high'
+		);
 
 		// todo custom header/footer for templates and posts
 //		add_meta_box(
@@ -275,7 +277,11 @@ class Pagex_Backend_Editor {
 	public function revisions_to_keep( $num, $post ) {
 		$post_type = get_post_type( $post );
 
-		if ( $post_type && in_array( $post_type, array( 'pagex_layout_builder', 'pagex_post_tmp', 'pagex_excerpt_tmp' ) ) ) {
+		if ( $post_type && in_array( $post_type, array(
+				'pagex_layout_builder',
+				'pagex_post_tmp',
+				'pagex_excerpt_tmp'
+			) ) ) {
 			return 10;
 		}
 
@@ -314,7 +320,11 @@ class Pagex_Backend_Editor {
 			if ( $current_screen->post_type == '' || $current_screen->base != 'post' ) {
 				return;
 			}
-			if ( ! isset( $settings['builder'][ $current_screen->post_type ] ) ) {
+			if ( ! isset( $settings['builder'][ $current_screen->post_type ] ) && ! in_array( $current_screen->post_type, array(
+					'pagex_layout_builder',
+					'pagex_post_tmp',
+					'pagex_excerpt_tmp'
+				) ) ) {
 				return;
 			}
 		}

@@ -408,6 +408,9 @@ body .pagex-modal {
 
 .pagex-tabs-nav-items {
   display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10; // in case items above the panes
 
   &.pagex-tabs-justify {
     .pagex-tabs-nav-item {
@@ -425,6 +428,8 @@ body .pagex-modal {
 .pagex-tabs-panes {
   padding: 15px;
   border: 0 solid;
+  position: relative;
+  z-index: 9;
 }
 
 .pagex-tabs-pane {

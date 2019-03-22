@@ -185,6 +185,7 @@ class Pagex_Admin_Controls {
 	 * Add settings via setting sections
 	 */
 	public function admin_menu() {
+		$settings = Pagex::get_settings();
 		echo '<h1>' . get_admin_page_title() . '</h1>';
 		echo '<div class="pagex-settings-wrapper">';
 		echo '<div class="pagex-settings">';
@@ -214,6 +215,11 @@ class Pagex_Admin_Controls {
 		echo '</form>';
 		echo '</div>';
 		echo '<div class="pagex-settings-sidebar">';
+
+		if ( empty( $settings ) ) {
+			echo '<div class="pagex-settings-sidebar-notice"><div id="pagex-easy-start"><input type="hidden" name="pagex_settings[easy_start]" value="true"></div><h3>' . __( 'Easy Start', 'pagex' ) . '</h3>' . __( 'It looks like you have a fresh installation, would you like to create all basic theme layouts and templates?', 'pagex' ) . '<a href="#" onclick="document.querySelector(\'.pagex-admin-settings\').insertAdjacentHTML(\'afterbegin\', document.querySelector(\'#pagex-easy-start\').innerHTML); document.querySelector(\'#submit\').click();">' . __( 'Setup', 'pagex' ) . '</a></div>';
+		}
+
 		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Documentation', 'pagex' ) . '</h3>' . __( 'Learn how to use Pagex. It is a great starting point.', 'pagex' ) . '<a href="https://github.com/yumecommerce/pagex/wiki" target="_blank">' . __( 'Read our guide', 'pagex' ) . '</a></div>';
 		echo '<div class="pagex-settings-sidebar-notice"><h3>' . __( 'Report Issue', 'pagex' ) . '</h3>' . __( 'Create a report to help us improve.', 'pagex' ) . '<a href="https://github.com/yumecommerce/pagex/issues" target="_blank">' . __( 'Report', 'pagex' ) . '</a></div>';
 		echo '</div>';
@@ -221,15 +227,24 @@ class Pagex_Admin_Controls {
 		echo '</div>';
 	}
 
+	/**
+	 * Register settings page with tabs
+	 */
 	public function settings_sections() {
-		register_setting( 'pagex_group', 'pagex_settings' );
+		register_setting( 'pagex_group', 'pagex_settings', array(
+			'sanitize_callback' => array(
+				$this,
+				'sanitize_options'
+			)
+		) );
+
 		add_settings_section( 'pagex_section', __( 'Basic Options', 'pagex' ), '', 'pagex_page' );
 		add_settings_section( 'pagex_section', __( 'Design', 'pagex' ), '', 'pagex_page_design' );
 		add_settings_section( 'pagex_section', 'APIs', '', 'pagex_apis' );
 		add_settings_section( 'pagex_section', __( 'Advanced', 'pagex' ), '', 'pagex_advanced' );
 
 		// default
-		add_settings_field( 'pagex_post_type_support', __( 'Post Types', 'pagex' ), array(
+		add_settings_field( 'post_type_support', __( 'Post Types', 'pagex' ), array(
 			$this,
 			'enabled_post_types'
 		), 'pagex_page', 'pagex_section' );
@@ -294,7 +309,109 @@ class Pagex_Admin_Controls {
 	}
 
 	/**
-	 * Make builder editor active
+	 * Sanitize settings before save
+	 * Setup easy installation if request is set
+	 *
+	 * @param $value
+	 *
+	 * @return mixed
+	 */
+	public function sanitize_options( $value ) {
+		// easy start setup
+		if ( isset( $value['easy_start'] ) && empty( Pagex::get_settings() ) ) {
+			$excerpt_post = json_decode( '{"params":{"pn7dc1":{"container_width":"container-fluid","pagex_custom_class":"p-0"},"pcojnw":{"gutters":"no-gutters","pagex_custom_class":""},"pml8v8":{"tag":"p","pagex_custom_class":""},"p6tt0p":{"tag":"h4","link":"true","pagex_margin":{"xs":{"top":"","right":"","bottom":"30","left":""},"sm":{"top":"","right":"","bottom":"","left":""},"md":{"top":"","right":"","bottom":"","left":""},"lg":{"top":"","right":"","bottom":"","left":""},"xl":{"top":"","right":"","bottom":"","left":""}},"pagex_custom_class":""}},"layout":"<div class=\"section\" data-id=\"p7zchb\" data-type=\"section\"><div class=\"container  container-fluid p-0\" data-id=\"pn7dc1\" data-type=\"container\"><div class=\"row  no-gutters\" data-id=\"pcojnw\" data-type=\"row\"><div class=\"col\" data-id=\"pkvmc5\" data-type=\"column\"><div class=\"element\" data-id=\"p6tt0p\" data-type=\"post_title\" data-callback=\"pagex_post_title\"><style id=\"p6tt0p\">[data-id=\"p6tt0p\"] {margin: 0 0 30px 0 !important}</style><div class=\"element-wrap\">[pagex_post_title data=\"%7B%22tag%22%3A%22h4%22%2C%22link%22%3A%22true%22%7D\"]</div></div><div class=\"element\" data-id=\"pml8v8\" data-type=\"post_excerpt\" data-callback=\"pagex_post_excerpt\"><div class=\"element-wrap\">[pagex_post_excerpt data=\"%7B%22tag%22%3A%22p%22%7D\"]</div></div></div></div></div></div>"}', true );
+
+			$excerpt_post_id = wp_insert_post( array(
+				'post_title'   => 'Post: Excerpt',
+				'post_type'    => 'pagex_excerpt_tmp',
+				'post_status'  => 'publish',
+				'post_content' => $excerpt_post['layout'],
+				'meta_input'   => array(
+					'_pagex_elements_params' => json_encode( $excerpt_post['params'] ),
+				),
+			) );
+
+			$layouts = array(
+				'default_header' => 'Header',
+				'default_footer' => 'Footer',
+				'page_404'       => '404'
+			);
+
+			$templates = array(
+				'page_single'      => array(
+					'Page: Single',
+					'single',
+					'page',
+					'{"params":{"p81f4s":{"pagex_custom_class":""}},"layout":"<div class=\"section\" data-id=\"pu5ft7\" data-type=\"section\"><div class=\"container\" data-id=\"pv40ig\" data-type=\"container\"><div class=\"row\" data-id=\"pmrxs9\" data-type=\"row\"><div class=\"col\" data-id=\"p5imo0\" data-type=\"column\"><div class=\"element\" data-id=\"p81f4s\" data-type=\"post_content\" data-callback=\"pagex_post_content\"><div class=\"element-wrap\">[pagex_post_content data=\"%5B%5D\"]</div></div></div></div></div></div>"}'
+				),
+				'page_single_full' => array(
+					'Page: Full Width',
+					'single',
+					'page',
+					'{"params":{"p9cr0q":{"pagex_custom_class":""},"pa7oiw":{"container_width":"container-fluid","pagex_custom_class":"p-0"},"pv4fve":{"gutters":"no-gutters","pagex_custom_class":""}},"layout":"<div class=\"section\" data-id=\"ppff5q\" data-type=\"section\"><div class=\"container  container-fluid p-0\" data-id=\"pa7oiw\" data-type=\"container\"><div class=\"row  no-gutters\" data-id=\"pv4fve\" data-type=\"row\"><div class=\"col\" data-id=\"pw0q8v\" data-type=\"column\"><div class=\"element\" data-id=\"p9cr0q\" data-type=\"post_content\" data-callback=\"pagex_post_content\"><div class=\"element-wrap\">[pagex_post_content data=\"%5B%5D\"]</div></div></div></div></div></div>"}'
+				),
+				'post_single'      => array(
+					'Post: Single',
+					'single',
+					'post',
+					'{"params":{"plbt22":{"pagex_custom_class":""}},"layout":"<div class=\"section\" data-id=\"pww22x\" data-type=\"section\"><div class=\"container\" data-id=\"plt8sq\" data-type=\"container\"><div class=\"row\" data-id=\"pdheur\" data-type=\"row\"><div class=\"col\" data-id=\"pds4fq\" data-type=\"column\"><div class=\"element\" data-id=\"plbt22\" data-type=\"post_content\" data-callback=\"pagex_post_content\"><div class=\"element-wrap\">[pagex_post_content data=\"%5B%5D\"]</div></div></div></div></div></div>"}'
+				),
+				'post_archive'     => array(
+					'Post: Archive',
+					'archive',
+					'post',
+					'{"params":{"pydpwy":{"template":"' . $excerpt_post_id . '","nothing_found":"0","no_posts":"0","layout":"grid","pagination":"default","pagex_custom_class":""}},"layout":"<div class=\"section\" data-id=\"ppcsvf\" data-type=\"section\"><div class=\"container\" data-id=\"pygbus\" data-type=\"container\"><div class=\"row\" data-id=\"p6cp6d\" data-type=\"row\"><div class=\"col\" data-id=\"pewt00\" data-type=\"column\"><div class=\"element\" data-id=\"pydpwy\" data-type=\"posts_loop\" data-callback=\"pagex_posts_loop\"><div class=\"element-wrap\">[pagex_posts_loop data=\"%7B%22template%22%3A%22' . $excerpt_post_id . '%22%2C%22nothing_found%22%3A%220%22%2C%22no_posts%22%3A%220%22%2C%22layout%22%3A%22grid%22%2C%22pagination%22%3A%22default%22%7D\"]</div></div></div></div></div></div>"}'
+				)
+			);
+
+			foreach ( $layouts as $k => $layout ) {
+				$post_id = wp_insert_post( array(
+					'post_title'  => $layout,
+					'post_type'   => 'pagex_layout_builder',
+					'post_status' => 'publish'
+				) );
+
+				if ( $k == 'page_404' ) {
+					$value['post_templates']['page_404'] = $post_id;
+				} else {
+					$value[ $k ] = $post_id;
+				}
+			}
+
+			foreach ( $templates as $k => $template ) {
+				$data    = json_decode( $template[3], true );
+				$post_id = wp_insert_post( array(
+					'post_title'   => $template[0],
+					'post_type'    => 'pagex_post_tmp',
+					'post_content' => $data['layout'],
+					'post_status'  => 'publish',
+					'meta_input'   => array(
+						'_pagex_template_type'      => $template[1],
+						'_pagex_template_post_type' => $template[2],
+						'_pagex_elements_params'    => json_encode( $data['params'] ),
+					)
+				) );
+
+				$value['post_templates'][ $k ] = $post_id;
+			}
+
+			// make pages editable
+			$value['builder']['page'] = 'page';
+
+			// enable permalink
+			global $wp_rewrite;
+			$wp_rewrite->set_permalink_structure( '/%postname%/' );
+			$wp_rewrite->flush_rules();
+
+			// remove easy_start from options since if main option does not exist sanitize_option will be called twice
+			unset( $value['easy_start'] );
+		}
+
+		return $value;
+	}
+
+	/**
+	 * Turn on/off builder editor for different post types
 	 */
 	public function enabled_post_types() {
 		$settings = Pagex::get_settings();
@@ -303,6 +420,11 @@ class Pagex_Admin_Controls {
 
 		echo '<p>' . __( 'Enable Builder Editor for next post types.', 'pagex' ) . '</p><br>';
 		foreach ( $post_types as $key => $post_type ) {
+			// skip layout builder since it will be always on
+			if ( $post_type->name == 'pagex_layout_builder' ) {
+				continue;
+			}
+
 			$active = isset( $settings['builder'][ $post_type->name ] ) ? $settings['builder'][ $post_type->name ] : null;
 			echo '<label><input type="checkbox" name="pagex_settings[builder][' . $post_type->name . ']" value="' . $post_type->name . '" ' . checked( $post_type->name, $active, false ) . '>' . $post_type->label . '&nbsp;&nbsp;</label>';
 		}

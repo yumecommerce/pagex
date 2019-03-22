@@ -175,6 +175,11 @@ class Pagex_Frontend {
 	 * @return string
 	 */
 	function content_filter( $content ) {
+		// in case no content or theme template is empty
+		if ( ! $content ) {
+			return $content;
+		}
+
 		// do not modify content when builder is active
 		if ( Pagex::is_frontend_builder_active() ||
 		     Pagex::is_frontend_builder_frame_active() ||

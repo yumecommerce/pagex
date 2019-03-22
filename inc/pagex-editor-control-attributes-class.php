@@ -293,7 +293,7 @@ class Pagex_Editor_Control_Attributes {
 			),
 			array(
 				'id'         => 'pagex_slider_pd',
-				'class'      => 'col-4',
+				'class'      => 'col-3',
 				'title'      => __( 'Display', 'pagex' ),
 				'type'       => 'select',
 				'responsive' => true,
@@ -306,8 +306,18 @@ class Pagex_Editor_Control_Attributes {
 				)
 			),
 			array(
+				'id'      => 'pagex_slider_pa_type',
+				'class'   => 'col-3',
+				'title'   => __( 'Type', 'pagex' ),
+				'type'    => 'select',
+				'options' => array(
+					''         => __( 'Dots', 'pagex' ),
+					'fraction' => __( 'Numeric', 'pagex' ),
+				)
+			),
+			array(
 				'id'       => 'pagex_slider_pa',
-				'class'    => 'col-4',
+				'class'    => 'col-3',
 				'title'    => __( 'Alignment', 'pagex' ),
 				'type'     => 'select',
 				'action'   => 'css',
@@ -323,14 +333,14 @@ class Pagex_Editor_Control_Attributes {
 				'title'    => __( 'Bottom Offset', 'pagex' ),
 				'action'   => 'css',
 				'selector' => '[el] .swiper-container {padding-bottom: [val]}',
-				'class'    => 'col-4',
+				'class'    => 'col-3',
 				'type'     => 'text',
 			),
 			array(
 				'id'       => 'pagex_slider_ps',
 				'title'    => __( 'Size', 'pagex' ),
 				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet {width: [val]; height: [val]}',
+				'selector' => '[el] .swiper-pagination-bullet {width: [val]; height: [val]} [el] .swiper-pagination-fraction {font-size: [val]}',
 				'class'    => 'col-3',
 				'type'     => 'text',
 			),
@@ -341,6 +351,9 @@ class Pagex_Editor_Control_Attributes {
 				'selector' => '[el] .pagex-slider-pagination {padding: [val]}',
 				'class'    => 'col-3',
 				'type'     => 'text',
+				'condition' => array(
+					'pagex_slider_pa_type' => array( '' ),
+				),
 			),
 			array(
 				'id'       => 'pagex_slider_pm',
@@ -349,6 +362,9 @@ class Pagex_Editor_Control_Attributes {
 				'selector' => '[el] .swiper-pagination-bullet {margin: [val] !important}',
 				'class'    => 'col-3',
 				'type'     => 'text',
+				'condition' => array(
+					'pagex_slider_pa_type' => array( '' ),
+				),
 			),
 			array(
 				'id'       => 'pagex_slider_pr',
@@ -357,9 +373,9 @@ class Pagex_Editor_Control_Attributes {
 				'selector' => '[el] .swiper-pagination-bullet {border-radius: [val]}',
 				'class'    => 'col-3',
 				'type'     => 'text',
-			),
-			array(
-				'type' => 'clear',
+				'condition' => array(
+					'pagex_slider_pa_type' => array( '' ),
+				),
 			),
 			array(
 				'id'       => 'pagex_slider_pc',
@@ -367,7 +383,7 @@ class Pagex_Editor_Control_Attributes {
 				'class'    => 'col-4',
 				'type'     => 'color',
 				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet {background: [val]}',
+				'selector' => '[el] .swiper-pagination-bullet {background: [val]} [el] .swiper-pagination-fraction {color: [val]}',
 			),
 			array(
 				'id'       => 'pagex_slider_pch',
@@ -376,6 +392,9 @@ class Pagex_Editor_Control_Attributes {
 				'type'     => 'color',
 				'action'   => 'css',
 				'selector' => '[el] .swiper-pagination-bullet:hover {background: [val]}',
+				'condition' => array(
+					'pagex_slider_pa_type' => array( '' ),
+				),
 			),
 			array(
 				'id'       => 'pagex_slider_pca',
@@ -383,7 +402,7 @@ class Pagex_Editor_Control_Attributes {
 				'class'    => 'col-4',
 				'type'     => 'color',
 				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet.swiper-pagination-bullet-active {background: [val]}',
+				'selector' => '[el] .swiper-pagination-bullet.swiper-pagination-bullet-active {background: [val]} [el] .swiper-pagination-current {color: [val]}',
 			),
 		);
 	}

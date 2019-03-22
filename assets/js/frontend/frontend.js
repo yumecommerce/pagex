@@ -571,6 +571,10 @@ var pagexSlider = {
             clickable: true,
         };
 
+        if (slider.paginationtype) {
+            slider.pagination.type = slider.paginationtype;
+        }
+
         slider.navigation = {
             nextEl: next,
             prevEl: prev,
@@ -601,6 +605,9 @@ var pagexSlider = {
         // hide navigation when not enough slides for sliding
         slider.watchOverflow = true;
 
+        // force initialization in hidden divs
+        slider.observer = true;
+        slider.observeParents = true;
 
         // add entrance animation for each slide when we have only one slide per view
         if (slider.slidesPerView === 1) {

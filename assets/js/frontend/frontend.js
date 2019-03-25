@@ -1,7 +1,7 @@
 "use strict";
 
 // element.matches polyfill for ie
-;(function (e) {
+(function (e) {
     var matches = e.matches || e.matchesSelector || e.webkitMatchesSelector || e.mozMatchesSelector || e.msMatchesSelector || e.oMatchesSelector;
     !matches ? (e.matches = e.matchesSelector = function matches(selector) {
         var matches = document.querySelectorAll(selector);
@@ -1125,6 +1125,11 @@ document.addEventListener('click', function (e) {
         pagexCookie.applyGDPR();
     }
 });
+
+// Custom links handler
+function pagexCustomLink(el) {
+    el.querySelector('.pagex-custom-link-element').click();
+}
 
 // Preloader
 function pagexHidePreloader() {

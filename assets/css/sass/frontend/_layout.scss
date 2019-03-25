@@ -206,6 +206,12 @@ textarea.form-control {
   }
 }
 
+/* Custom Links */
+
+[data-type][onclick] {
+  cursor: pointer;
+}
+
 /* GDPR */
 
 #pagex-gdpr-notice {

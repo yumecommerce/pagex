@@ -60,40 +60,6 @@ function pagex_dynamic_background( $atts ) {
 
 add_shortcode( 'pagex_dynamic_background', 'pagex_dynamic_background' );
 
-
-/**
- * Generate href for dynamic link attribute
- *
- * @param $atts
- *
- * @return string
- */
-function pagex_dynamic_link( $atts ) {
-	switch ( $atts[0] ) {
-		case 'post':
-			$link = esc_url( get_permalink() );
-			break;
-		case 'day':
-			$link = get_day_link( get_post_time( 'Y' ), get_post_time( 'm' ), get_post_time( 'j' ) );
-			break;
-		case 'author':
-			$link = get_author_posts_url( get_the_author_meta( 'ID' ) );
-			break;
-		case 'comments':
-			$link = get_comments_link();
-			break;
-		default:
-			$link = pagex_get_custom_meta_value( $atts[0] );
-			if ( ! $link ) {
-				$link = '#';
-			}
-	}
-
-	return $link;
-}
-
-add_shortcode( 'pagex_dynamic_link', 'pagex_dynamic_link' );
-
 /**
  * Generate module for visually impaired
  *

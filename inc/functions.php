@@ -168,8 +168,8 @@ function pagex_generate_icon( $id, $data ) {
 
 	if ( $data[ $id ] === 'svg' && isset( $data[ $id . '_svg' ] ) ) {
 		$html = urldecode( $data[ $id . '_svg' ] );
-		$html = preg_replace( '/((svg|img).*?)(class=".*?")/m', '$1', $html );
-		$html = preg_replace( '/((svg|img).*?)(>)/m', '$1 class="pagex-icon" $3', $html );
+		$html = preg_replace( '/((\<svg|\<img).*?)(class=".*?")/s', '$1', $html );
+		$html = preg_replace( '/((\<svg|\<img).*?)(>)/s', '$1 class="pagex-icon" $3', $html );
 	}
 
 	if ( $data[ $id ] === 'image' && isset( $data[ $id . '_image' ] ) ) {
@@ -284,6 +284,37 @@ function pagex_get_document_title( $context = false, $use_page = false ) {
 	remove_filter( 'document_title_parts', 'pagex_remove_document_title_parts' );
 
 	return $title;
+}
+
+/**
+ * Generate href for dynamic link attribute
+ *
+ * @param $atts
+ *
+ * @return string
+ */
+function pagex_get_dynamic_link( $atts ) {
+	switch ( $atts ) {
+		case 'post':
+			$link = esc_url( get_permalink() );
+			break;
+		case 'day':
+			$link = get_day_link( get_post_time( 'Y' ), get_post_time( 'm' ), get_post_time( 'j' ) );
+			break;
+		case 'author':
+			$link = get_author_posts_url( get_the_author_meta( 'ID' ) );
+			break;
+		case 'comments':
+			$link = get_comments_link();
+			break;
+		default:
+			$link = pagex_get_custom_meta_value( $atts );
+			if ( ! $link ) {
+				$link = '#';
+			}
+	}
+
+	return $link;
 }
 
 /**

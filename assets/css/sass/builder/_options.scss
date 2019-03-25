@@ -129,6 +129,20 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   }
 }
 
+[data-type="inner-row"] {
+  .pagex-column-options {
+    .btn {
+      background-color: #4dce6a !important;
+      border-color: #4dce6a !important;
+
+      &:hover {
+        background-color: #28a745 !important;
+        border-color: #28a745 !important;
+      }
+    }
+  }
+}
+
 .pagex-options .btn {
   color: #fff !important;
 }

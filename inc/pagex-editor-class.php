@@ -1428,11 +1428,6 @@ class Pagex_Editor {
 			$element->innertext = '[pagex_dynamic_background data="' . urlencode( json_encode( array( 'key' => $element->{'data-dynamic-background'} ) ) ) . '"]';
 		}
 
-		// replace dynamic link attribute with shortcode
-		foreach ( $html->find( '[data-dynamic-link]' ) as $element ) {
-			$element->href = '[pagex_dynamic_link ' . $element->{'data-dynamic-link'} . ']';
-		}
-
 		$html->save();
 
 		$content = $html;

@@ -714,7 +714,17 @@ var pagex = {
             if (currentParamName === 'pagex_parallax' && !form.pagex_parallax.length) {
                 this.currentElement.removeAttribute('style');
             }
+
+            // add custom the whole link data to el
+            if (currentParamName.includes('pagex_link')) {
+                if (form['pagex_link'] || form['pagex_link-dynamic']) {
+                    this.currentElement.setAttribute('data-custom-link', encodeURIComponent(form['pagex_link']));
+                } else {
+                    this.currentElement.removeAttribute('data-custom-link');
+                }
+            }
         }
+
 
         // create style and append to element
         let extraSmall = '',
@@ -1758,7 +1768,7 @@ var pagex = {
         jQuery('.pagex-modal-builder-area [data-type="column"]').sortable(sortableObj);
 
         // sortable columns of the inner row
-        let innercolumns = jQuery('.pagex-builder-area [data-type="inner-row"]');
+        let innercolumns = jQuery('.pagex-builder-area .row');
         sortableObj.handle = '.pagex-column-options';
         sortableObj.connectWith = innercolumns;
         innercolumns.sortable(sortableObj);

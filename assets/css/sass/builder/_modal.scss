@@ -30,7 +30,7 @@
   .pagex-modal-search-input {
     font-size: 11px !important;
     box-shadow: none !important;
-    border: 0;
+    border: 0 !important;
   }
 
   .input-group-text {
@@ -225,6 +225,11 @@ body:not(.wp-admin) #pagex-params-modal {
     &:hover {
       background: rgba(0, 0, 0, .4);
     }
+  }
+
+  .pagex-link-attrs {
+    margin-right: -5px;
+    margin-left: -5px;
   }
 
   .custom-control-input:focus ~ .custom-control-label::before {

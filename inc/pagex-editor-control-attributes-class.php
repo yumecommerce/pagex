@@ -1097,7 +1097,7 @@ class Pagex_Editor_Control_Attributes {
 				),
 				array(
 					'type'  => 'heading',
-					'title' => __( 'Advanced Settings', 'pagex' ),
+					'title' => __( 'CSS Settings', 'pagex' ),
 				),
 				array(
 					'id'    => 'pagex_custom_class',
@@ -1130,7 +1130,12 @@ class Pagex_Editor_Control_Attributes {
 				),
 				array(
 					'type'  => 'heading',
-					'title' => __( 'Login Condition', 'pagex' ),
+					'title' => __( 'Other', 'pagex' ),
+				),
+				array(
+					'id'    => 'pagex_link',
+					'type'  => 'link',
+					'title' => __( 'Link Entire Element', 'pagex' ),
 				),
 				array(
 					'id'          => 'pagex_login_cond',

@@ -21,11 +21,11 @@ function pagex_register_features_element( $elements ) {
 					<% } %>
 					<% if (data.position == "left") { %> <div class="pagex-feature-item-content"> <% } %>
 					<% if (feature.title) { %>
-					<div class="pagex-feature-item-title-wrapper"><h4 class="pagex-feature-item-title pagex-content-editable pagex-lang-str" contenteditable="true"><%= feature.title %></h4></div>
+					<div class="pagex-feature-item-title-wrapper"><h4 class="pagex-feature-item-title pagex-lang-str" contenteditable="true"><%= feature.title %></h4></div>
 					<% } %>
 					<% if (data.position == "title") { %> </div> <% } %>
 					<% if (feature.desc) { %>
-					<div class="pagex-feature-item-description pagex-content-editable pagex-lang-str" contenteditable="true"><%= feature.desc %></div>
+					<div class="pagex-feature-item-description pagex-lang-str" contenteditable="true"><%= feature.desc %></div>
 					<% } %>
 					<% if (feature.link_text) { %>
 					<a class="button pagex-feature-item-link" <%= feature.link %>><%= feature.link_text %></a>

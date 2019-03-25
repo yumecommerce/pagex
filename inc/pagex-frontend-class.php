@@ -241,8 +241,24 @@ class Pagex_Frontend {
 		}
 
 		// remove contenteditable attribute
-		foreach ( $html->find( '.pagex-content-editable' ) as $element ) {
-			$element->contenteditable = null;
+		foreach ( $html->find( '.pagex-lang-str' ) as $element ) {
+			if ( $element->{'contenteditable'} ) {
+				$element->contenteditable = null;
+			}
+		}
+
+		// add custom element link
+		foreach ( $html->find( '[data-custom-link]' ) as $element ) {
+			$element->innertext = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
+			$element->{'onclick'} = 'pagexCustomLink(this)';
+		}
+
+		// init HTML to apply new DOM elements: ex custom link dynamic data
+		$html = $html->save();
+		$html = str_get_html( $html );
+
+		foreach ( $html->find( '[data-dynamic-link]' ) as $element ) {
+			$element->href = pagex_get_dynamic_link( $element->{'data-dynamic-link'} );
 		}
 
 		// replace static href with translated one
@@ -270,7 +286,8 @@ class Pagex_Frontend {
 			}
 		}
 
-		$html->save();
+		// DOM tree back into string
+		$html = $html->save();
 
 		if ( ! empty( $links ) ) {
 			add_filter( 'pagex_google_fonts', function ( $fonts ) use ( &$links ) {
@@ -283,8 +300,9 @@ class Pagex_Frontend {
 		// remove data-callback attr
 		$html = preg_replace( '/(<[^>]+) data-callback=".*?"/i', '$1', $html );
 
-		// remove data-dynamic-link attr
+		// remove data link attr
 		$html = preg_replace( '/(<[^>]+) data-dynamic-link=".*?"/i', '$1', $html );
+		$html = preg_replace( '/(<[^>]+) data-custom-link=".*?"/i', '$1', $html );
 
 		add_action( 'pagex_head_styles', function () use ( $styles ) {
 			echo '<style>' . $styles . '</style>';

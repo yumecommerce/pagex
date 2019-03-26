@@ -179,8 +179,8 @@ class Pagex_Mega_Menu_Class {
 	}
 
 	/**
-     * Add nav link class to avoid global rules in CSS with mega menu
-     *
+	 * Add nav link class to avoid global rules in CSS with mega menu
+	 *
 	 * @param $atts
 	 * @param $item
 	 * @param $args
@@ -188,11 +188,11 @@ class Pagex_Mega_Menu_Class {
 	 *
 	 * @return mixed
 	 */
-	public function add_link_attributes($atts, $item, $args, $depth) {
+	public function add_link_attributes( $atts, $item, $args, $depth ) {
 		$atts['class'] = 'nav-link';
 
 		return $atts;
-    }
+	}
 
 	/**
 	 * Make layouts which assigned as nav item children display content
@@ -205,6 +205,11 @@ class Pagex_Mega_Menu_Class {
 	 * @return mixed
 	 */
 	function mega_menu_content( $item_output, $item, $depth, $args ) {
+		// in some cases (ex WPML) $args has no menu id
+		if ( ! property_exists( $args, 'menu' ) ) {
+			return $item_output;
+		}
+
 		$menu_id = $args->menu;
 		// display layout content instead of nav link
 		if ( $item->type == 'post_type' && $item->object == 'pagex_layout_builder' && $depth > 0 ) {

@@ -249,7 +249,7 @@ class Pagex_Frontend {
 
 		// add custom element link
 		foreach ( $html->find( '[data-custom-link]' ) as $element ) {
-			$element->innertext = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
+			$element->innertext   = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
 			$element->{'onclick'} = 'pagexCustomLink(this)';
 		}
 
@@ -366,6 +366,7 @@ class Pagex_Frontend {
 				'selector' => '[type="submit"], .button, .added_to_cart',
 				'rules'    => array(
 					'font-size'      => $settings['design']['button']['font_size'],
+					'font-weight'    => $settings['design']['button']['font_weight'],
 					'letter-spacing' => $settings['design']['button']['letter_spacing'],
 					'text-transform' => $settings['design']['button']['text_transform'],
 					'border-width'   => $settings['design']['button']['border_width'],
@@ -374,6 +375,7 @@ class Pagex_Frontend {
 					'background'     => $settings['design']['button']['bg'],
 					'border-color'   => $settings['design']['button']['border_color'],
 					'min-height'     => $settings['design']['button']['min_height'],
+					'box-shadow'     => $settings['design']['button']['box_shadow'],
 				)
 			),
 			array(
@@ -382,6 +384,7 @@ class Pagex_Frontend {
 					'color'        => $settings['design']['button']['color_hover'],
 					'background'   => $settings['design']['button']['bg_hover'],
 					'border-color' => $settings['design']['button']['border_color_hover'],
+					'box-shadow'   => $settings['design']['button']['box_shadow_hover'],
 				)
 			),
 

@@ -279,13 +279,13 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'selector'    => '[el] .pagex-menu-cart-widget-content {padding: [val]}',
 					),
 					array(
-						'id'          => 'ka',
-						'title'       => __( 'Width', 'pagex' ),
-						'responsive'  => true,
-						'class'       => 'col-4',
-						'type'        => 'text',
-						'action'      => 'css',
-						'selector'    => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {width: [val]} [el].pagex-modal-offcanvas .pagex-modal-window-content {max-width: [val]}',
+						'id'         => 'ka',
+						'title'      => __( 'Width', 'pagex' ),
+						'responsive' => true,
+						'class'      => 'col-4',
+						'type'       => 'text',
+						'action'     => 'css',
+						'selector'   => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {width: [val]} [el].pagex-modal-offcanvas .pagex-modal-window-content {max-width: [val]}',
 					),
 					array(
 						'id'       => 'w_sp',
@@ -489,10 +489,10 @@ function pagex_woo_menu_cart( $atts ) {
 
 	$icon = isset( $data['icon'] ) ? pagex_generate_icon( 'icon', $data ) : '<svg class="pagex-icon"><use xlink:href="#pagex-bag-icon" /></svg>';
 
-	echo '<div class="pagex-menu-cart-icon">' . $icon . '</div>';
+	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '<a class="pagex-cart-contents-link" href="' . wc_get_cart_url() . '">' : '';
 
+	echo '<div class="pagex-menu-cart-icon">' . $icon . '</div>';
 	echo '<div class="pagex-menu-cart-contents">';
-	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '<a class="pagex-cart-contents-link" href="' . esc_url( wc_get_cart_url() ) . '">' : '';
 
 	$amount = WC()->cart->get_cart_contents_count();
 
@@ -502,9 +502,9 @@ function pagex_woo_menu_cart( $atts ) {
 	echo '</div>';
 	echo '<div class="pagex-menu-cart-counter"><span class="pagex-menu-cart-count">' . $amount . '</span> <span class="pagex-menu-cart-count-label">' . _n( 'item', 'items', $amount, "pagex" ) . '</span></div>';
 	echo '</div>';
+	echo '</div>';
 
 	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '</a>' : '';
-	echo '</div>';
 
 	if ( $data['type'] == 'dropdown' ) {
 		echo $widget;

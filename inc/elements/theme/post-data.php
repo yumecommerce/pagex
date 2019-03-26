@@ -42,7 +42,7 @@ function pagex_register_post_data_element( $elements ) {
 								'id'    => 'before',
 								'title' => __( 'Prefix', 'pagex' ),
 								'type'  => 'text',
-								'class' => 'col-6',
+								'class' => 'col-6 pagex-repeater-value',
 							),
 							array(
 								'id'        => 'custom_text',
@@ -337,6 +337,28 @@ function pagex_register_post_data_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'selector' => '[el] .pagex-post-data-prefix {margin: [val]}',
+					),
+					array(
+						'id'         => 'zq',
+						'title'      => __( 'Width', 'pagex' ),
+						'class'      => 'col-4',
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'selector'   => '[el] .pagex-post-data-prefix {width: [val]}',
+					),
+					array(
+						'id'       => 'qw',
+						'title'    => __( 'Alignment', 'pagex' ),
+						'type'     => 'select',
+						'class'    => 'col-4',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-post-data-prefix {align-self: [val]}',
+						'options'  => array(
+							''           => __( 'Center', 'pagex' ),
+							'flex-start' => __( 'Top', 'pagex' ),
+							'flex-end'   => __( 'Bottom', 'pagex' ),
+						)
 					),
 					array(
 						'id'       => 'prefix_t',

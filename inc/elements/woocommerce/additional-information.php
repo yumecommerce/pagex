@@ -18,7 +18,32 @@ function pagex_register_woo_product_additional_information_element( $elements ) 
 		'callback'    => 'pagex_woo_product_additional_information',
 		'options'     => array(
 			array(
-				'params' => array(),
+				'params' => array(
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Heading', 'pagex' ),
+					),
+					array(
+						'id'       => 'qw',
+						'label'    => __( 'Hide Heading', 'pagex' ),
+						'type'     => 'checkbox',
+						'action'   => 'css',
+						'selector' => '[el] h2 {display: none}',
+					),
+					array(
+						'id'       => 'we',
+						'type'     => 'typography',
+						'selector' => 'h2',
+					),
+					array(
+						'id'       => 'er',
+						'title'    => __( 'Margin', 'pagex' ),
+						'type'     => 'dimension',
+						'class'    => 'col-6',
+						'action'   => 'css',
+						'selector' => '[el] h2 {margin: [val]}',
+					),
+				),
 			),
 		),
 	);

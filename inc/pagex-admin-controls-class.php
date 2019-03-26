@@ -1026,6 +1026,24 @@ class Pagex_Admin_Controls {
 				'default' => '',
 			),
 			array(
+				'id'      => 'font_weight',
+				'label'   => __( 'Font Weight', 'pagex' ),
+				'type'    => 'select',
+				'options' => array(
+					''     => __( 'Default', 'pagex' ),
+					'bold' => __( 'Bold', 'pagex' ),
+					'100'  => '100',
+					'200'  => '200',
+					'300'  => '300',
+					'400'  => '400',
+					'500'  => '500',
+					'600'  => '600',
+					'700'  => '700',
+					'800'  => '800',
+					'900'  => '900',
+				),
+			),
+			array(
 				'id'      => 'letter_spacing',
 				'label'   => __( 'Letter Spacing', 'pagex' ),
 				'type'    => 'text',
@@ -1047,7 +1065,6 @@ class Pagex_Admin_Controls {
 				'label'   => __( 'Min. Height', 'pagex' ),
 				'type'    => 'text',
 				'default' => '',
-				'clear'   => true,
 			),
 			array(
 				'id'      => 'border_width',
@@ -1098,6 +1115,19 @@ class Pagex_Admin_Controls {
 				'id'      => 'border_color_hover',
 				'label'   => __( 'Border Color on Hover', 'pagex' ),
 				'type'    => 'color',
+				'default' => '',
+				'clear'   => true,
+			),
+			array(
+				'id'      => 'box_shadow',
+				'label'   => __( 'Box Shadow', 'pagex' ),
+				'type'    => 'text',
+				'default' => '',
+			),
+			array(
+				'id'      => 'box_shadow_hover',
+				'label'   => __( 'Box Shadow on Hover', 'pagex' ),
+				'type'    => 'text',
 				'default' => '',
 			),
 		);

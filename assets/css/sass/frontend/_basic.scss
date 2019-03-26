@@ -40,7 +40,8 @@ button,
   justify-content: center;
   user-select: none;
   border: 1px solid transparent;
-  padding: .375rem 1rem;
+  padding: .375rem 1.5rem;
+  cursor: pointer;
   transition: .25s;
 
   &:focus {

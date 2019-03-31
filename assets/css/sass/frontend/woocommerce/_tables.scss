@@ -38,7 +38,7 @@ table.shop_attributes {
 }
 
 .select2-results__option,
-.select2-search--dropdown .select2-search__field{
+.select2-search--dropdown .select2-search__field {
   padding: 0.3rem 0.75rem !important;
 }
 
@@ -56,8 +56,6 @@ table.shop_attributes {
 table.shop_table {
   border-left-width: 0;
   border-right-width: 0;
-  text-align: left;
-  width: 100%;
   border-collapse: separate;
 
   .shipping-calculator-form {
@@ -89,6 +87,43 @@ table.shop_table {
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 12px;
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  table.shop_table_responsive {
+    thead {
+      display: none;
+    }
+
+    tbody {
+      tr:first-child {
+        td:first-child {
+          border-top: 0;
+        }
+      }
+
+      th {
+        display: none;
+      }
+    }
+
+    tr {
+      display: block;
+
+      td {
+        border: 0;
+        display: block;
+        text-align: right;
+
+        &[data-title]::before {
+          content: attr(data-title) ': ';
+          font-weight: 700;
+          padding-right: 10px;
+          float: left;
+        }
+      }
+    }
   }
 }
 

@@ -226,36 +226,33 @@ class Pagex_Editor {
 	 * Add global js variables with all saved layout params and builder settings
 	 */
 	public static function localizeEditorScript() {
-		global $post;
+		global $wp, $post;
 
 		$settings = Pagex::get_settings();
 		$subsets  = isset( $settings['design']['google_fonts_subsets'] ) ? array_keys( $settings['design']['google_fonts_subsets'] ) : array();
+		// get postID from request if frontend builder or get it from global if in backend
+		$post_id = isset( $_REQUEST['pagex-layout-id'] ) ? $_REQUEST['pagex-layout-id'] : $post->ID;
 
-		$all_elements_params = $post ? get_post_meta( $post->ID, '_pagex_elements_params', true ) : '';
-		$all_elements_params = $all_elements_params ? $all_elements_params : '{}';
-
-		// preview link with settings for a frontend builder
-		$preview_settings = $post ? add_query_arg( array(
-			'pagex'               => '',
-			'pagex-query-preview' => array(
-				'post_type'      => $post->post_name,
-				'page'           => '',
-				'name'           => $post->post_name,
-				$post->post_name => $post->post_name
-			),
-			'pagex-exit-link'     => admin_url( 'post.php?post=' . $post->ID . '&action=edit' ),
-		), get_permalink( $post->ID ) ) : '';
+		$elements_params = get_post_meta( $post_id, '_pagex_elements_params', true );
+		$elements_params = $elements_params ? $elements_params : '{}';
 
 		wp_localize_script( 'pagex-builder', 'pagexLocalize',
 			array(
-				'ajaxUrl'    => admin_url( 'admin-ajax.php' ),
-				'post_id'    => get_the_ID(),
-				'all_params' => json_decode( $all_elements_params ),
-				'settings'   => array(
+				'ajaxUrl'      => admin_url( 'admin-ajax.php' ),
+				'post_id'      => $post_id,
+				'all_params'   => json_decode( $elements_params ),
+				'query_string' => $wp->query_string,
+				// for frontend builder link on the backend
+				'front_link'   => add_query_arg( array(
+					'pagex'             => '',
+					'pagex-layout-id'   => $post_id,
+					'pagex-layout-type' => 'layout',
+					'pagex-post-type'   => get_post_type( $post_id ),
+				), get_permalink( $post_id ) ),
+				'settings'     => array(
 					'subsets' => $subsets
 				),
-				'front_link' => $preview_settings,
-				'string'     => array(
+				'string'       => array(
 					'save'                => esc_html__( 'Save', 'pagex' ),
 					'saving'              => esc_html__( 'Saving...', 'pagex' ),
 					'import'              => esc_html__( 'Import Layout', 'pagex' ),
@@ -277,7 +274,6 @@ class Pagex_Editor {
 			show_admin_bar( false );
 		}
 	}
-
 
 	/**
 	 * Add builder active classes
@@ -642,7 +638,9 @@ class Pagex_Editor {
 		// remove all elements which are not related to current post type
 		foreach ( $elements as $key => $element ) {
 			if ( isset( $element['post_type'] ) ) {
-				if ( ! in_array( $post->post_type, $element['post_type'] ) ) {
+				if ( is_admin() && ! in_array( $post->post_type, $element['post_type'] ) ) {
+					unset( $elements[ $key ] );
+				} elseif ( isset( $_REQUEST['pagex-post-type'] ) && ! in_array( $_REQUEST['pagex-post-type'], $element['post_type'] ) ) {
 					unset( $elements[ $key ] );
 				}
 			}
@@ -691,12 +689,12 @@ class Pagex_Editor {
 		$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-layouts">' . __( 'Layouts', 'pagex' ) . '</div>';
 
 		// theme templates layout library
-		if ( $post->post_type == 'pagex_post_tmp' ) {
+		if ( ( is_admin() && $post->post_type == 'pagex_post_tmp' ) || ( isset( $_REQUEST['pagex-post-type'] ) && $_REQUEST['pagex-post-type'] == 'pagex_post_tmp' ) ) {
 			$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-templates">' . __( 'Theme Templates', 'pagex' ) . '</div>';
 		}
 
 		// excerpt layout library
-		if ( $post->post_type == 'pagex_excerpt_tmp' ) {
+		if ( ( is_admin() && $post->post_type == 'pagex_excerpt_tmp' ) || ( isset( $_REQUEST['pagex-post-type'] ) && $_REQUEST['pagex-post-type'] == 'pagex_excerpt_tmp' ) ) {
 			$layouts_modal .= '<div class="pagex-params-tab-title pagex-layouts-modal-excerpts">' . __( 'Excerpts', 'pagex' ) . '</div>';
 		}
 
@@ -757,7 +755,7 @@ class Pagex_Editor {
 
 		// theme templates library
 
-		if ( $post->post_type == 'pagex_post_tmp' ) {
+		if ( ( is_admin() && $post->post_type == 'pagex_post_tmp' ) || ( isset( $_REQUEST['pagex-post-type'] ) && $_REQUEST['pagex-post-type'] == 'pagex_post_tmp' ) ) {
 			$layouts_modal       .= '<div class="pagex-params-tab-content pagex-hide">';
 			$template_categories = array(
 				''                => __( 'All', 'pagex' ),
@@ -785,7 +783,7 @@ class Pagex_Editor {
 		}
 
 		// excerpt templates library
-		if ( $post->post_type == 'pagex_excerpt_tmp' ) {
+		if ( ( is_admin() && $post->post_type == 'pagex_excerpt_tmp' ) || ( isset( $_REQUEST['pagex-post-type'] ) && $_REQUEST['pagex-post-type'] == 'pagex_excerpt_tmp' ) ) {
 			$layouts_modal      .= '<div class="pagex-params-tab-content pagex-hide">';
 			$excerpt_categories = array(
 				''        => __( 'All', 'pagex' ),
@@ -869,15 +867,6 @@ class Pagex_Editor {
 			echo $layouts_modal;
 			echo $all_elements_form;
 
-			if ( isset( $_REQUEST['pagex-exit-link'] ) ) {
-				$exit_link = $_REQUEST['pagex-exit-link'];
-				if ( isset( $_REQUEST['action'] ) ) {
-					$exit_link = $exit_link . '&action=' . $_REQUEST['action'];
-				}
-			} else {
-				$exit_link = get_permalink();
-			}
-
 			// undo remove action button
 			echo '<button type="button" class="btn btn-primary pagex-undo-remove"><i class="fas fa-undo-alt mr-2"></i>' . __( 'Undo a remove action', 'pagex' ) . '</button>';
 
@@ -912,7 +901,7 @@ class Pagex_Editor {
 							</ul>
 							
 							<li class="pagex-save"><div><i class="far fa-save mr-2"></i><span>' . __( 'Save', 'pagex' ) . '</span></div></li>
-							<li class="pagex-exit"><a href="' . $exit_link . '"></a><span><i class="fas fa-sign-out-alt mr-2"></i>' . __( 'Exit', 'pagex' ) . '</span></li>
+							<li class="pagex-exit"><a href="' . parse_url( $_SERVER["REQUEST_URI"], PHP_URL_PATH ) . '"></a><span><i class="fas fa-sign-out-alt mr-2"></i>' . __( 'Exit', 'pagex' ) . '</span></li>
 						</ul>
 					</div>
 					<div class="pagex-main-settings-icon" onclick="this.closest(\'#pagex-settings\').classList.toggle(\'active\')"></div>
@@ -927,20 +916,9 @@ class Pagex_Editor {
 	 * Create global query based on preview query
 	 */
 	public static function setup_query_posts() {
-		if ( isset( $_REQUEST['pagex-query-preview'] ) ) {
-			// when post query preview loads at the first time
-			query_posts( $_REQUEST['pagex-query-preview'] );
-		} elseif ( isset( $_POST['url'] ) ) {
-			// when dynamic element gets updated
-			parse_str( $_POST['url'], $query );
-			if ( isset( $query['pagex-query-preview'] ) ) {
-				query_posts( array_merge(
-						$query['pagex-query-preview'],
-						array(
-							'post_status' => 'publish'
-						) )
-				);
-			}
+		// when dynamic element gets updated
+		if ( isset( $_POST['query_string'] ) ) {
+			query_posts( $_POST['query_string'] );
 		}
 
 		// setup data for woocommerce
@@ -986,6 +964,10 @@ class Pagex_Editor {
 
 			// tool for frontend editor to preview element changes
 			add_action( 'wp_ajax_' . $action, function () use ( &$action ) {
+				if ( ! is_super_admin() ) {
+					die();
+				}
+
 				$shortcode_data = isset( $_POST['atts'] ) ? urlencode( json_encode( $_POST['atts'] ) ) : '';
 
 				Pagex_Editor::setup_query_posts();
@@ -1287,12 +1269,10 @@ class Pagex_Editor {
 		$error_text = '';
 
 		// update post
-		$my_post = array(
+		$update_post = wp_update_post( array(
 			'ID'           => $post_id,
 			'post_content' => $content,
-		);
-
-		$update_post = wp_update_post( $my_post, true );
+		), true );
 
 		if ( is_wp_error( $update_post ) ) {
 			$error  = true;

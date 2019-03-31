@@ -43,17 +43,12 @@ class Pagex_Admin_Controls {
 			return;
 		}
 
+		global $post, $wp;
+
 		$settings = Pagex::get_settings();
 
-		global $wp_query, $post;
-
-		$post_id = get_the_ID();
-
-		$href_preview = array(
-			'pagex'               => '',
-			'pagex-query-preview' => $wp_query->query ? $wp_query->query : array( 'page_id' => $post_id ),
-			'pagex-exit-link'     => "//" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
-		);
+		$post_id     = get_the_ID();
+		$current_url = home_url( $wp->request );
 
 		$wp_admin_bar->add_menu( array(
 			'id'    => 'pagex',
@@ -67,7 +62,13 @@ class Pagex_Admin_Controls {
 				'parent' => 'pagex',
 				'id'     => 'pagex-header-layout',
 				'title'  => __( 'Header Layout', 'pagex' ),
-				'href'   => add_query_arg( $href_preview, get_permalink( $current_header ) ),
+				'href'   => add_query_arg(
+					array(
+						'pagex'             => '',
+						'pagex-layout-id'   => $current_header,
+						'pagex-layout-type' => 'header',
+						'pagex-post-type'   => 'pagex_layout_builder'
+					), $current_url ),
 			) );
 		}
 
@@ -77,7 +78,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-post-layout',
 					'title'  => __( 'Current Layout', 'pagex' ),
-					'href'   => add_query_arg( array( 'pagex' => '', ), get_permalink( $post_id ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $post_id,
+							'pagex-layout-type' => 'template',
+							'pagex-post-type'   => 'pagex_layout_builder'
+						), $current_url ),
 				) );
 			} elseif ( isset( $settings['builder'] ) && isset( $settings['builder'][ $post->post_type ] ) ) {
 				$page_post_string = __( 'Post Layout', 'pagex' );
@@ -90,7 +97,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-post-layout',
 					'title'  => $page_post_string,
-					'href'   => add_query_arg( $href_preview, get_permalink( $post_id ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $post_id,
+							'pagex-layout-type' => 'layout',
+							'pagex-post-type'   => get_post_type( $post_id )
+						), $current_url ),
 				) );
 			}
 		}
@@ -106,7 +119,13 @@ class Pagex_Admin_Controls {
 						'parent' => 'pagex',
 						'id'     => 'pagex-single-post-template',
 						'title'  => __( 'Post Template', 'pagex' ) . ' <span class="pagex-nav-template-name">' . get_the_title( $template ) . '</span>',
-						'href'   => add_query_arg( $href_preview, get_permalink( $template ) ),
+						'href'   => add_query_arg(
+							array(
+								'pagex'             => '',
+								'pagex-layout-id'   => $template,
+								'pagex-layout-type' => 'template',
+								'pagex-post-type'   => 'pagex_post_tmp'
+							), $current_url ),
 					) );
 				}
 			}
@@ -116,7 +135,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-post-templates-blog',
 					'title'  => __( 'Blog Template', 'pagex' ) . ' <span class="pagex-nav-template-name">' . get_the_title( $template ) . '</span>',
-					'href'   => add_query_arg( $href_preview, get_permalink( $template ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $template,
+							'pagex-layout-type' => 'template',
+							'pagex-post-type'   => 'pagex_post_tmp'
+						), $current_url ),
 				) );
 			}
 		} elseif ( is_search() ) {
@@ -125,7 +150,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-post-templates-search-results',
 					'title'  => __( 'Search Template', 'pagex' ) . ' <span class="pagex-nav-template-name">' . get_the_title( $template ) . '</span>',
-					'href'   => add_query_arg( $href_preview, get_permalink( $template ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $template,
+							'pagex-layout-type' => 'template',
+							'pagex-post-type'   => 'pagex_post_tmp'
+						), $current_url ),
 				) );
 			}
 		} elseif ( is_archive() ) {
@@ -134,7 +165,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-post-templates-blog',
 					'title'  => __( 'Archive Template', 'pagex' ) . ' <span class="pagex-nav-template-name">' . get_the_title( $template ) . '</span>',
-					'href'   => add_query_arg( $href_preview, get_permalink( $template ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $template,
+							'pagex-layout-type' => 'template',
+							'pagex-post-type'   => 'pagex_post_tmp'
+						), $current_url ),
 				) );
 			}
 		} elseif ( is_404() ) {
@@ -143,7 +180,13 @@ class Pagex_Admin_Controls {
 					'parent' => 'pagex',
 					'id'     => 'pagex-template-404',
 					'title'  => __( '404 Layout', 'pagex' ),
-					'href'   => add_query_arg( array( 'pagex' => '' ), get_permalink( $template ) ),
+					'href'   => add_query_arg(
+						array(
+							'pagex'             => '',
+							'pagex-layout-id'   => $template,
+							'pagex-layout-type' => 'template',
+							'pagex-post-type'   => 'pagex_layout_builder'
+						), $current_url ),
 				) );
 			}
 		}
@@ -165,7 +208,13 @@ class Pagex_Admin_Controls {
 				'parent' => 'pagex',
 				'id'     => 'pagex-footer-layout',
 				'title'  => __( 'Footer Layout', 'pagex' ),
-				'href'   => add_query_arg( $href_preview, get_permalink( $current_footer ) ),
+				'href'   => add_query_arg(
+					array(
+						'pagex'             => '',
+						'pagex-layout-id'   => $current_footer,
+						'pagex-layout-type' => 'footer',
+						'pagex-post-type'   => 'pagex_layout_builder'
+					), $current_url ),
 			) );
 		}
 	}

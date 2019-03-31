@@ -3,11 +3,7 @@
 class Pagex_WooCommerce {
 	public function __construct() {
 		// wrap main content to avoid style issues
-		add_action( 'pagex_before_post_content', array( $this, 'pagex_before_post_content' ), 99 );
-		add_action( 'pagex_after_post_content', array( $this, 'pagex_after_post_content' ), 99 );
-
-		// add woocommerce active class
-		add_filter( 'body_class', array( $this, 'body_classes' ) );
+		add_filter( 'pagex_template_class', array( $this, 'add_product_classes' ) );
 
 		// Disable all woocommerce stylesheets to avoid code duplication
 		// all default basic style like gallery will be enqueue all the time in frontend stylesheet
@@ -18,6 +14,26 @@ class Pagex_WooCommerce {
 		add_filter( 'woocommerce_product_review_comment_form_args', array( $this, 'review_comment_form' ), 10, 3 );
 	}
 
+	/**
+	 * Add product classes to #main wrapper
+	 */
+	public function add_product_classes( $classes ) {
+		if ( is_singular( 'product' ) ) {
+			$classes[] = join( ' ', wc_get_product_class() );
+		}
+
+		return $classes;
+	}
+
+	/**
+	 * Add SVG rating
+	 *
+	 * @param $html
+	 * @param $rating
+	 * @param $count
+	 *
+	 * @return null|string|string[]|void
+	 */
 	public function rating_html( $html, $rating, $count ) {
 		$rating_number = round( $rating );
 		$empty_stars   = 5 - $rating_number;
@@ -39,6 +55,13 @@ class Pagex_WooCommerce {
 		return $html;
 	}
 
+	/**
+	 * Change stars review to SVG
+	 *
+	 * @param $comment_form
+	 *
+	 * @return mixed
+	 */
 	public function review_comment_form( $comment_form ) {
 		$html = str_get_html( $comment_form['comment_field'] );
 
@@ -53,79 +76,6 @@ class Pagex_WooCommerce {
 		$comment_form['comment_field'] = $html;
 
 		return $comment_form;
-	}
-
-
-	public function singular_template_active() {
-		return is_singular( 'product' ) && function_exists( 'wc' ) && ! Pagex::is_frontend_builder_active();
-	}
-
-	public function singular_builder_template_active() {
-		return Pagex::is_frontend_builder_frame_active() && is_singular( 'pagex_post_tmp' ) && function_exists( 'wc' );
-	}
-
-	/**
-	 * Add woocommerce class to avoid style issues
-	 *
-	 * @param $classes
-	 *
-	 * @return array
-	 */
-	public function body_classes( $classes ) {
-		if ( Pagex::is_frontend_builder_frame_active() ) {
-			if ( is_singular( 'pagex_post_tmp' ) && function_exists( 'wc' ) ) {
-				$classes[] = 'woocommerce';
-			}
-		}
-
-		return $classes;
-	}
-
-	/**
-	 * Add content after pagex_post_content action
-	 */
-	public function pagex_after_post_content() {
-		// add close div for wrapper of woo product
-		if ( $this->singular_template_active() || $this->singular_builder_template_active() ) {
-			echo '</div>';
-		}
-	}
-
-	/**
-	 * Add content before pagex_post_content action
-	 */
-	public function pagex_before_post_content() {
-		// add wrapper for woo product
-		if ( $this->singular_template_active() || $this->singular_builder_template_active() ) {
-			echo '<div id="product-' . get_the_ID() . '" class="' . esc_attr( join( ' ', wc_get_product_class() ) ) . '">';
-		}
-	}
-
-	/**
-	 * Enqueue woo scripts when we edit post templates for a single product
-	 */
-	public static function maybe_enqueue_scripts() {
-		if ( ! function_exists( 'wc' ) ) {
-			return;
-		}
-
-		if ( current_theme_supports( 'wc-product-gallery-zoom' ) ) {
-			wp_enqueue_script( 'zoom' );
-		}
-		if ( current_theme_supports( 'wc-product-gallery-slider' ) ) {
-			wp_enqueue_script( 'flexslider' );
-		}
-		if ( current_theme_supports( 'wc-product-gallery-lightbox' ) ) {
-			wp_enqueue_script( 'photoswipe-ui-default' );
-			wp_enqueue_style( 'photoswipe-default-skin' );
-			add_action( 'wp_footer', 'woocommerce_photoswipe' );
-		}
-		wp_enqueue_script( 'wc-single-product' );
-
-		wp_enqueue_style( 'photoswipe' );
-		wp_enqueue_style( 'photoswipe-default-skin' );
-		wp_enqueue_style( 'photoswipe-default-skin' );
-		wp_enqueue_style( 'woocommerce_prettyPhoto_css' );
 	}
 }
 

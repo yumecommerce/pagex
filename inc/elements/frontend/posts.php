@@ -205,7 +205,8 @@ function pagex_register_posts_element( $elements ) {
 						'class'      => 'col-4',
 						'type'       => 'select',
 						'action'     => 'css',
-						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val] - 0.1px)}', // -0.1px to fix IE issue
+						'selector'   => '[el] [data-columns]:before {content: "[val] .pagex-masonry-column.pagex-masonry-size-[val]"} [el] .pagex-posts-grid-layout .pagex-posts-item-wrapper, [el] [data-columns=""] .pagex-posts-item-wrapper {width: calc(100% / [val] - 0.1px)}',
+						// -0.1px to fix IE issue
 						'responsive' => true,
 						'options'    => array(
 							// we need space before value so browsers do not change options order
@@ -312,9 +313,7 @@ function pagex_posts( $atts ) {
 		return '';
 	}
 
-	if ( ! is_singular() ) {
-		return __( 'Posts element works only for single posts. To display posts in archive pages use Posts Loop element.', 'pagex' );
-	} elseif ( is_singular( 'page' ) && $data['post_type'] == 'related' ) {
+	if ( is_singular( 'page' ) && $data['post_type'] == 'related' ) {
 		return '';
 	}
 
@@ -464,7 +463,7 @@ function pagex_posts( $atts ) {
 		while ( $posts->have_posts() ) : $posts->the_post();
 			echo '<div class="' . $item_class . '">';
 			echo '<div class="pagex-posts-item">';
-			echo do_shortcode( get_post_field( 'post_content', $excerpt ) );
+			echo pagex_generate_excerpt_template( do_shortcode( get_post_field( 'post_content', $excerpt ) ) );
 			echo '</div>';
 			echo '</div>';
 		endwhile;

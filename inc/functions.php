@@ -1,6 +1,36 @@
 <?php
 
 /**
+ * Display the classes for the header div
+ */
+function pagex_header_class() {
+	$classes = apply_filters( 'pagex_header_class', array() );
+	if ( $classes ) {
+		echo 'class="' . join( ' ', $classes ) . '"';
+	}
+}
+
+/**
+ * Display the classes for the main div
+ */
+function pagex_template_class() {
+	$classes = apply_filters( 'pagex_template_class', array() );
+	if ( $classes ) {
+		echo 'class="' . join( ' ', $classes ) . '"';
+	}
+}
+
+/**
+ * Display the classes for the footer div
+ */
+function pagex_footer_class() {
+	$classes = apply_filters( 'pagex_footer_class', array() );
+	if ( $classes ) {
+		echo 'class="' . join( ' ', $classes ) . '"';
+	}
+}
+
+/**
  * Modal window template
  * Used by dynamic element shortcodes with any type of modal windows
  *
@@ -289,12 +319,12 @@ function pagex_get_document_title( $context = false, $use_page = false ) {
 /**
  * Generate href for dynamic link attribute
  *
- * @param $atts
+ * @param $type
  *
  * @return string
  */
-function pagex_get_dynamic_link( $atts ) {
-	switch ( $atts ) {
+function pagex_get_dynamic_link( $type ) {
+	switch ( $type ) {
 		case 'post':
 			$link = esc_url( get_permalink() );
 			break;
@@ -308,13 +338,34 @@ function pagex_get_dynamic_link( $atts ) {
 			$link = get_comments_link();
 			break;
 		default:
-			$link = pagex_get_custom_meta_value( $atts );
+			$link = pagex_get_custom_meta_value( $type );
 			if ( ! $link ) {
 				$link = '#';
 			}
 	}
 
 	return $link;
+}
+
+/**
+ * Used by Posts, Posts Loop elements to get right dynamic links for elements
+ *
+ * @param $html
+ *
+ * @return bool|simple_html_dom
+ */
+function pagex_generate_excerpt_template( $html ) {
+
+	$html = str_get_html( $html );
+
+	foreach ( $html->find( '[data-dynamic-link]' ) as $element ) {
+		$element->href = pagex_get_dynamic_link( $element->{'data-dynamic-link'} );
+		$element->{'data-dynamic-link'} = null;
+	}
+
+	$html = $html->save();
+
+	return $html;
 }
 
 /**

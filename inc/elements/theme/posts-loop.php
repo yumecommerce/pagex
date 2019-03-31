@@ -262,11 +262,9 @@ function pagex_posts_loop( $atts ) {
 		echo '<div class="pagex-posts-wrapper" ' . $item_data . '>';
 		while ( have_posts() ) {
 			the_post();
-
 			echo '<div class="pagex-posts-item-wrapper"><div class="pagex-posts-item">';
-			echo do_shortcode( $excerpt_content );
+			echo pagex_generate_excerpt_template( do_shortcode( $excerpt_content ) );
 			echo '</div></div>';
-
 		}
 		echo '</div>';
 		echo '</div>';
@@ -278,7 +276,6 @@ function pagex_posts_loop( $atts ) {
 			echo get_the_posts_pagination();
 		}
 		echo '</div>';
-
 	} else {
 		if ( is_search() ) {
 			if ( $data['nothing_found'] ) {

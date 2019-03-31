@@ -190,7 +190,8 @@
 
 .clpi-b-hex input {
   max-height: 100%;
-  height: 30px;
+  height: 32px !important;
+  min-height: 32px !important;
   padding: 0 10px;
   box-sizing: border-box;
   -webkit-appearance: none;

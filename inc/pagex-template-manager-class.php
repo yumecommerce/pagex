@@ -4,6 +4,7 @@ class Pagex_Template_Manager {
 	public function __construct() {
 		// make created post templates selectable from page template attribute
 		add_action( 'init', array( $this, 'assign_templates_to_posts' ) );
+		add_action( 'init', array( $this, 'add_builder_area_class' ) );
 
 		add_action( 'template_redirect', array( $this, 'builder_redirect' ) );
 		add_filter( 'template_include', array( $this, 'page_template' ), 99 );
@@ -25,6 +26,27 @@ class Pagex_Template_Manager {
 
 		// add blank template for pages
 		add_filter( 'theme_page_templates', array( $this, 'page_post_template' ), 10, 4 );
+	}
+
+	/**
+	 * Add builder area class if frame for header/footer/template is active
+	 */
+	public function add_builder_area_class() {
+		if ( Pagex::is_frontend_builder_frame_active() && isset( $_REQUEST['pagex-layout-type'] ) ) {
+			$type = $_REQUEST['pagex-layout-type'];
+
+			add_filter( 'pagex_' . $type . '_class', function ( $classes ) {
+				$classes[] = 'pagex-builder-area';
+
+				return $classes;
+			} );
+
+			add_filter( 'body_class', function ( $classes ) use ( $type ) {
+				$classes[] = 'pagex-builder-' . $type;
+
+				return $classes;
+			} );
+		}
 	}
 
 	/**
@@ -107,11 +129,6 @@ class Pagex_Template_Manager {
 			$id      = Pagex::get_translation_id( $id, 'pagex_layout_builder' );
 			$content = apply_filters( 'pagex_content', do_shortcode( get_post_field( 'post_content', $id ) ) );
 
-			// add builder area wrapper when we editing header/footer layout with preview
-			if ( Pagex::is_frontend_builder_frame_active() && isset( $_REQUEST['pagex-query-preview'] ) && $post && $id == $post->ID ) {
-				$content = '<div class="pagex-builder-area">' . $content . '</div>';
-			}
-
 			add_action( 'pagex_' . $type . '_layout', function () use ( $content ) {
 				echo $content;
 			} );
@@ -123,148 +140,77 @@ class Pagex_Template_Manager {
 	 *
 	 * @param $default_template - template setup by WordPress
 	 *
-	 * @return string - full path to archive template file
+	 * @return string - full path to template file
 	 */
 	public function page_template( $default_template ) {
-		global $post;
+		global $post, $wp;
 
 		$settings = Pagex::get_settings();
 
+		if ( ! $settings ) {
+			return $default_template;
+		}
+
+		$current_url    = home_url( $wp->request );
+		$basic_template = PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
+
 		// setup iFrame for a builder
 		if ( Pagex::is_frontend_builder_active() ) {
-			add_action( 'pagex_post_content', function () {
+			add_action( 'pagex_post_content', function () use ( $current_url ) {
 				$frame_src                = $_REQUEST;
 				$frame_src['pagex-frame'] = '';
 
 				unset( $frame_src['pagex'] );
 
-				echo '<div id="pagex-builder-wrapper"><div id="pagex-builder-responsive-wrapper"><iframe src="' . get_permalink() . '?' . http_build_query( $frame_src ) . '" allowfullscreen="1" id="pagex-frame"></iframe></div></div>';
+				echo '<div id="pagex-builder-wrapper"><div id="pagex-builder-responsive-wrapper"><iframe src="' . add_query_arg( $frame_src, $current_url ) . '" allowfullscreen="1" id="pagex-frame"></iframe></div></div>';
 			} );
 
-			return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
+			return $basic_template;
 		}
 
-		$header = isset( $settings['default_header'] ) ? $settings['default_header'] : null;
-		$footer = isset( $settings['default_footer'] ) ? $settings['default_footer'] : null;
+		$header = $settings['default_header'];
+		$footer = $settings['default_footer'];
 
-		if ( $post && $post->post_type == 'pagex_post_tmp' ) {
-			$template_id   = $post->ID;
-			$pagex_content = get_post_field( 'post_content', $template_id );
+		if ( is_singular( 'pagex_post_tmp' ) ) {
+			$template_id        = $post->ID;
+			$template_type      = get_post_meta( $template_id, '_pagex_template_type', true );
+			$template_post_type = get_post_meta( $template_id, '_pagex_template_post_type', true );
 
-			// if builder is not active (for example view post from admin) setup preview automatically
-			if ( ! isset( $_REQUEST['pagex-frame'] ) && is_super_admin() ) {
+			$href_preview = array(
+				'pagex'                  => '',
+				'pagex-layout-id'        => $template_id,
+				'pagex-layout-type'      => 'template',
+				'pagex-post-type'        => 'pagex_post_tmp',
+				'pagex-template-preview' => $template_id // need for preview
+			);
 
-				$temp_type = get_post_meta( $template_id, '_pagex_template_type', true );
-				$post_type = get_post_meta( $template_id, '_pagex_template_post_type', true );
-
-				$href_preview = array(
-					'pagex'               => '',
-					'pagex-query-preview' => array( 'post_type' => $post_type ),
-					'pagex-exit-link'     => admin_url( 'post.php?post=' . $template_id . '&action=edit' ),
-				);
-
-				if ( $temp_type == 'archive' ) {
-					// if blog page set attributes for a blog preview template
-					if ( $post_type == 'post' ) {
-						if ( $page_for_posts = get_option( 'page_for_posts' ) ) {
-							$href_preview['pagex-query-preview']['pagename'] = get_post_field( 'post_name', $page_for_posts );
-						} else {
-							// in case blog page is not set and we open template via admin
-							die( __('No Blog page is selected. Set your Home and Blog pages to static ones.', 'pagex') );
-						}
-					}
-
-					wp_redirect( add_query_arg( $href_preview, get_permalink( $template_id ) ) );
-					exit();
-				} elseif ( $temp_type == 'single' ) {
-					// get the last published post to preview the template
-					$last_post = wp_get_recent_posts(
-						array(
-							'numberposts' => 1,
-							'post_status' => 'publish',
-							'post_type'   => $post_type
-						) );
-
-					if ( $last_post ) {
-						$href_preview['pagex-query-preview']['page']       = '';
-						$href_preview['pagex-query-preview'][ $post_type ] = $last_post[0]['post_name'];
-						$href_preview['pagex-query-preview']['name']       = $last_post[0]['post_name'];
-
-						wp_redirect( add_query_arg( $href_preview, get_permalink( $template_id ) ) );
-						exit();
-					} else {
-						// just in case if no posts were created
-						die( 'no post to preview' );
-					}
-				}
-			}
-
-			// setup query before pagex_post_content action so pagex_before_post_content also was triggered
-			add_action( 'pagex_before_page_layout', function () {
-				Pagex_Editor::setup_query_posts();
-			} );
-
-			add_action( 'pagex_post_content', function () use ( $pagex_content ) {
-
-				Pagex_WooCommerce::maybe_enqueue_scripts();
-
-				echo '<div class="pagex-builder-area">';
-				echo do_shortcode( $pagex_content );
-				echo '</div>';
-			} );
-
-			// restore default query for proper footer scripts
-			add_action( 'pagex_after_page_layout', function () use ( $template_id ) {
-				query_posts( array(
-					'p'         => $template_id,
-					'post_type' => 'pagex_post_tmp',
-				) );
-			} );
-		} elseif ( $post && $post->post_type == 'pagex_layout_builder' ) {
-			// print post template based on preview query
-			if ( Pagex::is_frontend_builder_frame_active() ) {
-				if ( isset( $_REQUEST['pagex-query-preview'] ) ) {
-					// get layout post id before it being changed by preview setup_query_posts()
-					$layout_id = $post->ID;
-
-					// setup query before pagex_post_content action so pagex_before_post_content also was triggered
-					add_action( 'pagex_before_page_layout', function () {
-						Pagex_Editor::setup_query_posts();
-						Pagex_WooCommerce::maybe_enqueue_scripts();
-					} );
-
-					add_action( 'pagex_post_content', function () {
-						$template = self::get_current_post_template();
-						echo apply_filters( 'pagex_content', do_shortcode( get_post_field( 'post_content', $template ) ) );
-					} );
-
-					// restore default query for proper footer scripts
-					add_action( 'pagex_after_page_layout', function () use ( $layout_id ) {
-						query_posts( array(
-							'p'         => $layout_id,
-							'post_type' => 'pagex_layout_builder',
-						) );
-					} );
-				} else {
-					add_action( 'pagex_post_content', function () use ( $post ) {
-						echo '<div class="pagex-builder-area">';
-						echo do_shortcode( get_post_field( 'post_content', $post->ID ) );
-						echo '</div>';
-					} );
-
-					// return template before header/footer layouts will be initialized
-					// if builder is active and no preview set it means layout is edited via layout builder single post directly
-					return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
-				}
+			if ( $template_type == 'archive' ) {
+				wp_redirect( add_query_arg( $href_preview, get_post_type_archive_link( $template_post_type ) ) );
+				exit();
 			} else {
-				add_action( 'pagex_post_content', function () use ( $post ) {
-					echo do_shortcode( get_post_field( 'post_content', $post->ID ) );
-				} );
+				// get the last published post to preview the template
+				$last_post = wp_get_recent_posts(
+					array(
+						'numberposts' => 1,
+						'post_status' => 'publish',
+						'post_type'   => $template_post_type
+					) );
 
-				// return template before header/footer layouts will be initialized
-				// no builder is active so we simply view the layout builder single post
-				return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
+				if ( $last_post ) {
+					wp_redirect( add_query_arg( $href_preview, get_permalink( $last_post[0]['ID'] ) ) );
+					exit();
+				} else {
+					// just in case if no posts were created
+					die( 'no post to preview' );
+				}
 			}
+		} elseif ( is_singular( 'pagex_layout_builder' ) ) {
+			add_action( 'pagex_post_content', function () use ( $post ) {
+				echo do_shortcode( get_post_field( 'post_content', $post->ID ) );
+			} );
+
+			// return template before header/footer layouts will be initialized
+			return $basic_template;
 		} else {
 			$template = self::get_current_post_template();
 
@@ -288,7 +234,7 @@ class Pagex_Template_Manager {
 					} );
 				}
 
-				return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
+				return $basic_template;
 			}
 
 			// print post template
@@ -314,6 +260,11 @@ class Pagex_Template_Manager {
 		}
 
 		// print header
+		// demo preview for header layout
+		if ( isset( $_REQUEST['pagex-header-preview'] ) ) {
+			$header = intval( $_REQUEST['pagex-header-preview'] );
+		}
+
 		if ( $header ) {
 			add_filter( 'pagex_admin_menu_header_layout_id', function () use ( $header ) {
 				return $header;
@@ -322,6 +273,11 @@ class Pagex_Template_Manager {
 		}
 
 		// print footer
+		// demo preview for header layout
+		if ( isset( $_REQUEST['pagex-footer-preview'] ) ) {
+			$footer = intval( $_REQUEST['pagex-footer-preview'] );
+		}
+
 		if ( $footer ) {
 			add_filter( 'pagex_admin_menu_footer_layout_id', function () use ( $footer ) {
 				return $footer;
@@ -330,7 +286,7 @@ class Pagex_Template_Manager {
 		}
 
 		// return basic template for all types of queries
-		return PAGEX_DIR_NAME . '/inc/templates/basic-template.php';
+		return $basic_template;
 	}
 
 	/**
@@ -386,6 +342,7 @@ class Pagex_Template_Manager {
 			$template = self::get_post_template( 'post', 'taxonomy' );
 		}
 
+		// demo preview for the main template
 		if ( isset( $_REQUEST['pagex-template-preview'] ) ) {
 			$template = intval( $_REQUEST['pagex-template-preview'] );
 		}

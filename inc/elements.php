@@ -158,9 +158,6 @@ if ( function_exists( 'wc' ) ) {
 			'woo_product_meta',
 			'woo_product_thumbnail',
 			'woo_sale_flash',
-			'woo_cart_form',
-			'woo_checkout',
-			'woo_my_account',
 			'woo_notices',
 		) as $element
 	) {
@@ -180,9 +177,6 @@ if ( function_exists( 'wc' ) ) {
 			'pagex_woo_product_meta',
 			'pagex_woo_product_thumbnail',
 			'pagex_woo_sale_flash',
-			'pagex_woo_cart_form',
-			'pagex_woo_checkout',
-			'pagex_woo_my_account',
 			'pagex_woo_notices',
 		);
 

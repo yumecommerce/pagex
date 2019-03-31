@@ -489,18 +489,8 @@ function pagex_post_data( $atts ) {
 				}
 			}
 
-
 			if ( $v['link'] && $v['type'] != 'taxonomy' ) {
-				$a_class = 'pagex-post-data-link';
-
-				if ( isset( $v['link-dynamic'] ) ) {
-					$dynamic_href = pagex_dynamic_link( array( $v['link-dynamic'] ) );
-					$link         = preg_replace( '/href=".*?"/m', 'href="' . $dynamic_href . '"', $v['link'] );
-				} else {
-					$link    = $v['link'];
-					$a_class .= ' pagex-static-link';
-				}
-				$item = '<a ' . $link . ' class="' . $a_class . '">' . $item . '</a>';
+				$item = '<a ' . $v['link'] . ' class="pagex-post-data-link pagex-static-link">' . $item . '</a>';
 			}
 
 			$html .= '<div class="pagex-post-data-item pagex-post-data-' . $v['type'] . '-type">' . $item . '</div>';

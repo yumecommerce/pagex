@@ -534,7 +534,7 @@ var pagex = {
 
                     jQuery.post(pagexLocalize.ajaxUrl, {
                         action: that.currentElementParams.callback,
-                        url: location.search.substring(1),
+                        query_string: pagexLocalize.query_string,
                         post_id: pagexLocalize.post_id,
                         atts: that.genDataForDynamicEl(formObj),
                         "pagex-frame": true, // skip pagex content filter
@@ -1109,8 +1109,12 @@ var pagex = {
             if (input.matches('.pagex-link-control-href'))
                 urlStr.href = _.escape(input.value);
 
-            if (input.matches('.pagex-link-control-onclick'))
+            if (input.matches('.pagex-link-control-onclick')) {
                 urlStr.onclick = _.escape(input.value);
+                if (urlStr.href === undefined) {
+                    urlStr.href = 'javascript:void(0);';
+                }
+            }
 
             if (input.matches('.pagex-link-control-title'))
                 urlStr.title = _.escape(input.value);
@@ -1695,15 +1699,13 @@ var pagex = {
     saveAsLayout: function (el) {
         let section = this.currentElement.outerHTML,
             title = window.parent.document.getElementById('pagex-custom-layout-title').value,
-            sectionID = this.currentElement.getAttribute(['data-id']);
-
-        let button_text = el.querySelector('span'),
-            button_icon = el.querySelector('i');
+            sectionID = this.currentElement.getAttribute(['data-id']),
+            button_text = el.querySelector('span'),
+            button_icon = el.querySelector('i'),
+            section_params = {};
 
         button_text.innerHTML = pagexLocalize.string.saving;
         button_icon.className = 'fas fa-spinner fa-spin';
-
-        let section_params = {};
 
         if (!_.isUndefined(pagexLocalize.all_params[sectionID])) {
             section_params[sectionID] = pagexLocalize.all_params[sectionID];
@@ -1721,7 +1723,7 @@ var pagex = {
             pagex_post_content: section,
             title: title,
             pagex_elements_params: JSON.stringify(section_params),
-            pagex_page_status: true
+            pagex_page_status: true // for save_post_data filter
         }, function (data) {
             if (data.error === true) {
                 button_text.innerHTML = data.message;
@@ -1961,8 +1963,8 @@ var pagex = {
                 action: 'pagex_save_layout',
                 pagex_post_content: document.querySelector('.pagex-builder-area').innerHTML,
                 pagex_elements_params: JSON.stringify(pagexLocalize.all_params),
+                pagex_page_status: true, // for save_post_data filter
                 post_id: pagexLocalize.post_id,
-                pagex_page_status: true,
             }, function (data) {
                 if (data.error === undefined) {
                     console.error('Something went wrong during saving the layout.');
@@ -2002,7 +2004,7 @@ var pagex = {
 
         jQuery.post(pagexLocalize.ajaxUrl, {
             action: 'pagex_import_post_layout',
-            url: location.search.substring(1),
+            query_string: pagexLocalize.query_string,
             post_layout: layout,
             "pagex-frame": true, // skip pagex content filter
         }, function (response) {

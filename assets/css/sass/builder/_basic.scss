@@ -79,7 +79,7 @@ body:not(.pagex-element-removed) .pagex-undo-remove {
   }
 }
 
-.pagex-builder-frame-active:not(.single-pagex_layout_builder) {
+.pagex-builder-frame-active:not(.pagex-builder-header) {
   #header {
     pointer-events: none;
   }

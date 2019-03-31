@@ -4,13 +4,16 @@ Pagex is a visual theme builder. It takes control over all theme templates and l
 - 100% responsive design based on Bootstrap 4
 - Header and Footer builder
 - Post preview (excerpt) builder for Blog/Shop or any custom archive
-- Theme templates builder
+- Theme and WooCommerce templates builder
 - Front-end and back-end visual builders
 - Works with Classic and Gutenberg editors
 - Built-in one click demo import (for theme developers)
 - Built-in coming soon mode
+- Built-in mega-menu
+- Built-in page preloader
+- Built-in GDPR notices
 - WooCommerce support
-- WPML support
+- 100% WPML support
 - Support custom post types and custom meta fields
 - Layouts and Theme Templates library
 - Advanced Typography (Google, Adobe (TypeKit), and Custom Fonts)

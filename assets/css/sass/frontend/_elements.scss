@@ -93,8 +93,7 @@
 }
 
 .pagex-button-link {
-  width: 100%;
-  display: block;
+  display: inline-flex;
 }
 
 .pagex-modal-trigger {
@@ -1304,12 +1303,6 @@ body .pagex-modal {
 .pagex-form-type-submit {
   margin: 0 !important;
   display: flex;
-}
-
-.pagex-form-submit-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .pagex-form-submit-icon {

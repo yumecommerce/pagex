@@ -380,6 +380,24 @@ function pagex_register_form_element( $elements ) {
 
 					array(
 						'type'  => 'heading',
+						'title' => __( 'HTML Fields', 'pagex' ),
+					),
+					array(
+						'id'       => 'sw',
+						'type'     => 'typography',
+						'selector' => '.pagex-form-type-html',
+					),
+					array(
+						'id'       => 'de',
+						'title'    => __( 'Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-form-type-html {color: [val]}',
+					),
+
+					array(
+						'type'  => 'heading',
 						'title' => __( 'Response Messages', 'pagex' ),
 					),
 					array(
@@ -506,11 +524,11 @@ function pagex_register_form_element( $elements ) {
 						'type'     => 'select',
 						'class'    => 'col-4',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-form-type-submit {text-align: [val]}',
+						'selector' => '[el] .pagex-form-type-submit {justify-content: [val]}',
 						'options'  => array(
 							''       => __( 'Left', 'pagex' ),
 							'center' => __( 'Center', 'pagex' ),
-							'right'  => __( 'Right', 'pagex' ),
+							'flex-end'  => __( 'Right', 'pagex' ),
 
 						),
 					),

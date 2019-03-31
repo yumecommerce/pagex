@@ -49,6 +49,10 @@ button,
   }
 }
 
+.col {
+  min-width: 1px; // fix issue with long slider when column width is not specified
+}
+
 .btn,
 .button {
   position: relative;

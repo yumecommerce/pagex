@@ -27,39 +27,13 @@ table.shop_attributes {
   }
 }
 
-.select2-container--default .select2-selection--single .select2-selection__rendered {
-  line-height: inherit !important;
-  padding: 0 !important;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow {
-  right: 0.375rem !important;
-  height: 100% !important;
-}
-
-.select2-results__option,
-.select2-search--dropdown .select2-search__field {
-  padding: 0.3rem 0.75rem !important;
-}
-
-.select2-search--dropdown {
-  padding: 0.6rem 0.75rem !important;
-}
-
-.select2-container .select2-selection--single {
-  height: calc(2.25rem + 2px) !important;
-  position: relative;
-  margin: 0 !important;
-  text-align: left;
-}
-
 table.shop_table {
   border-left-width: 0;
   border-right-width: 0;
   border-collapse: separate;
 
   .shipping-calculator-form {
-    margin-top: 15px;
+    margin: 15px 0;
   }
 
   th {

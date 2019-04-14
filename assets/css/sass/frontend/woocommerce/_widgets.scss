@@ -85,6 +85,12 @@ ul.cart_list {
     }
   }
 
+  .quantity {
+    font-size: 90%;
+    display: block;
+    margin-top: 5px;
+  }
+
   // removing item block ui
   .blockUI {
     opacity: 0 !important;
@@ -125,7 +131,7 @@ ul.cart_list {
   a.remove {
     position: absolute;
     top: 0;
-    right: 10px;
+    right: 0;
   }
 }
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Pagex\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-02-27 21:01+0000\n"
-"PO-Revision-Date: 2019-02-27 21:05+0000\n"
+"PO-Revision-Date: 2019-04-12 07:06+0000\n"
 "Last-Translator: admin <imnicon@gmail.com>\n"
 "Language-Team: Русский\n"
 "Language: ru_RU\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.2.0; wp-5.1"
+"X-Loco-Version: 2.2.2; wp-5.1.1"
 
 #: inc/functions.php:47 inc/functions.php:118 inc/functions.php:142
 #: inc/pagex-editor-control-attributes-class.php:474
@@ -2205,7 +2205,7 @@ msgstr ""
 #: inc/pagex-editor-class.php:380 inc/pagex-editor-class.php:814
 #: inc/elements/frontend/search-form.php:322
 msgid "Search"
-msgstr ""
+msgstr "Поиск"
 
 #: inc/pagex-editor-class.php:380 inc/elements/woocommerce/menu-cart.php:312
 #: inc/elements/frontend/tabs.php:21 inc/elements/frontend/tabs.php:54
@@ -3310,7 +3310,7 @@ msgstr ""
 
 #: inc/elements/frontend/search-form.php:321
 msgid "Search..."
-msgstr ""
+msgstr "Поиск..."
 
 #: inc/elements/frontend/instagram.php:14
 msgid "Instagram"
@@ -4558,7 +4558,7 @@ msgstr ""
 
 #: inc/elements/theme/posts-loop.php:34
 msgid "Search Results: Nothing Found"
-msgstr ""
+msgstr "Результаты поиска: ничего не найдено"
 
 #: inc/elements/theme/posts-loop.php:35
 msgid ""
@@ -4594,7 +4594,7 @@ msgstr ""
 
 #: inc/elements/theme/posts-loop.php:288
 msgid "Sorry, but nothing matched your search term."
-msgstr ""
+msgstr "Извините, но ничего не соответствует вашему запросу."
 
 #: inc/elements/theme/posts-loop.php:295
 msgid "It seems we cannot find what you are looking for."

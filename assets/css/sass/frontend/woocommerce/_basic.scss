@@ -4,14 +4,6 @@ ul.products {
   margin: 0;
 }
 
-// no click on menu cart for cart page
-body.woocommerce-cart,
-body.woocommerce-checkout {
-  .pagex-menu-cart {
-    pointer-events: none;
-  }
-}
-
 .woocommerce-form-row.form-row,
 .woocommerce-FormRow.form-row {
   margin-left: 0;
@@ -34,6 +26,21 @@ body.woocommerce-checkout {
   ins {
     text-decoration: none;
   }
+}
+
+// remove product button for cart page and cart widget
+.remove[data-product_id] {
+  font-family: Arial, sans-serif !important; // make sure that x icon looks ok
+  width: 19px;
+  height: 19px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: -1px;
+  line-height: 1;
+  border-radius: 100%;
+  font-size: 13px;
+  font-weight: 400;
 }
 
 // custom class for star rating review
@@ -185,3 +192,4 @@ body.woocommerce-checkout {
 @import "checkout";
 @import "reviews";
 @import "tables";
+@import "select2";

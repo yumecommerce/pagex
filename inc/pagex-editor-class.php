@@ -678,10 +678,10 @@ class Pagex_Editor {
 		$icons_modal .= '</div></div>';
 
 		// save layout modal
-		$save_layouts_modal = '<div id="pagex-save-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Save Custom Layout', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close"><i class="fas fa-times"></i></div></div></div><div class="pagex-params-tab-content"><div class="input-group mt-2 mb-1"><input type="text" name="pagex-custom-layout-title" id="pagex-custom-layout-title" class="form-control" placeholder="' . __( 'Enter Layout Name', 'pagex' ) . '"><div class="input-group-append"><button type="button" class="btn btn-outline-secondary pagex-params-button pagex-save-custom-layout"><i class="fas fa-save"></i><span>' . __( 'Save Layout', 'pagex' ) . '</span></button></div></div><p>' . __( 'Layout will be saved in Layout Builder Library.', 'pagex' ) . ' <a href="' . admin_url( 'edit.php?post_type=pagex_layout_builder' ) . '" target="_blank">' . __( 'Layout Builder', 'pagex' ) . '</a></p></div></div>';
+		$save_layouts_modal = '<div id="pagex-save-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Save Custom Layout', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close"><i class="fas fa-times"></i></div></div></div><div class="pagex-params-tab-content"><div class="input-group mt-2 mb-1"><input type="text" name="pagex-custom-layout-title" id="pagex-custom-layout-title" class="form-control" placeholder="' . __( 'Enter Layout Name', 'pagex' ) . '"><div class="input-group-append"><button type="button" class="btn btn-outline-secondary pagex-params-button pagex-save-custom-layout"><i class="fas fa-save"></i><span>' . __( 'Save Layout', 'pagex' ) . '</span></button></div></div><p>' . sprintf( __( 'Layout will be saved in %s Layout Builder Library. %s', 'pagex' ), '<a href="' . admin_url( 'edit.php?post_type=pagex_layout_builder' ) . '" target="_blank">', '</a> ' ) . '<br><br><b>' . __( 'Export as a file', 'pagex' ) . '</b><br>' . sprintf( __( 'You can save as a file %s current section %s or all %s builder area. %s', 'pagex' ), '<a href="#" id="pagex-export-current-section">', '</a>', '<a href="#" id="pagex-export-builder-area">', '</a>' ) . '</p></div></div>';
 
 		// modal with layouts, pages and templates
-		$layouts_modal = '<div id="pagex-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Library', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="pagex-params-modal-close trn-300 ml-4" ><i class="fas fa-times"></i></div></div></div>';
+		$layouts_modal = '<div id="pagex-layouts-modal" class="pagex-main-modal-window pagex-params-modal pagex-hide"><div class="pagex-params-modal-head"><div class="pagex-all-elements-modal-title">' . __( 'Library', 'pagex' ) . '</div><div class="pagex-params-modal-controls"><div class="custom-file"><form action=""><input type="file" class="custom-file-input" id="pagex-upload-layout-file" accept=".json"><button type="button" class="btn btn-light w-100" id="pagex-upload-layout-button"><i class="fas fa-cloud-upload-alt"></i><span>' . __( 'Upload Layout', 'pagex' ) . '</span></button></form></div><div class="pagex-params-modal-close trn-300 ml-4" ><i class="fas fa-times"></i></div></div></div>';
 
 		// tabs titles with a list of all created builder layouts
 		$layouts_modal .= '<div class="pagex-params-tabs d-flex"><div class="pagex-params-tab-title active">' . __( 'All Created', 'pagex' ) . '</div>';
@@ -918,7 +918,13 @@ class Pagex_Editor {
 	public static function setup_query_posts() {
 		// when dynamic element gets updated
 		if ( isset( $_POST['query_string'] ) ) {
-			query_posts( $_POST['query_string'] );
+			$query_string = $_POST['query_string'];
+			// for main page query is empty so we setup it manually
+			if ( $query_string == '' && 'page' == get_option( 'show_on_front' ) && get_option( 'page_on_front' ) ) {
+				$query_string = 'page_id=' . get_option( 'page_on_front' );
+			}
+
+			query_posts( $query_string );
 		}
 
 		// setup data for woocommerce
@@ -990,6 +996,7 @@ class Pagex_Editor {
 				'pagex_save_as_layout',
 				'pagex_excerpt_preview',
 				'pagex_import_post_layout',
+				'pagex_upload_layout',
 				'pagex_get_layouts_from_library',
 				'pagex_export_layout'
 			) as $action
@@ -1057,8 +1064,6 @@ class Pagex_Editor {
 			return;
 		}
 
-		Pagex_Editor::setup_query_posts();
-
 		$post_layout = $_REQUEST['post_layout'];
 
 		// check if we are going to import post id
@@ -1092,11 +1097,37 @@ class Pagex_Editor {
 			return;
 		}
 
+		Pagex_Editor::setup_query_posts();
+
 		$layout = json_decode( wp_remote_retrieve_body( $remote_response ), true );
 
 		wp_send_json_success( array(
 			'params'  => json_encode( $layout['params'] ),
 			'content' => do_shortcode( $layout['layout'] ),
+		) );
+	}
+
+	/**
+	 * Upload json and import layout
+	 */
+	public function pagex_upload_layout() {
+		if ( ! is_super_admin() ) {
+			return;
+		}
+
+		$data = json_decode( file_get_contents( $_FILES['file']['tmp_name'] ), true );
+
+		if ( ! isset( $data['layout'] ) ) {
+			wp_send_json_error( array(
+				'content' => __( 'Invalid File', 'pagex' )
+			) );
+		}
+
+		Pagex_Editor::setup_query_posts();
+
+		wp_send_json_success( array(
+			'params'  => json_encode( $data['params'] ),
+			'content' => do_shortcode( $data['layout'] ),
 		) );
 	}
 
@@ -1335,8 +1366,8 @@ class Pagex_Editor {
 		// remove inline styles from divs
 		$content = preg_replace( '/(<div[^>]+)( style=".*?")/s', '$1', $content );
 
-		// remove frontend CSS classes
-		$frontend_classes = array(
+		// remove frontend CSS classes and backend comment tags
+		$builder_tags = array(
 			'/ui-sortable/m',
 			'/pagex-hide-row-controls/m',
 			'/pagex-section-hover/m',
@@ -1359,9 +1390,12 @@ class Pagex_Editor {
 			'/swiper-pagination-clickable/m',
 			'/swiper-pagination-bullets/m',
 
+			// replace pagexstyle css comment from backend builder
+			'/ pagexstyle\*\//m',
+			'/\/\*pagexstyle /m'
 		);
 
-		$content = preg_replace( $frontend_classes, '', $content );
+		$content = preg_replace( $builder_tags, '', $content );
 
 		$html = str_get_html( $content );
 
@@ -1383,6 +1417,41 @@ class Pagex_Editor {
 		// remove iframe from background video and replace it with placeholder
 		foreach ( $html->find( '.pagex-video-bg-youtube' ) as $element ) {
 			$element->innertext = '<div class="pagex-video-youtube" id="' . uniqid( 'p' ) . '"></div>';
+		}
+
+		// minify css by combining rules for the same selectors
+		foreach ( $html->find( 'style' ) as $element ) {
+			$inner_style = $element->innertext;
+
+			// get all @media
+			preg_match_all( '/@media\b[^{]*({([^{}]++|(?1))*})/s', $inner_style, $out );
+			$style_medias = $out[0];
+
+			// remove all @media
+			$style_no_medias = preg_replace_callback( '/@media\b[^{]*({([^{}]++|(?1))*})/s', function () {
+				return;
+			}, $inner_style );
+
+			// get all selectors and rules into one array
+			preg_match_all( '/(.*?){(.*?)}/s', $style_no_medias, $out );
+			$css = array();
+
+			// combine all rules for the same selector
+			foreach ( $out[0] as $k => $v ) {
+				if ( isset( $css[ $out[1][ $k ] ] ) ) {
+					$css[ $out[1][ $k ] ] .= '; ' . $out[2][ $k ];
+				} else {
+					$css[ $out[1][ $k ] ] = $out[2][ $k ];
+				}
+			}
+
+			// combine all rules
+			$css_string = '';
+			foreach ( $css as $k => $v ) {
+				$css_string .= $k . '{' . $v . '}';
+			}
+
+			$element->innertext = $css_string . implode( ' ', $style_medias );
 		}
 
 		// wrap each string with shortcode to make it available for translation in multilingual plugins

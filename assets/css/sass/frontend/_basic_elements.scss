@@ -119,6 +119,7 @@ body:not(.pagex-builder-frame-active) .element:empty {
 
 img.pagex-icon {
   width: auto !important;
+  max-width: none;
 }
 
 // body class for excerpt preview iframe

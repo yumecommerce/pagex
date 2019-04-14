@@ -1119,6 +1119,12 @@ body .pagex-modal {
 
   .btn {
     flex: 0 0 auto;
+
+    .pagex-icon {
+      margin-right: 8px;
+      width: 17px;
+      height: 17px;
+    }
   }
 }
 
@@ -1251,6 +1257,7 @@ body .pagex-modal {
     opacity: 0;
     transition: 200ms;
     top: 100%;
+    right: 0;
     width: 100%;
     padding-top: 20px;
     min-width: 250px;

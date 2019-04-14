@@ -100,7 +100,7 @@
     opacity: .8;
     font-size: 9px !important;
     line-height: 14px;
-    margin-top: 5px;
+    margin: 5px 0;
     font-weight: 400;
 
     a {
@@ -295,6 +295,26 @@ body:not(.wp-admin) #pagex-params-modal {
   display: flex;
   align-items: center;
   margin-left: auto;
+
+  .custom-file {
+    height: 32px;
+    cursor: pointer;
+
+    .btn {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      border: 0;
+      color: #5959de;
+    }
+  }
+
+  .custom-file-input {
+    width: 140px;
+    height: 32px;
+  }
 }
 
 .pagex-params-modal-close {
@@ -323,6 +343,10 @@ body:not(.wp-admin) #pagex-params-modal {
 
   .pagex-params-modal-head {
     cursor: auto;
+  }
+
+  a {
+    color: #007bff !important;
   }
 }
 

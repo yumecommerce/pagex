@@ -387,6 +387,21 @@ class Pagex_Frontend {
 					'box-shadow'   => $settings['design']['button']['box_shadow_hover'],
 				)
 			),
+			// WooCommerce remove product button
+			array(
+				'selector' => '.remove[data-product_id]',
+				'rules'    => array(
+					'color'          => $settings['design']['button']['color'],
+					'background'     => $settings['design']['button']['bg'],
+				)
+			),
+			array(
+				'selector' => '.remove[data-product_id]:hover',
+				'rules'    => array(
+					'color'          => $settings['design']['button']['color_hover'],
+					'background'     => $settings['design']['button']['bg_hover'],
+				)
+			),
 
 			// loading icon color in a button
 			array(

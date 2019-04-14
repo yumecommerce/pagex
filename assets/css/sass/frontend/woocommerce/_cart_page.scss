@@ -15,7 +15,7 @@
 
     @include media-breakpoint-up(lg) {
       width: 70%;
-      padding-right: 50px;
+      padding-right: 60px;
     }
   }
 
@@ -63,16 +63,7 @@
     }
 
     .remove {
-      font-family: Arial !important;
-      display: flex;
-      width: 21px;
-      height: 21px;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      border-radius: 21px;
       margin-left: auto;
-      font-size: 13px;
 
       @include media-breakpoint-up(md) {
         margin-right: 10px;
@@ -161,6 +152,8 @@
 
 .shipping-calculator-button {
   font-size: 90%;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .shipping-calculator-form {

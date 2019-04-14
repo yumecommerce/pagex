@@ -8,7 +8,7 @@
  * @return array
  */
 function pagex_register_search_form_element( $elements ) {
-	$_post_types = get_post_types( array( 'show_in_nav_menus' => true ), 'objects' );
+	$_post_types = get_post_types( array( 'show_in_nav_menus' => true, 'exclude_from_search' => false ), 'objects' );
 
 	$post_types = array( '' => __( 'All post types', 'pagex' ) );
 
@@ -34,13 +34,11 @@ function pagex_register_search_form_element( $elements ) {
 						'options'     => $post_types,
 					),
 					array(
-						'id'       => 'style',
-						'type'     => 'select',
-						'class'    => 'col-4',
-						'action'   => 'class',
-						'selector' => '.element-wrap',
-						'title'    => __( 'Style', 'pagex' ),
-						'options'  => array(
+						'id'      => 'style',
+						'type'    => 'select',
+						'class'   => 'col-4',
+						'title'   => __( 'Style', 'pagex' ),
+						'options' => array(
 							''                          => __( 'Classic', 'pagex' ),
 							'pagex-search-form-overlay' => __( 'Overlay', 'pagex' ),
 						),
@@ -179,10 +177,26 @@ function pagex_register_search_form_element( $elements ) {
 						'type'     => 'button_style',
 						'selector' => '[type="submit"]',
 					),
+					array(
+						'id'       => 'sw',
+						'title'    => __( 'Icon Size', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .btn .pagex-icon {width: [val]; height: [val]}',
+					),
+					array(
+						'id'       => 'de',
+						'title'    => __( 'Icon Margin', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .btn .pagex-icon {margin: [val]}',
+					),
 				),
 			),
 			array(
-				'title'  => __( 'Mobile', 'pagex' ),
+				'title'  => __( 'Breakpoint', 'pagex' ),
 				'params' => array(
 					array(
 						'id'          => 'breakpoint',
@@ -312,6 +326,7 @@ function pagex_search_form( $atts ) {
 	$atts = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $atts, array(
+		'style'       => '',
 		'post_type'   => '',
 		'placeholder' => '',
 		'button_text' => '',
@@ -333,9 +348,9 @@ function pagex_search_form( $atts ) {
 
 	echo '<div class="pagex-search-form-wrapper ' . $data['breakpoint'] . '">';
 
-	$form = '<form role="search" method="get" class="pagex-search-form d-flex pagex-breakpoint-desktop" action="' . esc_url( home_url( '/' ) ) . '">';
+	$form = '<form role="search" method="get" class="pagex-search-form d-flex pagex-breakpoint-desktop ' . $data['style'] . '" action="' . esc_url( home_url( '/' ) ) . '">';
 	$form .= '<input type="search" name="s" class="form-control pagex-search-input" placeholder="' . $placeholder . '" value="' . $search_val . '">';
-	$form .= '<button type="submit" class="btn">' . $button . '</button>';
+	$form .= '<button type="submit" class="btn"><svg class="pagex-icon"><use xlink:href="#pagex-search-icon" /></svg><span>' . $button . '</span></button>';
 	$form .= $post_type_input;
 	$form .= '</form>';
 
@@ -353,7 +368,6 @@ function pagex_search_form( $atts ) {
 			'content' => str_replace( 'pagex-breakpoint-desktop', '', $form ),
 			'class'   => 'pagex-search-form-mobile-wrapper'
 		) );
-
 	}
 
 	echo '</div>';

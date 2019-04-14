@@ -11,7 +11,9 @@
 <body <?php body_class(); ?>>
 <?php do_action( 'pagex_before_page_layout' ); ?>
 <div id="page">
+	<?php do_action( 'pagex_before_header' ); ?>
     <div id="header" <?php pagex_header_class(); ?>><?php do_action( 'pagex_header_layout' ); ?></div>
+	<?php do_action( 'pagex_before_main' ); ?>
     <div id="main" <?php pagex_template_class(); ?>>
 		<?php
 		do_action( 'pagex_before_post_content' );
@@ -19,7 +21,9 @@
 		do_action( 'pagex_after_post_content' );
 		?>
     </div>
+	<?php do_action( 'pagex_after_main' ); ?>
     <div id="footer" <?php pagex_footer_class(); ?>><?php do_action( 'pagex_footer_layout' ); ?></div>
+	<?php do_action( 'pagex_after_footer' ); ?>
 </div>
 <?php do_action( 'pagex_after_page_layout' ); ?>
 <?php wp_footer(); ?>

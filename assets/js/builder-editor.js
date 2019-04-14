@@ -942,6 +942,11 @@ var pagex = {
         allStyleRules = allStyleRules.replace(new RegExp('\\[el\\]', 'g'), '[data-id="' + elId + '"]');
 
         if (allStyleRules.length) {
+            // backend with pagexstyle to avoid issues with default style
+            if (this.postContentArea !== null) {
+                allStyleRules = '/*pagexstyle ' + allStyleRules + ' pagexstyle*/';
+            }
+
             this.currentElement.insertAdjacentHTML('afterbegin', '<style id="' + elId + '">' + allStyleRules + '</style>');
         }
 
@@ -1994,10 +1999,9 @@ var pagex = {
 
     importPostLayout: function (el) {
         let layout = el.getAttribute('data-import-post-layout'),
-            that = this;
-
-        let button_text = el.querySelector('span'),
-            button_icon = el.querySelector('i');
+            button_text = el.querySelector('span'),
+            button_icon = el.querySelector('i'),
+            _this = this;
 
         button_text.innerHTML = pagexLocalize.string.importing;
         button_icon.className = 'fas fa-spinner fa-spin';
@@ -2013,36 +2017,17 @@ var pagex = {
                 return;
             }
 
-            let newData = that.genNewImportedParams(response.data);
-
-            // use jQuery to run inline script if presented
-            jQuery(newData.content).insertAfter(jQuery(that.currentSection));
-
-            if (newData.params) {
-                pagexLocalize.all_params = Object.assign(pagexLocalize.all_params, newData.params);
-            }
-
-            that.layoutsModal.classList.add('pagex-hide');
+            _this.appendNewImportedLayout(response.data);
 
             button_text.innerHTML = pagexLocalize.string.import;
             button_icon.className = 'fas fa-file-import';
-
-            that.updatePostContent();
-
-            if (typeof pagexUtils !== "undefined") {
-                setTimeout(function () {
-                    pagexUtils.setupRefresh();
-                }, 1500);
-            }
-
-            that.elementSortable();
 
         }).fail(function () {
             console.error('Fail to import layout');
         });
     },
 
-    genNewImportedParams: function (data) {
+    appendNewImportedLayout: function (data) {
         let content = jQuery('<div>' + data.content + '</div>'),
             params = JSON.parse(data.params),
             newParams = {};
@@ -2073,7 +2058,26 @@ var pagex = {
             }
         }
 
-        return {content: content.innerHTML, params: newParams};
+        let newData = {content: content.innerHTML, params: newParams};
+
+        // use jQuery to run inline script if presented
+        jQuery(newData.content).insertAfter(jQuery(this.currentSection));
+
+        if (newData.params) {
+            pagexLocalize.all_params = Object.assign(pagexLocalize.all_params, newData.params);
+        }
+
+        this.layoutsModal.classList.add('pagex-hide');
+
+        this.updatePostContent();
+
+        if (typeof pagexUtils !== "undefined") {
+            setTimeout(function () {
+                pagexUtils.setupRefresh();
+            }, 1500);
+        }
+
+        this.elementSortable();
     },
 
     pagexSetting: function (el) {
@@ -2118,16 +2122,93 @@ var pagex = {
         }, 300);
     },
 
-    export: function () {
+    uploadLayout: function (input) {
+        let file_data = input.files[0],
+            form_data = new FormData(),
+            icon = input.nextSibling.querySelector('i'),
+            iconClass = icon.className,
+            button = input.nextSibling.querySelector('span'),
+            buttonText = button.innerHTML,
+            _this = this;
+
+        button.innerHTML = pagexLocalize.string.importing;
+        icon.className = 'fas fa-spinner fa-spin';
+
+        form_data.append('file', file_data);
+        form_data.append('action', 'pagex_upload_layout');
+        form_data.append('pagex-frame', true);
+        form_data.append('query_string', pagexLocalize.query_string);
+
+        jQuery.ajax({
+            url: pagexLocalize.ajaxUrl,
+            type: 'POST',
+            dataType: 'json',
+            data: form_data,
+            contentType: false,
+            processData: false,
+        }).done(function (response) {
+            if (!response.success) {
+                alert(response.data.content);
+                return;
+            }
+
+            _this.appendNewImportedLayout(response.data);
+        }).fail(function () {
+            alert('Error uploading layout');
+        }).always(function () {
+            button.innerHTML = buttonText;
+            icon.className = iconClass;
+            // clear file input so we could import same layout again
+            input.closest('form').reset();
+        });
+    },
+
+    exportCurrentSection: function () {
+        let content = this.currentElement.outerHTML,
+            sectionID = this.currentElement.getAttribute(['data-id']),
+            params = {};
+
+        if (!_.isUndefined(pagexLocalize.all_params[sectionID])) {
+            params[sectionID] = pagexLocalize.all_params[sectionID];
+        }
+        for (let item of this.currentElement.querySelectorAll('[data-id]')) {
+            let id = item.getAttribute(['data-id']);
+            if (!_.isUndefined(pagexLocalize.all_params[id])) {
+                params[id] = pagexLocalize.all_params[id];
+            }
+        }
+
+        this.export(params, content);
+
+        return false;
+    },
+
+    exportBuilderArea: function () {
+        this.export(pagexLocalize.all_params, document.querySelector('.pagex-builder-area').innerHTML);
+
+        return false;
+    },
+
+    export: function (params, content) {
         jQuery.post(pagexLocalize.ajaxUrl, {
             action: 'pagex_export_layout',
-            content: document.querySelector('.pagex-builder-area').innerHTML,
-            pagex_elements_params: JSON.stringify(pagexLocalize.all_params),
+            content: content,
+            pagex_elements_params: JSON.stringify(params),
             pagex_page_status: true
         }, function (data) {
-            console.log(JSON.stringify({params: pagexLocalize.all_params, layout: data.data}));
+            let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
+                    params: params,
+                    layout: data.data
+                })),
+                downloadAnchorNode = document.createElement('a');
+
+            downloadAnchorNode.setAttribute('href', dataStr);
+            downloadAnchorNode.setAttribute('download', 'pagex-layout.json');
+            window.parent.document.body.appendChild(downloadAnchorNode);
+            downloadAnchorNode.click();
+            downloadAnchorNode.remove();
         }).fail(function () {
-            console.error('Error exporting layout');
+            alert('Error exporting layout');
         });
     },
 };
@@ -2214,6 +2295,11 @@ window.parent.document.addEventListener('click', function (e) {
     if (el.matches('.pagex-preview-mode-hide-controls')) pagex.previewModeHideControls();
     if (el.matches('.pagex-debug-mode-hide-header')) pagex.debugHideHeader();
     if (el.matches('.pagex-debug-mode-clear-layout')) pagex.debugClearLayout();
+
+    // export/import layouts
+    if (el.matches('#pagex-export-current-section')) pagex.exportCurrentSection();
+    if (el.matches('#pagex-export-builder-area')) pagex.exportBuilderArea();
+
 });
 
 window.parent.document.addEventListener('mousedown', function (e) {
@@ -2257,22 +2343,36 @@ window.parent.document.addEventListener('keyup', function (e) {
 window.parent.document.addEventListener('change', function (e) {
     if (!e.target) return;
     let el = e.target;
-    if (el.matches('.pagex-image-sizes')) pagex.changeImageUrlSize(e);
-    if (el.matches('.pagex-link-control-field')) pagex.fillLinkUrl(e);
 
-    if (el.matches('.pagex-control-option')) {
-        pagex.currentParam = el;
-        setTimeout(pagex.setFormConditions(el), 0);
-        setTimeout(pagex.renderElement(), 100);
+    switch (true) {
+        case el.matches('.pagex-image-sizes'):
+            // no break since it matches pagex-control-option
+            pagex.changeImageUrlSize(e);
+        case el.matches('.pagex-link-control-field'):
+            // no break since it matches pagex-control-option
+            pagex.fillLinkUrl(e);
+        case el.matches('.pagex-control-option'):
+            pagex.currentParam = el;
+            setTimeout(pagex.setFormConditions(el), 0);
+            setTimeout(pagex.renderElement(), 100);
+            break;
+        case el.matches('.pagex-layouts-modal-filter-cat'):
+            // layout library filter
+            pagex.filterLibraryLayout(el.value);
+            break;
+        case el.matches('#pagex-excerpt-preview-post-type'):
+            // backend
+            pagex.updatePostContent();
+            break;
+        case el.matches('#pagex-excerpt-preview-width'):
+            // backend
+            pagex.excerptPreviewWidth(el);
+            break;
+        case el.matches('#pagex-upload-layout-file'):
+            // upload layout
+            pagex.uploadLayout(el);
+            break;
     }
-
-    // layout library filter
-    if (el.matches('.pagex-layouts-modal-filter-cat')) pagex.filterLibraryLayout(el.value);
-
-
-    // backend
-    if (el.matches('#pagex-excerpt-preview-post-type')) pagex.updatePostContent();
-    if (el.matches('#pagex-excerpt-preview-width')) pagex.excerptPreviewWidth(el);
 });
 
 window.parent.addEventListener('colorPickerChange', function (data) {

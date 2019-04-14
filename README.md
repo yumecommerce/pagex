@@ -7,16 +7,19 @@ Pagex is a visual theme builder. It takes control over all theme templates and l
 - Theme and WooCommerce templates builder
 - Front-end and back-end visual builders
 - Works with Classic and Gutenberg editors
-- Built-in one click demo import (for theme developers)
-- Built-in coming soon mode
-- Built-in mega-menu
-- Built-in page preloader
-- Built-in GDPR notices
-- WooCommerce support
+- Built-in features:
+    - One click demo import (for theme developers)
+    - Coming soon mode
+    - Mega-menu (with horizontal or vertical layouts)
+    - Page preloader
+    - GDPR notices
+ - WooCommerce support
 - 100% WPML support
 - Support custom post types and custom meta fields
 - Layouts and Theme Templates library
-- Advanced Typography (Google, Adobe (TypeKit), and Custom Fonts)
+- Import/Export file layouts
+- Live custom CSS
+- Advanced Typography (Google, Adobe Fonts (TypeKit), and Custom Fonts)
 
 ### Documentation
 [Pagex Documentation](https://github.com/komarovartem/pagex/wiki)

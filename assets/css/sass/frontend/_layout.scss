@@ -85,8 +85,6 @@ body.admin-bar .pagex-section-position-fixed.pagex-section-fixed {
 
 input:not([type="checkbox"]):not([type="radio"]),
 textarea.form-control {
-  transition: 300ms;
-
   // these rules must be added separately
   &::-webkit-input-placeholder {
     color: inherit;

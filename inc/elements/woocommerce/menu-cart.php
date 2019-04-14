@@ -59,10 +59,10 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'type'      => 'select',
 						'action'    => 'css',
 						'class'     => 'col-3',
-						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {[val]: 0}',
+						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {left: 0; right: auto;}',
 						'options'   => array(
-							'left'  => __( 'Left', 'pagex' ),
-							'right' => __( 'Right', 'pagex' ),
+							''     => __( 'Right', 'pagex' ),
+							'left' => __( 'Left', 'pagex' ),
 						),
 						'condition' => array(
 							'type' => array( 'dropdown' )
@@ -72,17 +72,21 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'type' => 'clear'
 					),
 					array(
-						'id'    => 'title',
-						'title' => __( 'Widget Title', 'pagex' ),
-						'type'  => 'text',
+						'id'        => 'title',
+						'title'     => __( 'Widget Title', 'pagex' ),
+						'type'      => 'text',
+						'condition' => array(
+							'type' => array( 'dropdown', 'offcanvas' )
+						)
 					),
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Custom Icon', 'pagex' ),
 					),
 					array(
-						'id'   => 'icon',
-						'type' => 'icon',
+						'id'       => 'icon',
+						'type'     => 'icon',
+						'selector' => '.pagex-menu-cart-icon'
 					),
 				),
 			),
@@ -330,11 +334,11 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 					),
 					array(
 						'type'  => 'heading',
-						'title' => __( 'Quantity', 'pagex' ),
+						'title' => __( 'Quantity and Price', 'pagex' ),
 					),
 					array(
 						'id'       => 'w_qc',
-						'title'    => __( 'Quantity', 'pagex' ),
+						'title'    => __( 'Color', 'pagex' ),
 						'class'    => 'col-4',
 						'type'     => 'color',
 						'action'   => 'css',
@@ -351,6 +355,25 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'title' => __( 'Remove Button', 'pagex' ),
 					),
 					array(
+						'id'       => 'w_rs',
+						'title'    => __( 'Size', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .widget .cart_list a.remove {font-size: [val]}',
+					),
+					array(
+						'id'       => 'w_pa',
+						'title'    => __( 'Padding', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .widget .cart_list a.remove {padding: [val]}',
+					),
+					array(
+						'type' => 'clear',
+					),
+					array(
 						'id'       => 'w_rc',
 						'title'    => __( 'Color', 'pagex' ),
 						'class'    => 'col-4',
@@ -365,6 +388,22 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] .widget .cart_list a.remove:hover {color: [val] !important}',
+					),
+					array(
+						'id'       => 'w_bg',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .widget .cart_list a.remove {background: [val] !important}',
+					),
+					array(
+						'id'       => 'w_bgh',
+						'title'    => __( 'Background on Hover', 'pagex' ),
+						'class'    => 'col-8',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .widget .cart_list a.remove:hover {background: [val] !important}',
 					),
 
 					array(
@@ -399,13 +438,13 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'title' => __( 'Buttons', 'pagex' ),
 					),
 					array(
-						'id'       => 'er',
-						'title'    => __( 'Layout', 'pagex' ),
-						'type'     => 'select',
-						'action'   => 'css',
-						'selector' => '[el] .widget .buttons a {width: [val]; margin-right: 0;}',
-						'class'    => 'col-6',
-						'options'  => array(
+						'id'          => 'er',
+						'title'       => __( 'Layout', 'pagex' ),
+						'description' => __( 'For "Inline" option, the width of the widget should be big enough.', 'pagex' ),
+						'type'        => 'select',
+						'action'      => 'css',
+						'selector'    => '[el] .widget .buttons a {width: [val]; margin-right: 0;}',
+						'options'     => array(
 							''      => __( 'Inline', 'pagex' ),
 							' 100%' => __( 'Block', 'pagex' ),
 						),
@@ -455,8 +494,9 @@ function pagex_woo_menu_cart( $atts ) {
 		'title'         => '',
 	) );
 
-	$widget = '';
-	$class  = array(
+	$widget    = '';
+	$cart_page = is_cart();
+	$class     = array(
 		'pagex-menu-cart',
 		'pagex-menu-cart-' . $data['type'],
 		'pagex-menu-cart-counter-' . $data['count_t'],
@@ -464,10 +504,10 @@ function pagex_woo_menu_cart( $atts ) {
 
 	$wrapper_class = array(
 		'pagex-menu-cart-wrapper',
-		$data['type'] == 'offcanvas' ? 'pagex-modal-trigger' : '',
+		$data['type'] == 'offcanvas' && ! $cart_page ? 'pagex-modal-trigger' : '',
 	);
 
-	if ( $data['type'] == 'dropdown' || $data['type'] == 'offcanvas' ) {
+	if ( $data['type'] == 'dropdown' || $data['type'] == 'offcanvas' && ! $cart_page ) {
 		ob_start();
 
 		echo '<div class="pagex-menu-cart-widget">';
@@ -506,14 +546,14 @@ function pagex_woo_menu_cart( $atts ) {
 
 	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '</a>' : '';
 
-	if ( $data['type'] == 'dropdown' ) {
+	if ( $data['type'] == 'dropdown' && ! $cart_page ) {
 		echo $widget;
 	}
 
 	echo '</div>';
 	echo '</div>';
 
-	if ( $data['type'] == 'offcanvas' ) {
+	if ( $data['type'] == 'offcanvas' && ! is_cart() ) {
 		pagex_modal_window_template( array(
 			'content'   => $widget,
 			'class'     => 'pagex-menu-cart-offcanvas-container',

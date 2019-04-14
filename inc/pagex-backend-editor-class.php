@@ -171,6 +171,9 @@ class Pagex_Backend_Editor {
 		// remove multilingual shortcode from builder so it would not appear in settings
 		$content = preg_replace( array( '/\[pagex_lang_str\]/m', '/\[\/pagex_lang_str\]/m' ), '', $post->post_content );
 
+		// wrap custom styles so it would not break default layout
+		$content = preg_replace( '/(<style.*?>)(.*?)(<\/style>)/m', "$1/*pagexstyle $2 pagexstyle*/$3", $content );
+
 		echo '<div id="pagex_backend_data" class="pagex-hide"><input name="pagex_page_status" value="' . $builder_status . '"><textarea name="pagex_post_content" id="pagex_post_content">' . $post->post_content . '</textarea><textarea name="pagex_elements_params" id="pagex_elements_params">' . $all_elements_params . '</textarea></div>';
 		echo '<div id="pagex-backend-content" class="pagex-builder-area">' . $content . '</div>';
 	}

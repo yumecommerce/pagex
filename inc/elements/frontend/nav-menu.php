@@ -255,7 +255,7 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-3',
-						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {border-radius: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu {border-radius: [val]} [el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu > li:first-child > a {border-top-right-radius: [val]; border-top-left-radius: [val]} [el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li:not(.has-mega-menu) .sub-menu > li:last-child > a {border-bottom-right-radius: [val]; border-bottom-left-radius: [val]}',
 					),
 					array(
 						'id'       => 'xc',

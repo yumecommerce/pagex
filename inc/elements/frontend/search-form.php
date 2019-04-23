@@ -349,7 +349,7 @@ function pagex_search_form( $atts ) {
 	echo '<div class="pagex-search-form-wrapper ' . $data['breakpoint'] . '">';
 
 	$form = '<form role="search" method="get" class="pagex-search-form d-flex pagex-breakpoint-desktop ' . $data['style'] . '" action="' . esc_url( home_url( '/' ) ) . '">';
-	$form .= '<input type="search" name="s" class="form-control pagex-search-input" placeholder="' . $placeholder . '" value="' . $search_val . '">';
+	$form .= '<input type="search" name="s" class="form-control pagex-search-input" required placeholder="' . $placeholder . '" value="' . $search_val . '">';
 	$form .= '<button type="submit" class="btn"><svg class="pagex-icon"><use xlink:href="#pagex-search-icon" /></svg><span>' . $button . '</span></button>';
 	$form .= $post_type_input;
 	$form .= '</form>';

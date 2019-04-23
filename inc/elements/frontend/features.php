@@ -55,7 +55,7 @@ function pagex_register_features_element( $elements ) {
 							array(
 								'id'       => 'title',
 								'type'     => 'text',
-								'class'    => 'col-12 pagex-repeater-value',
+								'class'    => 'col-6 pagex-repeater-value',
 								'title'    => __( 'Title', 'pagex' ),
 								'action'   => 'content',
 								'selector' => '.pagex-feature-item-title',
@@ -63,6 +63,7 @@ function pagex_register_features_element( $elements ) {
 							array(
 								'id'    => 'desc',
 								'type'  => 'text',
+								'class'    => 'col-6',
 								'title' => __( 'Description', 'pagex' ),
 								'action'   => 'content',
 								'selector' => '.pagex-feature-item-description',
@@ -121,7 +122,6 @@ function pagex_register_features_element( $elements ) {
 						'selector'   => '[el] .pagex-feature-item-wrapper {margin-bottom: [val]}',
 					),
 
-
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Entrance Animation', 'pagex' ),
@@ -152,6 +152,51 @@ function pagex_register_features_element( $elements ) {
 						'type'  => 'number',
 					),
 
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Item', 'pagex' ),
+					),
+					array(
+						'id'       => 'wr',
+						'title'    => __( 'Padding', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-feature-item {padding: [val]}',
+					),
+					array(
+						'id'       => 'qw',
+						'title'    => __( 'Border Width', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-feature-item {border: solid [val]}',
+					),
+					array(
+						'id'       => 'qe',
+						'title'    => __( 'Border Radius', 'pagex' ),
+						'type'     => 'text',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-feature-item {border-radius: [val]}',
+					),
+					array(
+						'id'          => 'hj',
+						'title'       => __( 'Box Shadow', 'pagex' ),
+						'description' => __( 'Property values: horizontal, vertical, blur, size, color.', 'pagex' ),
+						'type'        => 'text',
+						'action'      => 'css',
+						'class'       => 'col-6',
+						'selector'    => '[el] .pagex-feature-item {box-shadow: [val]}',
+					),
+					array(
+						'id'         => 'jk',
+						'title'      => __( 'Box Shadow on Hover', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'class'      => 'col-6',
+						'selector'   => '[el] .pagex-feature-item:hover {box-shadow: [val]}',
+					),
 
 					array(
 						'type'  => 'heading',
@@ -324,6 +369,43 @@ function pagex_register_features_element( $elements ) {
 			array(
 				'title'  => __( 'Color', 'pagex' ),
 				'params' => array(
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Item', 'pagex' ),
+					),
+					array(
+						'id'       => 'et',
+						'title'    => __( 'Background', 'pagex' ),
+						'type'     => 'background',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-feature-item {background: [val]}',
+					),
+					array(
+						'id'       => 'ry',
+						'title'    => __( 'Background on hover', 'pagex' ),
+						'type'     => 'background',
+						'action'   => 'css',
+						'class'    => 'col-8',
+						'selector' => '[el] .pagex-feature-item:hover {background: [val]}',
+					),
+					array(
+						'id'       => 'tu',
+						'title'    => __( 'Border', 'pagex' ),
+						'type'     => 'color',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-feature-item {border-color: [val]}',
+					),
+					array(
+						'id'       => 'yi',
+						'title'    => __( 'Border on hover', 'pagex' ),
+						'type'     => 'color',
+						'action'   => 'css',
+						'class'    => 'col-8',
+						'selector' => '[el] .pagex-feature-item:hover {border-color: [val]}',
+					),
+
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Icon', 'pagex' ),

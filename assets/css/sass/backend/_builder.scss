@@ -59,6 +59,10 @@ body.wp-admin #pagex-settings {
     &:empty:after {
       outline: none;
     }
+
+    .pagex-add-element-options {
+      position: absolute !important;
+    }
   }
 
   [data-type="inner-row"] {
@@ -102,11 +106,28 @@ body.wp-admin #pagex-settings {
 #pagex-backend-content {
   [data-type="tabs"],
   [data-type="accordion"],
-  [data-type="slider"] {
+  [data-type="slider"],
+  [data-type="button"] {
     padding: 10px 0 0;
+
+    > .pagex-options {
+      top: 8px;
+      bottom: auto;
+    }
 
     > .element-wrap {
       display: block;
+    }
+  }
+}
+
+/* Button */
+
+#pagex-backend-content {
+  [data-type="button"] {
+    .pagex-button-wrapper,
+    .pagex-modal-window-close {
+      display: none;
     }
   }
 }
@@ -119,8 +140,8 @@ body.wp-admin #pagex-settings {
     display: none;
   }
 
-  [data-type="slider"] .pagex-options {
-    top: 0;
+  .swiper-slide {
+    display: block !important; // make sure it is no hidden when sortable starts
   }
 
   .pagex-inner-row-holder {

@@ -128,6 +128,17 @@ function pagex_register_post_data_element( $elements ) {
 								),
 							),
 							array(
+								'id'        => 'modified_on',
+								'type'      => 'checkbox',
+								'title'     => __( 'Condition', 'pagex' ),
+								'label'     => __( 'Display only if the date is different from the published date', 'pagex' ),
+								'value'     => 'true',
+								'condition' => array(
+									'type'      => array( 'date' ),
+									'date_type' => array( 'modified' )
+								),
+							),
+							array(
 								'id'        => 'link',
 								'title'     => __( 'Link', 'pagex' ),
 								'type'      => 'link',
@@ -419,11 +430,20 @@ function pagex_post_data( $atts ) {
 				$item .= get_the_author_meta( 'display_name' );
 				break;
 			case 'date':
-				$format = $v['date_format'] ? $v['date_format'] : 'F j, Y';
+				$format         = $v['date_format'] ? $v['date_format'] : get_option( 'date_format' );
+				$published_date = get_the_time( $format );
+
 				if ( $v['date_type'] == 'published' ) {
-					$item .= get_the_time( $format );
+					$item .= $published_date;
 				} else {
-					$item .= get_the_modified_date( $format );
+					$modified_date = get_the_modified_date( $format );
+					if ( isset( $v['modified_on'] ) ) {
+						if ( $modified_date != $published_date ) {
+							$item .= $modified_date;
+						}
+					} else {
+						$item .= $modified_date;
+					}
 				}
 				break;
 			case 'taxonomy':

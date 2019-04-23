@@ -91,6 +91,16 @@ function pagex_register_button_element( $elements ) {
 				'title'  => __( 'Style', 'pagex' ),
 				'params' => array(
 					array(
+						'id'       => 'qe',
+						'type'     => 'checkbox',
+						'title'    => __( 'Basic Style', 'pagex' ),
+						'label'    => __( 'Inherit button style from global design settings', 'pagex' ),
+						'action'   => 'class',
+						'scope'    => true,
+						'value'    => 'button',
+						'selector' => '.pagex-button',
+					),
+					array(
 						'id'       => 'fo',
 						'type'     => 'typography',
 						'selector' => '.pagex-button-content',
@@ -99,7 +109,7 @@ function pagex_register_button_element( $elements ) {
 						'id'       => 'fw',
 						'type'     => 'checkbox',
 						'title'    => __( 'Full Width', 'pagex' ),
-						'label'    => __( 'Make Button Full Width', 'pagex' ),
+						'label'    => __( 'Make button full width', 'pagex' ),
 						'action'   => 'class',
 						'class'    => 'col-6',
 						'scope'    => true,

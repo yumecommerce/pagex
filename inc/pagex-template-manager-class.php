@@ -156,6 +156,26 @@ class Pagex_Template_Manager {
 
 		// setup iFrame for a builder
 		if ( Pagex::is_frontend_builder_active() ) {
+			// check if we open page from admin area of the post which is not saved
+			if ( isset( $_REQUEST['pagex-layout-id'] ) && get_post_status( intval( $_REQUEST['pagex-layout-id'] ) ) == 'auto-draft' ) {
+				$post_id = wp_insert_post( array(
+					'post_title'  => 'ID: ' . intval( $_REQUEST['pagex-layout-id'] ),
+					'ID'          => intval( $_REQUEST['pagex-layout-id'] ),
+					'post_status' => 'publish',
+					'post_type'   => $_REQUEST['pagex-post-type'],
+				), true );
+
+				if ( ! is_wp_error( $post_id ) ) {
+					wp_safe_redirect( add_query_arg( array(
+						'pagex'             => '',
+						'pagex-layout-id'   => $post_id,
+						'pagex-layout-type' => 'layout',
+						'pagex-post-type'   => get_post_type( $post_id ),
+					), get_permalink( $post_id ) ) );
+					exit;
+				}
+			}
+
 			add_action( 'pagex_post_content', function () use ( $current_url ) {
 				$frame_src                = $_REQUEST;
 				$frame_src['pagex-frame'] = '';

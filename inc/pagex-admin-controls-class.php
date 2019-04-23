@@ -11,6 +11,9 @@ class Pagex_Admin_Controls {
 		// register plugin page with settings
 		add_action( 'admin_menu', array( $this, 'register_page' ), 0 );
 
+		// add links for plugins page
+		add_filter( 'plugin_action_links_pagex/pagex.php', array( $this, 'plugin_links' ) );
+
 		// add settings to a plugin page
 		add_action( 'admin_init', array( $this, 'settings_sections' ) );
 
@@ -186,7 +189,7 @@ class Pagex_Admin_Controls {
 							'pagex-layout-id'   => $template,
 							'pagex-layout-type' => 'template',
 							'pagex-post-type'   => 'pagex_layout_builder'
-						), $current_url ),
+						), get_permalink( $template ) ),
 				) );
 			}
 		}
@@ -228,6 +231,21 @@ class Pagex_Admin_Controls {
 			'admin_menu'
 		), 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMzIgMzIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDMyIDMyOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBhdGggZD0iTTEzLDMydi03aDYuNGMwLDAsOS44LTEuMyw5LjgtMTIuNEMyOS4xLDEuOCwxOS40LDAsMTkuNCwwSDR2OWwxMy40LDBjMS45LDAsMy41LDEuNCwzLjUsMy42YzAsMi0xLjUsMy40LTMuNSwzLjRsLTgsMCBMNCwyM3Y5SDEzeiIvPjwvc3ZnPgo=', 3 );
 		add_submenu_page( 'pagex', __( 'Pagex Settings', 'pagex' ), __( 'Settings', 'pagex' ), 'manage_options', 'pagex' );
+	}
+
+	/**
+	 * Add "setting link to plugins table, left part
+	 *
+	 * @param array $links Initial list of links.
+	 *
+	 * @return array
+	 */
+	public function plugin_links( $links ) {
+		$settings_link = '<a href="' . admin_url( 'admin.php?page=pagex' ) . '">' . __( 'Settings', 'pagex' ) . '</a>';
+
+		array_unshift( $links, $settings_link );
+
+		return $links;
 	}
 
 	/**

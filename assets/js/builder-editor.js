@@ -36,6 +36,9 @@ var pagex = {
     currentParam: null,
     currentDevice: null,
 
+    // should new element be appended or prepended
+    prependElement: false,
+
     option_start: _.template(document.getElementById('pagex-control-option-start-template').innerHTML),
     element_start: _.template(document.getElementById('pagex-control-element-start-template').innerHTML),
     option_end: _.template(document.getElementById('pagex-control-option-end-template').innerHTML),
@@ -1434,6 +1437,7 @@ var pagex = {
 
         // open all elements modal if we add new custom element
         if (element === 'element') {
+            this.prependElement = e.target.matches('.prepend');
             let searchInput = this.allElementsModal.querySelector('#pagex-search-elements');
             this.currentElement = e.target.closest('[data-type="column"]');
             this.pagexModal.classList.add('pagex-hide');
@@ -1500,11 +1504,19 @@ var pagex = {
         }
 
         // currentElement is a column
-        this.currentElement.appendChild(divDom.firstChild);
+        if (this.prependElement) {
+            this.currentElement.insertAdjacentElement('afterbegin', divDom.firstChild);
+        } else {
+            this.currentElement.appendChild(divDom.firstChild);
+        }
 
         if (elSettings.id !== 'inner-row') {
-            // change current element to appended one
-            this.currentElement = this.currentElement.querySelector(':scope > .element:last-child');
+            // change current element to added one
+            if (this.prependElement) {
+                this.currentElement = this.currentElement.querySelector(':scope > .element:first-child');
+            } else {
+                this.currentElement = this.currentElement.querySelector(':scope > .element:last-child');
+            }
 
             this.renderForm();
             this.renderElement();

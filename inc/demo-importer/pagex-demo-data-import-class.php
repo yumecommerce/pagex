@@ -39,7 +39,7 @@ class Pagex_Demo_Data_Import {
 		// prevent clicks while import is in action
 		echo '<style>.pagex-no-click {pointer-events: none}</style>';
 
-		echo '<div class="notice notice-info" id="pagex_demo_content_import_alert" style="margin: 30px 0;"><h2 style="margin-bottom: 10px; font-size:20px;">' . __( 'Demo Data Import', 'pagex' ) . '</h2><p style="color: #72777c; margin-bottom: 15px;">' . __( 'Great, after you have installed and activated all required plugins, it is time to import demo content.', 'pagex' ) . '<br><br><span style="color: #d20e00"><b>' . __( 'NOTE!', 'pagex' ) . '</b></span> <b>' . __( 'Import demo content only on a fresh WordPress site since some of your existing content might be replaced.', 'pagex' ) . '</b><br><br>' . __( 'This is a required step! Demo Data contains theme templates which are used by WordPress to display initial content of your website.', 'pagex' ) . '<br> '. __('Please be patient and wait for the import process to complete. It can take up to 3-5 minutes.', 'pagex') .'</p><form id="pagex-demo-content-import-form"><input type="submit" class="button button-primary button-hero" id="pagex-demo-import-button" data-importing="' . __( 'Importing... Please wait.', 'pagex' ) . '" value="' . __( 'Import Demo Data', 'pagex' ) . '"></form><div style="font-size: 14px;" id="pagex-demo-content-import-form-response"></div><p></p></div>';
+		echo '<div class="notice notice-info" id="pagex_demo_content_import_alert" style="margin: 30px 0;"><h2 style="margin-bottom: 10px; font-size:20px;">' . __( 'Demo Data Import', 'pagex' ) . '</h2><p style="color: #72777c; margin-bottom: 15px;">' . __( 'Great, after you have installed and activated all required plugins, it is time to import demo content.', 'pagex' ) . '<br><br><span style="color: #d20e00"><b>' . __( 'NOTE!', 'pagex' ) . '</b></span> <b>' . __( 'Import demo content only on a fresh WordPress site since some of your existing content might be replaced.', 'pagex' ) . '</b><br><br>' . __( 'This is a required step! Demo Data contains theme templates which are used by WordPress to display initial content of your website.', 'pagex' ) . '<br> ' . __( 'Please be patient and wait for the import process to complete. It can take up to 3-5 minutes.', 'pagex' ) . '</p><form id="pagex-demo-content-import-form"><input type="submit" class="button button-primary button-hero" id="pagex-demo-import-button" data-importing="' . __( 'Importing... Please wait.', 'pagex' ) . '" value="' . __( 'Import Demo Data', 'pagex' ) . '"></form><div style="font-size: 14px;" id="pagex-demo-content-import-form-response"></div><p></p></div>';
 
 		echo '<script>
 
@@ -120,9 +120,9 @@ class Pagex_Demo_Data_Import {
 			// import widgets
 			if ( isset( $demo_data['widgets'] ) ) {
 				// disable all widgets
-				add_filter( 'sidebars_widgets', function($sidebars_widgets) {
+				add_filter( 'sidebars_widgets', function ( $sidebars_widgets ) {
 					return array( false );
-				});
+				} );
 
 				$this->import_widgets( $demo_data['widgets'] );
 			}
@@ -132,7 +132,7 @@ class Pagex_Demo_Data_Import {
 
 		// Second Step
 		// Import posts/terms/attachments
- 		if ( $_POST['step'] == '2' ) {
+		if ( $_POST['step'] == '2' ) {
 			/*
 			* Pagex Importer based on WordPress Importer
 			* Version: 0.6.4
@@ -176,21 +176,21 @@ class Pagex_Demo_Data_Import {
 
 		// make all meta boxes available for nav menu
 		// it makes all custom post types visible
-		$user               = wp_get_current_user();
+		$user = wp_get_current_user();
 		update_user_option( $user->ID, 'metaboxhidden_nav-menus', array(), true );
 
 		// remap urls in post content and post meta
 		global $wpdb;
 
 		$from_url = $demo_data['demo_url'];
-		$to_url = site_url();
+		$to_url   = site_url();
 
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s)", $from_url, $to_url ) );
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s)", $from_url, $to_url ) );
 
 		// remap urls in encoded shortcodes
-		$to_url_encoded = urlencode(str_replace('/', '\/', $to_url));
-		$from_url_encoded = urlencode(str_replace('/', '\/', $from_url));
+		$to_url_encoded   = urlencode( str_replace( '/', '\/', $to_url ) );
+		$from_url_encoded = urlencode( str_replace( '/', '\/', $from_url ) );
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s)", $from_url_encoded, $to_url_encoded ) );
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s)", $from_url_encoded, $to_url_encoded ) );
 
@@ -382,7 +382,7 @@ class Pagex_Demo_Data_Import {
 	 *
 	 * @return array|bool
 	 */
-	public function import_pods( $data) {
+	public function import_pods( $data ) {
 		if ( ! is_array( $data ) ) {
 			$json_data = @json_decode( $data, true );
 
@@ -403,52 +403,52 @@ class Pagex_Demo_Data_Import {
 
 		if ( isset( $data['pods'] ) && is_array( $data['pods'] ) ) {
 			foreach ( $data['pods'] as $pod ) {
-				if ( $wpdb->get_var( $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE ID = %d", $pod['id']) ) ) {
-					$wpdb->delete( "$wpdb->posts", array('ID' => $pod['id']) );
-					$wpdb->delete( "$wpdb->postmeta", array('post_id' => $pod['id']) );
+				if ( $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE ID = %d", $pod['id'] ) ) ) {
+					$wpdb->delete( "$wpdb->posts", array( 'ID' => $pod['id'] ) );
+					$wpdb->delete( "$wpdb->postmeta", array( 'post_id' => $pod['id'] ) );
 				}
 
 				$postdata = array(
-					'ID' => $pod['id'],
-					'post_title' => $pod['label'],
-					'post_name' => $pod['name'],
-					'post_content' => $pod['description'],
-					'post_parent' => 0,
-					'menu_order' => 0,
-					'post_status' => 'publish',
-					'post_type' => '_pods_pod',
+					'ID'             => $pod['id'],
+					'post_title'     => $pod['label'],
+					'post_name'      => $pod['name'],
+					'post_content'   => $pod['description'],
+					'post_parent'    => 0,
+					'menu_order'     => 0,
+					'post_status'    => 'publish',
+					'post_type'      => '_pods_pod',
 					'comment_status' => 'closed',
-					'ping_status' => 'closed',
+					'ping_status'    => 'closed',
 				);
 
 				$wpdb->insert( "$wpdb->posts", $postdata );
 
-				if ( isset($pod['fields']) && ! empty($pod['fields']) ) {
+				if ( isset( $pod['fields'] ) && ! empty( $pod['fields'] ) ) {
 					foreach ( $pod['fields'] as $field ) {
 
-						if ( $wpdb->get_var( $wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE ID = %d", $field['id']) ) ) {
-							$wpdb->delete( "$wpdb->posts", array('ID' => $field['id']) );
-							$wpdb->delete( "$wpdb->postmeta", array('post_id' => $field['id']) );
+						if ( $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE ID = %d", $field['id'] ) ) ) {
+							$wpdb->delete( "$wpdb->posts", array( 'ID' => $field['id'] ) );
+							$wpdb->delete( "$wpdb->postmeta", array( 'post_id' => $field['id'] ) );
 						}
 
 						$postdata = array(
-							'ID' => $field['id'],
-							'post_title' => $field['label'],
-							'post_name' => $field['name'],
-							'post_content' => $field['description'],
-							'post_parent' => $pod['id'],
-							'menu_order' => $field['weight'],
-							'post_status' => 'publish',
-							'post_type' => '_pods_field',
+							'ID'             => $field['id'],
+							'post_title'     => $field['label'],
+							'post_name'      => $field['name'],
+							'post_content'   => $field['description'],
+							'post_parent'    => $pod['id'],
+							'menu_order'     => $field['weight'],
+							'post_status'    => 'publish',
+							'post_type'      => '_pods_field',
 							'comment_status' => 'closed',
-							'ping_status' => 'closed',
+							'ping_status'    => 'closed',
 						);
 
 						$wpdb->insert( "$wpdb->posts", $postdata );
 
 						$field_meta = $field;
 
-						unset($field_meta['id'], $field_meta['label'], $field_meta['name'], $field_meta['description'], $field_meta['weight']);
+						unset( $field_meta['id'], $field_meta['label'], $field_meta['name'], $field_meta['description'], $field_meta['weight'] );
 
 						foreach ( $field_meta as $meta_key => $meta_value ) {
 							if ( $meta_value ) {
@@ -460,8 +460,8 @@ class Pagex_Demo_Data_Import {
 
 				$pod_meta = $pod;
 
-				unset($pod_meta['id'], $pod_meta['label'], $pod_meta['name'], $pod_meta['description'], $pod_meta['fields']);
-				
+				unset( $pod_meta['id'], $pod_meta['label'], $pod_meta['name'], $pod_meta['description'], $pod_meta['fields'] );
+
 				foreach ( $pod_meta as $meta_key => $meta_value ) {
 					if ( $meta_value ) {
 						add_post_meta( $pod['id'], $meta_key, wp_slash( $meta_value ) );

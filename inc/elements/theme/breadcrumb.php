@@ -15,23 +15,25 @@ function pagex_register_breadcrumb_element( $elements ) {
 			array(
 				'params' => array(
 					array(
+						'type'  => 'heading',
+						'title' => __( 'Conditions', 'pagex' ),
+					),
+					array(
+						'id'          => 'display_tax_name',
+						'type'        => 'checkbox',
+						'label'       => __( 'Display taxonomy name for archive pages', 'pagex' ),
+						'description' => __( 'For custom taxonomies', 'pagex' ),
+						'value'       => 'true',
+					),
+
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Style', 'pagex' ),
+					),
+					array(
 						'id'       => 'typo',
 						'type'     => 'typography',
 						'selector' => '.pagex-breadcrumb',
-					),
-					array(
-						'id'         => 'align',
-						'title'      => __( 'Alignment', 'pagex' ),
-						'type'       => 'select',
-						'class'      => 'col-6',
-						'responsive' => true,
-						'action'     => 'css',
-						'selector'   => '[el] .pagex-breadcrumb {justify-content: [val]}',
-						'options'    => array(
-							''         => __( 'Left', 'pagex' ),
-							'center'   => __( 'Center', 'pagex' ),
-							'flex-end' => __( 'Right', 'pagex' ),
-						)
 					),
 					array(
 						'id'       => 'mc',
@@ -40,6 +42,20 @@ function pagex_register_breadcrumb_element( $elements ) {
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] {color: [val]}',
+					),
+					array(
+						'id'         => 'align',
+						'title'      => __( 'Alignment', 'pagex' ),
+						'type'       => 'select',
+						'class'      => 'col-4',
+						'responsive' => true,
+						'action'     => 'css',
+						'selector'   => '[el] .pagex-breadcrumb {justify-content: [val]}',
+						'options'    => array(
+							''         => __( 'Left', 'pagex' ),
+							'center'   => __( 'Center', 'pagex' ),
+							'flex-end' => __( 'Right', 'pagex' ),
+						)
 					),
 
 					array(
@@ -71,15 +87,7 @@ function pagex_register_breadcrumb_element( $elements ) {
 						'id'    => 'delimiter',
 						'title' => __( 'Delimiter', 'pagex' ),
 						'type'  => 'text',
-						'class' => 'col-6',
-					),
-					array(
-						'id'       => 'm',
-						'title'    => __( 'Margin', 'pagex' ),
-						'type'     => 'dimension',
-						'class'    => 'col-6',
-						'action'   => 'css',
-						'selector' => '[el] .delimiter {margin: [val]}',
+						'class' => 'col-2',
 					),
 					array(
 						'id'       => 'dc',
@@ -88,6 +96,14 @@ function pagex_register_breadcrumb_element( $elements ) {
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] .delimiter {color: [val]}',
+					),
+					array(
+						'id'       => 'm',
+						'title'    => __( 'Margin', 'pagex' ),
+						'type'     => 'dimension',
+						'class'    => 'col-6',
+						'action'   => 'css',
+						'selector' => '[el] .delimiter {margin: [val]}',
 					),
 				),
 			),
@@ -108,10 +124,11 @@ function pagex_breadcrumb( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'delimiter' => '&nbsp;&#47;&nbsp;',
+		'delimiter'        => '&nbsp;&#47;&nbsp;',
+		'display_tax_name' => false,
 	) );
 
-	$breadcrumb = new Pagex_Breadcrumb();
+	$breadcrumb = new Pagex_Breadcrumb( $data );
 	$breadcrumb->add_crumb( _x( 'Main Page', 'breadcrumb', 'pagex' ), home_url() );
 	$bread_data = $breadcrumb->generate();
 
@@ -123,7 +140,7 @@ function pagex_breadcrumb( $atts ) {
 			if ( ! empty( $crumb[1] ) && sizeof( $bread_data ) !== $key + 1 ) {
 				echo '<a href="' . esc_url( $crumb[1] ) . '">' . esc_html( $crumb[0] ) . '</a>';
 			} else {
-				echo '<span>' . esc_html( $crumb[0] ) . '</span>';
+				echo '<span class="">' . esc_html( $crumb[0] ) . '</span>';
 			}
 
 			if ( sizeof( $bread_data ) !== $key + 1 ) {
@@ -146,6 +163,15 @@ class Pagex_Breadcrumb {
 	 * @var array
 	 */
 	private $crumbs = array();
+
+	/**
+	 * Display taxonomy name for archive pages
+	 */
+	private $display_tax_name = false;
+
+	public function __construct( $data ) {
+		$this->display_tax_name = $data['display_tax_name'];
+	}
 
 	/**
 	 * Add a crumb so we don't get lost.
@@ -320,7 +346,9 @@ class Pagex_Breadcrumb {
 			$post = get_post( $post_id ); // WPCS: override ok.
 		}
 
-		if ( 'product' === get_post_type( $post ) ) {
+		$post_type = get_post_type( $post );
+
+		if ( 'product' === $post_type ) {
 			$this->prepend_shop_page();
 
 			$terms = wc_get_product_terms(
@@ -337,11 +365,27 @@ class Pagex_Breadcrumb {
 				$this->term_ancestors( $main_term->term_id, 'product_cat' );
 				$this->add_crumb( $main_term->name, get_term_link( $main_term ) );
 			}
-		} elseif ( 'post' !== get_post_type( $post ) ) {
-			$post_type = get_post_type_object( get_post_type( $post ) );
+		} elseif ( 'post' !== $post_type ) {
+			$post_type_object = get_post_type_object( $post_type );
 
-			if ( ! empty( $post_type->has_archive ) ) {
-				$this->add_crumb( $post_type->labels->name, get_post_type_archive_link( get_post_type( $post ) ) );
+			//if ( ! empty( $post_type->has_archive ) ) {
+			$this->add_crumb( $post_type_object->labels->name, get_post_type_archive_link( $post_type ) );
+			//}
+
+			if ( $taxonomies = get_post_taxonomies( $post ) ) {
+				foreach ( $taxonomies as $taxonomy ) {
+					if ( has_term( '', $taxonomy ) ) {
+						$post_terms = get_the_terms( $post, $taxonomy );
+
+						if ( $post_terms && ! is_wp_error( $post_terms ) ) {
+							$post_term = $post_terms[0];
+							$this->term_ancestors( $post_term->term_id, $taxonomy );
+							$this->add_crumb( $post_term->name, get_term_link( $post_term ) );
+						}
+
+						break;
+					}
+				}
 			}
 		} else {
 			$this->prepend_blog_page();
@@ -359,8 +403,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Page trail.
 	 */
-	private
-	function add_crumbs_page() {
+	private function add_crumbs_page() {
 		global $post;
 
 		if ( $post->post_parent ) {
@@ -386,8 +429,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Post type archive trail.
 	 */
-	private
-	function add_crumbs_post_type_archive() {
+	private function add_crumbs_post_type_archive() {
 		$post_type = get_post_type_object( get_post_type() );
 
 		if ( $post_type ) {
@@ -398,8 +440,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Category trail.
 	 */
-	private
-	function add_crumbs_category() {
+	private function add_crumbs_category() {
 
 		$this->prepend_blog_page();
 
@@ -415,8 +456,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Tag trail.
 	 */
-	private
-	function add_crumbs_tag() {
+	private function add_crumbs_tag() {
 		$queried_object = $GLOBALS['wp_query']->get_queried_object();
 		$this->add_crumb( single_tag_title( '', false ), get_tag_link( $queried_object->term_id ) );
 	}
@@ -424,8 +464,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Add crumbs for date based archives.
 	 */
-	private
-	function add_crumbs_date() {
+	private function add_crumbs_date() {
 		if ( is_year() || is_month() || is_day() ) {
 			$this->add_crumb( get_the_time( 'Y' ), get_year_link( get_the_time( 'Y' ) ) );
 		}
@@ -440,13 +479,15 @@ class Pagex_Breadcrumb {
 	/**
 	 * Add crumbs for taxonomies
 	 */
-	private
-	function add_crumbs_tax() {
+	private function add_crumbs_tax() {
 		$this_term = $GLOBALS['wp_query']->get_queried_object();
 		$taxonomy  = get_taxonomy( $this_term->taxonomy );
 
 		$this->add_crumbs_post_type_archive();
-		$this->add_crumb( $taxonomy->labels->name );
+
+		if ( $this->display_tax_name ) {
+			$this->add_crumb( $taxonomy->labels->name );
+		}
 
 		if ( 0 !== intval( $this_term->parent ) ) {
 			$this->term_ancestors( $this_term->term_id, $this_term->taxonomy );
@@ -458,8 +499,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Add a breadcrumb for author archives.
 	 */
-	private
-	function add_crumbs_author() {
+	private function add_crumbs_author() {
 		global $author;
 
 		$userdata = get_queried_object();
@@ -474,8 +514,7 @@ class Pagex_Breadcrumb {
 	 * @param int $term_id Term ID.
 	 * @param string $taxonomy Taxonomy.
 	 */
-	private
-	function term_ancestors(
+	private function term_ancestors(
 		$term_id, $taxonomy
 	) {
 		$ancestors = get_ancestors( $term_id, $taxonomy );
@@ -493,8 +532,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Add a breadcrumb for search results.
 	 */
-	private
-	function search_trail() {
+	private function search_trail() {
 		if ( is_search() ) {
 			/* translators: %s: search term */
 			add_filter( 'document_title_parts', 'pagex_remove_document_title_parts' );
@@ -506,8 +544,7 @@ class Pagex_Breadcrumb {
 	/**
 	 * Add a breadcrumb for pagination.
 	 */
-	private
-	function paged_trail() {
+	private function paged_trail() {
 		if ( get_query_var( 'paged' ) ) {
 			/* translators: %d: page number */
 			$this->add_crumb( sprintf( __( 'Page %d', 'pagex' ), get_query_var( 'paged' ) ) );

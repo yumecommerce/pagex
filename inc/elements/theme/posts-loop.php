@@ -30,10 +30,19 @@ function pagex_register_posts_loop_element( $elements ) {
 						'options'     => $excerpts
 					),
 					array(
+						'id'          => 'search_template',
+						'title'       => __( 'Search Excerpt Template', 'pagex' ),
+						'description' => __( 'You can use a separate Excerpt Template for search results if you use the same Theme Template for Archive and Search Results page', 'pagex' ),
+						'type'        => 'select',
+						'class'       => 'col-6',
+						'options'     => $excerpts
+					),
+					array(
 						'id'          => 'nothing_found',
 						'title'       => __( 'Search Results: Nothing Found', 'pagex' ),
 						'description' => __( 'Select layout which will be displayed when nothing matched a search term. If nothing is selected the default message will be displayed.', 'pagex' ),
 						'type'        => 'select',
+						'class'       => 'col-6',
 						'options'     => $layouts
 					),
 					array(
@@ -229,11 +238,12 @@ function pagex_posts_loop( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'template'      => '',
-		'layout'        => 'grid',
-		'nothing_found' => '',
-		'no_posts'      => '',
-		'pagination'    => 'default',
+		'template'        => '',
+		'search_template' => '',
+		'layout'          => 'grid',
+		'nothing_found'   => '',
+		'no_posts'        => '',
+		'pagination'      => 'default',
 	) );
 
 	if ( ! $data['template'] ) {
@@ -248,7 +258,11 @@ function pagex_posts_loop( $atts ) {
 	$excerpt   = Pagex::get_translation_id( $data['template'], 'pagex_excerpt_tmp' );
 	$item_data = $data['layout'] == 'masonry' ? 'data-columns' : '';
 
-	$excerpt_content = get_post_field( 'post_content', $excerpt );
+	if ( is_search() && $data['search_template'] ) {
+		$excerpt_content = get_post_field( 'post_content', Pagex::get_translation_id( $data['search_template'], 'pagex_excerpt_tmp' ) );
+	} else {
+		$excerpt_content = get_post_field( 'post_content', $excerpt );
+	}
 
 	// if layout does not exist (deleted for example)
 	if ( ! $excerpt_content ) {

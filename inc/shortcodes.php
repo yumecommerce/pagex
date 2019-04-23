@@ -84,3 +84,13 @@ function pagex_visually_impaired_module() {
 }
 
 add_shortcode( 'pagex_visually_impaired_module', 'pagex_visually_impaired_module' );
+
+function pagex_date( $attr ) {
+	$data = wp_parse_args( $attr, array(
+		'format' => ''
+	) );
+
+	return date_i18n( $data['format'] );
+}
+
+add_shortcode( 'pagex_date', 'pagex_date' );

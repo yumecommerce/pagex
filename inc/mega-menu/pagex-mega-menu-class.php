@@ -122,8 +122,10 @@ class Pagex_Mega_Menu_Class {
 	 * @return mixed
 	 */
 	public function add_custom_nav_fields( $menu_item ) {
-		$menu_item->icon = get_post_meta( $menu_item->ID, '_pagex_menu_item_icon', true );
-		$menu_item->mega = get_post_meta( $menu_item->ID, '_pagex_menu_item_mega', true );
+		if ( property_exists( $menu_item, 'ID' ) ) {
+			$menu_item->icon = get_post_meta( $menu_item->ID, '_pagex_menu_item_icon', true );
+			$menu_item->mega = get_post_meta( $menu_item->ID, '_pagex_menu_item_mega', true );
+		}
 
 		return $menu_item;
 	}

@@ -484,7 +484,7 @@ body .pagex-modal {
 [data-type="slider"] {
   // issue with layout but if slider the only element inside a col it's ok
   // if add 100% height to col the issue will be fixed
-  height: 100%;
+  // height: 100%;
 
   .element-wrap {
     height: 100%;
@@ -501,10 +501,6 @@ body .pagex-modal {
 
   .element-wrap {
     height: 100%;
-  }
-
-  .swiper-container {
-    padding: 0 0 30px;
   }
 
   .row {
@@ -1413,6 +1409,7 @@ body .pagex-modal {
 
 .pagex-feature-item {
   position: relative;
+  transition: 250ms;
 }
 
 .pagex-feature-item-link-block {

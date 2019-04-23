@@ -332,7 +332,7 @@ class Pagex_Editor_Control_Attributes {
 				'id'       => 'pagex_slider_po',
 				'title'    => __( 'Bottom Offset', 'pagex' ),
 				'action'   => 'css',
-				'selector' => '[el] .swiper-container {padding-bottom: [val]}',
+				'selector' => '[el] .pagex-slider-pagination {bottom: [val]}',
 				'class'    => 'col-3',
 				'type'     => 'text',
 			),

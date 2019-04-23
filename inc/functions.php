@@ -358,8 +358,18 @@ function pagex_generate_excerpt_template( $html ) {
 
 	$html = str_get_html( $html );
 
+	foreach ( $html->find( '[data-custom-link]' ) as $element ) {
+		$element->innertext   = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
+		$element->{'onclick'} = 'pagexCustomLink(this)';
+		$element->{'data-custom-link'} = null;
+	}
+
+	// init HTML to apply new DOM elements: ex custom link dynamic data
+	$html = $html->save();
+	$html = str_get_html( $html );
+
 	foreach ( $html->find( '[data-dynamic-link]' ) as $element ) {
-		$element->href = pagex_get_dynamic_link( $element->{'data-dynamic-link'} );
+		$element->href                  = pagex_get_dynamic_link( $element->{'data-dynamic-link'} );
 		$element->{'data-dynamic-link'} = null;
 	}
 
@@ -515,7 +525,7 @@ function pagex_get_custom_meta_value( $key, $single = true ) {
 		if ( $meta[2] == 'author_avatar' ) {
 			$user_id    = get_the_author_meta( 'ID' );
 			$meta_value = get_avatar_url( $user_id, array( 'size' => 200 ) );
-		} else {
+		} elseif ( $post ) {
 			$meta_value = get_post_meta( $post->ID, $meta[2], $single );
 		}
 	} elseif ( $meta[0] == 'taxonomy' ) {

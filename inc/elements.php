@@ -85,6 +85,7 @@ foreach (
 		'sidebar',
 		'slider',
 		'tabs',
+		'taxonomies',
 		'video',
 	) as $element
 ) {
@@ -121,6 +122,7 @@ function pagex_register_bundled_dynamic_callbacks( $callbacks ) {
 		'pagex_post_title',
 		'pagex_posts',
 		'pagex_posts_loop',
+		'pagex_taxonomies',
 		'pagex_search_form',
 		'pagex_shortcode',
 		'pagex_sidebar',

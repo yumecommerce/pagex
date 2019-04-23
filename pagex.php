@@ -33,7 +33,6 @@ class Pagex {
 		return get_option( 'pagex_settings', array() );
 	}
 
-
 	/**
 	 * Do things after all plugins are loaded
 	 */

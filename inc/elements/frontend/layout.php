@@ -9,7 +9,7 @@
  */
 function pagex_register_layout_element( $elements ) {
 
-	$posts  = pagex_get_layout_templates();
+	$posts = pagex_get_layout_templates();
 
 	$elements[] = array(
 		'id'          => 'layout',
@@ -45,17 +45,21 @@ function pagex_register_layout_element( $elements ) {
  * @return string
  */
 function pagex_layout( $atts ) {
-	$atts = Pagex::get_dynamic_data($atts);
+	$atts = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $atts, array(
-		'layout'    => '',
+		'layout' => '',
 	) );
 
 	if ( ! $data['layout'] ) {
-		return __( 'Template is not set.', 'pagex' );
+		return __( 'Layout is not set.', 'pagex' );
 	}
 
 	$layout = Pagex::get_translation_id( $data['layout'], 'pagex_layout_builder' );
+	$layout = do_shortcode( get_post_field( 'post_content', $layout ) );
 
-	return apply_filters( 'pagex_content', do_shortcode( get_post_field( 'post_content', $layout ) ) );
+	// prevent modal builder area from editing
+	$layout = preg_replace( '/pagex-modal-builder-area/s', '', $layout );
+
+	return apply_filters( 'pagex_content', $layout );
 }

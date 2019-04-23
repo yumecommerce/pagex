@@ -125,11 +125,11 @@ input[type="url"] {
   position: relative;
   cursor: pointer;
   outline: 0;
-  margin-right: 10px;
-  display: inline-block;
+  margin-right: 10px !important; // overwrite third party plugins styles
+  display: inline-block  !important; // overwrite third party plugins styles
   vertical-align: middle;
   top: -1px;
-  border: 1.2px solid transparent;
+  border: 1.2px solid transparent !important; // overwrite third party plugins styles
   background: rgba(128, 128, 128, 0.25);
   box-shadow: none;
   opacity: .6;
@@ -141,7 +141,7 @@ input[type="url"] {
 
   &:checked {
     opacity: 1;
-    border-color: inherit;
+    border-color: inherit !important;
     background: transparent !important;
 
     &:after {

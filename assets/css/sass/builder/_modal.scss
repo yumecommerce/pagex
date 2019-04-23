@@ -46,6 +46,7 @@
 
 .pagex-params-modal {
   font-family: Arial !important;
+  letter-spacing: 0 !important;
   font-size: 11px !important;
   color: #525f7f;
   position: fixed;
@@ -343,6 +344,10 @@ body:not(.wp-admin) #pagex-params-modal {
 
   .pagex-params-modal-head {
     cursor: auto;
+  }
+
+  p {
+    font-size: 11px;
   }
 
   a {

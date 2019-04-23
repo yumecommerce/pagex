@@ -98,7 +98,7 @@ class Pagex_Import {
 			);
 
 			foreach ( $woo_pages as $woo_page ) {
-				if ($woo_page_id = get_option( $woo_page )) {
+				if ( $woo_page_id = get_option( $woo_page ) ) {
 					$wpdb->delete( "$wpdb->posts", array( 'ID' => $woo_page_id ) );
 					$wpdb->delete( "$wpdb->postmeta", array( 'post_id' => $woo_page_id ) );
 				}

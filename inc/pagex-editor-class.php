@@ -255,6 +255,7 @@ class Pagex_Editor {
 				'string'       => array(
 					'save'                => esc_html__( 'Save', 'pagex' ),
 					'saving'              => esc_html__( 'Saving...', 'pagex' ),
+					'item'                => esc_html__( 'Item', 'pagex' ),
 					'import'              => esc_html__( 'Import Layout', 'pagex' ),
 					'importing'           => esc_html__( 'Importing...', 'pagex' ),
 					'clear_layout'        => esc_html__( 'Delete all layout elements?', 'pagex' ),

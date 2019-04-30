@@ -317,6 +317,12 @@ class Pagex_Frontend {
 	 * Print all default styles from main settings
 	 */
 	public function print_default_style() {
+
+	    // no need to load default style for frontend builder
+		if ( Pagex::is_frontend_builder_active() ) {
+			return;
+		}
+
 		$settings = Pagex::get_settings();
 
 		if ( ! isset( $settings['design'] ) ) {
@@ -391,15 +397,15 @@ class Pagex_Frontend {
 			array(
 				'selector' => '.remove[data-product_id]',
 				'rules'    => array(
-					'color'          => $settings['design']['button']['color'],
-					'background'     => $settings['design']['button']['bg'],
+					'color'      => $settings['design']['button']['color'],
+					'background' => $settings['design']['button']['bg'],
 				)
 			),
 			array(
 				'selector' => '.remove[data-product_id]:hover',
 				'rules'    => array(
-					'color'          => $settings['design']['button']['color_hover'],
-					'background'     => $settings['design']['button']['bg_hover'],
+					'color'      => $settings['design']['button']['color_hover'],
+					'background' => $settings['design']['button']['bg_hover'],
 				)
 			),
 
@@ -571,6 +577,16 @@ class Pagex_Frontend {
                 <symbol id="pagex-arrow-right-icon" viewBox="0 0 129 129">
                     <path fill="currentColor"
                           d="m40.4,121.3c-0.8,0.8-1.8,1.2-2.9,1.2s-2.1-0.4-2.9-1.2c-1.6-1.6-1.6-4.2 0-5.8l51-51-51-51c-1.6-1.6-1.6-4.2 0-5.8 1.6-1.6 4.2-1.6 5.8,0l53.9,53.9c1.6,1.6 1.6,4.2 0,5.8l-53.9,53.9z"></path>
+                </symbol>
+
+                <symbol id="pagex-long-arrow-right-icon" viewBox="0 0 224 224">
+                    <path fill="currentColor"
+                          d="M222.4,53.5L170.3,1.5c-2.1-2.1-5.4-2.1-7.5,0c-2.1,2.1-2.1,5.4,0,7.5l43,42.8H5.3c-2.9,0-5.3,2.4-5.3,5.3 c0,2.9,2.4,5.3,5.3,5.3h200.5l-43,42.8c-2.1,2.1-2.1,5.4,0,7.5c1,1,2.4,1.6,3.8,1.6c1.4,0,2.7-0.5,3.7-1.5L222.4,61 c1-1,1.6-2.3,1.6-3.8C224,55.8,223.4,54.4,222.4,53.5z"></path>
+                </symbol>
+
+                <symbol id="pagex-long-arrow-left-icon" viewBox="0 0 224 224">
+                    <path fill="currentColor"
+                          d="M1.6,53.5L53.7,1.5c2.1-2.1,5.4-2.1,7.5,0c2.1,2.1,2.1,5.4,0,7.5l-43,42.8h200.5c2.9,0,5.3,2.4,5.3,5.3 c0,2.9-2.4,5.3-5.3,5.3H18.2l43,42.8c2.1,2.1,2.1,5.4,0,7.5c-1,1-2.4,1.6-3.8,1.6c-1.4,0-2.7-0.5-3.7-1.5L1.6,61 c-1-1-1.6-2.3-1.6-3.8C0,55.8,0.6,54.4,1.6,53.5z"></path>
                 </symbol>
 
                 <symbol id="pagex-nav-menu-icon" viewBox="0 0 512 512">

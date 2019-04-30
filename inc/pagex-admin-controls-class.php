@@ -558,11 +558,10 @@ class Pagex_Admin_Controls {
 	 * Returns array with layouts for different types of templates
 	 *
 	 * @param $tmp_type
-	 * @param $post_type
 	 *
 	 * @return array
 	 */
-	public function get_post_templates( $tmp_type, $post_type ) {
+	public function get_post_templates( $tmp_type ) {
 
 		if ( $tmp_type == 'taxonomy' ) {
 			$tmp_type = 'archive';
@@ -576,10 +575,6 @@ class Pagex_Admin_Controls {
 					'key'   => '_pagex_template_type',
 					'value' => $tmp_type
 				),
-				array(
-					'key'   => '_pagex_template_post_type',
-					'value' => $post_type
-				)
 			)
 		);
 		$query = get_posts( $args );
@@ -595,12 +590,12 @@ class Pagex_Admin_Controls {
 		return $data;
 	}
 
+	/**
+	 * Specify basic WordPress and custom post type theme templates
+	 */
 	public function post_templates() {
-
-		$page_templates         = $this->get_post_templates( 'single', 'page' );
-		$post_templates         = $this->get_post_templates( 'single', 'post' );
-		$post_archive_templates = $this->get_post_templates( 'archive', 'post' );
-
+		$page_templates         = $this->get_post_templates( 'single' );
+		$post_archive_templates = $this->get_post_templates( 'archive' );
 
 		$settings            = get_option( 'pagex_settings', array() );
 		$page_404            = isset( $settings['post_templates']['page_404'] ) ? $settings['post_templates']['page_404'] : null;
@@ -640,7 +635,7 @@ class Pagex_Admin_Controls {
                 <td>
                     <select name="pagex_settings[post_templates][post_single]">
                         <option value=""><?php _e( 'None', 'pagex' ) ?></option>
-						<?php foreach ( $post_templates as $key => $value ) {
+						<?php foreach ( $page_templates as $key => $value ) {
 							echo '<option value="' . $key . '" ' . selected( $key, $page_post, false ) . '>' . $value . '</option>';
 						} ?>
                     </select>
@@ -753,7 +748,7 @@ class Pagex_Admin_Controls {
                                     <select name="pagex_settings[post_templates][<?php echo $post_template_type_name; ?>]">
                                         <option value=""><?php _e( 'None', 'pagex' ) ?></option>
 										<?php
-										$data = $this->get_post_templates( $type_key, $key_post_template );
+										$data = $type_key == 'single' ? $page_templates : $post_archive_templates;
 										foreach ( $data as $key => $value ) {
 											$option_value = isset( $settings['post_templates'][ $post_template_type_name ] ) ? $settings['post_templates'][ $post_template_type_name ] : null;
 

@@ -17,7 +17,7 @@ function pagex_register_button_element( $elements ) {
 			<% if (data.icon && data.icon.length) { %>
 			<div class="pagex-button-icon"><%= pagex.genIcon("icon", data) %></div>
 			<% } %>
-			<div class="pagex-button-content pagex-lang-str"><% if (data.content && data.content.length) { print(data.content) } else if (firstInit) { %>' . __( 'Button Text', 'pagex' ) . '<% } %></div>
+			<div class="pagex-button-content pagex-lang-str"><% if (data.content && data.content.length) { print(data.content.replace(/\n/gi, "<br>")) } else if (firstInit) { %>' . __( 'Button Text', 'pagex' ) . '<% } %></div>
 		</div>
 	<% if (link) print("</a>"); %>
 	</div>
@@ -91,14 +91,15 @@ function pagex_register_button_element( $elements ) {
 				'title'  => __( 'Style', 'pagex' ),
 				'params' => array(
 					array(
-						'id'       => 'qe',
-						'type'     => 'checkbox',
-						'title'    => __( 'Basic Style', 'pagex' ),
-						'label'    => __( 'Inherit button style from global design settings', 'pagex' ),
-						'action'   => 'class',
-						'scope'    => true,
-						'value'    => 'button',
-						'selector' => '.pagex-button',
+						'id'          => 'qe',
+						'type'        => 'checkbox',
+						'title'       => __( 'Basic Style', 'pagex' ),
+						'label'       => __( 'Inherit button style from global design settings', 'pagex' ),
+						'description' => sprintf( __( 'You can change global design settings %s here. %s', 'pagex' ), '<a href="' . admin_url( 'admin.php?page=pagex#tab_design' ) . '" target="_blank">', '</a>' ),
+						'action'      => 'class',
+						'scope'       => true,
+						'value'       => 'button',
+						'selector'    => '.pagex-button',
 					),
 					array(
 						'id'       => 'fo',
@@ -237,6 +238,30 @@ function pagex_register_button_element( $elements ) {
 						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button:hover .pagex-button-icon {color: [val]}',
 					),
 					array(
+						'id'       => 'da',
+						'title'    => __( 'Icon Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button .pagex-button-icon {background: [val]}',
+					),
+					array(
+						'id'       => 'fs',
+						'title'    => __( 'Icon Background on Hover', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button:hover .pagex-button-icon {background: [val]}',
+					),
+					array(
+						'id'       => 'gd',
+						'title'    => __( 'Icon Border Radius', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button .pagex-button-icon {border-radius: [val]}',
+					),
+					array(
 						'id'       => 'bc',
 						'title'    => __( 'Border Color', 'pagex' ),
 						'class'    => 'col-4',
@@ -313,10 +338,10 @@ function pagex_register_button_element( $elements ) {
 				'title'  => __( 'Modal', 'pagex' ),
 				'params' => array(
 					array(
-						'id'    => 'modal',
-						'type'  => 'checkbox',
-						'title' => __( 'Modal Window', 'pagex' ),
-						'label' => __( 'Use Button to Trigger Modal Window', 'pagex' ),
+						'id'          => 'modal',
+						'type'        => 'checkbox',
+						'title'       => __( 'Modal Window', 'pagex' ),
+						'label'       => __( 'Use Button to Trigger Modal Window', 'pagex' ),
 						'description' => __( 'Modal window content has an inner builder area. To open a modal window click on a button itself.', 'pagex' ),
 					),
 					array(

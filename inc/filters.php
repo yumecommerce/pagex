@@ -106,10 +106,19 @@ add_filter( 'wpml_pb_shortcode_decode', 'pagex_wpml_shortcode_decode', 10, 3 );
 /**
  * This filter prevent Pods plugin from affecting default WP logic meta fields
  * and also fix issues with getting saved meta media with WPML plugin
- *
  */
 add_filter( 'pods_meta_handler_get', '__return_false' );
 
+/**
+ * Hide Pods Shortcode button from edit post screen
+ */
+function pagex_remove_pods_shortcode_button() {
+	if ( class_exists( 'PodsInit' ) ) {
+		remove_action( 'media_buttons', array( PodsInit::$admin, 'media_button' ), 12 );
+	}
+}
+
+add_action( 'admin_init', 'pagex_remove_pods_shortcode_button', 14 );
 
 /**
  * A workaround for upload validation

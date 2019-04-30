@@ -7,6 +7,8 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   display: none !important;
 }
 
+// pagex-hide-section-options - if we have more than one container in a section hide section options
+// pagex-hide-container-options - if we have more than one row in container hide container options
 .pagex-hide-container-options .pagex-container-options,
 .pagex-hide-container-options .pagex-section-options,
 .pagex-hide-section-options .pagex-section-options {
@@ -273,23 +275,8 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   }
 }
 
-.pagex-hide-row-controls {
-  .pagex-section-controls,
-  .pagex-inner-row-options {
-    display: none;
-  }
-}
-
-.pagex-hide-row-column-controls {
-  .pagex-section-controls,
-  .pagex-column-options,
-  .pagex-inner-row-options {
-    display: none;
-  }
-}
-
 body:not(.pagex-preview-mode) {
-  .pagex-section-hover {
+  [data-type="section"]:hover {
     // bigger than pagex-section-position classes
     z-index: 100 !important;
 

@@ -20,9 +20,10 @@ function pagex_register_slider_element( $elements ) {
 		    <div class="swiper-pagination pagex-slider-pagination"></div>
 		</div>
 		
-		<div class="swiper-button-prev pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-left-icon" /></svg></div><div class="swiper-button-next pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-right-icon" /></svg></div>
-	</div>
-	';
+		<% var type = data.slider_nav_type ? "long-arrow" : "arrow"; %>
+		
+		<div class="swiper-button-prev pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-<%- type %>-left-icon" /></svg></div><div class="swiper-button-next pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-<%- type %>-right-icon" /></svg></div>
+	</div>';
 
 	$elements[] = array(
 		'id'          => 'slider',

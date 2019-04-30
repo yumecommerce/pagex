@@ -224,7 +224,8 @@ function pagex_image_gallery( $atts ) {
 	echo '</div>';
 
 	if ( $data['layout'] == 'pagex_slider' ) {
-		echo '<div class="swiper-pagination pagex-slider-pagination"></div><div class="swiper-button-prev pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-left-icon" /></svg></div><div class="swiper-button-next pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-arrow-right-icon" /></svg></div>';
+		$type = isset( $data['slider_nav_type'] ) ? 'long-arrow' : 'arrow';
+		echo '<div class="swiper-pagination pagex-slider-pagination"></div><div class="swiper-button-prev pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-' . $type . '-left-icon" /></svg></div><div class="swiper-button-next pagex-slider-navigation"><svg class="pagex-icon"><use xlink:href="#pagex-' . $type . '-right-icon" /></svg></div>';
 	}
 
 	echo '</div>';

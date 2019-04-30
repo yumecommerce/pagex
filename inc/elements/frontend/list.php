@@ -18,7 +18,7 @@ function pagex_register_list_element( $elements ) {
 				</div>
 				<% } %>
 				<div class="pagex-list-item-wrapper">
-					<div class="pagex-list-item-title pagex-lang-str"><% if (item.title && item.title.length) { print(item.title) } else { %>' . __( 'List Item', 'pagex' ) . '<% } %></div>
+					<div class="pagex-list-item-title pagex-lang-str"><% if (item.title && item.title.length) { print(item.title) } else if(!item.icon && !item.icon.length) { %>' . __( 'List Item', 'pagex' ) . '<% } %></div>
 				</div>
 			</div>
 			<%  if (data.items.length - 1 !== index) { %>
@@ -123,13 +123,13 @@ function pagex_register_list_element( $elements ) {
 						)
 					),
 					array(
-						'id'          => 'ty',
-						'title'       => __( 'Width', 'pagex' ),
-						'type'        => 'text',
-						'action'      => 'css',
-						'responsive'  => true,
-						'class'       => 'col-4',
-						'selector'    => '[el] .pagex-list-divider {width: [val]}',
+						'id'         => 'ty',
+						'title'      => __( 'Width', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'class'      => 'col-4',
+						'selector'   => '[el] .pagex-list-divider {width: [val]}',
 					),
 					array(
 						'id'         => 'yu',
@@ -200,16 +200,34 @@ function pagex_register_list_element( $elements ) {
 						'type'       => 'text',
 						'action'     => 'css',
 						'responsive' => true,
-						'class'      => 'col-6',
+						'class'      => 'col-3',
 						'selector'   => '[el] .pagex-list-item-icon .pagex-icon {width: [val]; height: [val]; font-size: [val]}',
 					),
 					array(
-						'id'       => 'df',
-						'title'    => __( 'Margin', 'pagex' ),
-						'type'     => 'dimension',
-						'class'    => 'col-6',
+						'id'         => 'df',
+						'title'      => __( 'Margin', 'pagex' ),
+						'type'       => 'text',
+						'class'      => 'col-3',
+						'action'     => 'css',
+						'responsive' => true,
+						'selector'   => '[el] .pagex-list-item-icon {margin: [val]}',
+					),
+					array(
+						'id'         => 'de',
+						'title'      => __( 'Padding', 'pagex' ),
+						'type'       => 'text',
+						'class'      => 'col-3',
+						'action'     => 'css',
+						'responsive' => true,
+						'selector'   => '[el] .pagex-list-item-icon {padding: [val]}',
+					),
+					array(
+						'id'       => 'fr',
+						'title'    => __( 'Border Radius', 'pagex' ),
+						'type'     => 'text',
+						'class'    => 'col-3',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-list-item-icon {margin: [val]}',
+						'selector' => '[el] .pagex-list-item-icon {border-radius: [val]}',
 					),
 					array(
 						'id'       => 'fg',
@@ -222,10 +240,26 @@ function pagex_register_list_element( $elements ) {
 					array(
 						'id'       => 'gh',
 						'title'    => __( 'Color on Hover', 'pagex' ),
-						'class'    => 'col-4',
+						'class'    => 'col-8',
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] .pagex-list-item:hover .pagex-list-item-icon {color: [val]}',
+					),
+					array(
+						'id'       => 'aq',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-list-item-icon {background: [val]}',
+					),
+					array(
+						'id'       => 'sw',
+						'title'    => __( 'Background on Hover', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'background',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-list-item:hover .pagex-list-item-icon {background: [val]}',
 					),
 				)
 			),

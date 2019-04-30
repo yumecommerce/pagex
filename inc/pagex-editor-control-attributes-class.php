@@ -221,6 +221,16 @@ class Pagex_Editor_Control_Attributes {
 				)
 			),
 			array(
+				'id'      => 'slider_nav_type', // no pagex pref since we need to trigger update func
+				'title'   => __( 'Type', 'pagex' ),
+				'class'   => 'col-4',
+				'type'    => 'select',
+				'options' => array(
+					''      => __( 'Angles', 'pagex' ),
+					'arrow' => __( 'Arrows', 'pagex' ),
+				),
+			),
+			array(
 				'id'       => 'pagex_slider_ns',
 				'title'    => __( 'Size', 'pagex' ),
 				'action'   => 'css',
@@ -345,34 +355,34 @@ class Pagex_Editor_Control_Attributes {
 				'type'     => 'text',
 			),
 			array(
-				'id'       => 'pagex_slider_pp',
-				'title'    => __( 'Padding', 'pagex' ),
-				'action'   => 'css',
-				'selector' => '[el] .pagex-slider-pagination {padding: [val]}',
-				'class'    => 'col-3',
-				'type'     => 'text',
+				'id'        => 'pagex_slider_pp',
+				'title'     => __( 'Padding', 'pagex' ),
+				'action'    => 'css',
+				'selector'  => '[el] .pagex-slider-pagination {padding: [val]}',
+				'class'     => 'col-3',
+				'type'      => 'text',
 				'condition' => array(
 					'pagex_slider_pa_type' => array( '' ),
 				),
 			),
 			array(
-				'id'       => 'pagex_slider_pm',
-				'title'    => __( 'Margin', 'pagex' ),
-				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet {margin: [val] !important}',
-				'class'    => 'col-3',
-				'type'     => 'text',
+				'id'        => 'pagex_slider_pm',
+				'title'     => __( 'Margin', 'pagex' ),
+				'action'    => 'css',
+				'selector'  => '[el] .swiper-pagination-bullet {margin: [val] !important}',
+				'class'     => 'col-3',
+				'type'      => 'text',
 				'condition' => array(
 					'pagex_slider_pa_type' => array( '' ),
 				),
 			),
 			array(
-				'id'       => 'pagex_slider_pr',
-				'title'    => __( 'Border Radius', 'pagex' ),
-				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet {border-radius: [val]}',
-				'class'    => 'col-3',
-				'type'     => 'text',
+				'id'        => 'pagex_slider_pr',
+				'title'     => __( 'Border Radius', 'pagex' ),
+				'action'    => 'css',
+				'selector'  => '[el] .swiper-pagination-bullet {border-radius: [val]}',
+				'class'     => 'col-3',
+				'type'      => 'text',
 				'condition' => array(
 					'pagex_slider_pa_type' => array( '' ),
 				),
@@ -386,12 +396,12 @@ class Pagex_Editor_Control_Attributes {
 				'selector' => '[el] .swiper-pagination-bullet {background: [val]} [el] .swiper-pagination-fraction {color: [val]}',
 			),
 			array(
-				'id'       => 'pagex_slider_pch',
-				'title'    => __( 'Color on Hover', 'pagex' ),
-				'class'    => 'col-4',
-				'type'     => 'color',
-				'action'   => 'css',
-				'selector' => '[el] .swiper-pagination-bullet:hover {background: [val]}',
+				'id'        => 'pagex_slider_pch',
+				'title'     => __( 'Color on Hover', 'pagex' ),
+				'class'     => 'col-4',
+				'type'      => 'color',
+				'action'    => 'css',
+				'selector'  => '[el] .swiper-pagination-bullet:hover {background: [val]}',
 				'condition' => array(
 					'pagex_slider_pa_type' => array( '' ),
 				),
@@ -495,8 +505,44 @@ class Pagex_Editor_Control_Attributes {
 						'color'   => __( 'Color', 'pagex' ),
 						'image'   => __( 'Image', 'pagex' ),
 						'video'   => __( 'Video', 'pagex' ),
+						'svg'     => 'SVG',
 						'dynamic' => __( 'Dynamic', 'pagex' ),
 					)
+				),
+				array(
+					'id'          => 'pagex_background_svg',
+					'title'       => __( 'Inline SVG code.', 'pagex' ),
+					'description' => __( 'Use preserveAspectRatio="xMidYMid slice" attribute to center SVG.', 'pagex' ) . ' <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/preserveAspectRatio" target="_blank">preserveAspectRatio</a>',
+					'type'        => 'textarea',
+					'action'      => 'content',
+					'selector'    => '.pagex-svg-bg',
+					'condition'   => array(
+						'pagex_background' => array( 'svg' )
+					),
+				),
+				array(
+					'id'         => 'pagex_background_svg_width',
+					'title'      => __( 'Width', 'pagex' ),
+					'type'       => 'text',
+					'action'     => 'css',
+					'responsive' => true,
+					'class'      => 'col-4',
+					'selector'   => '[el] > .pagex-bc .pagex-svg-bg svg {width: [val]}',
+					'condition'  => array(
+						'pagex_background' => array( 'svg' )
+					),
+				),
+				array(
+					'id'         => 'pagex_background_svg_height',
+					'title'      => __( 'Height', 'pagex' ),
+					'type'       => 'text',
+					'action'     => 'css',
+					'responsive' => true,
+					'class'      => 'col-4',
+					'selector'   => '[el] > .pagex-bc .pagex-svg-bg svg {height: [val]}',
+					'condition'  => array(
+						'pagex_background' => array( 'svg' )
+					),
 				),
 				array(
 					'id'        => 'pagex_dynamic_background',
@@ -681,7 +727,7 @@ class Pagex_Editor_Control_Attributes {
 					'selector'  => '.pagex-bc-wrapper',
 					'attribute' => 'parallax',
 					'condition' => array(
-						'pagex_background' => array( 'image', 'video', 'dynamic' )
+						'pagex_background' => array( 'image', 'video', 'dynamic', 'svg' )
 					),
 					'options'   => array(
 						''                                                => __( 'None', 'pagex' ),

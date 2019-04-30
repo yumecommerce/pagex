@@ -400,7 +400,7 @@ var pagex = {
                     elSelectorContent = that.currentElement.querySelector(selector);
 
                 if (!_.isNull(elSelectorContent)) {
-                    that.paramsForm.querySelector('[name="' + value.id + ':skip"]').value = elSelectorContent.innerHTML;
+                    that.paramsForm.querySelector('[name="' + value.id + ':skip"]').value = elSelectorContent.innerHTML.replace(/<br>/gi, "");
                 }
             }
 
@@ -621,8 +621,7 @@ var pagex = {
 
 
         // change element bg only when any related bg params changed
-        let isBgParamChanged = !_.isNull(currentParamName) && ['pagex_background', 'pagex_background_ov', 'pagex_video_url', 'pagex_video_start',
-            'pagex_video_end', 'pagex_dynamic_background'].includes(currentParamName);
+        let isBgParamChanged = !_.isNull(currentParamName) && ['pagex_background', 'pagex_background_ov', 'pagex_video_url', 'pagex_video_start', 'pagex_video_end', 'pagex_background_svg:skip', 'pagex_dynamic_background'].includes(currentParamName);
 
         if (isBgParamChanged) {
             // design background image, video
@@ -636,44 +635,55 @@ var pagex = {
                 currentBg.remove();
             }
 
-            if (bgType === 'image' && bgType.length) {
-                bgContent += '<div class="pagex-image-bg"></div>';
-            }
+            switch (bgType) {
+                case 'image':
+                    bgContent += '<div class="pagex-image-bg"></div>';
+                    break;
+                case 'svg':
+                    // since it is content action get val manually
+                    let bgSVG = this.paramsForm.querySelector('[name="pagex_background_svg:skip"]');
+                    if (bgSVG) {
+                        bgContent += '<div class="pagex-svg-bg">' + bgSVG.value + '</div>';
+                    }
+                    break;
+                case 'dynamic':
+                    if (form.pagex_dynamic_background.length) {
+                        bgContent += '<div class="pagex-image-bg" data-dynamic-background="' + form.pagex_dynamic_background + '"><div class="pagex-dynamic-image-bg"></div></div>';
 
-            if (bgType === 'dynamic' && bgType.length && form.pagex_dynamic_background.length) {
-                bgContent += '<div class="pagex-image-bg" data-dynamic-background="' + form.pagex_dynamic_background + '"><div class="pagex-dynamic-image-bg"></div></div>';
+                        setTimeout(function () {
+                            jQuery.post(pagexLocalize.ajaxUrl, {
+                                action: 'pagex_dynamic_background',
+                                url: location.search.substring(1),
+                                atts: {key: form.pagex_dynamic_background},
+                            }, function (data) {
+                                that.currentElement.querySelector('.pagex-image-bg').innerHTML = data;
+                            });
+                        }, 500);
+                    }
+                    break;
+                case 'video':
+                    if (bgVideo.length) {
+                        if (bgVideo.includes('youtube')) {
+                            let nID = this.genID(),
+                                timeLine = encodeURIComponent(JSON.stringify({
+                                    start: form.pagex_video_start,
+                                    end: form.pagex_video_end,
+                                }));
+                            bgContent += '<div class="pagex-video-bg pagex-video-bg-youtube" data-video-bg="' + bgVideo + '" data-video-timeline="' + timeLine + '"><div class="pagex-video-youtube" id="' + nID + '"></div></div>';
 
-                setTimeout(function () {
-                    jQuery.post(pagexLocalize.ajaxUrl, {
-                        action: 'pagex_dynamic_background',
-                        url: location.search.substring(1),
-                        atts: {key: form.pagex_dynamic_background},
-                    }, function (data) {
-                        that.currentElement.querySelector('.pagex-image-bg').innerHTML = data;
-                    });
-                }, 500);
-            }
-
-            if (bgType === 'video' && bgVideo.length) {
-                if (bgVideo.includes('youtube')) {
-                    var nID = this.genID(),
-                        timeLine = encodeURIComponent(JSON.stringify({
-                            start: form.pagex_video_start,
-                            end: form.pagex_video_end,
-                        }));
-                    bgContent += '<div class="pagex-video-bg pagex-video-bg-youtube" data-video-bg="' + bgVideo + '" data-video-timeline="' + timeLine + '"><div class="pagex-video-youtube" id="' + nID + '"></div></div>';
-                } else {
-                    bgContent += '<div class="pagex-video-bg"><video class="pagex-video-hosted" autoplay loop muted src="' + bgVideo + '"></video></div>';
-                }
+                            // render youtube background
+                            setTimeout(function () {
+                                renderYouTubeIframe(bgVideo, nID, timeLine);
+                            }, 1500);
+                        } else {
+                            bgContent += '<div class="pagex-video-bg"><video class="pagex-video-hosted" autoplay loop muted src="' + bgVideo + '"></video></div>';
+                        }
+                    }
+                    break;
             }
 
             if (bgContent.length || bgOverlay) {
                 this.currentElement.insertAdjacentHTML('afterbegin', '<div class="pagex-bc"><div class="pagex-bc-wrapper"><div class="pagex-image-bg-ov"></div>' + bgContent + '</div></div>');
-            }
-
-            // render youtube background
-            if (bgType === 'video' && bgVideo.includes('youtube')) {
-                renderYouTubeIframe(bgVideo, nID, timeLine);
             }
         }
 
@@ -1593,15 +1603,6 @@ var pagex = {
         // close settings modal
         this.pagexModal.classList.add('pagex-hide');
 
-        // if we hover and delete an element or column restore hidden control options
-        for (var item of document.querySelectorAll('.pagex-hide-row-column-controls')) {
-            item.classList.remove('pagex-hide-row-column-controls');
-        }
-
-        for (var item of document.querySelectorAll('.pagex-hide-row-controls')) {
-            item.classList.remove('pagex-hide-row-controls');
-        }
-
         let modal = e.target.closest('.pagex-modal'),
             html = modal ? modal.innerHTML : document.querySelector('.pagex-builder-area').innerHTML;
 
@@ -2347,7 +2348,7 @@ window.parent.document.addEventListener('keyup', function (e) {
 
         // repeater item label
         if (el.closest('.pagex-control-wrapper').matches('.pagex-repeater-value')) {
-            el.closest('.pagex-repeater-item').querySelector('.pagex-repeater-title').innerHTML = el.value;
+            el.closest('.pagex-repeater-item').querySelector('.pagex-repeater-title').innerHTML = el.value.length ? el.value : pagexLocalize.string.item;
         }
     }
 });
@@ -2465,30 +2466,11 @@ window.parent.addEventListener('colorPickerChange', function (data) {
         mouseenter: function () {
             if ($(this).children('.pagex-options').length) return;
             $(this).prepend(sectionAddNewOptions);
-            $(this).addClass('pagex-section-hover');
         },
         mouseleave: function () {
-            $(this).removeClass('pagex-section-hover');
             $(this).find('.pagex-options').remove();
-            $(this).removeClass('pagex-hide-section-options pagex-hide-container-options');
         }
     }, '.pagex-builder-area [data-type="section"]');
-    $(document).on({
-        mouseenter: function () {
-            $(this).closest('[data-type="row"]').addClass('pagex-hide-row-controls');
-        },
-        mouseleave: function () {
-            $(this).closest('[data-type="row"]').removeClass('pagex-hide-row-controls');
-        }
-    }, '.pagex-builder-area .pagex-column-options, .pagex-modal-builder-area .pagex-column-options');
-    $(document).on({
-        mouseenter: function () {
-            $(this).closest('[data-type="row"]').addClass('pagex-hide-row-column-controls');
-        },
-        mouseleave: function () {
-            $(this).closest('[data-type="row"]').removeClass('pagex-hide-row-column-controls');
-        }
-    }, '.pagex-builder-area .pagex-element-options, .pagex-modal-builder-area .pagex-element-options');
 
     $(document).on({
         mouseenter: function () {

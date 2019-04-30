@@ -258,7 +258,7 @@ class Pagex_Template_Manager {
 			}
 
 			// print post template
-			$template_page_id = Pagex::get_translation_id( $template, 'pagex_post_tmp' );
+			$template_page_id = apply_filters( 'pagex_template_id', Pagex::get_translation_id( $template, 'pagex_post_tmp' ) );
 
 			add_action( 'pagex_head', function () use ( $template_page_id, $post ) {
 				$content      = get_post_field( 'post_content', $template_page_id );

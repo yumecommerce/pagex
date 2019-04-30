@@ -323,6 +323,22 @@ function pagex_register_form_element( $elements ) {
 						'action'   => 'css',
 						'selector' => '[el] .form-control:focus {border-color: [val]}',
 					),
+					array(
+						'id'       => 'aq',
+						'title'    => __( 'Box Shadow', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .form-control {box-shadow: [val]}',
+					),
+					array(
+						'id'       => 'ed',
+						'title'    => __( 'Box Shadow on Focus', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .form-control:focus {box-shadow: [val]}',
+					),
 
 					array(
 						'type'  => 'heading',

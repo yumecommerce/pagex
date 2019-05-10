@@ -163,6 +163,7 @@ function pagex_register_posts_element( $elements ) {
 		'title'       => __( 'Posts', 'pagex' ),
 		'description' => __( 'Display post grid based on selected query', 'pagex' ),
 		'type'        => 'dynamic',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Posts',
 		'callback'    => 'pagex_posts',
 		'options'     => array(
 			array(

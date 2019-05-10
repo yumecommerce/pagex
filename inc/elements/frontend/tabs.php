@@ -39,6 +39,7 @@ function pagex_register_tabs_element( $elements ) {
 		'category'    => 'content',
 		'title'       => __( 'Tabs', 'pagex' ),
 		'description' => __( 'Tabbable panes with custom content', 'pagex' ),
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Tabs',
 		'type'        => 'static',
 		'template'    => $template,
 		'options'     => array(
@@ -241,7 +242,7 @@ function pagex_register_tabs_element( $elements ) {
 						'selector'   => '[el] .pagex-tabs-panes {border-width: [val]}',
 					),
 					array(
-						'type'     => 'clear',
+						'type' => 'clear',
 					),
 					array(
 						'id'       => 'content_typo',

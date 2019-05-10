@@ -47,6 +47,7 @@ var pagex = {
     paramsForm: window.parent.document.getElementById("pagex-params-form"),
     pagexModal: window.parent.document.getElementById("pagex-params-modal"),
     allElementsModal: window.parent.document.getElementById("pagex-all-elements-modal"),
+    elementInfoLink: window.parent.document.getElementById("pagex-element-info-link"),
 
     // icon picker
     iconsModal: window.parent.document.getElementById("pagex-icons-modal"),
@@ -138,6 +139,7 @@ var pagex = {
         if (data.pagex_slider_autoplay) obj.autoplay = {delay: data.pagex_slider_autoplay_delay ? Number(data.pagex_slider_autoplay_delay) : 2000};
 
         if (data.pagex_slider_pa_type) obj.paginationtype = 'fraction';
+        if (data.pagex_slider_pel) obj.pagination_el = data.pagex_slider_pel;
 
         if (data.pagex_slider_spaceBetween.sm) obj.breakpoints[576].spaceBetween = Number(data.pagex_slider_spaceBetween.sm);
         if (data.pagex_slider_slidesPerView.sm) obj.breakpoints[576].slidesPerView = Number(data.pagex_slider_slidesPerView.sm);
@@ -230,6 +232,7 @@ var pagex = {
         this.currentElementParams = _.find(pagexElements, {id: this.currentElement.getAttribute('data-type')});
 
         this.modalTitle.innerHTML = this.currentElementParams.title;
+        this.elementInfoLink.href = !_.isUndefined(this.currentElementParams.info) ? this.currentElementParams.info : 'https://github.com/yumecommerce/pagex/wiki';
 
         htmlParams += '<div class="pagex-params-tabs d-flex">';
         _.forEach(that.currentElementParams.options, function (options) {
@@ -653,7 +656,8 @@ var pagex = {
                         setTimeout(function () {
                             jQuery.post(pagexLocalize.ajaxUrl, {
                                 action: 'pagex_dynamic_background',
-                                url: location.search.substring(1),
+                                query_string: pagexLocalize.query_string,
+                                post_id: pagexLocalize.post_id,
                                 atts: {key: form.pagex_dynamic_background},
                             }, function (data) {
                                 that.currentElement.querySelector('.pagex-image-bg').innerHTML = data;
@@ -1636,13 +1640,15 @@ var pagex = {
         // make sure that we still have at least one row
         this.validateEmptyElements();
 
-
         // make sure we have empty col with no builder option
         for (var item of document.querySelectorAll('.pagex-options')) {
             item.remove();
         }
 
         window.parent.document.body.classList.add('pagex-element-removed');
+
+        // make sure we restore option buttons
+        document.body.classList.remove('pagex-hide-not-element-options');
     },
 
     undoRemove: function () {
@@ -2135,6 +2141,10 @@ var pagex = {
         }, 300);
     },
 
+    openModalButton: function () {
+      this.currentElement.querySelector('.pagex-modal-trigger').click();
+    },
+
     uploadLayout: function (input) {
         let file_data = input.files[0],
             form_data = new FormData(),
@@ -2283,6 +2293,9 @@ window.parent.document.addEventListener('click', function (e) {
     if (el.matches('.pagex-repeater-clone')) pagex.cloneRepeaterItem(e);
     if (el.matches('.pagex-repeater-remove')) pagex.removeRepeaterItem(e);
     if (el.matches('.pagex-repeater-title')) pagex.toggleRepeaterItem(el);
+
+    // open button modal
+    if (el.matches('.pagex-open-modal-trigger')) pagex.openModalButton(e);
 
     // image control
     if (el.matches('.pagex-image-placeholder')) pagex.insertImage(e);
@@ -2471,7 +2484,14 @@ window.parent.addEventListener('colorPickerChange', function (data) {
             $(this).find('.pagex-options').remove();
         }
     }, '.pagex-builder-area [data-type="section"]');
-
+    $(document).on({
+        mouseenter: function () {
+            document.body.classList.add('pagex-hide-not-element-options');
+        },
+        mouseleave: function () {
+            document.body.classList.remove('pagex-hide-not-element-options');
+        }
+    }, '.pagex-element-options');
     $(document).on({
         mouseenter: function () {
             tippy('.pagex-tooltip', {
@@ -2495,4 +2515,3 @@ window.parent.addEventListener('colorPickerChange', function (data) {
         }
     }, '.pagex-tooltip');
 }(window.jQuery, window, document));
-

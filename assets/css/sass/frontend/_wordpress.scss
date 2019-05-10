@@ -61,6 +61,11 @@
   margin-right: auto;
 }
 
+// gutenberg support !important to overwrite custom max width from post content element
+.alignfull {
+  max-width: 100% !important;
+}
+
 /* Widgets */
 
 .widget {

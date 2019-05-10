@@ -1,9 +1,5 @@
 <?php
 
-if ( post_password_required() ) {
-	return;
-}
-
 echo ' <div id="comments" class="comments-area">';
 
 if ( have_comments() ) {

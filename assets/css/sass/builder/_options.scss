@@ -54,6 +54,13 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   }
 }
 
+.pagex-hide-not-element-options {
+  // keep section-add-options to prevent page jumping
+  .pagex-options:not(.pagex-element-options):not(.pagex-section-add) {
+    display: none;
+  }
+}
+
 .pagex-element-options {
   justify-content: center;
   left: 50%;
@@ -271,17 +278,6 @@ body.pagex-preview-mode-hide-controls .pagex-options {
     &:hover {
       background-color: #5a6268 !important;
       border-color: #545b62 !important;
-    }
-  }
-}
-
-body:not(.pagex-preview-mode) {
-  [data-type="section"]:hover {
-    // bigger than pagex-section-position classes
-    z-index: 100 !important;
-
-    .pagex-shape-above {
-      z-index: 8 !important;
     }
   }
 }

@@ -22,62 +22,11 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'id'      => 'type',
 						'title'   => __( 'Type', 'pagex' ),
 						'type'    => 'select',
-						'class'   => 'col-6',
 						'options' => array(
 							'link'      => __( 'Simple Link', 'pagex' ),
 							'dropdown'  => __( 'Dropdown', 'pagex' ),
 							'offcanvas' => __( 'Offcanvas', 'pagex' ),
 						),
-					),
-					array(
-						'id'        => 'offcanvas_pos',
-						'title'     => __( 'Offcanvas Position', 'pagex' ),
-						'type'      => 'select',
-						'class'     => 'col-6',
-						'options'   => array(
-							''      => __( 'Left', 'pagex' ),
-							'right' => __( 'Right', 'pagex' ),
-						),
-						'condition' => array(
-							'type' => array( 'offcanvas' )
-						)
-					),
-					array(
-						'id'        => 'uy',
-						'title'     => __( 'Dropdown Offset', 'pagex' ),
-						'type'      => 'text',
-						'action'    => 'css',
-						'class'     => 'col-3',
-						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {padding-top: [val]}',
-						'condition' => array(
-							'type' => array( 'dropdown' )
-						)
-					),
-					array(
-						'id'        => 'yt',
-						'title'     => __( 'Position', 'pagex' ),
-						'type'      => 'select',
-						'action'    => 'css',
-						'class'     => 'col-3',
-						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {left: 0; right: auto;}',
-						'options'   => array(
-							''     => __( 'Right', 'pagex' ),
-							'left' => __( 'Left', 'pagex' ),
-						),
-						'condition' => array(
-							'type' => array( 'dropdown' )
-						)
-					),
-					array(
-						'type' => 'clear'
-					),
-					array(
-						'id'        => 'title',
-						'title'     => __( 'Widget Title', 'pagex' ),
-						'type'      => 'text',
-						'condition' => array(
-							'type' => array( 'dropdown', 'offcanvas' )
-						)
 					),
 					array(
 						'type'  => 'heading',
@@ -115,6 +64,14 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Icon', 'pagex' ),
+					),
+					array(
+						'id'       => 'is',
+						'title'    => __( 'Size', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-menu-cart-icon .pagex-icon {width: [val]; height: [val]}',
 					),
 					array(
 						'id'       => 'i_c',
@@ -237,32 +194,6 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 							'count_t' => array( 'badge' )
 						)
 					),
-
-					array(
-						'type'  => 'heading',
-						'title' => __( 'Widget Title', 'pagex' ),
-					),
-					array(
-						'id'       => 'zx',
-						'title'    => __( 'Color', 'pagex' ),
-						'class'    => 'col-4',
-						'type'     => 'color',
-						'action'   => 'css',
-						'selector' => '[el] .pagex-menu-cart-title {color: [val]}',
-					),
-					array(
-						'id'       => 'xc',
-						'title'    => __( 'Margin', 'pagex' ),
-						'class'    => 'col-4',
-						'type'     => 'text',
-						'action'   => 'css',
-						'selector' => '[el] .pagex-menu-cart-title {margin: [val]}',
-					),
-					array(
-						'id'       => 'cv',
-						'type'     => 'typography',
-						'selector' => '.pagex-menu-cart-title',
-					),
 				)
 			),
 			array(
@@ -270,7 +201,81 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 				'params' => array(
 					array(
 						'type'  => 'heading',
+						'title' => __( 'Widget Title', 'pagex' ),
+					),
+					array(
+						'id'          => 'title',
+						'title'       => __( 'Title', 'pagex' ),
+						'description' => __( 'If title is not provided the default one will be shown', 'pagex' ),
+						'type'        => 'text',
+						'condition'   => array(
+							'type' => array( 'dropdown', 'offcanvas' )
+						)
+					),
+					array(
+						'id'       => 'cv',
+						'type'     => 'typography',
+						'selector' => '.widgettitle',
+					),
+					array(
+						'id'       => 'zx',
+						'title'    => __( 'Color', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .widgettitle {color: [val]}',
+					),
+					array(
+						'id'       => 'xc',
+						'title'    => __( 'Margin', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .widgettitle {margin: [val]}',
+					),
+
+					array(
+						'type'  => 'heading',
 						'title' => __( 'Widget', 'pagex' ),
+					),
+					array(
+						'id'        => 'offcanvas_pos',
+						'title'     => __( 'Offcanvas Position', 'pagex' ),
+						'type'      => 'select',
+						'class'     => 'col-4',
+						'options'   => array(
+							''      => __( 'Left', 'pagex' ),
+							'right' => __( 'Right', 'pagex' ),
+						),
+						'condition' => array(
+							'type' => array( 'offcanvas' )
+						)
+					),
+					array(
+						'id'        => 'uy',
+						'title'     => __( 'Dropdown Offset', 'pagex' ),
+						'type'      => 'text',
+						'action'    => 'css',
+						'class'     => 'col-4',
+						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {padding-top: [val]}',
+						'condition' => array(
+							'type' => array( 'dropdown' )
+						)
+					),
+					array(
+						'id'        => 'yt',
+						'title'     => __( 'Position', 'pagex' ),
+						'type'      => 'select',
+						'action'    => 'css',
+						'class'     => 'col-4',
+						'selector'  => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {left: 0; right: auto;}',
+						'options'   => array(
+							''     => __( 'Right', 'pagex' ),
+							'left' => __( 'Left', 'pagex' ),
+						),
+						'condition' => array(
+							'type' => array( 'dropdown' )
+						)
 					),
 					array(
 						'id'          => 'vb',
@@ -292,6 +297,33 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'selector'   => '[el] .pagex-menu-cart-dropdown .pagex-menu-cart-widget {width: [val]} [el].pagex-modal-offcanvas .pagex-modal-window-content {max-width: [val]}',
 					),
 					array(
+						'id'        => 'sw',
+						'title'     => __( 'Border Radius', 'pagex' ),
+						'type'      => 'text',
+						'action'    => 'css',
+						'class'     => 'col-4',
+						'selector'  => '[el] .pagex-menu-cart-widget-content {border-radius: [val]}',
+						'condition' => array(
+							'type' => array( 'dropdown' )
+						)
+					),
+					array(
+						'id'          => 'aq',
+						'title'       => __( 'Box Shadow', 'pagex' ),
+						'type'        => 'text',
+						'action'      => 'css',
+						'class'       => 'col-4',
+						'selector'    => '[el] .pagex-menu-cart-widget-content {box-shadow: [val]}',
+						'condition'   => array(
+							'type' => array( 'dropdown' )
+						)
+					),
+
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Product', 'pagex' ),
+					),
+					array(
 						'id'       => 'w_sp',
 						'title'    => __( 'Product Bottom Offset', 'pagex' ),
 						'class'    => 'col-4',
@@ -307,6 +339,7 @@ function pagex_register_woo_menu_cart_element( $elements ) {
 						'action'   => 'css',
 						'selector' => '[el] .widget .cart_list li img {width: [val]px} [el] .mini_cart_item {padding-left: calc([val]px + 15px) !important; min-height: [val]px !important;}',
 					),
+
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Product Title', 'pagex' ),
@@ -512,10 +545,7 @@ function pagex_woo_menu_cart( $atts ) {
 
 		echo '<div class="pagex-menu-cart-widget">';
 		echo '<div class="pagex-menu-cart-widget-content">';
-		if ( $data['title'] ) {
-			echo '<h5 class="pagex-menu-cart-title">' . $data['title'] . ' </h5>';
-		}
-		the_widget( 'WC_Widget_Cart' );
+		the_widget( 'WC_Widget_Cart', $data['title'] ? array( 'title' => $data['title'] ) : array() );
 		echo '</div>';
 		echo '</div>';
 
@@ -529,7 +559,7 @@ function pagex_woo_menu_cart( $atts ) {
 
 	$icon = isset( $data['icon'] ) ? pagex_generate_icon( 'icon', $data ) : '<svg class="pagex-icon"><use xlink:href="#pagex-bag-icon" /></svg>';
 
-	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '<a class="pagex-cart-contents-link" href="' . wc_get_cart_url() . '">' : '';
+	echo $data['type'] == 'link' || $data['type'] == 'dropdown' ? '<a class="pagex-cart-contents-link d-flex align-items-center" href="' . wc_get_cart_url() . '">' : '';
 
 	echo '<div class="pagex-menu-cart-icon">' . $icon . '</div>';
 	echo '<div class="pagex-menu-cart-contents">';

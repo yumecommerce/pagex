@@ -196,6 +196,15 @@ class Pagex_Editor_Control_Attributes {
 				'selector'    => '[el] .swiper-container {margin: 0 [val]}',
 			),
 			array(
+				'id'         => 'pagex_slider_container_padding',
+				'title'      => __( 'Padding', 'pagex' ),
+				'class'      => 'col-4',
+				'type'       => 'text',
+				'responsive' => true,
+				'action'     => 'css',
+				'selector'   => '[el] .swiper-container {padding: [val] }',
+			),
+			array(
 				'type'  => 'heading',
 				'title' => __( 'Slider Navigation', 'pagex' ),
 			),
@@ -414,6 +423,12 @@ class Pagex_Editor_Control_Attributes {
 				'action'   => 'css',
 				'selector' => '[el] .swiper-pagination-bullet.swiper-pagination-bullet-active {background: [val]} [el] .swiper-pagination-current {color: [val]}',
 			),
+			array(
+				'id'          => 'pagex_slider_pel',
+				'title'       => __( 'Separate Pagination', 'pagex' ),
+				'description' => __( 'Optional. If you need to separate pagination from slider container set CSS selector of another element, for example #custom-slider-pag. Note separate pagination does not inherit main slider styles.', 'pagex' ),
+				'type'        => 'text',
+			),
 		);
 	}
 
@@ -549,6 +564,7 @@ class Pagex_Editor_Control_Attributes {
 					'title'     => __( 'Meta Field Key', 'pagex' ),
 					'type'      => 'select',
 					'options'   => pagex_get_dynamic_media_keys(),
+					'class'     => 'col-4',
 					'condition' => array(
 						'pagex_background' => array( 'dynamic' )
 					),
@@ -771,7 +787,7 @@ class Pagex_Editor_Control_Attributes {
 						'image' => __( 'Image', 'pagex' ),
 					),
 					'condition' => array(
-						'pagex_background' => array( 'color', 'image', 'dynamic', 'video' )
+						'pagex_background' => array( 'color', 'image', 'dynamic', 'svg', 'video' )
 					),
 				),
 				array(
@@ -940,6 +956,13 @@ class Pagex_Editor_Control_Attributes {
 						'pagex_background_ov' => array( 'image' ),
 						'pagex_background'    => array( 'color', 'image', 'dynamic', 'video' )
 					),
+				),
+				array(
+					'id'       => 'pagex_bg_above',
+					'label'    => __( 'Make background layer overlay the content', 'pagex' ),
+					'type'     => 'checkbox',
+					'action'   => 'css',
+					'selector' => '[el] > .pagex-bc {z-index: 11}',
 				),
 				array(
 					'type' => 'row-end',

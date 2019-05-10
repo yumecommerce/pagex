@@ -95,12 +95,22 @@ body:not(.pagex-element-removed) .pagex-undo-remove {
   }
 }
 
+
 body:not(.pagex-preview-mode) {
   .pagex-builder-area,
   .pagex-modal-builder-area {
     .element-wrap:empty:after {
       display: flex;
       min-width: 100px;
+    }
+
+    [data-type="section"]:hover {
+      // bigger than pagex-section-position classes
+      z-index: 100 !important;
+
+      .pagex-shape-above {
+        z-index: 8 !important;
+      }
     }
 
     [data-type="container"]:hover [data-type="column"],

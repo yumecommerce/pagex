@@ -88,6 +88,10 @@ function pagex_wpml_shortcode_decode( $string, $encoding, $original_string ) {
 					// post title
 					'before',
 					'after',
+
+					// post navigation
+					'prev_text',
+					'next_text'
 				) ) ) {
 					$string[ $i ] = array( 'value' => $row, 'translate' => true );
 				} else {

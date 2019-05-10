@@ -9,6 +9,16 @@
 	<?php do_action( 'pagex_head_styles' ); ?>
 </head>
 <body <?php body_class(); ?>>
+<?php
+
+// WordPress 5.2 theme hook
+if ( function_exists( 'wp_body_open' ) ) {
+	wp_body_open();
+} else {
+	do_action( 'wp_body_open' );
+}
+
+?>
 <?php do_action( 'pagex_before_page_layout' ); ?>
 <div id="page">
 	<?php do_action( 'pagex_before_header' ); ?>

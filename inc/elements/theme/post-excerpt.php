@@ -20,6 +20,11 @@ function pagex_register_post_excerpt_element( $elements ) {
 			array(
 				'params' => array(
 					array(
+						'type'        => 'heading',
+						'title'       => __( 'Post Excerpt', 'pagex' ),
+						'description' => __( 'If the post has no an excerpt, then the initial snippet of the post will be shown.', 'pagex' ),
+					),
+					array(
 						'id'       => 'typography',
 						'type'     => 'typography',
 						'selector' => '.pagex-post-excerpt',

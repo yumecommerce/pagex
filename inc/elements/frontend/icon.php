@@ -8,7 +8,7 @@
  * @return array
  */
 function pagex_register_icon_element( $elements ) {
-	$template = '<% if (data.link != "") { %><a class="pagex-static-link" <%= data.link %>> <% } %><div class="pagex-icon-element d-flex"><div class="pagex-icon-wrapper d-flex trn-300 w-100"><% if (data.icon && data.icon.length) { print(pagex.genIcon("icon", data)) } else { print("<i class=\'fas fa-thumbs-up\'></i>")  } %></div><% if (data.link != "") { print("</a>") } %>';
+	$template = '<% if (data.link != "") { %><a class="pagex-static-link d-block w-100" <%= data.link %> ><% } %><div class="pagex-icon-element d-flex"><div class="pagex-icon-wrapper d-flex trn-300 w-100"><% if (data.icon && data.icon.length) { print(pagex.genIcon("icon", data)) } else { print("<i class=\'fas fa-thumbs-up\'></i>")  } %></div></div><% if (data.link != "") { %></a><% } %>';
 
 	$elements[] = array(
 		'id'          => 'icon',
@@ -16,6 +16,7 @@ function pagex_register_icon_element( $elements ) {
 		'title'       => __( 'Icon', 'pagex' ),
 		'description' => __( 'Simple icon element with optional link', 'pagex' ),
 		'type'        => 'static',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Icon',
 		'template'    => $template,
 		'options'     => array(
 			array(
@@ -32,7 +33,7 @@ function pagex_register_icon_element( $elements ) {
 						'class'      => 'col-4',
 						'responsive' => true,
 						'action'     => 'class',
-						'selector'   => '.pagex-icon-element',
+						'selector'   => '.pagex-icon-wrapper',
 						'options'    => array(
 							''                            => __( 'Default', 'pagex' ),
 							'justify-content[pref]start'  => __( 'Left', 'pagex' ),

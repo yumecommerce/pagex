@@ -37,6 +37,9 @@ function pagex_register_post_content_element( $elements ) {
 						'selector' => '[el] p, [el] blockquote {margin: [val]}',
 					),
 					array(
+						'type'  => 'clear',
+					),
+					array(
 						'id'       => 'we',
 						'title'    => __( 'Color', 'pagex' ),
 						'class'    => 'col-4',
@@ -84,6 +87,29 @@ function pagex_register_post_content_element( $elements ) {
 						'type'     => 'color',
 						'action'   => 'css',
 						'selector' => '[el] h1, [el] h2, [el] h3, [el] h4, [el] h5, [el] h6 {color: [val]}',
+					),
+					array(
+						'type'        => 'heading',
+						'title'       => __( 'Gutenberg Editor', 'pagex' ),
+						'description' => __( 'If use Gutenberg editor for the post content you might want to adjust Wide and Full width elements. To make sure your content displays properly make the full width container element, where Post Content element is located.', 'pagex' ),
+					),
+					array(
+						'id'         => 'aq',
+						'title'      => __( 'Content Width', 'pagex' ),
+						'class'      => 'col-4',
+						'type'       => 'text',
+						'responsive' => true,
+						'action'     => 'css',
+						'selector'   => '[el] .element-wrap > * {max-width: [val]; margin-left: auto; margin-right: auto;}',
+					),
+					array(
+						'id'         => 'sw',
+						'title'      => __( 'Wide Content Width', 'pagex' ),
+						'class'      => 'col-4',
+						'type'       => 'text',
+						'responsive' => true,
+						'action'     => 'css',
+						'selector'   => '[el] .alignwide {max-width: [val] !important;}', // important to overwrite responsive Content Width option
 					),
 				),
 			),

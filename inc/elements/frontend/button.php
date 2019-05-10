@@ -49,6 +49,7 @@ function pagex_register_button_element( $elements ) {
 		'title'       => __( 'Button', 'pagex' ),
 		'description' => __( 'Could be setup as simple link or modal window', 'pagex' ),
 		'type'        => 'static',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Button',
 		'template'    => $template,
 		'options'     => array(
 			array(
@@ -342,7 +343,7 @@ function pagex_register_button_element( $elements ) {
 						'type'        => 'checkbox',
 						'title'       => __( 'Modal Window', 'pagex' ),
 						'label'       => __( 'Use Button to Trigger Modal Window', 'pagex' ),
-						'description' => __( 'Modal window content has an inner builder area. To open a modal window click on a button itself.', 'pagex' ),
+						'description' => sprintf(__( 'Modal window content has an inner builder area. To open a modal window click %shere%s or on a button itself.', 'pagex' ), '<a href="#" class="pagex-open-modal-trigger">', '</a>' ),
 					),
 					array(
 						'id'       => 'modal_content',

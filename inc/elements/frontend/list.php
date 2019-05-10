@@ -230,6 +230,22 @@ function pagex_register_list_element( $elements ) {
 						'selector' => '[el] .pagex-list-item-icon {border-radius: [val]}',
 					),
 					array(
+						'id'       => 'ed',
+						'title'    => __( 'Vertical Align', 'pagex' ),
+						'type'     => 'select',
+						'action'   => 'css',
+						'class'    => 'col-3',
+						'selector' => '[el] .pagex-list-item {align-items: [val]}',
+						'options'  => array(
+							''           => __( 'Center', 'pagex' ),
+							'flex-start' => __( 'Top', 'pagex' ),
+							'flex-end'   => __( 'Bottom', 'pagex' ),
+						)
+					),
+					array(
+						'type' => 'clear',
+					),
+					array(
 						'id'       => 'fg',
 						'title'    => __( 'Color', 'pagex' ),
 						'class'    => 'col-4',

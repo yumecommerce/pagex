@@ -63,5 +63,11 @@
                 <attribute encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
+        <shortcode>
+            <tag>pagex_post_navigation</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
     </shortcodes>
 </wpml-config>

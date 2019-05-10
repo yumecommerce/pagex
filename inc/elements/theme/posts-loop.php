@@ -35,7 +35,7 @@ function pagex_register_posts_loop_element( $elements ) {
 						'description' => __( 'You can use a separate Excerpt Template for search results if you use the same Theme Template for Archive and Search Results page', 'pagex' ),
 						'type'        => 'select',
 						'class'       => 'col-6',
-						'options'     => $excerpts
+						'options'     => array( '0' => __( 'None', 'pagex' ) ) + $excerpts
 					),
 					array(
 						'id'          => 'nothing_found',
@@ -239,7 +239,7 @@ function pagex_posts_loop( $atts ) {
 
 	$data = wp_parse_args( $data, array(
 		'template'        => '',
-		'search_template' => '',
+		'search_template' => '0',
 		'layout'          => 'grid',
 		'nothing_found'   => '',
 		'no_posts'        => '',
@@ -276,7 +276,7 @@ function pagex_posts_loop( $atts ) {
 		echo '<div class="pagex-posts-wrapper" ' . $item_data . '>';
 		while ( have_posts() ) {
 			the_post();
-			echo '<div class="pagex-posts-item-wrapper"><div class="pagex-posts-item">';
+			echo '<div class="' . join( ' ', get_post_class( 'pagex-posts-item-wrapper' ) ) . '"><div class="pagex-posts-item">';
 			echo pagex_generate_excerpt_template( do_shortcode( $excerpt_content ) );
 			echo '</div></div>';
 		}

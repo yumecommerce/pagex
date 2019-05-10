@@ -47,7 +47,7 @@ function pagex_register_post_data_element( $elements ) {
 							array(
 								'id'        => 'custom_text',
 								'title'     => __( 'Custom Text', 'pagex' ),
-								'type'      => 'text',
+								'type'      => 'textarea',
 								'class'     => 'col-12',
 								'condition' => array(
 									'type' => array( 'custom' )
@@ -478,7 +478,7 @@ function pagex_post_data( $atts ) {
 				$meta = isset( $v['post_meta_key'] ) ? pagex_get_custom_meta_value( $v['post_meta_key'] ) : '';
 
 				if ( $meta ) {
-					$item .= $meta;
+					$item .= nl2br( $meta );
 				} elseif ( $v['meta_fallback'] ) {
 					$item .= $v['meta_fallback'];
 				}
@@ -486,7 +486,7 @@ function pagex_post_data( $atts ) {
 				break;
 			case 'custom':
 				if ( $v['custom_text'] ) {
-					$item .= $v['custom_text'];
+					$item .= nl2br( $v['custom_text'] );
 				}
 				break;
 		}

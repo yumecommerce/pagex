@@ -34,7 +34,7 @@ body.wp-admin #pagex-settings {
 
   [data-type] {
     min-height: 40px;
-    position: relative;
+    position: relative !important; // in case position classes
   }
 
   [data-type="section"] {
@@ -75,8 +75,8 @@ body.wp-admin #pagex-settings {
     margin: 15px 0 0;
     outline: 1px solid #d5dadf;
     min-height: 32px;
-    display: flex;
-    align-items: center;
+    display: flex !important;
+    align-items: center !important;
     flex-wrap: wrap;
     position: relative;
     font-family: Arial;

@@ -31,6 +31,7 @@ function pagex_register_slider_element( $elements ) {
 		'title'       => __( 'Slider', 'pagex' ),
 		'description' => __( 'Can be setup as a slider or slideshow with custom content', 'pagex' ),
 		'type'        => 'static',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Slider',
 		'template'    => $template,
 		'options'     => array(
 			array(
@@ -81,7 +82,7 @@ function pagex_register_slider_element( $elements ) {
 						'title' => __( 'Basic Slider Settings', 'pagex' ),
 					),
 					array(
-						'type'  => 'slider',
+						'type' => 'slider',
 					),
 				)
 			)

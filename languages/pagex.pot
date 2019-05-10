@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Pagex\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-02-27 21:01+0000\n"
+"POT-Creation-Date: 2019-05-07 02:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -15,278 +15,706 @@ msgstr ""
 "X-Generator: Loco https://localise.biz/\n"
 "X-Loco-Version: 2.2.0; wp-5.0.3"
 
-#: inc/functions.php:47 inc/functions.php:118 inc/functions.php:142
-#: inc/pagex-editor-control-attributes-class.php:474
-#: inc/pagex-editor-control-attributes-class.php:667
-#: inc/pagex-editor-control-attributes-class.php:689
-#: inc/pagex-editor-control-attributes-class.php:703
-#: inc/pagex-editor-control-attributes-class.php:743
-#: inc/pagex-editor-control-attributes-class.php:896
-#: inc/pagex-editor-control-attributes-class.php:986
-#: inc/pagex-editor-control-attributes-class.php:1067
-#: inc/pagex-editor-control-attributes-class.php:1228
-#: inc/pagex-editor-control-attributes-class.php:1243
-#: inc/pagex-editor-control-attributes-class.php:1338
-#: inc/pagex-editor-control-attributes-class.php:3520
-#: inc/pagex-admin-controls-class.php:442
-#: inc/pagex-admin-controls-class.php:453
-#: inc/pagex-admin-controls-class.php:464
-#: inc/pagex-admin-controls-class.php:476
-#: inc/pagex-admin-controls-class.php:488
-#: inc/pagex-admin-controls-class.php:565
-#: inc/pagex-admin-controls-class.php:1285
+#: inc/functions.php:77 inc/functions.php:146 inc/functions.php:170
+#: inc/pagex-admin-controls-class.php:626
+#: inc/pagex-admin-controls-class.php:637
+#: inc/pagex-admin-controls-class.php:648
+#: inc/pagex-admin-controls-class.php:660
+#: inc/pagex-admin-controls-class.php:672
+#: inc/pagex-admin-controls-class.php:749
+#: inc/pagex-admin-controls-class.php:1504
+#: inc/mega-menu/pagex-mega-menu-class.php:67
 #: inc/elements/frontend/features.php:135
-#: inc/elements/frontend/search-form.php:193
+#: inc/elements/frontend/search-form.php:207
 #: inc/elements/frontend/instagram.php:53 inc/elements/frontend/list.php:189
-#: inc/elements/frontend/nav-menu.php:400 inc/elements/frontend/image.php:115
-#: inc/elements/basic/section.php:67 inc/elements/basic/section.php:150
-#: inc/elements/theme/post-title.php:89 inc/elements/theme/post-data.php:180
+#: inc/elements/frontend/nav-menu.php:510 inc/elements/frontend/image.php:115
+#: inc/elements/basic/section.php:69 inc/elements/basic/section.php:152
+#: inc/elements/theme/post-title.php:89 inc/elements/theme/posts-loop.php:38
+#: inc/elements/theme/post-data.php:191
 msgid "None"
 msgstr ""
 
 #. %d: page number
-#: inc/functions.php:281 inc/elements/theme/breadcrumb.php:513
+#: inc/functions.php:309 inc/elements/theme/breadcrumb.php:550
 #, php-format
 msgid "Page %d"
 msgstr ""
 
-#: inc/functions.php:358
+#: inc/functions.php:458
 msgid "Post Link"
 msgstr ""
 
-#: inc/functions.php:361
+#: inc/functions.php:461
 msgid "Day Link"
 msgstr ""
 
-#: inc/functions.php:362
+#: inc/functions.php:462
 msgid "Post Author Link"
 msgstr ""
 
-#: inc/functions.php:363
+#: inc/functions.php:463
 msgid "Comments Link"
 msgstr ""
 
-#: inc/functions.php:366 inc/pagex-editor-control-attributes-class.php:478
-#: inc/elements/frontend/google-maps.php:27
+#: inc/functions.php:466 inc/elements/frontend/google-maps.php:28
 #: inc/elements/frontend/image-gallery.php:27
 #: inc/elements/frontend/video.php:28 inc/elements/frontend/image.php:28
 msgid "Dynamic"
 msgstr ""
 
-#: inc/functions.php:397
+#: inc/functions.php:497
 msgid "Select Custom Meta Field"
 msgstr ""
 
-#: inc/functions.php:401
+#: inc/functions.php:501
 msgid "Featured Image"
 msgstr ""
 
-#: inc/functions.php:402
+#: inc/functions.php:502
 msgid "Author Avatar"
 msgstr ""
 
-#: inc/shortcodes.php:105 inc/pagex-editor-control-attributes-class.php:1154
-#: inc/pagex-admin-controls-class.php:636
-#: inc/pagex-admin-controls-class.php:902
-#: inc/pagex-admin-controls-class.php:993
+#: inc/shortcodes.php:71 inc/pagex-admin-controls-class.php:820
+#: inc/pagex-admin-controls-class.php:1091
+#: inc/pagex-admin-controls-class.php:1212
 msgid "Font Size"
 msgstr ""
 
-#: inc/shortcodes.php:110
+#: inc/shortcodes.php:73
 msgid "Website color"
 msgstr ""
 
-#: inc/shortcodes.php:115
+#: inc/shortcodes.php:75
 msgid "Images"
 msgstr ""
 
-#: inc/shortcodes.php:116
+#: inc/shortcodes.php:75
 msgid "On"
 msgstr ""
 
-#: inc/shortcodes.php:117
+#: inc/shortcodes.php:75
 msgid "Off"
 msgstr ""
 
-#: inc/shortcodes.php:119
+#: inc/shortcodes.php:77
 msgid "Standard web site version"
 msgstr ""
 
-#: inc/shortcodes.php:121
+#: inc/shortcodes.php:79
 msgid "Version for visually impaired"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:41
+#: inc/pagex-backend-editor-class.php:48
 msgid "Layout Type"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:49 inc/pagex-backend-editor-class.php:131
+#: inc/pagex-backend-editor-class.php:56 inc/pagex-backend-editor-class.php:138
 #: inc/pagex-editor-class.php:136
 msgid "Template Type"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:57
+#: inc/pagex-backend-editor-class.php:64
 msgid "Excerpt Preview"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:72
-#: inc/pagex-editor-control-attributes-class.php:429
-#: inc/pagex-editor-control-attributes-class.php:579
-#: inc/pagex-editor-control-attributes-class.php:602
-#: inc/pagex-editor-control-attributes-class.php:785
-#: inc/pagex-editor-control-attributes-class.php:809
-#: inc/pagex-editor-control-attributes-class.php:1169
-#: inc/pagex-editor-control-attributes-class.php:1200
-#: inc/pagex-editor-control-attributes-class.php:1224
-#: inc/pagex-editor-control-attributes-class.php:1239
-#: inc/pagex-editor-control-attributes-class.php:1254
-#: inc/pagex-editor-control-attributes-class.php:2198
-#: inc/pagex-admin-controls-class.php:613
-#: inc/pagex-admin-controls-class.php:917 inc/pagex-editor-class.php:334
-#: inc/pagex-editor-class.php:361 inc/pagex-editor-class.php:365
-#: inc/pagex-editor-class.php:888 inc/elements/woocommerce/add-to-cart.php:56
-#: inc/elements/frontend/icon.php:37
+#: inc/pagex-backend-editor-class.php:79 inc/pagex-admin-controls-class.php:797
+#: inc/pagex-admin-controls-class.php:1100
+#: inc/pagex-admin-controls-class.php:1124 inc/pagex-editor-class.php:331
+#: inc/pagex-editor-class.php:358 inc/pagex-editor-class.php:362
+#: inc/pagex-editor-class.php:882 inc/elements/woocommerce/add-to-cart.php:56
+#: inc/elements/frontend/icon.php:38
 #: inc/elements/frontend/share-buttons.php:110
 #: inc/elements/frontend/share-buttons.php:128
 #: inc/elements/frontend/countdown.php:135
-#: inc/elements/frontend/google-maps.php:72 inc/elements/frontend/list.php:90
-#: inc/elements/frontend/list.php:185 inc/elements/frontend/form.php:50
-#: inc/elements/frontend/form.php:417 inc/elements/frontend/button.php:119
-#: inc/elements/frontend/button.php:165 inc/elements/basic/section.php:25
+#: inc/elements/frontend/google-maps.php:73 inc/elements/frontend/list.php:90
+#: inc/elements/frontend/list.php:185 inc/elements/frontend/form.php:51
+#: inc/elements/frontend/form.php:452 inc/elements/frontend/button.php:131
+#: inc/elements/frontend/button.php:177 inc/elements/basic/section.php:25
 #: inc/elements/basic/row.php:23 inc/elements/basic/row.php:41
 #: inc/elements/basic/column.php:124 inc/elements/basic/column.php:149
 #: inc/elements/basic/column.php:167 inc/elements/basic/column.php:187
-#: inc/elements/theme/post-title.php:85 inc/elements/theme/posts-loop.php:108
+#: inc/elements/theme/post-title.php:85 inc/elements/theme/posts-loop.php:117
 #: inc/elements/theme/post-data.php:100
 msgid "Default"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:99
+#: inc/pagex-backend-editor-class.php:106
 msgid "Custom Header"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:100
+#: inc/pagex-backend-editor-class.php:107
 msgid "Custom Footer"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:111
+#: inc/pagex-backend-editor-class.php:118
 msgid "Type of current layout"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:111 inc/elements/frontend/tabs.php:105
-#: inc/elements/frontend/google-maps.php:26
+#: inc/pagex-backend-editor-class.php:118 inc/elements/frontend/tabs.php:106
+#: inc/elements/frontend/google-maps.php:27
 #: inc/elements/frontend/image-gallery.php:26
 #: inc/elements/frontend/image.php:121
 msgid "Custom"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:111 inc/pagex-editor-class.php:735
+#: inc/pagex-backend-editor-class.php:118 inc/pagex-editor-class.php:738
 #: inc/elements/frontend/accordion.php:62
 msgid "Header"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:111 inc/pagex-editor-class.php:734
+#: inc/pagex-backend-editor-class.php:118 inc/pagex-editor-class.php:737
 msgid "Footer"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:131
+#: inc/pagex-backend-editor-class.php:118
+msgid "Mega Menu Item"
+msgstr ""
+
+#: inc/pagex-backend-editor-class.php:138
 msgid "Single"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:131
-#: inc/pagex-admin-controls-class.php:555 inc/pagex-editor-class.php:760
+#: inc/pagex-backend-editor-class.php:138
+#: inc/pagex-admin-controls-class.php:739 inc/pagex-editor-class.php:763
 msgid "Archive"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:133
-#: inc/pagex-backend-editor-class.php:190 inc/pagex-editor-class.php:137
+#: inc/pagex-backend-editor-class.php:140
+#: inc/pagex-backend-editor-class.php:200 inc/pagex-editor-class.php:137
 #: inc/elements/frontend/search-form.php:32
 msgid "Post Type"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:194
+#: inc/pagex-backend-editor-class.php:204
 msgid "Preview specific post type"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:196
+#: inc/pagex-backend-editor-class.php:206
 msgid "Post ID"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:196
+#: inc/pagex-backend-editor-class.php:206
 msgid "Preview specific post by its ID"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:198
+#: inc/pagex-backend-editor-class.php:208
 msgid "Preview Width"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:199
+#: inc/pagex-backend-editor-class.php:209
 msgid "Small"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:200
-#: inc/pagex-editor-control-attributes-class.php:670
-#: inc/pagex-editor-control-attributes-class.php:1070
-#: inc/pagex-editor-class.php:373 inc/elements/frontend/image-gallery.php:141
+#: inc/pagex-backend-editor-class.php:210 inc/pagex-editor-class.php:370
+#: inc/elements/frontend/image-gallery.php:141
 #: inc/elements/frontend/image.php:49
 msgid "Medium"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:201 inc/pagex-editor-class.php:373
+#: inc/pagex-backend-editor-class.php:211 inc/pagex-editor-class.php:370
 #: inc/elements/frontend/image-gallery.php:140
 #: inc/elements/frontend/image.php:48
 msgid "Large"
 msgstr ""
 
-#: inc/pagex-backend-editor-class.php:202
+#: inc/pagex-backend-editor-class.php:212
 msgid "Width of the preview window"
 msgstr ""
 
-#: inc/pagex-template-manager-class.php:79
+#: inc/pagex-template-manager-class.php:101
 msgid "Pagex Blank Template"
 msgstr ""
 
-#: inc/pagex-template-manager-class.php:173
-msgid "No Blog page is selected. Set your Home and Blog pages to static ones."
+#: inc/pagex-admin-controls-class.php:58
+msgid "Pagex Builder"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:21
-#: inc/pagex-editor-control-attributes-class.php:260
-#: inc/pagex-editor-control-attributes-class.php:268
-#: inc/pagex-editor-control-attributes-class.php:366
-#: inc/pagex-editor-control-attributes-class.php:475
-#: inc/pagex-editor-control-attributes-class.php:704
-#: inc/pagex-editor-control-attributes-class.php:751
-#: inc/pagex-admin-controls-class.php:945
-#: inc/pagex-admin-controls-class.php:1071 inc/elements/woocommerce/tabs.php:48
-#: inc/elements/woocommerce/page-cart-form.php:35
-#: inc/elements/woocommerce/page-cart-form.php:72
-#: inc/elements/woocommerce/page-cart-form.php:183
+#: inc/pagex-admin-controls-class.php:67
+msgid "Header Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:83
+msgid "Current Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:93
+msgid "Post Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:96
+msgid "Page Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:124
+msgid "Post Template"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:140
+msgid "Blog Template"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:155
+msgid "Search Template"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:170
+msgid "Archive Template"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:185
+msgid "404 Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:202
+msgid "Excerpt Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:213
+msgid "Footer Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:233
+msgid "Pagex Settings"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:233
+#: inc/pagex-admin-controls-class.php:244
+msgid "Settings"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:262
+#: inc/pagex-admin-controls-class.php:308 inc/pagex-editor-class.php:655
+msgid "Basic Options"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:263
+#: inc/pagex-admin-controls-class.php:309
+msgid "Design"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:265
+#: inc/pagex-admin-controls-class.php:311
+#: inc/elements/frontend/google-maps.php:56
+msgid "Advanced"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:287
+msgid "Easy Start"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:287
+msgid ""
+"It looks like you have a fresh installation, would you like to create all "
+"basic theme layouts and templates?"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:287
+msgid "Setup"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:290
+msgid "Documentation"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:290
+msgid "Learn how to use Pagex. It is a great starting point."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:290
+msgid "Read our guide"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:291
+msgid "Report Issue"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:291
+msgid "Create a report to help us improve."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:291
+msgid "Report"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:314
+msgid "Post Types"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:318
+msgid "Default Layouts"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:322
+#: inc/pagex-admin-controls-class.php:611 inc/pagex-editor-class.php:82
+#: inc/pagex-editor-class.php:694
+msgid "Theme Templates"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:328
+#: inc/pagex-admin-controls-class.php:522 inc/pagex-editor-class.php:50
+#: inc/elements/woocommerce/menu-cart.php:475
+#: inc/elements/frontend/features.php:95
+#: inc/elements/frontend/share-buttons.php:91
+#: inc/elements/frontend/instagram.php:81 inc/elements/frontend/list.php:71
+#: inc/elements/frontend/layout.php:17 inc/elements/frontend/layout.php:26
+#: inc/elements/frontend/image-gallery.php:59
+#: inc/elements/frontend/image-gallery.php:63
+#: inc/elements/frontend/nav-menu.php:43 inc/elements/frontend/posts.php:177
+#: inc/elements/theme/posts-loop.php:62 inc/elements/theme/post-data.php:163
+msgid "Layout"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:332
+msgid "Typography"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:336
+#: inc/elements/woocommerce/menu-cart.php:471
+msgid "Buttons"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:340
+msgid "Form Elements"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:344
+msgid "Preloader"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:360
+msgid "Coming Soon or Maintenance Mode"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:364
+msgid "Multilingual"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:368
+msgid "GDPR Notice"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:372
+msgid "Export"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:488
+msgid "Enable Builder Editor for next post types."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:514
+msgid ""
+"Define default header and footer layouts. You can create and change layouts "
+"via"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:515 inc/pagex-editor-class.php:47
+#: inc/pagex-editor-class.php:48 inc/pagex-editor-class.php:49
+#: inc/pagex-editor-class.php:56 inc/elements/frontend/layout.php:27
+msgid "Layout Builder"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:521
+#: inc/pagex-admin-controls-class.php:617
+#: inc/pagex-admin-controls-class.php:730
+#: inc/pagex-admin-controls-class.php:957
+#: inc/elements/woocommerce/catalog-data.php:24
+#: inc/elements/woocommerce/menu-cart.php:23
+#: inc/elements/woocommerce/product-data.php:24
+#: inc/elements/frontend/google-maps.php:24
+#: inc/elements/frontend/image-gallery.php:23 inc/elements/frontend/form.php:29
+#: inc/elements/frontend/posts.php:30 inc/elements/frontend/image.php:23
+#: inc/elements/theme/post-data.php:29 inc/elements/theme/archive-data.php:24
+msgid "Type"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:527
+msgid "Default Header"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:539
+msgid "Default Footer"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:610
+msgid ""
+"Define template layouts based on page type. You can create and change "
+"layouts via"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:618
+#: inc/pagex-admin-controls-class.php:731
+msgid "Template"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:623
+#: inc/pagex-admin-controls-class.php:738 inc/pagex-editor-class.php:765
+msgid "Single Page"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:634 inc/pagex-editor-class.php:766
+msgid "Single Post"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:645
+msgid "Blog Page"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:656
+msgid "Post Taxonomy"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:657
+msgid "Post tags, categories, and etc."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:665
+#: inc/pagex-admin-controls-class.php:677
+msgid "If none is selected the Blog Page template will be used instead."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:669
+msgid "Search Results"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:705
+msgid "Custom post types"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:706
+msgid "Enable template layouts for custom post types."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:738
+msgid "When single post page is being displayed"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:739
+msgid "Main post type page with list of all posts"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:740 inc/elements/theme/post-data.php:36
+#: inc/elements/theme/post-data.php:78
+msgid "Taxonomy"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:740
+msgid "Only if post type has registered taxonomies"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:779
+msgid "Container width for desktops"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:780
+msgid "Optional. Default is 1140px."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:798
+#: inc/pagex-admin-controls-class.php:1101
+msgid "Bold"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:813
+#: inc/pagex-admin-controls-class.php:868
+msgid "Font Family"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:825
+msgid "Line Height"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:830
+#: inc/pagex-admin-controls-class.php:881
+#: inc/pagex-admin-controls-class.php:1115
+msgid "Letter Spacing"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:836
+#: inc/pagex-admin-controls-class.php:875
+#: inc/pagex-admin-controls-class.php:1097
+msgid "Font Weight"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:842
+msgid "Font Weight for Bold Tag"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:849 inc/elements/frontend/tabs.php:386
+#: inc/elements/frontend/accordion.php:342
+#: inc/elements/frontend/nav-menu.php:439
+#: inc/elements/frontend/nav-menu.php:477 inc/elements/theme/sidebar.php:125
+msgid "Text Color"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:855
+#: inc/elements/woocommerce/product-meta.php:32
+#: inc/elements/frontend/nav-menu.php:447
+#: inc/elements/frontend/nav-menu.php:485 inc/elements/theme/post-data.php:275
+#: inc/elements/theme/sidebar.php:133 inc/elements/theme/post-content.php:49
+msgid "Links Color"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:860
+#: inc/elements/woocommerce/product-meta.php:40
+#: inc/elements/frontend/nav-menu.php:455
+#: inc/elements/frontend/nav-menu.php:493 inc/elements/theme/sidebar.php:141
+#: inc/elements/theme/post-content.php:57
+msgid "Links Color on Hover"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:887
+#: inc/elements/theme/post-content.php:82
+msgid "Headings Color"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:895
+msgid "Google Fonts Subsets"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:896
+msgid "Select subsets for Google Fonts."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:952
+msgid "Default Fonts"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:958
+msgid "Font"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:963
+msgid "Main Font"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:966
+#: inc/pagex-admin-controls-class.php:980
+msgid "Select weights for Google Fonts which will be loaded all the time."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:977
+#: inc/elements/theme/post-content.php:65
+msgid "Headings"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:995
+msgid "Custom Fonts"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:996
+msgid ""
+"Self-hosted fonts. Once you upload your font variations, you’ll be able to "
+"choose the font inside Pagex."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1044
+msgid ""
+"Adobe Fonts (formerly Typekit) is an online service which offers a "
+"subscription library\n"
+"            of high-quality fonts."
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1056
+#: inc/pagex-admin-controls-class.php:1575
+msgid "The next fonts were added to library:"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1071
+msgid "Synchronize"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1121
+msgid "Text Transform"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1125
+msgid "Lowercase"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1126
+msgid "Uppercase"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1127
+msgid "Capitalize"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1132
+#: inc/pagex-admin-controls-class.php:1230 inc/elements/frontend/form.php:576
+#: inc/elements/frontend/button.php:185
+msgid "Min. Height"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1138
+#: inc/pagex-admin-controls-class.php:1218
+#: inc/elements/woocommerce/tabs.php:128
+#: inc/elements/woocommerce/sale-flash.php:56
+#: inc/elements/frontend/tabs.php:140 inc/elements/frontend/tabs.php:236
+#: inc/elements/frontend/icon.php:46 inc/elements/frontend/features.php:169
+#: inc/elements/frontend/features.php:277
+#: inc/elements/frontend/features.php:345
+#: inc/elements/frontend/share-buttons.php:203
+#: inc/elements/frontend/search-form.php:165
+#: inc/elements/frontend/accordion.php:128
+#: inc/elements/frontend/accordion.php:326 inc/elements/frontend/list.php:136
+#: inc/elements/frontend/nav-menu.php:106 inc/elements/frontend/form.php:243
+#: inc/elements/frontend/separator.php:42 inc/elements/frontend/button.php:153
+#: inc/elements/frontend/login-form.php:86 inc/elements/theme/post-data.php:241
+msgid "Border Width"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1144
+#: inc/pagex-admin-controls-class.php:1224
+#: inc/elements/woocommerce/tabs.php:120
+#: inc/elements/woocommerce/sale-flash.php:64
+#: inc/elements/woocommerce/product-thumbnail.php:31
+#: inc/elements/woocommerce/menu-cart.php:301
+#: inc/elements/frontend/tabs.php:131 inc/elements/frontend/tabs.php:227
+#: inc/elements/frontend/icon.php:55 inc/elements/frontend/features.php:177
+#: inc/elements/frontend/features.php:285
+#: inc/elements/frontend/features.php:353
+#: inc/elements/frontend/share-buttons.php:195
+#: inc/elements/frontend/search-form.php:157
+#: inc/elements/frontend/search-form.php:261
+#: inc/elements/frontend/instagram.php:104
+#: inc/elements/frontend/accordion.php:120
+#: inc/elements/frontend/accordion.php:244
+#: inc/elements/frontend/accordion.php:334 inc/elements/frontend/list.php:226
+#: inc/elements/frontend/image-gallery.php:153
+#: inc/elements/frontend/nav-menu.php:98 inc/elements/frontend/nav-menu.php:255
+#: inc/elements/frontend/nav-menu.php:415
+#: inc/elements/frontend/nav-menu.php:562 inc/elements/frontend/form.php:251
+#: inc/elements/frontend/image.php:90 inc/elements/frontend/button.php:161
+#: inc/elements/frontend/button.php:428 inc/elements/frontend/login-form.php:94
+#: inc/elements/theme/posts-loop.php:152
+#: inc/elements/theme/post-comments.php:180
+msgid "Border Radius"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1151
+#: inc/pagex-admin-controls-class.php:1290 inc/elements/woocommerce/tabs.php:48
 #: inc/elements/woocommerce/product-meta.php:24
 #: inc/elements/woocommerce/sale-flash.php:31
 #: inc/elements/woocommerce/catalog-data.php:38
-#: inc/elements/woocommerce/menu-cart.php:117
-#: inc/elements/woocommerce/menu-cart.php:145
-#: inc/elements/woocommerce/menu-cart.php:189
-#: inc/elements/woocommerce/menu-cart.php:243
-#: inc/elements/woocommerce/menu-cart.php:355
-#: inc/elements/woocommerce/menu-cart.php:377
-#: inc/elements/woocommerce/page-my-account.php:40
-#: inc/elements/woocommerce/page-my-account.php:62
-#: inc/elements/woocommerce/page-checkout.php:40
-#: inc/elements/woocommerce/page-checkout.php:62
+#: inc/elements/woocommerce/menu-cart.php:78
+#: inc/elements/woocommerce/menu-cart.php:106
+#: inc/elements/woocommerce/menu-cart.php:150
+#: inc/elements/woocommerce/menu-cart.php:222
+#: inc/elements/woocommerce/menu-cart.php:374
+#: inc/elements/woocommerce/menu-cart.php:411
+#: inc/elements/woocommerce/menu-cart.php:449
 #: inc/elements/woocommerce/product-data.php:40
 #: inc/elements/woocommerce/product-data.php:65
-#: inc/elements/frontend/icon.php:83 inc/elements/frontend/icon.php:94
-#: inc/elements/frontend/features.php:325
-#: inc/elements/frontend/features.php:333
-#: inc/elements/frontend/features.php:387
-#: inc/elements/frontend/features.php:409
-#: inc/elements/frontend/features.php:433
+#: inc/elements/frontend/icon.php:84 inc/elements/frontend/icon.php:95
+#: inc/elements/frontend/features.php:370
+#: inc/elements/frontend/features.php:415
+#: inc/elements/frontend/features.php:469
+#: inc/elements/frontend/features.php:491
+#: inc/elements/frontend/features.php:515
 #: inc/elements/frontend/share-buttons.php:216
 #: inc/elements/frontend/share-buttons.php:224
-#: inc/elements/frontend/search-form.php:76
-#: inc/elements/frontend/search-form.php:255
+#: inc/elements/frontend/search-form.php:74
+#: inc/elements/frontend/search-form.php:269
 #: inc/elements/frontend/accordion.php:136
 #: inc/elements/frontend/accordion.php:144
 #: inc/elements/frontend/accordion.php:205
@@ -295,1654 +723,275 @@ msgstr ""
 #: inc/elements/frontend/countdown.php:152
 #: inc/elements/frontend/countdown.php:169 inc/elements/frontend/heading.php:62
 #: inc/elements/frontend/heading.php:70 inc/elements/frontend/list.php:145
-#: inc/elements/frontend/list.php:163 inc/elements/frontend/list.php:216
-#: inc/elements/frontend/video.php:158 inc/elements/frontend/nav-menu.php:117
-#: inc/elements/frontend/nav-menu.php:317
-#: inc/elements/frontend/nav-menu.php:460
-#: inc/elements/frontend/nav-menu.php:513 inc/elements/frontend/form.php:285
-#: inc/elements/frontend/form.php:345 inc/elements/frontend/form.php:358
-#: inc/elements/frontend/form.php:392 inc/elements/frontend/posts.php:259
-#: inc/elements/frontend/button.php:182 inc/elements/frontend/button.php:451
-#: inc/elements/frontend/button.php:459
+#: inc/elements/frontend/list.php:163 inc/elements/frontend/list.php:234
+#: inc/elements/frontend/video.php:158 inc/elements/frontend/nav-menu.php:118
+#: inc/elements/frontend/nav-menu.php:318
+#: inc/elements/frontend/nav-menu.php:570
+#: inc/elements/frontend/nav-menu.php:623 inc/elements/frontend/form.php:286
+#: inc/elements/frontend/form.php:362 inc/elements/frontend/form.php:375
+#: inc/elements/frontend/form.php:409 inc/elements/frontend/form.php:427
+#: inc/elements/frontend/posts.php:261 inc/elements/frontend/button.php:194
+#: inc/elements/frontend/button.php:487 inc/elements/frontend/button.php:495
 #: inc/elements/frontend/login-form.php:121
-#: inc/elements/frontend/login-form.php:181 inc/elements/basic/section.php:109
-#: inc/elements/basic/section.php:192 inc/elements/theme/post-title.php:63
-#: inc/elements/theme/posts-loop.php:151 inc/elements/theme/posts-loop.php:159
+#: inc/elements/frontend/login-form.php:181
+#: inc/elements/frontend/taxonomies.php:106 inc/elements/basic/section.php:111
+#: inc/elements/basic/section.php:194 inc/elements/theme/post-title.php:63
+#: inc/elements/theme/posts-loop.php:160 inc/elements/theme/posts-loop.php:168
 #: inc/elements/theme/child-pages.php:51 inc/elements/theme/child-pages.php:105
-#: inc/elements/theme/post-data.php:239 inc/elements/theme/post-data.php:256
-#: inc/elements/theme/post-data.php:272 inc/elements/theme/post-data.php:314
-#: inc/elements/theme/post-data.php:322 inc/elements/theme/post-data.php:348
-#: inc/elements/theme/post-data.php:356
+#: inc/elements/theme/post-data.php:250 inc/elements/theme/post-data.php:267
+#: inc/elements/theme/post-data.php:283 inc/elements/theme/post-data.php:325
+#: inc/elements/theme/post-data.php:333 inc/elements/theme/post-data.php:381
+#: inc/elements/theme/post-data.php:389
 #: inc/elements/theme/document-title.php:59
-#: inc/elements/theme/breadcrumb.php:38 inc/elements/theme/breadcrumb.php:51
-#: inc/elements/theme/breadcrumb.php:59 inc/elements/theme/breadcrumb.php:86
+#: inc/elements/theme/breadcrumb.php:40 inc/elements/theme/breadcrumb.php:67
+#: inc/elements/theme/breadcrumb.php:75 inc/elements/theme/breadcrumb.php:94
 #: inc/elements/theme/archive-data.php:38
 #: inc/elements/theme/post-comments.php:33
 #: inc/elements/theme/post-comments.php:72 inc/elements/theme/sidebar.php:108
 #: inc/elements/theme/post-content.php:41
-#: inc/elements/theme/post-excerpt.php:46
+#: inc/elements/theme/post-excerpt.php:51
 msgid "Color"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:29
-#: inc/pagex-editor-control-attributes-class.php:276
-#: inc/pagex-editor-control-attributes-class.php:284
-#: inc/pagex-editor-control-attributes-class.php:467
-#: inc/pagex-editor-control-attributes-class.php:492
-#: inc/pagex-editor-control-attributes-class.php:713
-#: inc/pagex-admin-controls-class.php:958
-#: inc/elements/woocommerce/page-cart-form.php:51
-#: inc/elements/woocommerce/sale-flash.php:39
-#: inc/elements/woocommerce/product-images.php:49
-#: inc/elements/woocommerce/menu-cart.php:205
-#: inc/elements/frontend/tabs.php:333 inc/elements/frontend/tabs.php:341
-#: inc/elements/frontend/tabs.php:401 inc/elements/frontend/icon.php:121
-#: inc/elements/frontend/icon.php:129 inc/elements/frontend/features.php:341
-#: inc/elements/frontend/features.php:441
-#: inc/elements/frontend/search-form.php:108
-#: inc/elements/frontend/search-form.php:116
-#: inc/elements/frontend/search-form.php:271
-#: inc/elements/frontend/video.php:180 inc/elements/frontend/nav-menu.php:142
-#: inc/elements/frontend/nav-menu.php:286
-#: inc/elements/frontend/nav-menu.php:342
-#: inc/elements/frontend/nav-menu.php:468 inc/elements/frontend/form.php:296
-#: inc/elements/frontend/form.php:366 inc/elements/frontend/button.php:362
-#: inc/elements/frontend/button.php:408
-#: inc/elements/frontend/login-form.php:132
-#: inc/elements/theme/posts-loop.php:175 inc/elements/theme/posts-loop.php:183
-msgid "Background"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:37
-#: inc/pagex-editor-control-attributes-class.php:886
-#: inc/elements/frontend/tabs.php:104 inc/elements/frontend/features.php:349
-#: inc/elements/frontend/features.php:449 inc/elements/frontend/form.php:312
-#: inc/elements/frontend/login-form.php:148
-msgid "Border"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:45
-#: inc/pagex-editor-control-attributes-class.php:374
-#: inc/pagex-admin-controls-class.php:951 inc/elements/woocommerce/tabs.php:56
-#: inc/elements/woocommerce/page-cart-form.php:43
-#: inc/elements/woocommerce/page-cart-form.php:80
-#: inc/elements/woocommerce/menu-cart.php:125
-#: inc/elements/woocommerce/menu-cart.php:153
-#: inc/elements/woocommerce/menu-cart.php:197
-#: inc/elements/woocommerce/menu-cart.php:363
-#: inc/elements/woocommerce/page-my-account.php:48
-#: inc/elements/woocommerce/page-my-account.php:78
-#: inc/elements/woocommerce/page-checkout.php:48
-#: inc/elements/woocommerce/page-checkout.php:78
-#: inc/elements/frontend/features.php:357
-#: inc/elements/frontend/features.php:395
-#: inc/elements/frontend/features.php:417
-#: inc/elements/frontend/features.php:457
-#: inc/elements/frontend/search-form.php:263
+#: inc/pagex-admin-controls-class.php:1157 inc/elements/woocommerce/tabs.php:56
+#: inc/elements/woocommerce/menu-cart.php:86
+#: inc/elements/woocommerce/menu-cart.php:114
+#: inc/elements/woocommerce/menu-cart.php:158
+#: inc/elements/woocommerce/menu-cart.php:419
+#: inc/elements/frontend/features.php:439
+#: inc/elements/frontend/features.php:477
+#: inc/elements/frontend/features.php:499
+#: inc/elements/frontend/features.php:539
+#: inc/elements/frontend/search-form.php:277
 #: inc/elements/frontend/accordion.php:213 inc/elements/frontend/list.php:171
-#: inc/elements/frontend/list.php:224 inc/elements/frontend/video.php:169
-#: inc/elements/frontend/nav-menu.php:125
-#: inc/elements/frontend/nav-menu.php:325
-#: inc/elements/frontend/nav-menu.php:521 inc/elements/frontend/button.php:190
+#: inc/elements/frontend/list.php:242 inc/elements/frontend/video.php:169
+#: inc/elements/frontend/nav-menu.php:126
+#: inc/elements/frontend/nav-menu.php:326
+#: inc/elements/frontend/nav-menu.php:631 inc/elements/frontend/button.php:202
+#: inc/elements/frontend/taxonomies.php:114
 #: inc/elements/theme/post-title.php:71 inc/elements/theme/child-pages.php:59
 msgid "Color on Hover"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:53
-#: inc/pagex-editor-control-attributes-class.php:503
-#: inc/pagex-editor-control-attributes-class.php:725
-#: inc/pagex-admin-controls-class.php:964 inc/elements/woocommerce/tabs.php:80
-#: inc/elements/woocommerce/page-cart-form.php:59
-#: inc/elements/woocommerce/menu-cart.php:213
-#: inc/elements/frontend/features.php:365
-#: inc/elements/frontend/features.php:465
-#: inc/elements/frontend/search-form.php:279
-#: inc/elements/frontend/video.php:191 inc/elements/frontend/nav-menu.php:150
-#: inc/elements/frontend/nav-menu.php:350 inc/elements/frontend/button.php:206
+#: inc/pagex-admin-controls-class.php:1164
+#: inc/elements/woocommerce/sale-flash.php:39
+#: inc/elements/woocommerce/product-images.php:49
+#: inc/elements/woocommerce/menu-cart.php:166
+#: inc/elements/woocommerce/menu-cart.php:427
+#: inc/elements/frontend/tabs.php:334 inc/elements/frontend/tabs.php:342
+#: inc/elements/frontend/tabs.php:402 inc/elements/frontend/icon.php:122
+#: inc/elements/frontend/icon.php:130 inc/elements/frontend/features.php:378
+#: inc/elements/frontend/features.php:423
+#: inc/elements/frontend/features.php:523
+#: inc/elements/frontend/search-form.php:106
+#: inc/elements/frontend/search-form.php:114
+#: inc/elements/frontend/search-form.php:285 inc/elements/frontend/list.php:250
+#: inc/elements/frontend/video.php:180 inc/elements/frontend/nav-menu.php:143
+#: inc/elements/frontend/nav-menu.php:287
+#: inc/elements/frontend/nav-menu.php:343
+#: inc/elements/frontend/nav-menu.php:431
+#: inc/elements/frontend/nav-menu.php:469
+#: inc/elements/frontend/nav-menu.php:578 inc/elements/frontend/form.php:297
+#: inc/elements/frontend/form.php:383 inc/elements/frontend/button.php:398
+#: inc/elements/frontend/button.php:444
+#: inc/elements/frontend/login-form.php:132
+#: inc/elements/theme/posts-loop.php:184 inc/elements/theme/posts-loop.php:192
+msgid "Background"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1170 inc/elements/woocommerce/tabs.php:80
+#: inc/elements/woocommerce/menu-cart.php:174
+#: inc/elements/woocommerce/menu-cart.php:435
+#: inc/elements/frontend/features.php:447
+#: inc/elements/frontend/features.php:547
+#: inc/elements/frontend/search-form.php:293 inc/elements/frontend/list.php:258
+#: inc/elements/frontend/video.php:191 inc/elements/frontend/nav-menu.php:151
+#: inc/elements/frontend/nav-menu.php:351 inc/elements/frontend/button.php:218
 msgid "Background on Hover"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:61
-#: inc/elements/woocommerce/tabs.php:104 inc/elements/frontend/features.php:373
-#: inc/elements/frontend/features.php:473
-msgid "Border on Hover"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:69
-#: inc/pagex-editor-control-attributes-class.php:913
-#: inc/pagex-admin-controls-class.php:932
-#: inc/pagex-admin-controls-class.php:999 inc/elements/woocommerce/tabs.php:128
-#: inc/elements/woocommerce/page-cart-form.php:147
-#: inc/elements/woocommerce/sale-flash.php:56
-#: inc/elements/frontend/tabs.php:139 inc/elements/frontend/tabs.php:235
-#: inc/elements/frontend/icon.php:45 inc/elements/frontend/features.php:232
-#: inc/elements/frontend/features.php:300
-#: inc/elements/frontend/share-buttons.php:203
-#: inc/elements/frontend/search-form.php:167
-#: inc/elements/frontend/accordion.php:128
-#: inc/elements/frontend/accordion.php:326 inc/elements/frontend/list.php:136
-#: inc/elements/frontend/nav-menu.php:105 inc/elements/frontend/form.php:242
-#: inc/elements/frontend/separator.php:42 inc/elements/frontend/button.php:141
-#: inc/elements/frontend/login-form.php:86 inc/elements/theme/post-data.php:230
-msgid "Border Width"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:77
-#: inc/pagex-editor-control-attributes-class.php:249
-#: inc/pagex-editor-control-attributes-class.php:355
-#: inc/pagex-editor-control-attributes-class.php:905
-#: inc/pagex-admin-controls-class.php:938
-#: inc/pagex-admin-controls-class.php:1005
-#: inc/elements/woocommerce/tabs.php:120
-#: inc/elements/woocommerce/page-cart-form.php:101
-#: inc/elements/woocommerce/page-cart-form.php:156
-#: inc/elements/woocommerce/sale-flash.php:64
-#: inc/elements/woocommerce/product-thumbnail.php:31
-#: inc/elements/frontend/tabs.php:130 inc/elements/frontend/tabs.php:226
-#: inc/elements/frontend/icon.php:54 inc/elements/frontend/features.php:240
-#: inc/elements/frontend/features.php:308
-#: inc/elements/frontend/share-buttons.php:195
-#: inc/elements/frontend/search-form.php:159
-#: inc/elements/frontend/search-form.php:247
-#: inc/elements/frontend/instagram.php:104
-#: inc/elements/frontend/accordion.php:120
-#: inc/elements/frontend/accordion.php:244
-#: inc/elements/frontend/accordion.php:334
-#: inc/elements/frontend/image-gallery.php:153
-#: inc/elements/frontend/nav-menu.php:97 inc/elements/frontend/nav-menu.php:254
-#: inc/elements/frontend/nav-menu.php:452 inc/elements/frontend/form.php:250
-#: inc/elements/frontend/image.php:90 inc/elements/frontend/button.php:149
-#: inc/elements/frontend/button.php:392 inc/elements/frontend/login-form.php:94
-#: inc/elements/theme/posts-loop.php:143
-#: inc/elements/theme/post-comments.php:180
-msgid "Border Radius"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:85
-#: inc/pagex-editor-control-attributes-class.php:233
-#: inc/pagex-editor-control-attributes-class.php:339
-#: inc/pagex-editor-control-attributes-class.php:406
-#: inc/elements/woocommerce/tabs.php:136
-#: inc/elements/woocommerce/page-cart-form.php:138
-#: inc/elements/woocommerce/sale-flash.php:72
-#: inc/elements/woocommerce/menu-cart.php:273
-#: inc/elements/woocommerce/page-my-account.php:32
-#: inc/elements/woocommerce/page-checkout.php:32
-#: inc/elements/frontend/tabs.php:114 inc/elements/frontend/tabs.php:210
-#: inc/elements/frontend/features.php:214
-#: inc/elements/frontend/features.php:316
-#: inc/elements/frontend/share-buttons.php:187
-#: inc/elements/frontend/search-form.php:151
-#: inc/elements/frontend/search-form.php:239
-#: inc/elements/frontend/accordion.php:111
-#: inc/elements/frontend/accordion.php:235
-#: inc/elements/frontend/accordion.php:308
-#: inc/elements/frontend/nav-menu.php:89 inc/elements/frontend/nav-menu.php:303
-#: inc/elements/frontend/nav-menu.php:444
-#: inc/elements/frontend/nav-menu.php:502 inc/elements/frontend/form.php:258
-#: inc/elements/frontend/button.php:133 inc/elements/frontend/button.php:353
-#: inc/elements/frontend/button.php:374
-#: inc/elements/frontend/login-form.php:102
-#: inc/elements/theme/posts-loop.php:127 inc/elements/theme/sidebar.php:51
-#: inc/elements/theme/sidebar.php:84
-msgid "Padding"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:103
-msgid "Effect"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:104
-msgid ""
-"Note that fade effect does not work with multiple slides per view. Fade "
-"option will not be applied while you editing the layout."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:108
-msgid "Slide"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:109
-msgid "Fade"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:115
-msgid "Speed"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:116
-msgid "Duration of transition between slides (in ms)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:121
-msgid "Loop Mode"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:122
-#: inc/pagex-editor-control-attributes-class.php:135
-msgid "Option will not be applied while you editing the layout."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:127
-msgid "Centered Slides"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:128
-msgid ""
-"When slider has multiple slides per view, make active slide be in a center."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:133
-#: inc/elements/frontend/video.php:66
-msgid "Autoplay"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:141
-msgid "Delay between transitions (in ms)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:152
-msgid "Auto Height"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:153
-msgid "Adopt slider height to the height of the currently active slide."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:158
-msgid "Slider Grid Settings"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:162
-msgid "Slides Per View"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:163
-msgid "Number of slides visible at the same time."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:172
-msgid "Space Between"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:173
-msgid "Distance between slides in px."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:182
-msgid "Slides Per Group"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:183
-msgid "Number of slides sliding at the same time."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:190
-msgid "Container Offset"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:191
-msgid "Additional horizontal offset."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:200
-msgid "Slider Navigation"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:204
-msgid "Display Navigation Only on Hover"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:212
-#: inc/pagex-editor-control-attributes-class.php:297
-#: inc/pagex-editor-control-attributes-class.php:422
-#: inc/elements/theme/child-pages.php:23
-msgid "Display"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:218
-#: inc/pagex-editor-control-attributes-class.php:303
-#: inc/pagex-editor-class.php:361 inc/pagex-editor-class.php:365
-#: inc/elements/frontend/image-gallery.php:99 inc/elements/frontend/form.php:67
-#: inc/elements/frontend/form.php:84 inc/elements/frontend/form.php:101
-#: inc/elements/frontend/form.php:118 inc/elements/frontend/form.php:434
-#: inc/elements/frontend/form.php:451 inc/elements/frontend/form.php:468
-#: inc/elements/frontend/form.php:485 inc/elements/frontend/posts.php:212
-#: inc/elements/basic/column.php:45 inc/elements/basic/column.php:62
-#: inc/elements/basic/column.php:79 inc/elements/basic/column.php:96
-#: inc/elements/theme/posts-loop.php:71
-msgid "Inherit"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:219
-#: inc/pagex-editor-control-attributes-class.php:304
-msgid "Visible"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:220
-#: inc/pagex-editor-control-attributes-class.php:305
-#: inc/elements/woocommerce/menu-cart.php:184
-msgid "Hidden"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:225
-#: inc/pagex-editor-control-attributes-class.php:331
-#: inc/pagex-editor-control-attributes-class.php:614
-#: inc/pagex-editor-control-attributes-class.php:822
-#: inc/elements/frontend/tabs.php:188 inc/elements/frontend/features.php:205
-#: inc/elements/frontend/share-buttons.php:166
-#: inc/elements/frontend/search-form.php:231
-#: inc/elements/frontend/accordion.php:188
-#: inc/elements/frontend/accordion.php:226 inc/elements/frontend/list.php:199
-#: inc/elements/frontend/nav-menu.php:436 inc/elements/theme/post-data.php:285
-msgid "Size"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:241
-#: inc/pagex-editor-control-attributes-class.php:347
-#: inc/pagex-editor-control-attributes-class.php:414
-#: inc/elements/woocommerce/tabs.php:144
-#: inc/elements/woocommerce/menu-cart.php:161
-#: inc/elements/woocommerce/menu-cart.php:251
-#: inc/elements/woocommerce/add-to-cart.php:42
-#: inc/elements/woocommerce/product-data.php:102
-#: inc/elements/frontend/tabs.php:122 inc/elements/frontend/tabs.php:157
-#: inc/elements/frontend/tabs.php:175 inc/elements/frontend/tabs.php:197
-#: inc/elements/frontend/tabs.php:218 inc/elements/frontend/features.php:223
-#: inc/elements/frontend/features.php:259
-#: inc/elements/frontend/features.php:276
-#: inc/elements/frontend/share-buttons.php:179
-#: inc/elements/frontend/accordion.php:197
-#: inc/elements/frontend/accordion.php:317
-#: inc/elements/frontend/countdown.php:181 inc/elements/frontend/list.php:105
-#: inc/elements/frontend/list.php:208 inc/elements/frontend/nav-menu.php:81
-#: inc/elements/frontend/form.php:533 inc/elements/frontend/separator.php:112
-#: inc/elements/frontend/posts.php:267 inc/elements/frontend/button.php:421
-#: inc/elements/theme/posts-loop.php:135 inc/elements/theme/child-pages.php:116
-#: inc/elements/theme/post-data.php:198 inc/elements/theme/post-data.php:306
-#: inc/elements/theme/post-data.php:335 inc/elements/theme/breadcrumb.php:78
-#: inc/elements/theme/sidebar.php:59 inc/elements/theme/sidebar.php:92
-#: inc/elements/theme/post-content.php:33
-#: inc/elements/theme/post-content.php:74
-msgid "Margin"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:268
-#: inc/pagex-editor-control-attributes-class.php:284
-#: inc/pagex-editor-control-attributes-class.php:959
-#: inc/elements/frontend/tabs.php:269 inc/elements/frontend/tabs.php:293
-#: inc/elements/frontend/tabs.php:317 inc/elements/frontend/tabs.php:341
-#: inc/elements/frontend/tabs.php:365 inc/elements/frontend/icon.php:73
-#: inc/elements/frontend/icon.php:94 inc/elements/frontend/icon.php:113
-#: inc/elements/frontend/icon.php:129
-#: inc/elements/frontend/share-buttons.php:224
-#: inc/elements/frontend/share-buttons.php:240
-#: inc/elements/frontend/share-buttons.php:256
-#: inc/elements/frontend/share-buttons.php:274
-#: inc/elements/frontend/accordion.php:144
-#: inc/elements/frontend/accordion.php:262
-#: inc/elements/frontend/accordion.php:279 inc/elements/frontend/heading.php:70
-#: inc/elements/frontend/button.php:275 inc/elements/frontend/button.php:459
-#: inc/elements/theme/posts-loop.php:159 inc/elements/theme/posts-loop.php:183
-#: inc/elements/theme/post-data.php:272 inc/elements/theme/post-data.php:322
-#: inc/elements/theme/post-data.php:356 inc/elements/theme/breadcrumb.php:59
-msgid "on Hover"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:292
-msgid "Slider Pagination"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:311
-#: inc/elements/woocommerce/tabs.php:152
-#: inc/elements/woocommerce/menu-cart.php:94 inc/elements/frontend/tabs.php:84
-#: inc/elements/frontend/icon.php:30
-#: inc/elements/frontend/share-buttons.php:103
-#: inc/elements/frontend/share-buttons.php:121
-#: inc/elements/frontend/countdown.php:128 inc/elements/frontend/list.php:83
-#: inc/elements/frontend/button.php:157 inc/elements/theme/post-data.php:162
-#: inc/elements/theme/breadcrumb.php:24
-msgid "Alignment"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:316
-#: inc/pagex-editor-control-attributes-class.php:584
-#: inc/pagex-editor-control-attributes-class.php:790
-#: inc/pagex-editor-control-attributes-class.php:1202
-#: inc/elements/woocommerce/tabs.php:159
-#: inc/elements/woocommerce/menu-cart.php:100
-#: inc/elements/woocommerce/add-to-cart.php:58
-#: inc/elements/frontend/tabs.php:91 inc/elements/frontend/icon.php:39
-#: inc/elements/frontend/features.php:180
-#: inc/elements/frontend/features.php:196
-#: inc/elements/frontend/share-buttons.php:112
-#: inc/elements/frontend/share-buttons.php:130
-#: inc/elements/frontend/search-form.php:225
-#: inc/elements/frontend/countdown.php:137 inc/elements/frontend/list.php:92
-#: inc/elements/frontend/nav-menu.php:67 inc/elements/frontend/nav-menu.php:430
-#: inc/elements/frontend/form.php:512 inc/elements/frontend/image.php:105
-#: inc/elements/frontend/button.php:121 inc/elements/frontend/button.php:167
-#: inc/elements/frontend/login-form.php:53 inc/elements/basic/row.php:25
-#: inc/elements/basic/row.php:43 inc/elements/basic/column.php:152
-#: inc/elements/basic/column.php:189 inc/elements/theme/post-data.php:170
-#: inc/elements/theme/breadcrumb.php:32
-msgid "Center"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:317
-#: inc/pagex-editor-control-attributes-class.php:1201
-#: inc/pagex-editor-class.php:376 inc/elements/woocommerce/tabs.php:158
-#: inc/elements/woocommerce/menu-cart.php:38
-#: inc/elements/woocommerce/menu-cart.php:64
-#: inc/elements/woocommerce/menu-cart.php:99
-#: inc/elements/woocommerce/add-to-cart.php:57
-#: inc/elements/frontend/tabs.php:90 inc/elements/frontend/icon.php:38
-#: inc/elements/frontend/features.php:167
-#: inc/elements/frontend/features.php:179
-#: inc/elements/frontend/share-buttons.php:111
-#: inc/elements/frontend/share-buttons.php:129
-#: inc/elements/frontend/search-form.php:224
-#: inc/elements/frontend/countdown.php:136 inc/elements/frontend/list.php:91
-#: inc/elements/frontend/nav-menu.php:66 inc/elements/frontend/nav-menu.php:429
-#: inc/elements/frontend/nav-menu.php:485 inc/elements/frontend/form.php:511
-#: inc/elements/frontend/image.php:104 inc/elements/frontend/button.php:81
-#: inc/elements/frontend/button.php:120 inc/elements/frontend/button.php:166
-#: inc/elements/frontend/button.php:337 inc/elements/frontend/button.php:446
-#: inc/elements/frontend/login-form.php:52 inc/elements/basic/row.php:24
-#: inc/elements/basic/column.php:172 inc/elements/theme/post-data.php:169
-#: inc/elements/theme/post-data.php:300 inc/elements/theme/breadcrumb.php:31
-msgid "Left"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:318
-#: inc/pagex-editor-control-attributes-class.php:1203
-#: inc/pagex-editor-class.php:376 inc/elements/woocommerce/tabs.php:160
-#: inc/elements/woocommerce/menu-cart.php:39
-#: inc/elements/woocommerce/menu-cart.php:65
-#: inc/elements/woocommerce/menu-cart.php:101
-#: inc/elements/woocommerce/add-to-cart.php:59
-#: inc/elements/frontend/tabs.php:92 inc/elements/frontend/icon.php:40
-#: inc/elements/frontend/features.php:181
-#: inc/elements/frontend/share-buttons.php:113
-#: inc/elements/frontend/share-buttons.php:131
-#: inc/elements/frontend/search-form.php:226
-#: inc/elements/frontend/countdown.php:138 inc/elements/frontend/list.php:93
-#: inc/elements/frontend/nav-menu.php:68 inc/elements/frontend/nav-menu.php:431
-#: inc/elements/frontend/nav-menu.php:486 inc/elements/frontend/form.php:513
-#: inc/elements/frontend/image.php:106 inc/elements/frontend/button.php:82
-#: inc/elements/frontend/button.php:122 inc/elements/frontend/button.php:168
-#: inc/elements/frontend/button.php:338 inc/elements/frontend/button.php:445
-#: inc/elements/frontend/login-form.php:54 inc/elements/basic/row.php:26
-#: inc/elements/basic/column.php:173 inc/elements/theme/post-data.php:171
-#: inc/elements/theme/post-data.php:301 inc/elements/theme/breadcrumb.php:33
-msgid "Right"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:323
-msgid "Bottom Offset"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:382
-#: inc/elements/woocommerce/tabs.php:64 inc/elements/frontend/nav-menu.php:133
-#: inc/elements/frontend/nav-menu.php:333
-#: inc/elements/frontend/nav-menu.php:529 inc/elements/theme/posts-loop.php:167
-msgid "Active Color"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:398
-#: inc/pagex-admin-controls-class.php:195
-#: inc/pagex-admin-controls-class.php:227
-msgid "Design"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:402
-#: inc/elements/theme/post-data.php:247 inc/elements/theme/sidebar.php:116
-msgid "Basic Style"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:439
-#: inc/pagex-admin-controls-class.php:925
-#: inc/pagex-admin-controls-class.php:1011 inc/elements/frontend/form.php:541
-#: inc/elements/frontend/button.php:173
-msgid "Min. Height"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:449
-#: inc/elements/woocommerce/menu-cart.php:283
-#: inc/elements/frontend/list.php:127 inc/elements/basic/section.php:85
-#: inc/elements/basic/section.php:168 inc/elements/theme/post-data.php:220
-msgid "Width"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:458
-#: inc/elements/frontend/separator.php:50 inc/elements/frontend/button.php:383
-msgid "Max. Width"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:471
-msgid "Background Type"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:476
-#: inc/pagex-editor-control-attributes-class.php:705
-#: inc/pagex-editor-control-attributes-class.php:1341
-#: inc/elements/frontend/image-gallery.php:40
-#: inc/elements/frontend/image.php:14 inc/elements/frontend/image.php:55
-msgid "Image"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:477
-#: inc/elements/frontend/video.php:14
-msgid "Video"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:483
-msgid "Meta Field Key"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:514
-#: inc/pagex-editor-control-attributes-class.php:761
-msgid "Background Image"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:526
-msgid "Background Fallback"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:527
-msgid "Cover fallback image for mobiles and tablets."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:543
-msgid "Video Link"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:544
-msgid "Enter YouTube link or video file in MP4 format."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:553
-#: inc/elements/frontend/video.php:53
-msgid "Start Time"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:554
-#: inc/elements/frontend/video.php:54
-msgid "Specify a start time (in seconds)."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:554
-#: inc/pagex-editor-control-attributes-class.php:564
-msgid "Only for YouTube video."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:563
-#: inc/elements/frontend/video.php:60
-msgid "End Time"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:564
-#: inc/elements/frontend/video.php:61
-msgid "Specify an end time (in seconds)."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:572
-#: inc/pagex-editor-control-attributes-class.php:778
-#: inc/elements/woocommerce/menu-cart.php:58
-#: inc/elements/frontend/features.php:162 inc/elements/basic/section.php:20
-#: inc/elements/theme/post-data.php:294
-msgid "Position"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:580
-#: inc/pagex-editor-control-attributes-class.php:786
-msgid "Top Left"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:581
-#: inc/pagex-editor-control-attributes-class.php:787
-msgid "Top Center"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:582
-#: inc/pagex-editor-control-attributes-class.php:788
-msgid "Top Right"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:583
-#: inc/pagex-editor-control-attributes-class.php:789
-msgid "Center Left"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:585
-#: inc/pagex-editor-control-attributes-class.php:791
-msgid "Center Right"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:586
-#: inc/pagex-editor-control-attributes-class.php:792
-msgid "Bottom Left"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:587
-#: inc/pagex-editor-control-attributes-class.php:793
-msgid "Bottom Center"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:588
-#: inc/pagex-editor-control-attributes-class.php:794
-msgid "Bottom Right"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:596
-#: inc/pagex-editor-control-attributes-class.php:604
-#: inc/pagex-editor-control-attributes-class.php:803
-#: inc/pagex-editor-control-attributes-class.php:811
-msgid "Repeat"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:603
-#: inc/pagex-editor-control-attributes-class.php:810
-msgid "No-repeat"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:605
-#: inc/pagex-editor-control-attributes-class.php:812
-msgid "Repeat-x"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:606
-#: inc/pagex-editor-control-attributes-class.php:813
-msgid "Repeat-y"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:620
-#: inc/pagex-editor-control-attributes-class.php:828
-msgid "Cover"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:621
-#: inc/pagex-editor-control-attributes-class.php:829
-#: inc/elements/frontend/form.php:52 inc/elements/frontend/form.php:68
-#: inc/elements/frontend/form.php:85 inc/elements/frontend/form.php:102
-#: inc/elements/frontend/form.php:119 inc/elements/frontend/form.php:419
-#: inc/elements/frontend/form.php:435 inc/elements/frontend/form.php:452
-#: inc/elements/frontend/form.php:469 inc/elements/frontend/form.php:486
-#: inc/elements/basic/column.php:30 inc/elements/basic/column.php:46
-#: inc/elements/basic/column.php:63 inc/elements/basic/column.php:80
-#: inc/elements/basic/column.php:97 inc/elements/basic/column.php:168
-msgid "Auto"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:622
-#: inc/pagex-editor-control-attributes-class.php:830
-msgid "Contain"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:630
-#: inc/pagex-editor-control-attributes-class.php:839
-msgid "Attachment"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:636
-#: inc/pagex-editor-control-attributes-class.php:845
-msgid "Scroll"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:637
-#: inc/pagex-editor-control-attributes-class.php:846
-#: inc/elements/basic/section.php:27
-msgid "Fixed"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:645
-#: inc/pagex-editor-control-attributes-class.php:855
-msgid "Custom Size"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:657
-msgid "Background Parallax"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:668
-#: inc/pagex-editor-control-attributes-class.php:1050
-#: inc/pagex-editor-control-attributes-class.php:1068
-msgid "Slow"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:669
-msgid "Slow (no smoothness)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:671
-msgid "Medium (no smoothness)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:672
-#: inc/pagex-editor-control-attributes-class.php:1051
-#: inc/pagex-editor-control-attributes-class.php:1072
-msgid "Fast"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:673
-msgid "Fast (no smoothness)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:674
-#: inc/pagex-editor-control-attributes-class.php:1074
-msgid "Very fast"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:675
-msgid "Very fast (no smoothness)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:680
-msgid "Background Animation"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:690
-#: inc/elements/frontend/google-maps.php:60
-msgid "Zoom"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:700
-msgid "Overlay For Background"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:737
-msgid "Blend Mode"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:744
-msgid "Multiply"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:745
-msgid "Screen"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:746
-#: inc/elements/frontend/search-form.php:45
-msgid "Overlay"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:747
-msgid "Darken"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:748
-msgid "Lighten"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:749
-msgid "Color Dodge"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:750
-msgid "Saturation"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:752
-msgid "Luminosity"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:867
-#: inc/elements/frontend/nav-menu.php:218 inc/elements/frontend/image.php:148
-#: inc/elements/theme/post-title.php:98 inc/elements/theme/child-pages.php:75
-msgid "Opacity"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:890
-#: inc/elements/frontend/list.php:113 inc/elements/frontend/separator.php:30
-#: inc/elements/theme/post-data.php:206
-msgid "Border Style"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:897
-#: inc/elements/frontend/list.php:119 inc/elements/frontend/separator.php:35
-#: inc/elements/theme/post-data.php:212
-msgid "Solid"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:898
-#: inc/elements/frontend/list.php:120 inc/elements/theme/post-data.php:213
-msgid "Double"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:899
-#: inc/elements/frontend/list.php:121 inc/elements/frontend/separator.php:37
-#: inc/elements/theme/post-data.php:214
-msgid "Dotted"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:900
-#: inc/elements/frontend/separator.php:36
-msgid "Dashed"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:924
-#: inc/pagex-admin-controls-class.php:971
-#: inc/pagex-admin-controls-class.php:1018 inc/elements/woocommerce/tabs.php:96
-#: inc/elements/woocommerce/page-cart-form.php:23
-#: inc/elements/woocommerce/page-cart-form.php:165
+#: inc/pagex-admin-controls-class.php:1177
+#: inc/pagex-admin-controls-class.php:1237 inc/elements/woocommerce/tabs.php:96
 #: inc/elements/woocommerce/sale-flash.php:47
-#: inc/elements/frontend/tabs.php:357 inc/elements/frontend/tabs.php:365
-#: inc/elements/frontend/tabs.php:393 inc/elements/frontend/icon.php:105
-#: inc/elements/frontend/icon.php:113
+#: inc/elements/frontend/tabs.php:358 inc/elements/frontend/tabs.php:366
+#: inc/elements/frontend/tabs.php:394 inc/elements/frontend/icon.php:106
+#: inc/elements/frontend/icon.php:114
 #: inc/elements/frontend/share-buttons.php:248
 #: inc/elements/frontend/share-buttons.php:256
-#: inc/elements/frontend/search-form.php:92
-#: inc/elements/frontend/search-form.php:100
+#: inc/elements/frontend/search-form.php:90
+#: inc/elements/frontend/search-form.php:98
 #: inc/elements/frontend/accordion.php:168
 #: inc/elements/frontend/accordion.php:350
-#: inc/elements/frontend/nav-menu.php:166
-#: inc/elements/frontend/separator.php:59 inc/elements/frontend/button.php:231
+#: inc/elements/frontend/nav-menu.php:167
+#: inc/elements/frontend/separator.php:59 inc/elements/frontend/button.php:267
 #: inc/elements/theme/post-comments.php:164
 msgid "Border Color"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:935
-#: inc/pagex-admin-controls-class.php:977
+#: inc/pagex-admin-controls-class.php:1183
 #: inc/elements/frontend/accordion.php:176
-#: inc/elements/frontend/nav-menu.php:174 inc/elements/frontend/button.php:239
+#: inc/elements/frontend/nav-menu.php:175 inc/elements/frontend/button.php:275
 msgid "Border Color on Hover"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:946
-msgid "Other"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:950
-#: inc/pagex-editor-control-attributes-class.php:959
-#: inc/elements/frontend/icon.php:63 inc/elements/frontend/icon.php:73
+#: inc/pagex-admin-controls-class.php:1190
+#: inc/elements/woocommerce/menu-cart.php:312 inc/elements/frontend/icon.php:64
+#: inc/elements/frontend/icon.php:74 inc/elements/frontend/features.php:185
 #: inc/elements/frontend/share-buttons.php:264
 #: inc/elements/frontend/share-buttons.php:274
-#: inc/elements/frontend/search-form.php:124
-#: inc/elements/frontend/search-form.php:134
+#: inc/elements/frontend/search-form.php:122
+#: inc/elements/frontend/search-form.php:132
 #: inc/elements/frontend/accordion.php:92
 #: inc/elements/frontend/accordion.php:252
 #: inc/elements/frontend/accordion.php:262
-#: inc/elements/frontend/nav-menu.php:190
-#: inc/elements/frontend/nav-menu.php:270
-#: inc/elements/frontend/nav-menu.php:366 inc/elements/frontend/button.php:265
-#: inc/elements/frontend/button.php:275 inc/elements/frontend/button.php:400
-#: inc/elements/theme/sidebar.php:67 inc/elements/theme/sidebar.php:100
+#: inc/elements/frontend/nav-menu.php:191
+#: inc/elements/frontend/nav-menu.php:271
+#: inc/elements/frontend/nav-menu.php:367
+#: inc/elements/frontend/nav-menu.php:423 inc/elements/frontend/form.php:329
+#: inc/elements/frontend/button.php:301 inc/elements/frontend/button.php:311
+#: inc/elements/frontend/button.php:436 inc/elements/theme/sidebar.php:67
+#: inc/elements/theme/sidebar.php:100
 msgid "Box Shadow"
 msgstr ""
 
-#: inc/pagex-editor-control-attributes-class.php:951
-#: inc/elements/frontend/icon.php:64
-#: inc/elements/frontend/share-buttons.php:265
-#: inc/elements/frontend/search-form.php:125
-#: inc/elements/frontend/accordion.php:93
-#: inc/elements/frontend/accordion.php:253
-#: inc/elements/frontend/nav-menu.php:191
-#: inc/elements/frontend/nav-menu.php:367 inc/elements/frontend/button.php:266
-msgid "Property values: horizontal, vertical, blur, size, color."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:971
-#: inc/pagex-admin-controls-class.php:197
-#: inc/pagex-admin-controls-class.php:229
-#: inc/elements/frontend/google-maps.php:55
-msgid "Advanced"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:975
-#: inc/elements/frontend/features.php:127
-msgid "Entrance Animation"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:979
-#: inc/elements/frontend/features.php:131
-msgid "Animation"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:988
-#: inc/elements/frontend/features.php:137
-msgid "Fade Animations"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:990
-#: inc/elements/frontend/features.php:139
-msgid "Fade In"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:991
-#: inc/elements/frontend/features.php:140
-msgid "Fade In Up"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:992
-#: inc/elements/frontend/features.php:141
-msgid "Fade In Down"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:993
-#: inc/elements/frontend/features.php:142
-msgid "Fade In Left"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:994
-#: inc/elements/frontend/features.php:143
-msgid "Fade In Right"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1034
-#: inc/elements/frontend/features.php:150
-msgid "Delay (ms)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1043
-msgid "Duration"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1049
-#: inc/pagex-editor-control-attributes-class.php:1255
-msgid "Normal"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1056
-msgid "Parallax"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1060
-msgid "Parallax Speed"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1061
-msgid ""
-"Note that some entrance animations might not be compatible with parallax "
-"option."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1069
-msgid "Slow (reverse)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1071
-msgid "Medium (reverse)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1073
-msgid "Fast (reverse)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1075
-msgid "Very fast (reverse)"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1080
-msgid "Advanced Settings"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1084
-msgid "CSS Class"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1104
-msgid "Custom CSS"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1105
-msgid ""
-"Use [el] tag to target element itself. You can use media queries like "
-"\"@media (min-width: 1200px)\" to add style for specific width of the "
-"viewport."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1112
-msgid "Login Condition"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1116
-msgid "Display Condition"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1117
-msgid "Note! While you editing the layout conditions will not be applied."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1122
-msgid "Display for everyone"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1123
-msgid "Display only for logged in users"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1124
-msgid "Display only for not logged in users"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1145
-#: inc/pagex-admin-controls-class.php:629
-#: inc/pagex-admin-controls-class.php:684
-msgid "Font Family"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1163
-#: inc/pagex-admin-controls-class.php:652
-#: inc/pagex-admin-controls-class.php:691
-msgid "Font Weight"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1170
-#: inc/pagex-admin-controls-class.php:614
-msgid "Bold"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1184
-#: inc/pagex-admin-controls-class.php:641
-msgid "Line Height"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1193
-msgid "Text Align"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1204
-#: inc/elements/woocommerce/tabs.php:161 inc/elements/frontend/tabs.php:93
-msgid "Justify"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1209
-#: inc/pagex-admin-controls-class.php:646
-#: inc/pagex-admin-controls-class.php:697
-#: inc/pagex-admin-controls-class.php:908
-msgid "Letter Spacing"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1218
-msgid "Transform"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1225
-#: inc/pagex-admin-controls-class.php:918
-msgid "Lowercase"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1226
-#: inc/pagex-admin-controls-class.php:919
-msgid "Uppercase"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1227
-#: inc/pagex-admin-controls-class.php:920
-msgid "Capitalize"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1233
-msgid "Decoration"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1240
-#: inc/elements/frontend/list.php:186 inc/elements/theme/post-title.php:86
-msgid "Line-through"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1241
-#: inc/elements/frontend/list.php:187 inc/elements/theme/post-title.php:87
-msgid "Overline"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1242
-#: inc/elements/frontend/list.php:188 inc/elements/theme/post-title.php:88
-msgid "Underline"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1248
-#: inc/elements/woocommerce/menu-cart.php:90 inc/elements/frontend/tabs.php:98
-#: inc/elements/frontend/tabs.php:253 inc/elements/frontend/features.php:90
-#: inc/elements/frontend/share-buttons.php:77
-#: inc/elements/frontend/share-buttons.php:211
-#: inc/elements/frontend/search-form.php:42
-#: inc/elements/frontend/search-form.php:63
-#: inc/elements/frontend/google-maps.php:68 inc/elements/frontend/list.php:67
-#: inc/elements/frontend/image-gallery.php:132
-#: inc/elements/frontend/form.php:228 inc/elements/frontend/posts.php:172
-#: inc/elements/frontend/image.php:86 inc/elements/frontend/button.php:91
-#: inc/elements/frontend/login-form.php:73 inc/elements/theme/posts-loop.php:49
-#: inc/elements/theme/post-data.php:148 inc/elements/theme/sidebar.php:43
-msgid "Style"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1256
-msgid "Italic"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1257
-msgid "Oblique"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1276
-msgid "Icon HTML Code"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1277
-msgid ""
-"Insert inline SVG code or inline HTML with encoded image. If you wish SVG "
-"inherits color from current settings add attribute fill=\"currentColor\" to "
-"each SVG path."
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1293
-msgid "Icon Size"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1305
-msgid "Icon Padding"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1317
-msgid "Icon Margin"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1335
-msgid "Icon Type"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1340
-msgid "SVG or Base 64"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1346
-msgid "Font Awesome Icon"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:1358
-msgid "Icon Image"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:2123
-msgid "Web Fonts"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:2157
-#: inc/pagex-admin-controls-class.php:811
-msgid "Custom Fonts"
-msgstr ""
-
-#: inc/pagex-editor-control-attributes-class.php:2183
-msgid "Adobe Fonts"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:60
-msgid "Pagex Builder"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:69
-msgid "Header Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:79
-msgid "Current Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:83
-msgid "Post Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:86
-msgid "Page Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:108
-msgid "Post Template"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:118
-msgid "Blog Template"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:127
-msgid "Search Template"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:136
-msgid "Archive Template"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:145
-msgid "404 Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:156
-msgid "Excerpt Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:167
-msgid "Footer Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:181
-msgid "Pagex Settings"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:181
-msgid "Settings"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:194
-#: inc/pagex-admin-controls-class.php:226 inc/pagex-editor-class.php:652
-msgid "Basic Options"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:217
-msgid "Documentation"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:217
-msgid "Learn how to use Pagex. It is a great starting point."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:217
-msgid "Read our guide"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:218
-msgid "Report Issue"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:218
-msgid "Create a report to help us improve."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:218
-msgid "Report"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:232
-msgid "Post Types"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:236
-msgid "Default Layouts"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:240
-#: inc/pagex-admin-controls-class.php:427 inc/pagex-editor-class.php:82
-#: inc/pagex-editor-class.php:691
-msgid "Theme Templates"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:246
-#: inc/pagex-admin-controls-class.php:333 inc/pagex-editor-class.php:50
-#: inc/elements/woocommerce/menu-cart.php:403
-#: inc/elements/frontend/features.php:94
-#: inc/elements/frontend/share-buttons.php:91
-#: inc/elements/frontend/instagram.php:81 inc/elements/frontend/list.php:71
-#: inc/elements/frontend/layout.php:17 inc/elements/frontend/layout.php:26
-#: inc/elements/frontend/image-gallery.php:59
-#: inc/elements/frontend/image-gallery.php:63
-#: inc/elements/frontend/nav-menu.php:42 inc/elements/frontend/posts.php:176
-#: inc/elements/theme/posts-loop.php:53 inc/elements/theme/post-data.php:152
-msgid "Layout"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:250
-msgid "Typography"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:254
-#: inc/elements/woocommerce/menu-cart.php:399
-msgid "Buttons"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:258
-msgid "Form Elements"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:262
-msgid "Preloader"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:278
-msgid "Coming Soon or Maintenance Mode"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:282
-msgid "Multilingual"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:286
-msgid "GDPR Notice"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:290
-msgid "Export"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:304
-msgid "Enable Builder Editor for next post types."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:325
-msgid ""
-"Define default header and footer layouts. You can create and change layouts "
-"via"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:326 inc/pagex-editor-class.php:47
-#: inc/pagex-editor-class.php:48 inc/pagex-editor-class.php:49
-#: inc/pagex-editor-class.php:56 inc/pagex-editor-class.php:679
-#: inc/elements/frontend/layout.php:27
-msgid "Layout Builder"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:332
-#: inc/pagex-admin-controls-class.php:433
-#: inc/pagex-admin-controls-class.php:546
-#: inc/pagex-admin-controls-class.php:773
-#: inc/elements/woocommerce/catalog-data.php:24
-#: inc/elements/woocommerce/menu-cart.php:23
-#: inc/elements/woocommerce/product-data.php:24
-#: inc/elements/frontend/google-maps.php:23
-#: inc/elements/frontend/image-gallery.php:23 inc/elements/frontend/form.php:28
-#: inc/elements/frontend/posts.php:30 inc/elements/frontend/image.php:23
-#: inc/elements/theme/post-data.php:29 inc/elements/theme/archive-data.php:24
-msgid "Type"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:338
-msgid "Default Header"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:350
-msgid "Default Footer"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:426
-msgid ""
-"Define template layouts based on page type. You can create and change "
-"layouts via"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:434
-#: inc/pagex-admin-controls-class.php:547
-msgid "Template"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:439
-#: inc/pagex-admin-controls-class.php:554 inc/pagex-editor-class.php:762
-msgid "Single Page"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:450 inc/pagex-editor-class.php:763
-msgid "Single Post"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:461
-msgid "Blog Page"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:472
-msgid "Post Taxonomy"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:473
-msgid "Post tags, categories, and etc."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:481
-#: inc/pagex-admin-controls-class.php:493
-msgid "If none is selected the Blog Page template will be used instead."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:485
-msgid "Search Results"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:521
-msgid "Custom post types"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:522
-msgid "Enable template layouts for custom post types."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:554
-msgid "When single post page is being displayed"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:555
-msgid "Main post type page with list of all posts"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:556 inc/elements/theme/post-data.php:36
-#: inc/elements/theme/post-data.php:78
-msgid "Taxonomy"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:556
-msgid "Only if post type has registered taxonomies"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:595
-msgid "Container width for desktops"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:596
-msgid "Optional. Default is 1140px."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:658
-msgid "Font Weight for Bold Tag"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:665 inc/elements/frontend/tabs.php:385
-#: inc/elements/frontend/accordion.php:342 inc/elements/theme/sidebar.php:125
-msgid "Text Color"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:671
-#: inc/elements/woocommerce/product-meta.php:32
-#: inc/elements/woocommerce/page-my-account.php:70
-#: inc/elements/woocommerce/page-checkout.php:70
-#: inc/elements/theme/post-data.php:264 inc/elements/theme/sidebar.php:133
-#: inc/elements/theme/post-content.php:49
-msgid "Links Color"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:676
-#: inc/elements/woocommerce/product-meta.php:40
-#: inc/elements/theme/sidebar.php:141 inc/elements/theme/post-content.php:57
-msgid "Links Color on Hover"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:703
-#: inc/elements/theme/post-content.php:82
-msgid "Headings Color"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:711
-msgid "Google Fonts Subsets"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:712
-msgid "Select subsets for Google Fonts."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:768
-msgid "Default Fonts"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:774
-msgid "Font"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:779
-msgid "Main Font"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:782
-#: inc/pagex-admin-controls-class.php:796
-msgid "Select weights for Google Fonts which will be loaded all the time."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:793
-#: inc/elements/theme/post-content.php:65
-msgid "Headings"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:812
-msgid ""
-"Self-hosted fonts. Once you upload your font variations, you’ll be able to "
-"choose the font inside Pagex."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:860
-msgid ""
-"Adobe Fonts (formerly Typekit) is an online service which offers a "
-"subscription library\n"
-"            of high-quality fonts."
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:872
-#: inc/pagex-admin-controls-class.php:1356
-msgid "The next fonts were added to library:"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:887
-msgid "Synchronize"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:914
-msgid "Text Transform"
-msgstr ""
-
-#: inc/pagex-admin-controls-class.php:1024
+#: inc/pagex-admin-controls-class.php:1196
+#: inc/elements/frontend/features.php:194
+#: inc/elements/frontend/accordion.php:102 inc/elements/frontend/video.php:136
+#: inc/elements/frontend/nav-menu.php:201
+#: inc/elements/frontend/nav-menu.php:376
+msgid "Box Shadow on Hover"
+msgstr ""
+
+#: inc/pagex-admin-controls-class.php:1243
 #: inc/elements/theme/post-comments.php:172
 msgid "Border Color on Focus"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1031
+#: inc/pagex-admin-controls-class.php:1250
 msgid "Checkbox Background"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1037
+#: inc/pagex-admin-controls-class.php:1256
 msgid "Checked Input Color"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1054
+#: inc/pagex-admin-controls-class.php:1273
 msgid "Use Preloader"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1061
+#: inc/pagex-admin-controls-class.php:1280
 msgid "Pages"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1064
+#: inc/pagex-admin-controls-class.php:1283
 msgid "All Pages"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1065
+#: inc/pagex-admin-controls-class.php:1284
 msgid "Main Page"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1087
+#: inc/pagex-admin-controls-class.php:1306
 msgid ""
 "MailChimp API Key is required for a \"Form\" element with \"MailChimp\" "
 "action"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1088
+#: inc/pagex-admin-controls-class.php:1307
 msgid "Get MailChimp API key"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1103
+#: inc/pagex-admin-controls-class.php:1322
 msgid "Google Maps API Key is required for \"Google Maps\" element"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1104
+#: inc/pagex-admin-controls-class.php:1323
 msgid "Get Google Maps API key"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1119
+#: inc/pagex-admin-controls-class.php:1338
 msgid "Activate coming soon mode"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1120
+#: inc/pagex-admin-controls-class.php:1339
 msgid ""
 "Work on your site in private while visitors see a «Coming Soon» or "
 "«Maintenance Mode» page."
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1128
+#: inc/pagex-admin-controls-class.php:1347
 msgid "Select a layout for coming soon mode"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1145
+#: inc/pagex-admin-controls-class.php:1364
 msgid "Add support for multilingual plugins"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1146
+#: inc/pagex-admin-controls-class.php:1365
 msgid ""
 "If you use multilingual plugins like WPML turn on this option to make your "
 "content available for translation."
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1160
+#: inc/pagex-admin-controls-class.php:1379
 msgid "Activate GDPR notice"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1161
+#: inc/pagex-admin-controls-class.php:1380
 msgid "Add European privacy regulations notice"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1168
+#: inc/pagex-admin-controls-class.php:1387
 msgid "Privacy and policy page"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1169
+#: inc/pagex-admin-controls-class.php:1388
 msgid "Select privacy and policy page"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1175
+#: inc/pagex-admin-controls-class.php:1394
 msgid "Custom Message"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1176
+#: inc/pagex-admin-controls-class.php:1395
 msgid "If field is empty the default message will be displayed."
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1196
+#: inc/pagex-admin-controls-class.php:1415
 msgid "Export Settings"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1325
+#: inc/pagex-admin-controls-class.php:1544
 msgid "ID is not provided"
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1333
-#: inc/pagex-admin-controls-class.php:1339
+#: inc/pagex-admin-controls-class.php:1552
+#: inc/pagex-admin-controls-class.php:1558
 msgid "No connection."
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1349
+#: inc/pagex-admin-controls-class.php:1568
 msgid "No fonts found."
 msgstr ""
 
-#: inc/pagex-admin-controls-class.php:1362
+#: inc/pagex-admin-controls-class.php:1581
 msgid "Save changes to apply new settings."
 msgstr ""
 
 #: inc/pagex-editor-class.php:51 inc/pagex-editor-class.php:52
-#: inc/pagex-editor-class.php:103 inc/pagex-editor-class.php:104
-#: inc/pagex-editor-class.php:324
+#: inc/pagex-editor-class.php:321
 msgid "Add Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:53 inc/pagex-editor-class.php:105
+#: inc/pagex-editor-class.php:53
 msgid "New Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:54 inc/pagex-editor-class.php:106
+#: inc/pagex-editor-class.php:54
 msgid "Edit Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:55 inc/pagex-editor-class.php:107
+#: inc/pagex-editor-class.php:55
 msgid "View Layout"
 msgstr ""
 
@@ -1952,18 +1001,19 @@ msgid "Theme Template"
 msgstr ""
 
 #: inc/pagex-editor-class.php:77 inc/pagex-editor-class.php:78
+#: inc/pagex-editor-class.php:103 inc/pagex-editor-class.php:104
 msgid "Add Template"
 msgstr ""
 
-#: inc/pagex-editor-class.php:79
+#: inc/pagex-editor-class.php:79 inc/pagex-editor-class.php:105
 msgid "New Template"
 msgstr ""
 
-#: inc/pagex-editor-class.php:80
+#: inc/pagex-editor-class.php:80 inc/pagex-editor-class.php:106
 msgid "Edit Template"
 msgstr ""
 
-#: inc/pagex-editor-class.php:81
+#: inc/pagex-editor-class.php:81 inc/pagex-editor-class.php:107
 msgid "View Template"
 msgstr ""
 
@@ -1977,424 +1027,518 @@ msgstr ""
 msgid "Excerpt Templates"
 msgstr ""
 
-#: inc/pagex-editor-class.php:259 inc/pagex-editor-class.php:910
+#: inc/pagex-editor-class.php:256 inc/pagex-editor-class.php:904
 msgid "Save"
 msgstr ""
 
-#: inc/pagex-editor-class.php:260
+#: inc/pagex-editor-class.php:257
 msgid "Saving..."
 msgstr ""
 
-#: inc/pagex-editor-class.php:261 inc/pagex-editor-class.php:711
-#: inc/pagex-editor-class.php:1055
+#: inc/pagex-editor-class.php:258 inc/elements/frontend/features.php:157
+#: inc/elements/frontend/features.php:374
+msgid "Item"
+msgstr ""
+
+#: inc/pagex-editor-class.php:259 inc/pagex-editor-class.php:714
+#: inc/pagex-editor-class.php:1049
 msgid "Import Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:262
+#: inc/pagex-editor-class.php:260
 msgid "Importing..."
 msgstr ""
 
-#: inc/pagex-editor-class.php:263
+#: inc/pagex-editor-class.php:261
 msgid "Delete all layout elements?"
 msgstr ""
 
-#: inc/pagex-editor-class.php:264
+#: inc/pagex-editor-class.php:262
 msgid "Back to WordPress Editor"
 msgstr ""
 
-#: inc/pagex-editor-class.php:265
+#: inc/pagex-editor-class.php:263
 msgid "Frontend Builder"
 msgstr ""
 
-#: inc/pagex-editor-class.php:266
+#: inc/pagex-editor-class.php:264
 msgid "Edit with Pagex"
 msgstr ""
 
-#: inc/pagex-editor-class.php:314
+#: inc/pagex-editor-class.php:311
 msgid "Edit Element"
 msgstr ""
 
-#: inc/pagex-editor-class.php:314
+#: inc/pagex-editor-class.php:311
 msgid "Clone Element"
 msgstr ""
 
-#: inc/pagex-editor-class.php:314
+#: inc/pagex-editor-class.php:311
 msgid "Remove Element"
 msgstr ""
 
-#: inc/pagex-editor-class.php:316
+#: inc/pagex-editor-class.php:313
 msgid "Edit Column"
 msgstr ""
 
-#: inc/pagex-editor-class.php:316
+#: inc/pagex-editor-class.php:313
 msgid "Append New Element"
 msgstr ""
 
-#: inc/pagex-editor-class.php:316
+#: inc/pagex-editor-class.php:313
+msgid "Prepend New Element"
+msgstr ""
+
+#: inc/pagex-editor-class.php:313
 msgid "Clone Column"
 msgstr ""
 
-#: inc/pagex-editor-class.php:316
+#: inc/pagex-editor-class.php:313
 msgid "Remove Column"
 msgstr ""
 
-#: inc/pagex-editor-class.php:316 inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:313 inc/pagex-editor-class.php:317
 msgid "Hide/Show Options"
 msgstr ""
 
-#: inc/pagex-editor-class.php:318
+#: inc/pagex-editor-class.php:315
 msgid "Add Element"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320 inc/elements/basic/section.php:13
+#: inc/pagex-editor-class.php:317 inc/elements/basic/section.php:13
 msgid "Section"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Edit Section"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Append New Container"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Clone Section"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Save as Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Remove Section"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320 inc/elements/basic/container.php:13
+#: inc/pagex-editor-class.php:317 inc/elements/basic/container.php:13
 msgid "Container"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Edit Container"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Append New Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Clone Container"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Remove Container"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320 inc/elements/basic/row.php:60
+#: inc/pagex-editor-class.php:317 inc/elements/basic/row.php:60
 msgid "Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Edit Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320 inc/pagex-editor-class.php:322
+#: inc/pagex-editor-class.php:317 inc/pagex-editor-class.php:319
 msgid "Append New Column"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Clone Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:320
+#: inc/pagex-editor-class.php:317
 msgid "Remove Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:322 inc/elements/basic/row.php:71
+#: inc/pagex-editor-class.php:319 inc/elements/basic/row.php:71
 msgid "Inner Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:322
+#: inc/pagex-editor-class.php:319
 msgid "Edit Inner Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:322
+#: inc/pagex-editor-class.php:319
 msgid "Clone Inner Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:322
+#: inc/pagex-editor-class.php:319
 msgid "Remove Inner Row"
 msgstr ""
 
-#: inc/pagex-editor-class.php:324
+#: inc/pagex-editor-class.php:321
 msgid "Add Section"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:888
-#: inc/pagex-editor-class.php:889
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:882
+#: inc/pagex-editor-class.php:883
 msgid "No media query"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:889
-#: inc/elements/frontend/search-form.php:185
-#: inc/elements/frontend/search-form.php:194
-#: inc/elements/frontend/nav-menu.php:392
-#: inc/elements/frontend/nav-menu.php:401
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:883
+#: inc/elements/frontend/search-form.php:208
+#: inc/elements/frontend/nav-menu.php:502
+#: inc/elements/frontend/nav-menu.php:511
 msgid "Mobile"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:890
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:884
 msgid "Mobile (landscape)"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:891
-#: inc/elements/frontend/search-form.php:195
-#: inc/elements/frontend/nav-menu.php:402
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:885
+#: inc/elements/frontend/search-form.php:209
+#: inc/elements/frontend/nav-menu.php:512
 msgid "Tablet"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:892
-#: inc/elements/frontend/search-form.php:196
-#: inc/elements/frontend/nav-menu.php:403
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:886
+#: inc/elements/frontend/search-form.php:210
+#: inc/elements/frontend/nav-menu.php:513
 msgid "Tablet (landscape)"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334 inc/pagex-editor-class.php:893
-#: inc/elements/frontend/search-form.php:197
+#: inc/pagex-editor-class.php:331 inc/pagex-editor-class.php:887
+#: inc/elements/frontend/search-form.php:211
 msgid "Desktop"
 msgstr ""
 
-#: inc/pagex-editor-class.php:334
+#: inc/pagex-editor-class.php:331
 msgid "Show/hide all options "
 msgstr ""
 
-#: inc/pagex-editor-class.php:348
+#: inc/pagex-editor-class.php:345
 msgid "Add Item"
 msgstr ""
 
-#: inc/pagex-editor-class.php:359
+#: inc/pagex-editor-class.php:356
 msgid " Media Gallery"
 msgstr ""
 
-#: inc/pagex-editor-class.php:373
+#: inc/pagex-editor-class.php:358 inc/pagex-editor-class.php:362
+#: inc/elements/frontend/image-gallery.php:99 inc/elements/frontend/form.php:68
+#: inc/elements/frontend/form.php:85 inc/elements/frontend/form.php:102
+#: inc/elements/frontend/form.php:119 inc/elements/frontend/form.php:469
+#: inc/elements/frontend/form.php:486 inc/elements/frontend/form.php:503
+#: inc/elements/frontend/form.php:520 inc/elements/frontend/posts.php:214
+#: inc/elements/basic/column.php:45 inc/elements/basic/column.php:62
+#: inc/elements/basic/column.php:79 inc/elements/basic/column.php:96
+#: inc/elements/theme/posts-loop.php:80
+msgid "Inherit"
+msgstr ""
+
+#: inc/pagex-editor-class.php:370
 msgid "Delete"
 msgstr ""
 
-#: inc/pagex-editor-class.php:373
+#: inc/pagex-editor-class.php:370
 msgid "Full size"
 msgstr ""
 
-#: inc/pagex-editor-class.php:373 inc/elements/frontend/image-gallery.php:142
+#: inc/pagex-editor-class.php:370 inc/elements/frontend/image-gallery.php:142
 #: inc/elements/frontend/image.php:50
 msgid "Thumbnail"
 msgstr ""
 
-#: inc/pagex-editor-class.php:376 inc/elements/frontend/features.php:166
-#: inc/elements/frontend/features.php:195 inc/elements/frontend/button.php:339
+#: inc/pagex-editor-class.php:373 inc/elements/frontend/features.php:211
+#: inc/elements/frontend/features.php:240 inc/elements/frontend/button.php:375
 #: inc/elements/basic/row.php:42 inc/elements/basic/column.php:150
 #: inc/elements/basic/column.php:169 inc/elements/basic/column.php:188
+#: inc/elements/theme/post-data.php:370
 msgid "Top"
 msgstr ""
 
-#: inc/pagex-editor-class.php:376 inc/elements/frontend/features.php:197
-#: inc/elements/frontend/button.php:340 inc/elements/basic/row.php:44
+#: inc/pagex-editor-class.php:373 inc/mega-menu/pagex-mega-menu-class.php:76
+#: inc/elements/woocommerce/tabs.php:160
+#: inc/elements/woocommerce/menu-cart.php:54
+#: inc/elements/woocommerce/menu-cart.php:248
+#: inc/elements/woocommerce/menu-cart.php:273
+#: inc/elements/woocommerce/add-to-cart.php:59
+#: inc/elements/frontend/tabs.php:93 inc/elements/frontend/icon.php:41
+#: inc/elements/frontend/features.php:226
+#: inc/elements/frontend/share-buttons.php:113
+#: inc/elements/frontend/share-buttons.php:131
+#: inc/elements/frontend/search-form.php:240
+#: inc/elements/frontend/countdown.php:138 inc/elements/frontend/list.php:93
+#: inc/elements/frontend/nav-menu.php:69 inc/elements/frontend/nav-menu.php:541
+#: inc/elements/frontend/nav-menu.php:596 inc/elements/frontend/form.php:548
+#: inc/elements/frontend/separator.php:77 inc/elements/frontend/image.php:106
+#: inc/elements/frontend/button.php:83 inc/elements/frontend/button.php:134
+#: inc/elements/frontend/button.php:180 inc/elements/frontend/button.php:374
+#: inc/elements/frontend/button.php:481 inc/elements/frontend/login-form.php:54
+#: inc/elements/basic/row.php:26 inc/elements/basic/column.php:173
+#: inc/elements/theme/post-data.php:182 inc/elements/theme/post-data.php:312
+#: inc/elements/theme/breadcrumb.php:57
+msgid "Right"
+msgstr ""
+
+#: inc/pagex-editor-class.php:373 inc/elements/frontend/features.php:242
+#: inc/elements/frontend/button.php:376 inc/elements/basic/row.php:44
 #: inc/elements/basic/column.php:151 inc/elements/basic/column.php:170
+#: inc/elements/theme/post-data.php:371
 msgid "Bottom"
 msgstr ""
 
-#: inc/pagex-editor-class.php:380 inc/pagex-editor-class.php:814
-#: inc/elements/frontend/search-form.php:322
+#: inc/pagex-editor-class.php:373 inc/mega-menu/pagex-mega-menu-class.php:76
+#: inc/elements/woocommerce/tabs.php:158
+#: inc/elements/woocommerce/menu-cart.php:52
+#: inc/elements/woocommerce/menu-cart.php:247
+#: inc/elements/woocommerce/menu-cart.php:274
+#: inc/elements/woocommerce/add-to-cart.php:57
+#: inc/elements/frontend/tabs.php:91 inc/elements/frontend/icon.php:39
+#: inc/elements/frontend/features.php:212
+#: inc/elements/frontend/features.php:224
+#: inc/elements/frontend/share-buttons.php:111
+#: inc/elements/frontend/share-buttons.php:129
+#: inc/elements/frontend/search-form.php:238
+#: inc/elements/frontend/countdown.php:136 inc/elements/frontend/list.php:91
+#: inc/elements/frontend/nav-menu.php:67 inc/elements/frontend/nav-menu.php:539
+#: inc/elements/frontend/nav-menu.php:595 inc/elements/frontend/form.php:546
+#: inc/elements/frontend/separator.php:76 inc/elements/frontend/image.php:104
+#: inc/elements/frontend/button.php:82 inc/elements/frontend/button.php:132
+#: inc/elements/frontend/button.php:178 inc/elements/frontend/button.php:373
+#: inc/elements/frontend/button.php:482 inc/elements/frontend/login-form.php:52
+#: inc/elements/basic/row.php:24 inc/elements/basic/column.php:172
+#: inc/elements/theme/post-data.php:180 inc/elements/theme/post-data.php:311
+#: inc/elements/theme/breadcrumb.php:55
+msgid "Left"
+msgstr ""
+
+#: inc/pagex-editor-class.php:377 inc/pagex-editor-class.php:817
+#: inc/elements/frontend/search-form.php:337
 msgid "Search"
 msgstr ""
 
-#: inc/pagex-editor-class.php:380 inc/elements/woocommerce/menu-cart.php:312
-#: inc/elements/frontend/tabs.php:21 inc/elements/frontend/tabs.php:54
-#: inc/elements/frontend/features.php:59 inc/elements/frontend/features.php:250
-#: inc/elements/frontend/features.php:383
+#: inc/pagex-editor-class.php:377 inc/elements/woocommerce/menu-cart.php:208
+#: inc/elements/woocommerce/menu-cart.php:349 inc/elements/frontend/tabs.php:21
+#: inc/elements/frontend/tabs.php:54 inc/elements/frontend/features.php:59
+#: inc/elements/frontend/features.php:295
+#: inc/elements/frontend/features.php:465
 #: inc/elements/frontend/accordion.php:15
 #: inc/elements/frontend/accordion.php:40 inc/elements/frontend/list.php:47
-#: inc/elements/frontend/list.php:154 inc/elements/frontend/separator.php:88
-#: inc/elements/frontend/separator.php:92 inc/elements/frontend/posts.php:127
-#: inc/elements/frontend/posts.php:245 inc/elements/frontend/posts.php:249
+#: inc/elements/frontend/list.php:154 inc/elements/frontend/separator.php:103
+#: inc/elements/frontend/separator.php:107 inc/elements/frontend/posts.php:127
+#: inc/elements/frontend/posts.php:247 inc/elements/frontend/posts.php:251
 #: inc/elements/theme/archive-data.php:27
 msgid "Title"
 msgstr ""
 
-#: inc/pagex-editor-class.php:380
+#: inc/pagex-editor-class.php:377
 msgid "Open in a new tab"
 msgstr ""
 
-#: inc/pagex-editor-class.php:670
+#: inc/pagex-editor-class.php:673
 msgid "Icons"
 msgstr ""
 
-#: inc/pagex-editor-class.php:670
+#: inc/pagex-editor-class.php:673
 msgid "Search icons"
 msgstr ""
 
-#: inc/pagex-editor-class.php:679
+#: inc/pagex-editor-class.php:682
 msgid "Save Custom Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:679
+#: inc/pagex-editor-class.php:682
 msgid "Enter Layout Name"
 msgstr ""
 
-#: inc/pagex-editor-class.php:679
+#: inc/pagex-editor-class.php:682
 msgid "Save Layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:679
-msgid "Layout will be saved in Layout Builder Library."
+#: inc/pagex-editor-class.php:682
+#, php-format
+msgid "Layout will be saved in %s Layout Builder Library. %s"
 msgstr ""
 
 #: inc/pagex-editor-class.php:682
+msgid "Export as a file"
+msgstr ""
+
+#: inc/pagex-editor-class.php:682
+#, php-format
+msgid "You can save as a file %s current section %s or all %s builder area. %s"
+msgstr ""
+
+#: inc/pagex-editor-class.php:685
 msgid "Library"
 msgstr ""
 
 #: inc/pagex-editor-class.php:685
+msgid "Upload Layout"
+msgstr ""
+
+#: inc/pagex-editor-class.php:688
 msgid "All Created"
 msgstr ""
 
-#: inc/pagex-editor-class.php:687
+#: inc/pagex-editor-class.php:690
 msgid "Layouts"
 msgstr ""
 
-#: inc/pagex-editor-class.php:696
+#: inc/pagex-editor-class.php:699
 msgid "Excerpts"
 msgstr ""
 
-#: inc/pagex-editor-class.php:716
+#: inc/pagex-editor-class.php:719
 msgid "No layouts found."
 msgstr ""
 
-#: inc/pagex-editor-class.php:725 inc/pagex-editor-class.php:759
-#: inc/pagex-editor-class.php:787 inc/pagex-editor-class.php:814
+#: inc/pagex-editor-class.php:728 inc/pagex-editor-class.php:762
+#: inc/pagex-editor-class.php:790 inc/pagex-editor-class.php:817
+#: inc/elements/theme/post-navigation.php:38
 msgid "All"
 msgstr ""
 
-#: inc/pagex-editor-class.php:727
+#: inc/pagex-editor-class.php:730
 msgid "About"
 msgstr ""
 
-#: inc/pagex-editor-class.php:730
+#: inc/pagex-editor-class.php:733
 msgid "Coming Soon"
 msgstr ""
 
-#: inc/pagex-editor-class.php:731
+#: inc/pagex-editor-class.php:734
 msgid "Contacts"
 msgstr ""
 
-#: inc/pagex-editor-class.php:748 inc/pagex-editor-class.php:776
-#: inc/pagex-editor-class.php:800
+#: inc/pagex-editor-class.php:751 inc/pagex-editor-class.php:779
+#: inc/pagex-editor-class.php:803
 msgid "Loading..."
 msgstr ""
 
-#: inc/pagex-editor-class.php:761
+#: inc/pagex-editor-class.php:764
 msgid "Product Archive"
 msgstr ""
 
-#: inc/pagex-editor-class.php:764
+#: inc/pagex-editor-class.php:767
 msgid "Single Product"
 msgstr ""
 
-#: inc/pagex-editor-class.php:788
+#: inc/pagex-editor-class.php:791
 msgid "Post"
 msgstr ""
 
-#: inc/pagex-editor-class.php:789
+#: inc/pagex-editor-class.php:792 inc/elements/woocommerce/menu-cart.php:324
 msgid "Product"
 msgstr ""
 
-#: inc/pagex-editor-class.php:811
+#: inc/pagex-editor-class.php:814
 msgid "All Elements"
 msgstr ""
 
-#: inc/pagex-editor-class.php:811
+#: inc/pagex-editor-class.php:814
 msgid "Search elements"
 msgstr ""
 
-#: inc/pagex-editor-class.php:878
+#: inc/pagex-editor-class.php:872
 msgid "Undo a remove action"
 msgstr ""
 
-#: inc/pagex-editor-class.php:883
+#: inc/pagex-editor-class.php:877
 msgid "Main Settings"
 msgstr ""
 
-#: inc/pagex-editor-class.php:885
+#: inc/pagex-editor-class.php:879
 msgid "Responsive Mode"
 msgstr ""
 
-#: inc/pagex-editor-class.php:896
+#: inc/pagex-editor-class.php:890
 msgid "Preview Mode"
 msgstr ""
 
-#: inc/pagex-editor-class.php:899
+#: inc/pagex-editor-class.php:893
 msgid "Remove builder styles"
 msgstr ""
 
-#: inc/pagex-editor-class.php:899 inc/pagex-editor-class.php:900
-#: inc/pagex-editor-class.php:906 inc/pagex-editor-class.php:907
+#: inc/pagex-editor-class.php:893 inc/pagex-editor-class.php:894
+#: inc/pagex-editor-class.php:900 inc/pagex-editor-class.php:901
 msgid "active"
 msgstr ""
 
-#: inc/pagex-editor-class.php:900
+#: inc/pagex-editor-class.php:894
 msgid "Hide control buttons"
 msgstr ""
 
-#: inc/pagex-editor-class.php:903
+#: inc/pagex-editor-class.php:897
 msgid "Debug Mode"
 msgstr ""
 
-#: inc/pagex-editor-class.php:906
+#: inc/pagex-editor-class.php:900
 msgid "Hide header"
 msgstr ""
 
-#: inc/pagex-editor-class.php:907
+#: inc/pagex-editor-class.php:901
 msgid "Clear layout"
 msgstr ""
 
-#: inc/pagex-editor-class.php:911
+#: inc/pagex-editor-class.php:905
 msgid "Exit"
 msgstr ""
 
-#: inc/pagex-editor-class.php:1033 inc/pagex-editor-class.php:1093
+#: inc/pagex-editor-class.php:912
+msgid "Info About Element"
+msgstr ""
+
+#: inc/pagex-editor-class.php:1027 inc/pagex-editor-class.php:1085
 msgid "Error. Something wrong with library server"
 msgstr ""
 
-#: inc/pagex-editor-class.php:1043 inc/pagex-editor-class.php:1103
+#: inc/pagex-editor-class.php:1037 inc/pagex-editor-class.php:1095
 msgid "Error. Library server response code:"
 msgstr ""
 
-#: inc/pagex-editor-class.php:1211
+#: inc/pagex-editor-class.php:1123
+msgid "Invalid File"
+msgstr ""
+
+#: inc/pagex-editor-class.php:1229
 msgid "Nothing found"
 msgstr ""
 
-#: inc/pagex-editor-class.php:1255 inc/pagex-editor-class.php:1312
+#: inc/pagex-editor-class.php:1273 inc/pagex-editor-class.php:1328
 msgid "Layout was saved"
 msgstr ""
 
-#: inc/pagex-editor-class.php:1267
+#: inc/pagex-editor-class.php:1285
 msgid "You do not have permissions to save layouts."
 msgstr ""
 
-#: inc/pagex-editor-class.php:1278
+#: inc/pagex-editor-class.php:1296
 msgid "Error! Something went wrong."
 msgstr ""
 
 #. %1$s: link attributes.
-#: inc/pagex-frontend-class.php:147
+#: inc/pagex-frontend-class.php:157
 #, php-format
 msgid ""
 "This site uses cookies. By continuing to use this website, you consent to "
 "the use of cookies in accordance with our %1$s Cookie Policy.%2$s"
 msgstr ""
 
-#: inc/elements.php:33 inc/elements/woocommerce/page-my-account.php:58
-#: inc/elements/woocommerce/page-checkout.php:58
-#: inc/elements/frontend/tabs.php:206 inc/elements/frontend/tabs.php:381
-#: inc/elements/frontend/accordion.php:304 inc/elements/frontend/heading.php:25
+#: inc/elements.php:33 inc/elements/frontend/tabs.php:207
+#: inc/elements/frontend/tabs.php:382 inc/elements/frontend/accordion.php:304
+#: inc/elements/frontend/heading.php:25
 msgid "Content"
 msgstr ""
 
@@ -2408,6 +1552,62 @@ msgstr ""
 
 #: inc/elements.php:37
 msgid "Woo Theme Elements"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:67
+#: inc/elements/woocommerce/menu-cart.php:66 inc/elements/frontend/tabs.php:65
+#: inc/elements/frontend/icon.php:16 inc/elements/frontend/features.php:203
+#: inc/elements/frontend/features.php:411
+#: inc/elements/frontend/share-buttons.php:162
+#: inc/elements/frontend/accordion.php:46
+#: inc/elements/frontend/accordion.php:184 inc/elements/frontend/list.php:53
+#: inc/elements/frontend/list.php:195 inc/elements/frontend/video.php:119
+#: inc/elements/frontend/form.php:583 inc/elements/theme/post-data.php:151
+#: inc/elements/theme/post-data.php:292
+msgid "Icon"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:67
+msgid "SVG or Base 64"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:68
+msgid "Font Awesome Icon"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:68 inc/elements/frontend/form.php:39
+msgid "Select"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:69
+msgid "Icon HTML Code"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:69
+msgid ""
+"Insert inline SVG code or inline HTML with encoded image. If you wish SVG "
+"inherits color from element settings add attribute fill=\"currentColor\" to "
+"each SVG path."
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:74
+msgid "To add mega menu, set Layout Builder as a submenu item."
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:75
+msgid "Mega Menu Item Width"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:75
+msgid "By default equals the width of menu element."
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:76
+msgid "Mega Menu Position"
+msgstr ""
+
+#: inc/mega-menu/pagex-mega-menu-class.php:76
+msgid "Horizontal positioning when custom width is set."
 msgstr ""
 
 #: inc/demo-importer/importer.php:202
@@ -2529,14 +1729,14 @@ msgid "Widget area does not exist in theme (using Inactive)"
 msgstr ""
 
 #. 1: comment count number, 2: title.
-#: inc/templates/comments.php:16
+#: inc/templates/comments.php:12
 #, php-format
 msgid "%1$s thought on &ldquo;%2$s&rdquo;"
 msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
 msgstr[0] ""
 msgstr[1] ""
 
-#: inc/templates/comments.php:36
+#: inc/templates/comments.php:32
 msgid "Comments are closed."
 msgstr ""
 
@@ -2577,23 +1777,123 @@ msgstr ""
 msgid "Tab Titles"
 msgstr ""
 
+#: inc/elements/woocommerce/tabs.php:64 inc/elements/frontend/nav-menu.php:134
+#: inc/elements/frontend/nav-menu.php:334
+#: inc/elements/frontend/nav-menu.php:639 inc/elements/theme/posts-loop.php:176
+msgid "Active Color"
+msgstr ""
+
 #: inc/elements/woocommerce/tabs.php:72
 #: inc/elements/frontend/share-buttons.php:232
 #: inc/elements/frontend/share-buttons.php:240
 #: inc/elements/frontend/accordion.php:152
 #: inc/elements/frontend/accordion.php:287
-#: inc/elements/frontend/accordion.php:358 inc/elements/frontend/button.php:198
+#: inc/elements/frontend/accordion.php:358 inc/elements/frontend/button.php:210
 msgid "Background Color"
 msgstr ""
 
-#: inc/elements/woocommerce/tabs.php:88 inc/elements/frontend/tabs.php:349
-#: inc/elements/frontend/nav-menu.php:158
-#: inc/elements/frontend/nav-menu.php:358 inc/elements/theme/posts-loop.php:191
+#: inc/elements/woocommerce/tabs.php:88 inc/elements/frontend/tabs.php:350
+#: inc/elements/frontend/nav-menu.php:159
+#: inc/elements/frontend/nav-menu.php:359 inc/elements/theme/posts-loop.php:200
 msgid "Active Background"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:104 inc/elements/frontend/features.php:455
+#: inc/elements/frontend/features.php:555
+msgid "Border on Hover"
 msgstr ""
 
 #: inc/elements/woocommerce/tabs.php:112
 msgid "Active Border"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:136
+#: inc/elements/woocommerce/sale-flash.php:72
+#: inc/elements/woocommerce/menu-cart.php:282
+#: inc/elements/woocommerce/menu-cart.php:400
+#: inc/elements/frontend/tabs.php:115 inc/elements/frontend/tabs.php:211
+#: inc/elements/frontend/features.php:161
+#: inc/elements/frontend/features.php:259
+#: inc/elements/frontend/features.php:361
+#: inc/elements/frontend/share-buttons.php:187
+#: inc/elements/frontend/search-form.php:149
+#: inc/elements/frontend/search-form.php:253
+#: inc/elements/frontend/accordion.php:111
+#: inc/elements/frontend/accordion.php:235
+#: inc/elements/frontend/accordion.php:308 inc/elements/frontend/list.php:217
+#: inc/elements/frontend/nav-menu.php:90 inc/elements/frontend/nav-menu.php:304
+#: inc/elements/frontend/nav-menu.php:402
+#: inc/elements/frontend/nav-menu.php:554
+#: inc/elements/frontend/nav-menu.php:612 inc/elements/frontend/form.php:259
+#: inc/elements/frontend/button.php:145 inc/elements/frontend/button.php:389
+#: inc/elements/frontend/button.php:410
+#: inc/elements/frontend/login-form.php:102
+#: inc/elements/theme/posts-loop.php:136 inc/elements/theme/sidebar.php:51
+#: inc/elements/theme/sidebar.php:84
+msgid "Padding"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:144
+#: inc/elements/woocommerce/menu-cart.php:122
+#: inc/elements/woocommerce/menu-cart.php:230
+#: inc/elements/woocommerce/add-to-cart.php:42
+#: inc/elements/woocommerce/product-data.php:102
+#: inc/elements/woocommerce/additional-information.php:40
+#: inc/elements/frontend/tabs.php:123 inc/elements/frontend/tabs.php:158
+#: inc/elements/frontend/tabs.php:176 inc/elements/frontend/tabs.php:198
+#: inc/elements/frontend/tabs.php:219 inc/elements/frontend/features.php:268
+#: inc/elements/frontend/features.php:304
+#: inc/elements/frontend/features.php:321
+#: inc/elements/frontend/share-buttons.php:179
+#: inc/elements/frontend/accordion.php:197
+#: inc/elements/frontend/accordion.php:317
+#: inc/elements/frontend/countdown.php:181 inc/elements/frontend/list.php:105
+#: inc/elements/frontend/list.php:208 inc/elements/frontend/nav-menu.php:82
+#: inc/elements/frontend/form.php:568 inc/elements/frontend/separator.php:127
+#: inc/elements/frontend/posts.php:269 inc/elements/frontend/button.php:457
+#: inc/elements/theme/posts-loop.php:144 inc/elements/theme/child-pages.php:116
+#: inc/elements/theme/post-data.php:209 inc/elements/theme/post-data.php:317
+#: inc/elements/theme/post-data.php:346 inc/elements/theme/breadcrumb.php:102
+#: inc/elements/theme/sidebar.php:59 inc/elements/theme/sidebar.php:92
+#: inc/elements/theme/post-content.php:33
+#: inc/elements/theme/post-content.php:74
+msgid "Margin"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:152
+#: inc/elements/woocommerce/menu-cart.php:47 inc/elements/frontend/tabs.php:85
+#: inc/elements/frontend/icon.php:31
+#: inc/elements/frontend/share-buttons.php:103
+#: inc/elements/frontend/share-buttons.php:121
+#: inc/elements/frontend/countdown.php:128 inc/elements/frontend/list.php:83
+#: inc/elements/frontend/button.php:169 inc/elements/theme/post-data.php:173
+#: inc/elements/theme/post-data.php:363 inc/elements/theme/breadcrumb.php:48
+msgid "Alignment"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:159
+#: inc/elements/woocommerce/menu-cart.php:53
+#: inc/elements/woocommerce/add-to-cart.php:58
+#: inc/elements/frontend/tabs.php:92 inc/elements/frontend/icon.php:40
+#: inc/elements/frontend/features.php:225
+#: inc/elements/frontend/features.php:241
+#: inc/elements/frontend/share-buttons.php:112
+#: inc/elements/frontend/share-buttons.php:130
+#: inc/elements/frontend/search-form.php:239
+#: inc/elements/frontend/countdown.php:137 inc/elements/frontend/list.php:92
+#: inc/elements/frontend/nav-menu.php:68 inc/elements/frontend/nav-menu.php:540
+#: inc/elements/frontend/form.php:547 inc/elements/frontend/separator.php:75
+#: inc/elements/frontend/image.php:105 inc/elements/frontend/button.php:133
+#: inc/elements/frontend/button.php:179 inc/elements/frontend/login-form.php:53
+#: inc/elements/basic/row.php:25 inc/elements/basic/row.php:43
+#: inc/elements/basic/column.php:152 inc/elements/basic/column.php:189
+#: inc/elements/theme/post-data.php:181 inc/elements/theme/post-data.php:369
+#: inc/elements/theme/breadcrumb.php:56
+msgid "Center"
+msgstr ""
+
+#: inc/elements/woocommerce/tabs.php:161 inc/elements/frontend/tabs.php:94
+msgid "Justify"
 msgstr ""
 
 #: inc/elements/woocommerce/tabs.php:167
@@ -2618,54 +1918,6 @@ msgstr ""
 
 #: inc/elements/woocommerce/tabs.php:204
 msgid "Avatar Border Radius"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:14
-msgid "WooCommerce Cart Form"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:15
-msgid "Cart form for a cart page"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:31
-msgid "Delete Icon"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:68
-msgid "Product Name"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:89
-msgid "Product Image"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:93
-msgid "Image Width"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:110
-msgid "Apply Coupon Button"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:120
-msgid "Update Cart Button"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:130
-msgid "Cart Totals"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:134
-msgid "Basic Block"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:174
-msgid "Cart Totals Heading"
-msgstr ""
-
-#: inc/elements/woocommerce/page-cart-form.php:192
-msgid "Proceed to Checkout Button"
 msgstr ""
 
 #: inc/elements/woocommerce/product-meta.php:15
@@ -2789,168 +2041,186 @@ msgstr ""
 msgid "Display WooCommerce cart as a widget"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:27
+#: inc/elements/woocommerce/menu-cart.php:26
 msgid "Simple Link"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:28
-#: inc/elements/frontend/nav-menu.php:46
+#: inc/elements/woocommerce/menu-cart.php:27
+#: inc/elements/frontend/nav-menu.php:47
 msgid "Dropdown"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:29
+#: inc/elements/woocommerce/menu-cart.php:28
 msgid "Offcanvas"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:34
-#: inc/elements/frontend/nav-menu.php:481
-msgid "Offcanvas Position"
-msgstr ""
-
-#: inc/elements/woocommerce/menu-cart.php:47
-msgid "Dropdown Offset"
-msgstr ""
-
-#: inc/elements/woocommerce/menu-cart.php:76
-#: inc/elements/woocommerce/menu-cart.php:239 inc/elements/theme/sidebar.php:75
-msgid "Widget Title"
-msgstr ""
-
-#: inc/elements/woocommerce/menu-cart.php:81
-#: inc/elements/frontend/search-form.php:287
+#: inc/elements/woocommerce/menu-cart.php:33
+#: inc/elements/frontend/search-form.php:301
 msgid "Custom Icon"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:107
+#: inc/elements/woocommerce/menu-cart.php:43 inc/elements/frontend/tabs.php:99
+#: inc/elements/frontend/tabs.php:254 inc/elements/frontend/features.php:91
+#: inc/elements/frontend/share-buttons.php:77
+#: inc/elements/frontend/share-buttons.php:211
+#: inc/elements/frontend/search-form.php:40
+#: inc/elements/frontend/search-form.php:61
+#: inc/elements/frontend/google-maps.php:69 inc/elements/frontend/list.php:67
+#: inc/elements/frontend/image-gallery.php:132
+#: inc/elements/frontend/form.php:229 inc/elements/frontend/posts.php:173
+#: inc/elements/frontend/image.php:86 inc/elements/frontend/button.php:92
+#: inc/elements/frontend/login-form.php:73
+#: inc/elements/frontend/taxonomies.php:97 inc/elements/theme/posts-loop.php:58
+#: inc/elements/theme/post-data.php:159 inc/elements/theme/breadcrumb.php:31
+#: inc/elements/theme/sidebar.php:43
+msgid "Style"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:60
 msgid "Hide counter and subtotal if no products in the cart"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:113 inc/elements/frontend/tabs.php:64
-#: inc/elements/frontend/icon.php:16 inc/elements/frontend/features.php:158
-#: inc/elements/frontend/features.php:329
-#: inc/elements/frontend/share-buttons.php:162
-#: inc/elements/frontend/accordion.php:46
-#: inc/elements/frontend/accordion.php:184 inc/elements/frontend/list.php:53
-#: inc/elements/frontend/list.php:195 inc/elements/frontend/video.php:119
-#: inc/elements/frontend/form.php:548 inc/elements/theme/post-data.php:140
-#: inc/elements/theme/post-data.php:281
-msgid "Icon"
+#: inc/elements/woocommerce/menu-cart.php:70
+#: inc/elements/woocommerce/menu-cart.php:392
+#: inc/elements/frontend/tabs.php:189 inc/elements/frontend/features.php:250
+#: inc/elements/frontend/share-buttons.php:166
+#: inc/elements/frontend/search-form.php:245
+#: inc/elements/frontend/accordion.php:188
+#: inc/elements/frontend/accordion.php:226 inc/elements/frontend/list.php:199
+#: inc/elements/frontend/nav-menu.php:546 inc/elements/theme/post-data.php:296
+msgid "Size"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:134
-#: inc/elements/woocommerce/menu-cart.php:372
+#: inc/elements/woocommerce/menu-cart.php:95
+#: inc/elements/woocommerce/menu-cart.php:444
 msgid "Subtotal"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:139
+#: inc/elements/woocommerce/menu-cart.php:100
 msgid "Hide Subtotal"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:175
+#: inc/elements/woocommerce/menu-cart.php:136
 msgid "Counter"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:179
+#: inc/elements/woocommerce/menu-cart.php:140
 msgid "Counter Type"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:182
-#: inc/elements/woocommerce/menu-cart.php:410
+#: inc/elements/woocommerce/menu-cart.php:143
+#: inc/elements/woocommerce/menu-cart.php:482
 msgid "Block"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:183
+#: inc/elements/woocommerce/menu-cart.php:144
 msgid "Badge"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:226
+#: inc/elements/woocommerce/menu-cart.php:145
+msgid "Hidden"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:187
 msgid "Badge Margin"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:227
+#: inc/elements/woocommerce/menu-cart.php:188
 msgid ""
 "Margin for badge counter can control distance from left top corner of the "
 "element."
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:265
-#: inc/elements/woocommerce/menu-cart.php:269
+#: inc/elements/woocommerce/menu-cart.php:200
+#: inc/elements/woocommerce/menu-cart.php:239
 msgid "Widget"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:274
+#: inc/elements/woocommerce/menu-cart.php:204 inc/elements/theme/sidebar.php:75
+msgid "Widget Title"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:209
+msgid "If title is not provided the default one will be shown"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:243
+#: inc/elements/frontend/nav-menu.php:591
+msgid "Offcanvas Position"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:256
+msgid "Dropdown Offset"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:267
+#: inc/elements/frontend/features.php:207 inc/elements/basic/section.php:20
+#: inc/elements/theme/post-data.php:305
+msgid "Position"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:283
 msgid "Padding around the widget"
 msgstr ""
 
 #: inc/elements/woocommerce/menu-cart.php:292
+#: inc/elements/frontend/list.php:127 inc/elements/basic/section.php:87
+#: inc/elements/basic/section.php:170 inc/elements/theme/post-data.php:231
+#: inc/elements/theme/post-data.php:354
+msgid "Width"
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:328
 msgid "Product Bottom Offset"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:300
+#: inc/elements/woocommerce/menu-cart.php:336
 msgid "Product Image Size"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:308
+#: inc/elements/woocommerce/menu-cart.php:345
 msgid "Product Title"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:320
+#: inc/elements/woocommerce/menu-cart.php:357
 msgid "Title on Hover"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:333
-#: inc/elements/woocommerce/menu-cart.php:337
-msgid "Quantity"
+#: inc/elements/woocommerce/menu-cart.php:370
+msgid "Quantity and Price"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:351
+#: inc/elements/woocommerce/menu-cart.php:388
 msgid "Remove Button"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:385
+#: inc/elements/woocommerce/menu-cart.php:457
 msgid "Vertical Spacing"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:409
+#: inc/elements/woocommerce/menu-cart.php:476
+msgid "For \"Inline\" option, the width of the widget should be big enough."
+msgstr ""
+
+#: inc/elements/woocommerce/menu-cart.php:481
 msgid "Inline"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:415
+#: inc/elements/woocommerce/menu-cart.php:487
 #: inc/elements/woocommerce/add-to-cart.php:73
 msgid "View Cart Button"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:425
+#: inc/elements/woocommerce/menu-cart.php:497
 msgid "Checkout Button"
 msgstr ""
 
-#: inc/elements/woocommerce/menu-cart.php:503
-#: inc/elements/woocommerce/menu-cart.php:545
+#: inc/elements/woocommerce/menu-cart.php:573
+#: inc/elements/woocommerce/menu-cart.php:615
 msgid "item"
 msgid_plural "items"
 msgstr[0] ""
 msgstr[1] ""
-
-#: inc/elements/woocommerce/page-my-account.php:14
-msgid "WooCommerce My Account"
-msgstr ""
-
-#: inc/elements/woocommerce/page-my-account.php:15
-msgid "My account content for an account page"
-msgstr ""
-
-#: inc/elements/woocommerce/page-my-account.php:23
-#: inc/elements/woocommerce/page-checkout.php:23
-msgid "Navigation"
-msgstr ""
-
-#: inc/elements/woocommerce/page-checkout.php:14
-msgid "WooCommerce Checkout"
-msgstr ""
-
-#: inc/elements/woocommerce/page-checkout.php:15
-msgid "Checkout form for checkout page"
-msgstr ""
 
 #: inc/elements/woocommerce/add-to-cart.php:15
 msgid "Add To Cart"
@@ -2977,12 +2247,12 @@ msgid "Add To Cart Button"
 msgstr ""
 
 #: inc/elements/woocommerce/add-to-cart.php:50
-#: inc/elements/frontend/features.php:173
-#: inc/elements/frontend/features.php:189
-#: inc/elements/frontend/search-form.php:217
-#: inc/elements/frontend/nav-menu.php:63 inc/elements/frontend/nav-menu.php:422
-#: inc/elements/frontend/form.php:505 inc/elements/frontend/image.php:98
-#: inc/elements/frontend/login-form.php:46
+#: inc/elements/frontend/features.php:218
+#: inc/elements/frontend/features.php:234
+#: inc/elements/frontend/search-form.php:231
+#: inc/elements/frontend/nav-menu.php:64 inc/elements/frontend/nav-menu.php:532
+#: inc/elements/frontend/form.php:540 inc/elements/frontend/separator.php:67
+#: inc/elements/frontend/image.php:98 inc/elements/frontend/login-form.php:46
 msgid "Align"
 msgstr ""
 
@@ -3036,11 +2306,11 @@ msgid "Make reviews link inline"
 msgstr ""
 
 #: inc/elements/woocommerce/product-data.php:124
-#: inc/elements/frontend/icon.php:137 inc/elements/frontend/features.php:78
-#: inc/elements/frontend/features.php:286
-#: inc/elements/frontend/features.php:427 inc/elements/frontend/heading.php:78
+#: inc/elements/frontend/icon.php:138 inc/elements/frontend/features.php:79
+#: inc/elements/frontend/features.php:331
+#: inc/elements/frontend/features.php:509 inc/elements/frontend/heading.php:78
 #: inc/elements/frontend/list.php:59 inc/elements/frontend/image.php:66
-#: inc/elements/frontend/button.php:66 inc/elements/theme/post-data.php:132
+#: inc/elements/frontend/button.php:67 inc/elements/theme/post-data.php:143
 msgid "Link"
 msgstr ""
 
@@ -3056,35 +2326,44 @@ msgstr ""
 msgid "Output attributes content for single product"
 msgstr ""
 
-#: inc/elements/frontend/slider.php:30 inc/elements/frontend/slider.php:76
+#: inc/elements/woocommerce/additional-information.php:24
+#: inc/elements/frontend/heading.php:16
+msgid "Heading"
+msgstr ""
+
+#: inc/elements/woocommerce/additional-information.php:28
+msgid "Hide Heading"
+msgstr ""
+
+#: inc/elements/frontend/slider.php:31 inc/elements/frontend/slider.php:78
 #: inc/elements/frontend/image-gallery.php:68
-#: inc/elements/frontend/posts.php:181
+#: inc/elements/frontend/posts.php:182
 msgid "Slider"
 msgstr ""
 
-#: inc/elements/frontend/slider.php:31
+#: inc/elements/frontend/slider.php:32
 msgid "Can be setup as a slider or slideshow with custom content"
 msgstr ""
 
-#: inc/elements/frontend/slider.php:48 inc/elements/frontend/tabs.php:49
+#: inc/elements/frontend/slider.php:50 inc/elements/frontend/tabs.php:49
 #: inc/elements/frontend/features.php:52
 #: inc/elements/frontend/share-buttons.php:38
 #: inc/elements/frontend/accordion.php:35 inc/elements/frontend/list.php:42
-#: inc/elements/frontend/image-gallery.php:32 inc/elements/frontend/form.php:23
+#: inc/elements/frontend/image-gallery.php:32 inc/elements/frontend/form.php:24
 #: inc/elements/theme/post-data.php:24
 msgid "Items"
 msgstr ""
 
-#: inc/elements/frontend/slider.php:53
+#: inc/elements/frontend/slider.php:55
 msgid "Slide does not accept any parameters"
 msgstr ""
 
-#: inc/elements/frontend/slider.php:80
+#: inc/elements/frontend/slider.php:82
 msgid "Basic Slider Settings"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:40 inc/elements/frontend/tabs.php:80
-#: inc/elements/frontend/tabs.php:110 inc/elements/frontend/tabs.php:257
+#: inc/elements/frontend/tabs.php:40 inc/elements/frontend/tabs.php:81
+#: inc/elements/frontend/tabs.php:111 inc/elements/frontend/tabs.php:258
 msgid "Tabs"
 msgstr ""
 
@@ -3092,57 +2371,93 @@ msgstr ""
 msgid "Tabbable panes with custom content"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:59 inc/elements/frontend/features.php:66
-#: inc/elements/frontend/features.php:267
-#: inc/elements/frontend/features.php:405
+#: inc/elements/frontend/tabs.php:60 inc/elements/frontend/features.php:67
+#: inc/elements/frontend/features.php:312
+#: inc/elements/frontend/features.php:487
 #: inc/elements/theme/archive-data.php:28
 msgid "Description"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:148
+#: inc/elements/frontend/tabs.php:105 inc/elements/frontend/features.php:394
+#: inc/elements/frontend/features.php:431
+#: inc/elements/frontend/features.php:531 inc/elements/frontend/form.php:313
+#: inc/elements/frontend/login-form.php:148
+msgid "Border"
+msgstr ""
+
+#: inc/elements/frontend/tabs.php:149
 msgid "Tab Title"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:166
+#: inc/elements/frontend/tabs.php:167
 msgid "Tab Description"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:184
+#: inc/elements/frontend/tabs.php:185
 msgid "Tab Icon"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:261 inc/elements/frontend/tabs.php:269
-#: inc/elements/frontend/separator.php:104
+#: inc/elements/frontend/tabs.php:262 inc/elements/frontend/tabs.php:270
+#: inc/elements/frontend/separator.php:119
 msgid "Title Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:277
+#: inc/elements/frontend/tabs.php:270 inc/elements/frontend/tabs.php:294
+#: inc/elements/frontend/tabs.php:318 inc/elements/frontend/tabs.php:342
+#: inc/elements/frontend/tabs.php:366 inc/elements/frontend/icon.php:74
+#: inc/elements/frontend/icon.php:95 inc/elements/frontend/icon.php:114
+#: inc/elements/frontend/icon.php:130
+#: inc/elements/frontend/share-buttons.php:224
+#: inc/elements/frontend/share-buttons.php:240
+#: inc/elements/frontend/share-buttons.php:256
+#: inc/elements/frontend/share-buttons.php:274
+#: inc/elements/frontend/accordion.php:144
+#: inc/elements/frontend/accordion.php:262
+#: inc/elements/frontend/accordion.php:279 inc/elements/frontend/heading.php:70
+#: inc/elements/frontend/button.php:311 inc/elements/frontend/button.php:495
+#: inc/elements/theme/posts-loop.php:168 inc/elements/theme/posts-loop.php:192
+#: inc/elements/theme/post-data.php:283 inc/elements/theme/post-data.php:333
+#: inc/elements/theme/post-data.php:389 inc/elements/theme/breadcrumb.php:75
+msgid "on Hover"
+msgstr ""
+
+#: inc/elements/frontend/tabs.php:278
 msgid "Active Title Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:285 inc/elements/frontend/tabs.php:293
+#: inc/elements/frontend/tabs.php:286 inc/elements/frontend/tabs.php:294
 msgid "Description Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:301
+#: inc/elements/frontend/tabs.php:302
 msgid "Active Description Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:309 inc/elements/frontend/tabs.php:317
-#: inc/elements/frontend/separator.php:142 inc/elements/frontend/button.php:215
+#: inc/elements/frontend/tabs.php:310 inc/elements/frontend/tabs.php:318
+#: inc/elements/frontend/separator.php:157 inc/elements/frontend/button.php:227
 msgid "Icon Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:325
+#: inc/elements/frontend/tabs.php:326
 msgid "Active Icon Color"
 msgstr ""
 
-#: inc/elements/frontend/tabs.php:373 inc/elements/frontend/nav-menu.php:182
+#: inc/elements/frontend/tabs.php:374 inc/elements/frontend/nav-menu.php:183
 msgid "Active Border Color"
 msgstr ""
 
 #: inc/elements/frontend/icon.php:17
 msgid "Simple icon element with optional link"
+msgstr ""
+
+#: inc/elements/frontend/icon.php:65 inc/elements/frontend/features.php:186
+#: inc/elements/frontend/share-buttons.php:265
+#: inc/elements/frontend/search-form.php:123
+#: inc/elements/frontend/accordion.php:93
+#: inc/elements/frontend/accordion.php:253
+#: inc/elements/frontend/nav-menu.php:192
+#: inc/elements/frontend/nav-menu.php:368 inc/elements/frontend/button.php:302
+msgid "Property values: horizontal, vertical, blur, size, color."
 msgstr ""
 
 #: inc/elements/frontend/features.php:43
@@ -3153,30 +2468,74 @@ msgstr ""
 msgid "List of boxes"
 msgstr ""
 
-#: inc/elements/frontend/features.php:73
+#: inc/elements/frontend/features.php:74
 msgid "Link Text"
 msgstr ""
 
-#: inc/elements/frontend/features.php:98 inc/elements/frontend/instagram.php:85
+#: inc/elements/frontend/features.php:99 inc/elements/frontend/instagram.php:85
 #: inc/elements/frontend/image-gallery.php:91
-#: inc/elements/frontend/posts.php:204 inc/elements/theme/posts-loop.php:62
+#: inc/elements/frontend/posts.php:205 inc/elements/theme/posts-loop.php:71
 msgid "Columns"
 msgstr ""
 
-#: inc/elements/frontend/features.php:107
+#: inc/elements/frontend/features.php:108
 msgid "Horizontal Gap"
 msgstr ""
 
-#: inc/elements/frontend/features.php:116
+#: inc/elements/frontend/features.php:117
 msgid "Vertical Gap"
 msgstr ""
 
-#: inc/elements/frontend/features.php:168
+#: inc/elements/frontend/features.php:127
+msgid "Entrance Animation"
+msgstr ""
+
+#: inc/elements/frontend/features.php:131
+msgid "Animation"
+msgstr ""
+
+#: inc/elements/frontend/features.php:137
+msgid "Fade Animations"
+msgstr ""
+
+#: inc/elements/frontend/features.php:139
+msgid "Fade In"
+msgstr ""
+
+#: inc/elements/frontend/features.php:140
+msgid "Fade In Up"
+msgstr ""
+
+#: inc/elements/frontend/features.php:141
+msgid "Fade In Down"
+msgstr ""
+
+#: inc/elements/frontend/features.php:142
+msgid "Fade In Left"
+msgstr ""
+
+#: inc/elements/frontend/features.php:143
+msgid "Fade In Right"
+msgstr ""
+
+#: inc/elements/frontend/features.php:150
+msgid "Delay (ms)"
+msgstr ""
+
+#: inc/elements/frontend/features.php:213
 msgid "Next to Title"
 msgstr ""
 
-#: inc/elements/frontend/features.php:291
+#: inc/elements/frontend/features.php:336
 msgid "Link the feature block"
+msgstr ""
+
+#: inc/elements/frontend/features.php:386
+msgid "Background on hover"
+msgstr ""
+
+#: inc/elements/frontend/features.php:402
+msgid "Border on hover"
 msgstr ""
 
 #: inc/elements/frontend/share-buttons.php:29
@@ -3200,12 +2559,12 @@ msgid "Custom Label"
 msgstr ""
 
 #: inc/elements/frontend/share-buttons.php:97 inc/elements/frontend/list.php:78
-#: inc/elements/frontend/nav-menu.php:48 inc/elements/theme/post-data.php:156
+#: inc/elements/frontend/nav-menu.php:49 inc/elements/theme/post-data.php:167
 msgid "Horizontal"
 msgstr ""
 
 #: inc/elements/frontend/share-buttons.php:98 inc/elements/frontend/list.php:77
-#: inc/elements/frontend/nav-menu.php:47 inc/elements/theme/post-data.php:157
+#: inc/elements/frontend/nav-menu.php:48 inc/elements/theme/post-data.php:168
 msgid "Vertical"
 msgstr ""
 
@@ -3218,14 +2577,14 @@ msgid "Hide Label"
 msgstr ""
 
 #: inc/elements/frontend/share-buttons.php:152
-#: inc/elements/frontend/form.php:138 inc/elements/frontend/form.php:329
+#: inc/elements/frontend/form.php:139 inc/elements/frontend/form.php:346
 #: inc/elements/frontend/login-form.php:165
 msgid "Label"
 msgstr ""
 
 #: inc/elements/frontend/share-buttons.php:175
-#: inc/elements/frontend/search-form.php:175
-#: inc/elements/frontend/button.php:49 inc/elements/theme/post-comments.php:188
+#: inc/elements/frontend/search-form.php:173
+#: inc/elements/frontend/button.php:49 inc/elements/theme/post-comments.php:196
 msgid "Button"
 msgstr ""
 
@@ -3258,55 +2617,71 @@ msgstr ""
 msgid "Select post type if you wish to search only for specific posts."
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:44
+#: inc/elements/frontend/search-form.php:42
 msgid "Classic"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:50 inc/elements/frontend/form.php:155
+#: inc/elements/frontend/search-form.php:43
+msgid "Overlay"
+msgstr ""
+
+#: inc/elements/frontend/search-form.php:48 inc/elements/frontend/form.php:156
 msgid "Placeholder"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:56 inc/elements/frontend/button.php:20
+#: inc/elements/frontend/search-form.php:54 inc/elements/frontend/button.php:20
 #: inc/elements/frontend/login-form.php:35
 msgid "Button Text"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:67
+#: inc/elements/frontend/search-form.php:65
 msgid "Input"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:84
+#: inc/elements/frontend/search-form.php:82
 msgid "Color on Focus"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:100
-#: inc/elements/frontend/search-form.php:116
-#: inc/elements/frontend/search-form.php:134
+#: inc/elements/frontend/search-form.php:98
+#: inc/elements/frontend/search-form.php:114
+#: inc/elements/frontend/search-form.php:132
 msgid "on Focus"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:143
-#: inc/elements/frontend/google-maps.php:84 inc/elements/basic/section.php:97
-#: inc/elements/basic/section.php:180
+#: inc/elements/frontend/search-form.php:141
+#: inc/elements/frontend/google-maps.php:85 inc/elements/basic/section.php:99
+#: inc/elements/basic/section.php:182
 msgid "Height"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:189
-#: inc/elements/frontend/nav-menu.php:396
-msgid "Mobile Breakpoint"
+#: inc/elements/frontend/search-form.php:182
+msgid "Icon Size"
 msgstr ""
 
 #: inc/elements/frontend/search-form.php:190
+msgid "Icon Margin"
+msgstr ""
+
+#: inc/elements/frontend/search-form.php:199
+msgid "Breakpoint"
+msgstr ""
+
+#: inc/elements/frontend/search-form.php:203
+#: inc/elements/frontend/nav-menu.php:506
+msgid "Mobile Breakpoint"
+msgstr ""
+
+#: inc/elements/frontend/search-form.php:204
 msgid ""
 "If selected \"None\", the search will not be collapsed to its mobile state."
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:213
-#: inc/elements/frontend/nav-menu.php:418
+#: inc/elements/frontend/search-form.php:227
+#: inc/elements/frontend/nav-menu.php:528
 msgid "Toggle Button"
 msgstr ""
 
-#: inc/elements/frontend/search-form.php:321
+#: inc/elements/frontend/search-form.php:336
 msgid "Search..."
 msgstr ""
 
@@ -3418,12 +2793,6 @@ msgstr ""
 msgid "Accordion Header"
 msgstr ""
 
-#: inc/elements/frontend/accordion.php:102 inc/elements/frontend/video.php:136
-#: inc/elements/frontend/nav-menu.php:200
-#: inc/elements/frontend/nav-menu.php:375
-msgid "Box Shadow on Hover"
-msgstr ""
-
 #: inc/elements/frontend/accordion.php:160
 #: inc/elements/frontend/accordion.php:295
 msgid "Background Color on Hover"
@@ -3501,79 +2870,83 @@ msgstr ""
 msgid "Interactive Google map"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:32
+#: inc/elements/frontend/google-maps.php:33
 #: inc/elements/frontend/image-gallery.php:49
 #: inc/elements/frontend/image.php:33 inc/elements/theme/post-data.php:58
 msgid "Post Meta Key"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:41
+#: inc/elements/frontend/google-maps.php:42
 msgid "Map Marker"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:42
+#: inc/elements/frontend/google-maps.php:43
 msgid "Enter address or latitude & longitude. For example: 52.291266, 4.964126"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:42
+#: inc/elements/frontend/google-maps.php:43
 msgid "How to get the coordinates?"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:50
+#: inc/elements/frontend/google-maps.php:51
 msgid "Mode"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:51
+#: inc/elements/frontend/google-maps.php:52
 msgid ""
 "Simple mode embedded the map via an iFrame. Advanced mode uses Maps "
 "JavaScript API."
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:54
+#: inc/elements/frontend/google-maps.php:55
 msgid "Simple"
 msgstr ""
 
 #: inc/elements/frontend/google-maps.php:61
+msgid "Zoom"
+msgstr ""
+
+#: inc/elements/frontend/google-maps.php:62
 msgid "A value from 1 (the world) to 21 (street level)."
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:73
+#: inc/elements/frontend/google-maps.php:74
 msgid "Black"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:74
+#: inc/elements/frontend/google-maps.php:75
 msgid "Dark Blue"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:75
+#: inc/elements/frontend/google-maps.php:76
 msgid "Greyscale"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:76
+#: inc/elements/frontend/google-maps.php:77
 msgid "White"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:93
+#: inc/elements/frontend/google-maps.php:94
 msgid "Use Scroll"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:102
+#: inc/elements/frontend/google-maps.php:103
 msgid "Disable default UI"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:143
+#: inc/elements/frontend/google-maps.php:144
 msgid "API key is not set"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:143
+#: inc/elements/frontend/google-maps.php:144
 msgid "Google Maps API Key is required for \"Google Maps\" element."
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:143
+#: inc/elements/frontend/google-maps.php:144
 msgid "Enter API key"
 msgstr ""
 
-#: inc/elements/frontend/google-maps.php:143
+#: inc/elements/frontend/google-maps.php:144
 msgid "and then refresh page to apply changes."
 msgstr ""
 
@@ -3581,22 +2954,18 @@ msgstr ""
 msgid "Heading or small paragraph"
 msgstr ""
 
-#: inc/elements/frontend/heading.php:16
-msgid "Heading"
-msgstr ""
-
 #: inc/elements/frontend/heading.php:17
 msgid "Heading or small paragraph text"
 msgstr ""
 
-#: inc/elements/frontend/heading.php:27 inc/elements/frontend/button.php:60
+#: inc/elements/frontend/heading.php:27 inc/elements/frontend/button.php:61
 msgid "HTML tags are allowed."
 msgstr ""
 
 #: inc/elements/frontend/heading.php:33 inc/elements/theme/post-title.php:24
-#: inc/elements/theme/post-data.php:176
+#: inc/elements/theme/post-data.php:187
 #: inc/elements/theme/document-title.php:43
-#: inc/elements/theme/post-excerpt.php:29
+#: inc/elements/theme/post-excerpt.php:34
 msgid "Tag"
 msgstr ""
 
@@ -3612,22 +2981,53 @@ msgstr ""
 msgid "List with custom style"
 msgstr ""
 
-#: inc/elements/frontend/list.php:94 inc/elements/frontend/nav-menu.php:69
+#: inc/elements/frontend/list.php:94 inc/elements/frontend/nav-menu.php:70
 #: inc/elements/basic/row.php:27
 msgid "Between"
 msgstr ""
 
-#: inc/elements/frontend/list.php:95 inc/elements/frontend/nav-menu.php:70
+#: inc/elements/frontend/list.php:95 inc/elements/frontend/nav-menu.php:71
 #: inc/elements/basic/row.php:28
 msgid "Around"
 msgstr ""
 
-#: inc/elements/frontend/list.php:101 inc/elements/theme/post-data.php:194
+#: inc/elements/frontend/list.php:101 inc/elements/theme/post-data.php:205
 msgid "Divider"
+msgstr ""
+
+#: inc/elements/frontend/list.php:113 inc/elements/frontend/separator.php:30
+#: inc/elements/theme/post-data.php:217
+msgid "Border Style"
+msgstr ""
+
+#: inc/elements/frontend/list.php:119 inc/elements/frontend/separator.php:35
+#: inc/elements/theme/post-data.php:223
+msgid "Solid"
+msgstr ""
+
+#: inc/elements/frontend/list.php:120 inc/elements/theme/post-data.php:224
+msgid "Double"
+msgstr ""
+
+#: inc/elements/frontend/list.php:121 inc/elements/frontend/separator.php:37
+#: inc/elements/theme/post-data.php:225
+msgid "Dotted"
 msgstr ""
 
 #: inc/elements/frontend/list.php:179 inc/elements/theme/post-title.php:79
 msgid "Text Decoration on Hover"
+msgstr ""
+
+#: inc/elements/frontend/list.php:186 inc/elements/theme/post-title.php:86
+msgid "Line-through"
+msgstr ""
+
+#: inc/elements/frontend/list.php:187 inc/elements/theme/post-title.php:87
+msgid "Overline"
+msgstr ""
+
+#: inc/elements/frontend/list.php:188 inc/elements/theme/post-title.php:88
+msgid "Underline"
 msgstr ""
 
 #: inc/elements/frontend/layout.php:18
@@ -3638,9 +3038,8 @@ msgstr ""
 msgid "You can create and change layouts via"
 msgstr ""
 
-#: inc/elements/frontend/layout.php:55 inc/elements/frontend/posts.php:306
-#: inc/elements/theme/posts-loop.php:240 inc/elements/theme/posts-loop.php:255
-msgid "Template is not set."
+#: inc/elements/frontend/layout.php:55
+msgid "Layout is not set."
 msgstr ""
 
 #: inc/elements/frontend/image-gallery.php:14
@@ -3651,25 +3050,30 @@ msgstr ""
 msgid "Image gallery based on custom post meta"
 msgstr ""
 
+#: inc/elements/frontend/image-gallery.php:40
+#: inc/elements/frontend/image.php:14 inc/elements/frontend/image.php:55
+msgid "Image"
+msgstr ""
+
 #: inc/elements/frontend/image-gallery.php:66
-#: inc/elements/frontend/posts.php:179 inc/elements/theme/posts-loop.php:56
+#: inc/elements/frontend/posts.php:180 inc/elements/theme/posts-loop.php:65
 msgid "Grid"
 msgstr ""
 
 #: inc/elements/frontend/image-gallery.php:67
-#: inc/elements/frontend/posts.php:180 inc/elements/theme/posts-loop.php:57
+#: inc/elements/frontend/posts.php:181 inc/elements/theme/posts-loop.php:66
 msgid "Masonry"
 msgstr ""
 
 #: inc/elements/frontend/image-gallery.php:110
-#: inc/elements/frontend/posts.php:223 inc/elements/theme/posts-loop.php:82
+#: inc/elements/frontend/posts.php:225 inc/elements/theme/posts-loop.php:91
 msgid "Columns Gap"
 msgstr ""
 
 #: inc/elements/frontend/image-gallery.php:119
-#: inc/elements/frontend/form.php:266 inc/elements/frontend/posts.php:232
+#: inc/elements/frontend/form.php:267 inc/elements/frontend/posts.php:234
 #: inc/elements/frontend/login-form.php:110
-#: inc/elements/theme/posts-loop.php:91
+#: inc/elements/theme/posts-loop.php:100
 msgid "Row Gap"
 msgstr ""
 
@@ -3685,6 +3089,10 @@ msgstr ""
 
 #: inc/elements/frontend/image-gallery.php:149
 msgid "Use lightbox slider"
+msgstr ""
+
+#: inc/elements/frontend/video.php:14
+msgid "Video"
 msgstr ""
 
 #: inc/elements/frontend/video.php:15
@@ -3703,8 +3111,28 @@ msgstr ""
 msgid "Meta Key"
 msgstr ""
 
+#: inc/elements/frontend/video.php:53
+msgid "Start Time"
+msgstr ""
+
+#: inc/elements/frontend/video.php:54
+msgid "Specify a start time (in seconds)."
+msgstr ""
+
 #: inc/elements/frontend/video.php:54 inc/elements/frontend/video.php:61
 msgid "Will not be applied with loop mode."
+msgstr ""
+
+#: inc/elements/frontend/video.php:60
+msgid "End Time"
+msgstr ""
+
+#: inc/elements/frontend/video.php:61
+msgid "Specify an end time (in seconds)."
+msgstr ""
+
+#: inc/elements/frontend/video.php:66
+msgid "Autoplay"
 msgstr ""
 
 #: inc/elements/frontend/video.php:73
@@ -3735,12 +3163,12 @@ msgstr ""
 msgid "Icon Box Shadow"
 msgstr ""
 
-#: inc/elements/frontend/video.php:147
+#: inc/elements/frontend/video.php:147 inc/elements/frontend/button.php:259
 msgid "Icon Border Radius"
 msgstr ""
 
 #: inc/elements/frontend/nav-menu.php:20
-msgid "There are no menus in your site."
+msgid "There are no menus on your site."
 msgstr ""
 
 #: inc/elements/frontend/nav-menu.php:26
@@ -3751,83 +3179,108 @@ msgstr ""
 msgid "Vertical or horizontal nav menu with optional mobile view"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:35
+#: inc/elements/frontend/nav-menu.php:36
 msgid "Menu"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:36
+#: inc/elements/frontend/nav-menu.php:37
 msgid "You can manage your menus in WordPress admin dashboard."
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:36
+#: inc/elements/frontend/nav-menu.php:37
 msgid "Open menus screen"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:54
+#: inc/elements/frontend/nav-menu.php:55
 msgid "Top Level"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:58
+#: inc/elements/frontend/nav-menu.php:59
 msgid "Style for Desktop Menu"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:59
+#: inc/elements/frontend/nav-menu.php:60
 msgid "These options will affect only top level of menu."
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:71 inc/elements/basic/column.php:154
+#: inc/elements/frontend/nav-menu.php:72 inc/elements/basic/column.php:154
 msgid "Stretch"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:209
-#: inc/elements/frontend/nav-menu.php:383
+#: inc/elements/frontend/nav-menu.php:210
+#: inc/elements/frontend/nav-menu.php:384
 msgid "Active Box Shadow"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:227 inc/elements/frontend/image.php:157
-#: inc/elements/frontend/button.php:247 inc/elements/frontend/button.php:256
+#: inc/elements/frontend/nav-menu.php:219 inc/elements/frontend/image.php:148
+#: inc/elements/theme/post-title.php:98 inc/elements/theme/child-pages.php:75
+msgid "Opacity"
+msgstr ""
+
+#: inc/elements/frontend/nav-menu.php:228 inc/elements/frontend/image.php:157
+#: inc/elements/frontend/button.php:283 inc/elements/frontend/button.php:292
 #: inc/elements/theme/post-title.php:107 inc/elements/theme/child-pages.php:84
 msgid "Opacity on Hover"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:236
+#: inc/elements/frontend/nav-menu.php:237
 msgid "Active Opacity"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:246
+#: inc/elements/frontend/nav-menu.php:247
 msgid "Sub Menu"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:250
+#: inc/elements/frontend/nav-menu.php:251
 msgid "Style for Desktop Sub Menus"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:262
+#: inc/elements/frontend/nav-menu.php:263
 msgid "Vertical Padding"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:278
+#: inc/elements/frontend/nav-menu.php:279
 msgid "Min Width"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:294
+#: inc/elements/frontend/nav-menu.php:295
 msgid "Style for Desktop Sub Menu Items"
 msgstr ""
 
+#: inc/elements/frontend/nav-menu.php:393
 #: inc/elements/frontend/nav-menu.php:397
+msgid "Mega Menu"
+msgstr ""
+
+#: inc/elements/frontend/nav-menu.php:398
+msgid ""
+"Mega menu nav is Layout Builder items added as nav submenu. Each Layout can "
+"have its own style but also some global styles can be added via these "
+"options."
+msgstr ""
+
+#: inc/elements/frontend/nav-menu.php:411
+msgid "Style for Desktops"
+msgstr ""
+
+#: inc/elements/frontend/nav-menu.php:464
+msgid "Style for Mobiles"
+msgstr ""
+
+#: inc/elements/frontend/nav-menu.php:507
 msgid ""
 "If selected \"None\", the menu will not be collapsed to its mobile state."
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:477
+#: inc/elements/frontend/nav-menu.php:587
 msgid "Menu Position"
 msgstr ""
 
-#: inc/elements/frontend/nav-menu.php:493
+#: inc/elements/frontend/nav-menu.php:603
 msgid "Style for Mobile Menu"
 msgstr ""
 
-#: inc/elements/frontend/form.php:14 inc/elements/frontend/form.php:232
+#: inc/elements/frontend/form.php:14 inc/elements/frontend/form.php:233
 #: inc/elements/frontend/login-form.php:77
 #: inc/elements/theme/post-comments.php:135
 msgid "Form"
@@ -3837,213 +3290,227 @@ msgstr ""
 msgid "Contact or MailChimp form."
 msgstr ""
 
-#: inc/elements/frontend/form.php:32 inc/elements/frontend/form.php:405
-#: inc/elements/frontend/button.php:58
+#: inc/elements/frontend/form.php:33 inc/elements/frontend/form.php:440
+#: inc/elements/frontend/button.php:59
 msgid "Text"
 msgstr ""
 
-#: inc/elements/frontend/form.php:33
+#: inc/elements/frontend/form.php:34
 msgid "Email"
 msgstr ""
 
-#: inc/elements/frontend/form.php:34 inc/elements/theme/post-data.php:101
+#: inc/elements/frontend/form.php:35 inc/elements/theme/post-data.php:101
 msgid "Number"
 msgstr ""
 
-#: inc/elements/frontend/form.php:35
+#: inc/elements/frontend/form.php:36
 msgid "Textarea"
 msgstr ""
 
-#: inc/elements/frontend/form.php:36
+#: inc/elements/frontend/form.php:37
 msgid "Radio"
 msgstr ""
 
-#: inc/elements/frontend/form.php:37
+#: inc/elements/frontend/form.php:38
 msgid "Checkbox"
 msgstr ""
 
-#: inc/elements/frontend/form.php:38
-msgid "Select"
-msgstr ""
-
-#: inc/elements/frontend/form.php:44 inc/elements/frontend/form.php:411
+#: inc/elements/frontend/form.php:45 inc/elements/frontend/form.php:446
 msgid "Wrapper Width"
 msgstr ""
 
-#: inc/elements/frontend/form.php:51 inc/elements/frontend/form.php:69
-#: inc/elements/frontend/form.php:86 inc/elements/frontend/form.php:103
-#: inc/elements/frontend/form.php:120 inc/elements/frontend/form.php:418
-#: inc/elements/frontend/form.php:436 inc/elements/frontend/form.php:453
-#: inc/elements/frontend/form.php:470 inc/elements/frontend/form.php:487
+#: inc/elements/frontend/form.php:52 inc/elements/frontend/form.php:70
+#: inc/elements/frontend/form.php:87 inc/elements/frontend/form.php:104
+#: inc/elements/frontend/form.php:121 inc/elements/frontend/form.php:453
+#: inc/elements/frontend/form.php:471 inc/elements/frontend/form.php:488
+#: inc/elements/frontend/form.php:505 inc/elements/frontend/form.php:522
 #: inc/elements/basic/column.php:29 inc/elements/basic/column.php:47
 #: inc/elements/basic/column.php:64 inc/elements/basic/column.php:81
 #: inc/elements/basic/column.php:98
 msgid "Basic"
 msgstr ""
 
-#: inc/elements/frontend/form.php:164
+#: inc/elements/frontend/form.php:53 inc/elements/frontend/form.php:69
+#: inc/elements/frontend/form.php:86 inc/elements/frontend/form.php:103
+#: inc/elements/frontend/form.php:120 inc/elements/frontend/form.php:454
+#: inc/elements/frontend/form.php:470 inc/elements/frontend/form.php:487
+#: inc/elements/frontend/form.php:504 inc/elements/frontend/form.php:521
+#: inc/elements/basic/column.php:30 inc/elements/basic/column.php:46
+#: inc/elements/basic/column.php:63 inc/elements/basic/column.php:80
+#: inc/elements/basic/column.php:97 inc/elements/basic/column.php:168
+msgid "Auto"
+msgstr ""
+
+#: inc/elements/frontend/form.php:165
 msgid "Rows"
 msgstr ""
 
-#: inc/elements/frontend/form.php:185
+#: inc/elements/frontend/form.php:186
 msgid "Options"
 msgstr ""
 
-#: inc/elements/frontend/form.php:186
+#: inc/elements/frontend/form.php:187
 msgid "Enter each option in a separate line."
 msgstr ""
 
-#: inc/elements/frontend/form.php:194
+#: inc/elements/frontend/form.php:195
 msgid "Make Inline List"
 msgstr ""
 
-#: inc/elements/frontend/form.php:203
+#: inc/elements/frontend/form.php:204
 msgid "Make Field Required"
 msgstr ""
 
-#: inc/elements/frontend/form.php:274
+#: inc/elements/frontend/form.php:275
 msgid "Column Gap"
 msgstr ""
 
-#: inc/elements/frontend/form.php:304 inc/elements/frontend/login-form.php:140
+#: inc/elements/frontend/form.php:305 inc/elements/frontend/login-form.php:140
 msgid "Background on Focus"
 msgstr ""
 
-#: inc/elements/frontend/form.php:320 inc/elements/frontend/login-form.php:156
+#: inc/elements/frontend/form.php:321 inc/elements/frontend/login-form.php:156
 msgid "Border on Focus"
 msgstr ""
 
-#: inc/elements/frontend/form.php:334 inc/elements/frontend/login-form.php:170
+#: inc/elements/frontend/form.php:337
+msgid "Box Shadow on Focus"
+msgstr ""
+
+#: inc/elements/frontend/form.php:351 inc/elements/frontend/login-form.php:170
 msgid "Hide Labels"
 msgstr ""
 
-#: inc/elements/frontend/form.php:354
+#: inc/elements/frontend/form.php:371
 msgid "Radio and Checkbox inputs"
 msgstr ""
 
-#: inc/elements/frontend/form.php:374
+#: inc/elements/frontend/form.php:391
 msgid "Checked Color"
 msgstr ""
 
-#: inc/elements/frontend/form.php:383
+#: inc/elements/frontend/form.php:400
+msgid "HTML Fields"
+msgstr ""
+
+#: inc/elements/frontend/form.php:418
 msgid "Response Messages"
 msgstr ""
 
-#: inc/elements/frontend/form.php:401 inc/elements/frontend/login-form.php:42
+#: inc/elements/frontend/form.php:436 inc/elements/frontend/login-form.php:42
 msgid "Submit Button"
 msgstr ""
 
-#: inc/elements/frontend/form.php:520 inc/elements/frontend/image.php:139
-#: inc/elements/frontend/button.php:101 inc/elements/frontend/login-form.php:60
+#: inc/elements/frontend/form.php:555 inc/elements/frontend/image.php:139
+#: inc/elements/frontend/button.php:113 inc/elements/frontend/login-form.php:60
 msgid "Full Width"
 msgstr ""
 
-#: inc/elements/frontend/form.php:521 inc/elements/frontend/button.php:102
-#: inc/elements/frontend/login-form.php:61
+#: inc/elements/frontend/form.php:556 inc/elements/frontend/login-form.php:61
 msgid "Make Button Full Width"
 msgstr ""
 
-#: inc/elements/frontend/form.php:555 inc/elements/frontend/form.php:559
+#: inc/elements/frontend/form.php:590 inc/elements/frontend/form.php:594
 msgid "Action"
 msgstr ""
 
-#: inc/elements/frontend/form.php:560
+#: inc/elements/frontend/form.php:595
 msgid "Action which will be performed after the form is submitted."
 msgstr ""
 
-#: inc/elements/frontend/form.php:569
+#: inc/elements/frontend/form.php:604
 msgid "Recipient"
 msgstr ""
 
-#: inc/elements/frontend/form.php:570
+#: inc/elements/frontend/form.php:605
 msgid "If recipient is not specified the admin email will be used instead."
 msgstr ""
 
-#: inc/elements/frontend/form.php:579
+#: inc/elements/frontend/form.php:614
 msgid "Email Subject"
 msgstr ""
 
-#: inc/elements/frontend/form.php:588
+#: inc/elements/frontend/form.php:623
 msgid "Meta Data"
 msgstr ""
 
-#: inc/elements/frontend/form.php:589
+#: inc/elements/frontend/form.php:624
 msgid "Send meta data"
 msgstr ""
 
-#: inc/elements/frontend/form.php:590
+#: inc/elements/frontend/form.php:625
 msgid "By default meta data includes page url, user agent and remote ip"
 msgstr ""
 
-#: inc/elements/frontend/form.php:598
+#: inc/elements/frontend/form.php:633
 msgid "List ID"
 msgstr ""
 
-#: inc/elements/frontend/form.php:599
+#: inc/elements/frontend/form.php:634
 msgid "Open Lists."
 msgstr ""
 
-#: inc/elements/frontend/form.php:599
+#: inc/elements/frontend/form.php:634
 msgid ""
 "Then click on the list title, then in list menu Settings > List name and "
 "defaults."
 msgstr ""
 
-#: inc/elements/frontend/form.php:608
+#: inc/elements/frontend/form.php:643
 msgid "Custom Messages"
 msgstr ""
 
-#: inc/elements/frontend/form.php:609
+#: inc/elements/frontend/form.php:644
 msgid "If custom messages are not provided the default ones will be used."
 msgstr ""
 
-#: inc/elements/frontend/form.php:613
+#: inc/elements/frontend/form.php:648
 msgid "Success Message"
 msgstr ""
 
-#: inc/elements/frontend/form.php:635
+#: inc/elements/frontend/form.php:670
 msgid "Send"
 msgstr ""
 
-#: inc/elements/frontend/form.php:636
+#: inc/elements/frontend/form.php:671
 msgid "The form was sent successfully."
 msgstr ""
 
-#: inc/elements/frontend/form.php:754
+#: inc/elements/frontend/form.php:789
 msgid "An error occurred."
 msgstr ""
 
 #. %s: Site title.
-#: inc/elements/frontend/form.php:761
+#: inc/elements/frontend/form.php:796
 #, php-format
 msgid "New message from \"%s\""
 msgstr ""
 
-#: inc/elements/frontend/form.php:777
+#: inc/elements/frontend/form.php:812
 msgid "Page URL"
 msgstr ""
 
-#: inc/elements/frontend/form.php:778
+#: inc/elements/frontend/form.php:813
 msgid "User Agent"
 msgstr ""
 
-#: inc/elements/frontend/form.php:779
+#: inc/elements/frontend/form.php:814
 msgid "Remote IP"
 msgstr ""
 
-#: inc/elements/frontend/form.php:801
+#: inc/elements/frontend/form.php:836
 msgid "API Key is required."
 msgstr ""
 
-#: inc/elements/frontend/form.php:801
+#: inc/elements/frontend/form.php:836
 msgid "Set it now?"
 msgstr ""
 
-#: inc/elements/frontend/form.php:809
+#: inc/elements/frontend/form.php:844
 msgid "List ID is required. You can add it in element settings."
 msgstr ""
 
-#: inc/elements/frontend/form.php:827
+#: inc/elements/frontend/form.php:862
 msgid "Email is not valid."
 msgstr ""
 
@@ -4051,23 +3518,35 @@ msgstr ""
 msgid "Horizontal separator line with a custom title"
 msgstr ""
 
-#: inc/elements/frontend/separator.php:70
+#: inc/elements/frontend/separator.php:36
+msgid "Dashed"
+msgstr ""
+
+#: inc/elements/frontend/separator.php:50 inc/elements/frontend/button.php:419
+msgid "Max. Width"
+msgstr ""
+
+#: inc/elements/frontend/separator.php:68
+msgid "If Max. Width option is set"
+msgstr ""
+
+#: inc/elements/frontend/separator.php:85
 msgid "Hide Left Line"
 msgstr ""
 
-#: inc/elements/frontend/separator.php:79
+#: inc/elements/frontend/separator.php:94
 msgid "Hide Right Line"
 msgstr ""
 
-#: inc/elements/frontend/separator.php:120
+#: inc/elements/frontend/separator.php:135
 msgid "Icon Before Title"
 msgstr ""
 
-#: inc/elements/frontend/separator.php:129
+#: inc/elements/frontend/separator.php:144
 msgid "Icon After Title"
 msgstr ""
 
-#: inc/elements/frontend/separator.php:138
+#: inc/elements/frontend/separator.php:153
 msgid "Icon Style"
 msgstr ""
 
@@ -4127,7 +3606,7 @@ msgstr ""
 msgid "Separate post IDs by comma."
 msgstr ""
 
-#: inc/elements/frontend/posts.php:122
+#: inc/elements/frontend/posts.php:122 inc/elements/frontend/taxonomies.php:52
 msgid "Order By"
 msgstr ""
 
@@ -4139,15 +3618,16 @@ msgstr ""
 msgid "Random"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:135 inc/elements/basic/column.php:116
+#: inc/elements/frontend/posts.php:135 inc/elements/frontend/taxonomies.php:64
+#: inc/elements/basic/column.php:116
 msgid "Order"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:139
+#: inc/elements/frontend/posts.php:139 inc/elements/frontend/taxonomies.php:69
 msgid "DESC"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:140
+#: inc/elements/frontend/posts.php:140 inc/elements/frontend/taxonomies.php:68
 msgid "ASC"
 msgstr ""
 
@@ -4159,11 +3639,11 @@ msgstr ""
 msgid "Number of posts to load"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:154
+#: inc/elements/frontend/posts.php:154 inc/elements/frontend/taxonomies.php:81
 msgid "Offset"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:155
+#: inc/elements/frontend/posts.php:155 inc/elements/frontend/taxonomies.php:82
 msgid "Number of post to pass over"
 msgstr ""
 
@@ -4175,10 +3655,9 @@ msgstr ""
 msgid "Display post grid based on selected query"
 msgstr ""
 
-#: inc/elements/frontend/posts.php:316
-msgid ""
-"Posts element works only for single posts. To display posts in archive pages "
-"use Posts Loop element."
+#: inc/elements/frontend/posts.php:308 inc/elements/theme/posts-loop.php:250
+#: inc/elements/theme/posts-loop.php:269
+msgid "Template is not set."
 msgstr ""
 
 #: inc/elements/frontend/posts.php:332
@@ -4222,77 +3701,104 @@ msgstr ""
 msgid "Could be setup as simple link or modal window"
 msgstr ""
 
-#: inc/elements/frontend/button.php:76 inc/elements/frontend/button.php:429
+#: inc/elements/frontend/button.php:77 inc/elements/frontend/button.php:465
 msgid "Icon Position"
 msgstr ""
 
-#: inc/elements/frontend/button.php:111
+#: inc/elements/frontend/button.php:97 inc/elements/theme/post-data.php:258
+#: inc/elements/theme/sidebar.php:116
+msgid "Basic Style"
+msgstr ""
+
+#: inc/elements/frontend/button.php:98
+msgid "Inherit button style from global design settings"
+msgstr ""
+
+#: inc/elements/frontend/button.php:99
+#, php-format
+msgid "You can change global design settings %s here. %s"
+msgstr ""
+
+#: inc/elements/frontend/button.php:114
+msgid "Make button full width"
+msgstr ""
+
+#: inc/elements/frontend/button.php:123
 msgid "Content Alignment"
 msgstr ""
 
-#: inc/elements/frontend/button.php:223
+#: inc/elements/frontend/button.php:235
 msgid "Icon Color on Hover"
 msgstr ""
 
-#: inc/elements/frontend/button.php:284
+#: inc/elements/frontend/button.php:243
+msgid "Icon Background"
+msgstr ""
+
+#: inc/elements/frontend/button.php:251
+msgid "Icon Background on Hover"
+msgstr ""
+
+#: inc/elements/frontend/button.php:320
 msgid "Text Shadow"
 msgstr ""
 
-#: inc/elements/frontend/button.php:293
+#: inc/elements/frontend/button.php:329
 msgid "Text Shadow on Hover"
 msgstr ""
 
-#: inc/elements/frontend/button.php:303
+#: inc/elements/frontend/button.php:339
 msgid "Modal"
 msgstr ""
 
-#: inc/elements/frontend/button.php:308 inc/elements/frontend/button.php:348
+#: inc/elements/frontend/button.php:344 inc/elements/frontend/button.php:384
 msgid "Modal Window"
 msgstr ""
 
-#: inc/elements/frontend/button.php:309
+#: inc/elements/frontend/button.php:345
 msgid "Use Button to Trigger Modal Window"
 msgstr ""
 
-#: inc/elements/frontend/button.php:310
+#: inc/elements/frontend/button.php:346
+#, php-format
 msgid ""
 "Modal window content has an inner builder area. To open a modal window click "
-"on a button itself."
+"%shere%s or on a button itself."
 msgstr ""
 
-#: inc/elements/frontend/button.php:328
+#: inc/elements/frontend/button.php:364
 msgid "Off-canvas"
 msgstr ""
 
-#: inc/elements/frontend/button.php:329
+#: inc/elements/frontend/button.php:365
 msgid "Add Modal Window Off-canvas Effect"
 msgstr ""
 
-#: inc/elements/frontend/button.php:334
+#: inc/elements/frontend/button.php:370
 msgid "Off-canvas Position"
 msgstr ""
 
-#: inc/elements/frontend/button.php:349
+#: inc/elements/frontend/button.php:385
 msgid "Area outside the modal content"
 msgstr ""
 
-#: inc/elements/frontend/button.php:370
+#: inc/elements/frontend/button.php:406
 msgid "Modal Window Content"
 msgstr ""
 
-#: inc/elements/frontend/button.php:417
+#: inc/elements/frontend/button.php:453
 msgid "Close Icon"
 msgstr ""
 
-#: inc/elements/frontend/button.php:433
+#: inc/elements/frontend/button.php:469
 msgid "Inside modal content"
 msgstr ""
 
-#: inc/elements/frontend/button.php:434
+#: inc/elements/frontend/button.php:470
 msgid "Outside modal content"
 msgstr ""
 
-#: inc/elements/frontend/button.php:439
+#: inc/elements/frontend/button.php:475
 msgid "Icon Align"
 msgstr ""
 
@@ -4337,6 +3843,69 @@ msgstr ""
 msgid "Logout."
 msgstr ""
 
+#: inc/elements/frontend/taxonomies.php:13
+#: inc/elements/frontend/taxonomies.php:150
+msgid "Select Taxonomy"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:22
+msgid "Taxonomies"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:23
+msgid "Display taxonomy list based on selected query"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:31
+msgid "taxonomy"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:32
+#: inc/elements/frontend/taxonomies.php:39
+#: inc/elements/frontend/taxonomies.php:46
+msgid "Separate terms IDs by comma."
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:38
+msgid "List of IDs to include"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:45
+msgid "List of IDs to exclude"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:56
+msgid "Name"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:58
+msgid "Count"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:59
+msgid "Include"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:74
+msgid "Terms Number"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:75
+msgid "Number of terms to load"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:89
+msgid "Empty Terms"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:90
+msgid "Do not hide empty terms"
+msgstr ""
+
+#: inc/elements/frontend/taxonomies.php:91
+msgid "By default terms with no posts will not be shown"
+msgstr ""
+
 #: inc/elements/basic/container.php:20
 msgid "Container Width"
 msgstr ""
@@ -4353,90 +3922,102 @@ msgstr ""
 msgid "Absolute"
 msgstr ""
 
-#: inc/elements/basic/section.php:32
+#: inc/elements/basic/section.php:27
+msgid "Absolute only for Homepage"
+msgstr ""
+
+#: inc/elements/basic/section.php:28
+msgid "Fixed"
+msgstr ""
+
+#: inc/elements/basic/section.php:29
+msgid "Fixed only for Homepage"
+msgstr ""
+
+#: inc/elements/basic/section.php:34
 msgid "Transparent Background"
 msgstr ""
 
-#: inc/elements/basic/section.php:33
+#: inc/elements/basic/section.php:35
 msgid "Make background of the section transparent when section is not fixed"
 msgstr ""
 
-#: inc/elements/basic/section.php:44
+#: inc/elements/basic/section.php:46
 msgid "Color Before Fixed"
 msgstr ""
 
-#: inc/elements/basic/section.php:45
+#: inc/elements/basic/section.php:47
 msgid ""
 "Primary color for elements of none fixed section. Note! This option covers "
 "only basic style. Use .pagex-section-fixed class in your custom CSS to "
 "trigger style when section fixed."
 msgstr ""
 
-#: inc/elements/basic/section.php:64
+#: inc/elements/basic/section.php:66
 msgid "Top Divider"
 msgstr ""
 
-#: inc/elements/basic/section.php:68 inc/elements/basic/section.php:151
+#: inc/elements/basic/section.php:70 inc/elements/basic/section.php:153
 msgid "Clouds"
 msgstr ""
 
-#: inc/elements/basic/section.php:69 inc/elements/basic/section.php:152
+#: inc/elements/basic/section.php:71 inc/elements/basic/section.php:154
 msgid "Clouds (flipped)"
 msgstr ""
 
-#: inc/elements/basic/section.php:70 inc/elements/basic/section.php:153
+#: inc/elements/basic/section.php:72 inc/elements/basic/section.php:155
 msgid "Clouds Opacity"
 msgstr ""
 
-#: inc/elements/basic/section.php:71 inc/elements/basic/section.php:154
+#: inc/elements/basic/section.php:73 inc/elements/basic/section.php:156
 msgid "Clouds Opacity (flipped)"
 msgstr ""
 
-#: inc/elements/basic/section.php:72 inc/elements/basic/section.php:155
+#: inc/elements/basic/section.php:74 inc/elements/basic/section.php:157
 msgid "Curve"
 msgstr ""
 
-#: inc/elements/basic/section.php:73 inc/elements/basic/section.php:156
+#: inc/elements/basic/section.php:75 inc/elements/basic/section.php:158
 msgid "Curve (flipped)"
 msgstr ""
 
-#: inc/elements/basic/section.php:74 inc/elements/basic/section.php:157
+#: inc/elements/basic/section.php:76 inc/elements/basic/section.php:159
 msgid "Tilt"
 msgstr ""
 
-#: inc/elements/basic/section.php:75 inc/elements/basic/section.php:158
+#: inc/elements/basic/section.php:77 inc/elements/basic/section.php:160
 msgid "Tilt Opacity"
 msgstr ""
 
-#: inc/elements/basic/section.php:76 inc/elements/basic/section.php:159
+#: inc/elements/basic/section.php:78 inc/elements/basic/section.php:161
 msgid "Triangle"
 msgstr ""
 
-#: inc/elements/basic/section.php:77 inc/elements/basic/section.php:160
+#: inc/elements/basic/section.php:79 inc/elements/basic/section.php:162
 msgid "Triangle (flipped)"
 msgstr ""
 
-#: inc/elements/basic/section.php:78 inc/elements/basic/section.php:161
+#: inc/elements/basic/section.php:80 inc/elements/basic/section.php:163
 msgid "Wave"
 msgstr ""
 
-#: inc/elements/basic/section.php:79 inc/elements/basic/section.php:162
+#: inc/elements/basic/section.php:81 inc/elements/basic/section.php:164
 msgid "Wave Opacity"
 msgstr ""
 
-#: inc/elements/basic/section.php:80 inc/elements/basic/section.php:163
+#: inc/elements/basic/section.php:82 inc/elements/basic/section.php:165
 msgid "Wave Border"
 msgstr ""
 
-#: inc/elements/basic/section.php:120 inc/elements/basic/section.php:203
+#: inc/elements/basic/section.php:122 inc/elements/basic/section.php:205
 msgid "Above the content"
 msgstr ""
 
-#: inc/elements/basic/section.php:133 inc/elements/basic/section.php:216
+#: inc/elements/basic/section.php:135 inc/elements/basic/section.php:218
 msgid "Flip"
 msgstr ""
 
-#: inc/elements/basic/section.php:147
+#: inc/elements/basic/section.php:149
 msgid "Bottom Divider"
 msgstr ""
 
@@ -4555,46 +4136,56 @@ msgid "Display posts in a loop for blog and archive pages"
 msgstr ""
 
 #: inc/elements/theme/posts-loop.php:34
-msgid "Search Results: Nothing Found"
+msgid "Search Excerpt Template"
 msgstr ""
 
 #: inc/elements/theme/posts-loop.php:35
+msgid ""
+"You can use a separate Excerpt Template for search results if you use the "
+"same Theme Template for Archive and Search Results page"
+msgstr ""
+
+#: inc/elements/theme/posts-loop.php:42
+msgid "Search Results: Nothing Found"
+msgstr ""
+
+#: inc/elements/theme/posts-loop.php:43
 msgid ""
 "Select layout which will be displayed when nothing matched a search term. If "
 "nothing is selected the default message will be displayed."
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:41
+#: inc/elements/theme/posts-loop.php:50
 msgid "No posts to display"
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:42
+#: inc/elements/theme/posts-loop.php:51
 msgid ""
 "Select layout which will be displayed when no posts to show based on main "
 "query. If nothing is selected the default message will be displayed."
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:101
+#: inc/elements/theme/posts-loop.php:110
 msgid "Pagination"
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:105
+#: inc/elements/theme/posts-loop.php:114
 msgid "Pagination Type"
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:109
+#: inc/elements/theme/posts-loop.php:118
 msgid "Numbers"
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:119
+#: inc/elements/theme/posts-loop.php:128
 msgid "Top Offset"
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:288
+#: inc/elements/theme/posts-loop.php:299
 msgid "Sorry, but nothing matched your search term."
 msgstr ""
 
-#: inc/elements/theme/posts-loop.php:295
+#: inc/elements/theme/posts-loop.php:306
 msgid "It seems we cannot find what you are looking for."
 msgstr ""
 
@@ -4606,11 +4197,36 @@ msgstr ""
 msgid "Displays the navigation to next/previous post"
 msgstr ""
 
-#: inc/elements/theme/post-navigation.php:29
+#: inc/elements/theme/post-navigation.php:24
+msgid "Text for next post"
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:25
+msgid "HTML tags are allowed. Use %title to print the title of the post."
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:30
+msgid "Text for previous post"
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:35
+#: inc/elements/theme/child-pages.php:23
+msgid "Display"
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:39
+msgid "Only next link"
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:40
+msgid "Only prev link"
+msgstr ""
+
+#: inc/elements/theme/post-navigation.php:50
 msgid "Link Color"
 msgstr ""
 
-#: inc/elements/theme/post-navigation.php:37
+#: inc/elements/theme/post-navigation.php:58
 msgid "Link Color on Hover"
 msgstr ""
 
@@ -4638,7 +4254,7 @@ msgstr ""
 msgid "Horizontal List"
 msgstr ""
 
-#: inc/elements/theme/child-pages.php:35
+#: inc/elements/theme/child-pages.php:35 inc/elements/theme/post-data.php:133
 msgid "Condition"
 msgstr ""
 
@@ -4682,7 +4298,7 @@ msgstr ""
 msgid "Custom Text"
 msgstr ""
 
-#: inc/elements/theme/post-data.php:43 inc/elements/theme/post-data.php:331
+#: inc/elements/theme/post-data.php:43 inc/elements/theme/post-data.php:342
 msgid "Prefix"
 msgstr ""
 
@@ -4718,11 +4334,15 @@ msgstr ""
 msgid "Documentation on date and time formatting"
 msgstr ""
 
-#: inc/elements/theme/post-data.php:221
+#: inc/elements/theme/post-data.php:134
+msgid "Display only if the date is different from the published date"
+msgstr ""
+
+#: inc/elements/theme/post-data.php:232
 msgid "Width of divider for vertical layout."
 msgstr ""
 
-#: inc/elements/theme/post-data.php:429
+#: inc/elements/theme/post-data.php:471
 #, php-format
 msgid "1 Comment"
 msgid_plural "%d Comments"
@@ -4771,15 +4391,27 @@ msgstr ""
 msgid "Path-based navigation"
 msgstr ""
 
-#: inc/elements/theme/breadcrumb.php:47
+#: inc/elements/theme/breadcrumb.php:19
+msgid "Conditions"
+msgstr ""
+
+#: inc/elements/theme/breadcrumb.php:24
+msgid "Display taxonomy name for archive pages"
+msgstr ""
+
+#: inc/elements/theme/breadcrumb.php:25
+msgid "For custom taxonomies"
+msgstr ""
+
+#: inc/elements/theme/breadcrumb.php:63
 msgid "Links"
 msgstr ""
 
-#: inc/elements/theme/breadcrumb.php:68 inc/elements/theme/breadcrumb.php:72
+#: inc/elements/theme/breadcrumb.php:84 inc/elements/theme/breadcrumb.php:88
 msgid "Delimiter"
 msgstr ""
 
-#: inc/elements/theme/breadcrumb.php:115
+#: inc/elements/theme/breadcrumb.php:132
 msgctxt "breadcrumb"
 msgid "Main Page"
 msgstr ""
@@ -4854,6 +4486,10 @@ msgstr ""
 msgid "Inputs Color"
 msgstr ""
 
+#: inc/elements/theme/post-comments.php:188
+msgid "Textarea Height"
+msgstr ""
+
 #: inc/elements/theme/sidebar.php:16
 msgid "No sidebars were found"
 msgstr ""
@@ -4890,12 +4526,38 @@ msgstr ""
 msgid "Paragraphs"
 msgstr ""
 
+#: inc/elements/theme/post-content.php:90
+msgid "Gutenberg Editor"
+msgstr ""
+
+#: inc/elements/theme/post-content.php:91
+msgid ""
+"If use Gutenberg editor for the post content you might want to adjust Wide "
+"and Full width elements. To make sure your content displays properly make "
+"the full width container element, where Post Content element is located."
+msgstr ""
+
+#: inc/elements/theme/post-content.php:95
+msgid "Content Width"
+msgstr ""
+
+#: inc/elements/theme/post-content.php:104
+msgid "Wide Content Width"
+msgstr ""
+
 #: inc/elements/theme/post-excerpt.php:15
+#: inc/elements/theme/post-excerpt.php:24
 msgid "Post Excerpt"
 msgstr ""
 
 #: inc/elements/theme/post-excerpt.php:16
 msgid "Display the excerpt of the post"
+msgstr ""
+
+#: inc/elements/theme/post-excerpt.php:25
+msgid ""
+"If the post has no an excerpt, then the initial snippet of the post will be "
+"shown."
 msgstr ""
 
 #. Name of the plugin

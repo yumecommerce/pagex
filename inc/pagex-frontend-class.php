@@ -318,7 +318,7 @@ class Pagex_Frontend {
 	 */
 	public function print_default_style() {
 
-	    // no need to load default style for frontend builder
+		// no need to load default style for frontend builder
 		if ( Pagex::is_frontend_builder_active() ) {
 			return;
 		}
@@ -448,7 +448,8 @@ class Pagex_Frontend {
 			array(
 				'selector' => 'input[type="radio"]:checked, input[type="checkbox"]:checked',
 				'rules'    => array(
-					'border-color' => $settings['design']['form']['checkbox_checked'],
+					'border-color' => $settings['design']['form']['checkbox_checked'] . '!important',
+					// important overwrites third party plugins styles
 				)
 			),
 		);
@@ -472,8 +473,64 @@ class Pagex_Frontend {
 
 		// adobe fonts
 		if ( isset( $settings['design']['adobe_font'] ) && $settings['design']['adobe_font']['id'] ) {
-			echo '<link rel="stylesheet" href="https://use.typekit.net/' . $settings['design']['adobe_font']['id'] . '.css">';
+			$link_fonts = 'https://use.typekit.net/' . $settings['design']['adobe_font']['id'] . '.css';
+
+			if ( isset( $settings['design']['self_hosted_fonts'] ) ) {
+				$this->get_self_hosted_fonts( 'adobe', $link_fonts );
+			} else {
+				echo '<link id="pagex-adobe-fonts" href="' . $link_fonts . '" rel="stylesheet">';
+			}
 		}
+
+		// check if main or heading fonts related to google fonts
+        // todo
+//		$google_fonts  = array();
+//		$_google_fonts = Pagex_Editor_Control_Attributes::get_google_fonts();
+//		$main_font     = $settings['design']['main_font']['name'];
+//		$heading_font  = $settings['design']['heading_font']['name'];
+//		$subsets       = isset( $settings['design']['google_fonts_subsets'] ) ? array_keys( $settings['design']['google_fonts_subsets'] ) : array();
+//
+//		if ( $main_font && in_array( $main_font, $_google_fonts['google_fonts']['options'] ) ) {
+//			$main_font_weight = isset( $settings['design']['main_font']['google_weight'] ) ? $settings['design']['main_font']['google_weight'] : array();
+//			$google_fonts[]   = array( $main_font => implode( ',', $main_font_weight ) );
+//		}
+//
+//		if ( $heading_font && in_array( $heading_font, $_google_fonts['google_fonts']['options'] ) ) {
+//			$heading_font_weight = isset( $settings['design']['heading_font']['google_weight'] ) ? $settings['design']['heading_font']['google_weight'] : array();
+//			$google_fonts[]      = array( $heading_font => implode( ',', $heading_font_weight ) );
+//		}
+//
+//		if ( $google_fonts ) {
+//			$main_google_fonts = array();
+//
+//			foreach ( $google_fonts as $font_families ) {
+//				foreach ( $font_families as $font => $weight ) {
+//					if ( ! isset( $main_google_fonts[ $font ] ) ) {
+//						$main_google_fonts[ $font ] = $weight;
+//					} elseif ( $weight ) {
+//						if ( strpos( $main_google_fonts[ $font ], $weight ) === false ) {
+//							$main_google_fonts[ $font ] = $main_google_fonts[ $font ] . ',' . $weight;
+//						}
+//					}
+//				}
+//			}
+//
+//			if ( $main_google_fonts ) {
+//				$google_fonts_families = array();
+//
+//				foreach ( $main_google_fonts as $family => $weight ) {
+//					$google_fonts_families[] = $weight ? $family . ':' . $weight : $family;
+//				}
+//
+//				$link_fonts = 'https://fonts.googleapis.com/css?family=' . urlencode( implode( "|", $google_fonts_families ) ) . '&subset=' . urlencode( implode( ",", $subsets ) );
+//
+//				if ( isset( $settings['design']['self_hosted_fonts'] ) ) {
+//					$this->get_self_hosted_fonts( 'google', $link_fonts );
+//				} else {
+//					echo '<link id="pagex-google-fonts" href="' . $link_fonts . '" rel="stylesheet">';
+//				}
+//			}
+//		}
 
 		$css_style = '';
 
@@ -494,7 +551,7 @@ class Pagex_Frontend {
 		}
 
 		if ( $css_style ) {
-			echo '<style class="pagex-default-style">' . $css_style . '</style>';
+			echo '<style id="pagex-default-style">' . $css_style . '</style>';
 		}
 	}
 
@@ -515,17 +572,13 @@ class Pagex_Frontend {
 		$heading_font_weight = isset( $settings['design']['heading_font']['google_weight'] ) ? $settings['design']['heading_font']['google_weight'] : array();
 
 		// add main font
-		if ( $main_font ) {
-			if ( in_array( $main_font, $google_fonts['google_fonts']['options'] ) ) {
-				$_fonts[] = array( $main_font => implode( ',', $main_font_weight ) );
-			}
+		if ( $main_font && in_array( $main_font, $google_fonts['google_fonts']['options'] ) ) {
+			$_fonts[] = array( $main_font => implode( ',', $main_font_weight ) );
 		}
 
 		// add heading font
-		if ( $heading_font ) {
-			if ( in_array( $heading_font, $google_fonts['google_fonts']['options'] ) ) {
-				$_fonts[] = array( $heading_font => implode( ',', $heading_font_weight ) );
-			}
+		if ( $heading_font && in_array( $heading_font, $google_fonts['google_fonts']['options'] ) ) {
+			$_fonts[] = array( $heading_font => implode( ',', $heading_font_weight ) );
 		}
 
 		foreach ( $_fonts as $font_families ) {
@@ -548,8 +601,69 @@ class Pagex_Frontend {
 
 			echo '<link id="pagex-google-fonts" href="https://fonts.googleapis.com/css?family=' . urlencode( implode( "|", $families ) ) . '&subset=' . urlencode( implode( ",", $subsets ) ) . '" rel="stylesheet">';
 		}
-
 	}
+
+	/**
+	 * Print style for self hosted fonts
+	 *
+	 * @param $type
+	 * @param $link
+	 */
+	function get_self_hosted_fonts( $type, $link ) {
+		$fonts = get_option( 'pagex_self_hosted_fonts', array() );
+
+		if ( $fonts ) {
+			$hosted_fonts = array(
+				'google' => array(
+					'link'  => '',
+					'style' => ''
+				),
+				'adobe'  => array(
+					'link'  => '',
+					'style' => ''
+				)
+			);
+
+			// if nothing is changed print saved fonts
+			if ( $fonts[ $type ]['link'] == $link ) {
+				echo '<style class="pagex-self-hosted-fonts">' . $fonts[ $type ]['style'] . '</style>';
+			} else {
+			    $this->make_font_self_hosted($type, $link);
+            }
+		} else {
+			$this->make_font_self_hosted($type, $link);
+        }
+	}
+
+	/**
+     * Download font variations from adobe or google and store style with replaced font URLs
+     *
+	 * @param $type
+	 * @param $link
+	 */
+	function make_font_self_hosted( $type, $link ) {
+//		$remote_response = wp_remote_get( $link );
+//		$headers         = wp_remote_retrieve_headers( $remote_response );
+//		if ( ! $headers ) {
+//			return;
+//		}
+//
+//		$remote_response_code = wp_remote_retrieve_response_code( $remote_response );
+//
+//		if ( $remote_response_code != '200' ) {
+//			return;
+//		}
+//
+//		$body = wp_remote_retrieve_body( $remote_response );
+
+//		$urls = array();
+//
+//		preg_match_all( '/["|\'](https:\/\/use\.typekit\.net.*?)["|\']\) format\(["|\']woff2["|\']\)/g', $body, $matches );
+//
+//		foreach ($matches[1] as $key => $value) {
+//			$urls[] = $value;
+//		}
+    }
 
 	/**
 	 * Custom SVG icons for some elements like slider and etc

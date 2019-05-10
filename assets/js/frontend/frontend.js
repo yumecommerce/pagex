@@ -394,6 +394,11 @@ var pagexModal = {
         }, 150);
     },
 
+    // onClick action
+    open: function (selector) {
+        this.init(document.querySelector(selector + ' .pagex-modal-trigger'));
+    },
+
     close: function (el, timeout) {
         let modalActive = el.closest('.pagex-modal'),
             modalActiveId = modalActive.getAttribute('data-id'),
@@ -520,12 +525,32 @@ var pagexTabs = {
         let element = el.closest('.pagex-tabs'),
             index = Array.from(el.parentNode.children).indexOf(el);
 
+        this.openTab(element, index);
+    },
+
+    // custom onClick action
+    goto: function (selector, index) {
+        let tabs = document.querySelector(selector),
+            tabsId = tabs.getAttribute('data-id'),
+            idName = 'tab-' + tabsId + '-active',
+            link = document.querySelector('.' + idName);
+
+        if (link) link.classList.remove(idName);
+        window.event.target.closest('[data-type]').classList.add(idName);
+
+        this.openTab(tabs.querySelector('.pagex-tabs'), index - 1);
+
+        return false;
+    },
+
+    openTab: function (element, index) {
         element.querySelector('.pagex-tabs-nav-items .pagex-item-active').classList.remove('pagex-item-active');
         element.querySelector('.pagex-tabs-panes .pagex-item-active').classList.remove('pagex-item-active');
 
         element.querySelectorAll('.pagex-tabs-nav-items .pagex-tabs-nav-item')[index].classList.add('pagex-item-active');
         element.querySelectorAll('.pagex-tabs-panes .pagex-tabs-pane')[index].classList.add('pagex-item-active');
 
+        document.body.setAttribute('data-tabs-active-' + element.closest('[data-type]').getAttribute('data-id'), index + 1);
     }
 };
 
@@ -567,7 +592,7 @@ var pagexSlider = {
         }
 
         slider.pagination = {
-            el: '.swiper-pagination',
+            el: slider.pagination_el !== undefined ? slider.pagination_el : '.swiper-pagination',
             clickable: true,
         };
 
@@ -648,19 +673,25 @@ var pagexSlider = {
         slider.slideTo(index, 0);
     },
 
-    next: function (id) {
-        let slider = document.getElementById(id).querySelector('.swiper-container').swiper;
+    goto: function (selector, to) {
+        // all since we can have same controls for multiple sliders
+        let sliders = document.querySelectorAll(selector + ' .swiper-container');
 
-        slider.slideNext();
-        return false;
+        for (let i = 0; i < sliders.length; i++) {
+            let slider = sliders[i].swiper;
+
+            switch (to) {
+                case 'next':
+                    slider.slideNext();
+                    break;
+                case 'prev':
+                    slider.slidePrev();
+                    break;
+                default:
+                    slider.slideTo(Number(to));
+            }
+        }
     },
-
-    prev: function (id) {
-        let slider = document.getElementById(id).querySelector('.swiper-container').swiper;
-
-        slider.slidePrev();
-        return false;
-    }
 };
 
 

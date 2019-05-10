@@ -63,7 +63,22 @@ function pagex_register_separator_element( $elements ) {
 						'type'     => 'color',
 					),
 					array(
-						'type'     => 'clear',
+						'id'          => 'aq',
+						'title'       => __( 'Align', 'pagex' ),
+						'description' => __( 'If Max. Width option is set', 'pagex' ),
+						'type'        => 'select',
+						'responsive'  => true,
+						'action'      => 'css',
+						'class'       => 'col-4',
+						'selector'    => '[el] .pagex-separator-wrapper {justify-content: [val]}',
+						'options'     => array(
+							''           => __( 'Center', 'pagex' ),
+							'flex-start' => __( 'Left', 'pagex' ),
+							'flex-end'   => __( 'Right', 'pagex' ),
+						)
+					),
+					array(
+						'type' => 'clear',
 					),
 					array(
 						'id'       => 'rt',

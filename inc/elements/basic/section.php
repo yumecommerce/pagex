@@ -22,9 +22,11 @@ function pagex_register_section_element( $elements ) {
 						'action'   => 'class',
 						'selector' => '[el]',
 						'options'  => array(
-							''                                => __( 'Default', 'pagex' ),
-							'pagex-section-position-absolute' => __( 'Absolute', 'pagex' ),
-							'pagex-section-position-fixed'    => __( 'Fixed', 'pagex' ),
+							''                                          => __( 'Default', 'pagex' ),
+							'pagex-section-position-absolute'           => __( 'Absolute', 'pagex' ),
+							'pagex-section-position-absolute-home-page' => __( 'Absolute only for Homepage', 'pagex' ),
+							'pagex-section-position-fixed'              => __( 'Fixed', 'pagex' ),
+							'pagex-section-position-fixed-home-page'    => __( 'Fixed only for Homepage', 'pagex' ),
 						),
 					),
 					array(

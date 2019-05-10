@@ -91,7 +91,6 @@ function pagex_get_excerpt_templates() {
  * @return array
  */
 function pagex_get_builder_layouts() {
-
 	$data = array();
 	$pts  = get_post_types( array(), 'objects' );
 
@@ -138,7 +137,6 @@ function pagex_get_builder_layouts() {
  * @return array
  */
 function pagex_get_layout_templates() {
-
 	static $data = array();
 
 	if ( ! empty( $data ) ) {
@@ -355,12 +353,11 @@ function pagex_get_dynamic_link( $type ) {
  * @return bool|simple_html_dom
  */
 function pagex_generate_excerpt_template( $html ) {
-
 	$html = str_get_html( $html );
 
 	foreach ( $html->find( '[data-custom-link]' ) as $element ) {
-		$element->innertext   = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
-		$element->{'onclick'} = 'pagexCustomLink(this)';
+		$element->innertext            = '<a class="pagex-custom-link-element d-none" ' . urldecode( $element->{'data-custom-link'} ) . '></a>' . $element->innertext;
+		$element->{'onclick'}          = 'pagexCustomLink(this)';
 		$element->{'data-custom-link'} = null;
 	}
 
@@ -409,7 +406,19 @@ function pagex_get_post_custom_keys( $type = 'text' ) {
 		) );
 
 		foreach ( $all_pods as $group ) {
-			$options = array();
+			$options   = array();
+			// get type of pod so then we could get right meta
+			switch ( $group['object_type'] ) {
+                case 'taxonomy':
+					$meta_type = 'term';
+					break;
+                case 'post_type':
+					$meta_type = 'post';
+					break;
+				default:
+				    // meta for users
+	                $meta_type = $group['object_type'];
+			}
 
 			foreach ( $group['fields'] as $field ) {
 				if ( $type != 'all' ) {
@@ -422,8 +431,7 @@ function pagex_get_post_custom_keys( $type = 'text' ) {
 					}
 				}
 
-				$key             = $group['type'] . ':' . $field['pod'] . ':' . $field['name'] . ':' . $field['id'];
-				$options[ $key ] = $field['label'];
+				$options[ $meta_type . ':' . $field['name'] ] = $field['label'];
 			}
 
 			if ( empty( $options ) ) {
@@ -490,8 +498,8 @@ function pagex_get_dynamic_media_keys() {
 	$options['wordpress'] = array(
 		'label'   => 'WordPress',
 		'options' => array(
-			'post_type:page:_thumbnail_id:0' => __( 'Featured Image', 'pagex' ),
-			'post_type:page:author_avatar:0' => __( 'Author Avatar', 'pagex' ),
+			'post:_thumbnail_id' => __( 'Featured Image', 'pagex' ),
+			'user:author_avatar' => __( 'Author Avatar', 'pagex' ),
 		)
 	);
 
@@ -509,7 +517,7 @@ function pagex_get_dynamic_media_keys() {
 /**
  * Return meta value based on a key it could be post meta or term meta
  *
- * @param $key - example: post_type:page:gallery_page:451 or taxonomy:team_category:taxonomy_bg:452
+ * @param $key - example: post:gallery or term:main_bg
  *
  * @param bool $single
  *
@@ -517,23 +525,30 @@ function pagex_get_dynamic_media_keys() {
  */
 function pagex_get_custom_meta_value( $key, $single = true ) {
 	$meta       = explode( ':', $key );
+	$meta_type  = $meta[0];
+	$meta_key   = $meta[1];
 	$meta_value = '';
 
-	if ( $meta[0] == 'post_type' ) {
-		// return meta value based on current/loop post
-		global $post;
-		if ( $meta[2] == 'author_avatar' ) {
+	// return meta value based on current/loop post
+	switch ( $meta_type ) {
+        case 'post':
+			global $post;
+			if ( $post ) {
+				$meta_value = get_metadata( $meta_type, $post->ID, $meta_key, $single );
+			}
+			break;
+        case 'user':
 			$user_id    = get_the_author_meta( 'ID' );
-			$meta_value = get_avatar_url( $user_id, array( 'size' => 200 ) );
-		} elseif ( $post ) {
-			$meta_value = get_post_meta( $post->ID, $meta[2], $single );
-		}
-	} elseif ( $meta[0] == 'taxonomy' ) {
-		// return meta value based on current taxonomy
-		if ( isset( get_queried_object()->taxonomy ) && get_queried_object()->taxonomy == $meta[1] ) {
-			$meta_value = get_term_meta( get_queried_object()->term_id, $meta[2], $single );
-		}
+			$meta_value = get_metadata( $meta_type, $user_id, $meta_key, $single );
+			break;
 	}
+// todo taxonomy meta
+//	if ( $meta[0] == 'taxonomy' ) {
+//		// return meta value based on current taxonomy
+//		if ( isset( get_queried_object()->taxonomy ) && get_queried_object()->taxonomy == $meta[1] ) {
+//			$meta_value = get_term_meta( get_queried_object()->term_id, $meta[2], $single );
+//		}
+//	}
 
 	return $meta_value;
 }

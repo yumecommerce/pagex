@@ -14,6 +14,7 @@ function pagex_register_google_maps_element( $elements ) {
 		'title'       => __( 'Google Maps', 'pagex' ),
 		'description' => __( 'Interactive Google map', 'pagex' ),
 		'type'        => 'dynamic',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Google-Maps',
 		'callback'    => 'pagex_google_maps',
 		'options'     => array(
 			array(

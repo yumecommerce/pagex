@@ -20,6 +20,27 @@ function pagex_register_post_navigation_element( $elements ) {
 			array(
 				'params' => array(
 					array(
+						'id'          => 'next_text',
+						'title'       => __( 'Text for next post', 'pagex' ),
+						'description' => __( 'HTML tags are allowed. Use %title to print the title of the post.', 'pagex' ),
+						'type'        => 'text',
+					),
+					array(
+						'id'    => 'prev_text',
+						'title' => __( 'Text for previous post', 'pagex' ),
+						'type'  => 'text',
+					),
+					array(
+						'id'      => 'display',
+						'title'   => __( 'Display', 'pagex' ),
+						'type'    => 'select',
+						'options' => array(
+							''     => __( 'All', 'pagex' ),
+							'next' => __( 'Only next link', 'pagex' ),
+							'prev' => __( 'Only prev link', 'pagex' ),
+						),
+					),
+					array(
 						'id'       => 'qw',
 						'type'     => 'typography',
 						'selector' => 'a',
@@ -56,11 +77,26 @@ function pagex_register_post_navigation_element( $elements ) {
  * @return string
  */
 function pagex_post_navigation( $atts ) {
-	ob_start();
+	$data = wp_parse_args( Pagex::get_dynamic_data( $atts ), array(
+		'prev_text' => '%title',
+		'next_text' => '%title',
+		'display'   => '',
+	) );
 
-	echo '<div class="pagex-post-navigation">';
-	the_post_navigation();
-	echo '</div>';
+	if ( ! $nav = get_the_post_navigation( $data ) ) {
+		return;
+	}
+	// remove link wrapper if we display only a specific part
+	if ($data['display'] == 'next') {
+		$nav = preg_replace( '/<div class="nav-previous">.*?<\/a><\/div>/s', '', $nav );
+	} elseif ($data['display'] == 'prev') {
+		$nav = preg_replace( '/<div class="nav-next">.*?<\/a><\/div>/s', '', $nav );
+	}
 
-	return ob_get_clean();
+	// check if nav-links is empty. in case we do not have prev/next post and we removed any prev/next one
+	if (strpos($nav, '<div class="nav-links"></div>') !== false) {
+		return;
+	}
+
+	return '<div class="pagex-post-navigation">' . $nav . '</div>';
 }

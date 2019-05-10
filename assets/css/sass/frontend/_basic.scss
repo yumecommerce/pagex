@@ -141,7 +141,7 @@ input[type="url"] {
 
   &:checked {
     opacity: 1;
-    border-color: inherit !important;
+    border-color: inherit !important; // overwrite third party plugins styles
     background: transparent !important;
 
     &:after {

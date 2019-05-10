@@ -14,6 +14,7 @@ function pagex_register_form_element( $elements ) {
 		'title'       => __( 'Form', 'pagex' ),
 		'description' => __( 'Contact or MailChimp form.', 'pagex' ),
 		'type'        => 'dynamic',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Form',
 		'callback'    => 'pagex_form',
 		'options'     => array(
 			array(

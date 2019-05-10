@@ -132,7 +132,7 @@ function pagex_register_post_comments_element( $elements ) {
 				),
 			),
 			array(
-				'title' => __( 'Form', 'pagex' ),
+				'title'  => __( 'Form', 'pagex' ),
 				'params' => array(
 					array(
 						'type'  => 'heading',
@@ -184,6 +184,14 @@ function pagex_register_post_comments_element( $elements ) {
 						'selector' => '[el] p[class^=comment-form] [name] {border-radius: [val]}',
 					),
 					array(
+						'id'       => 'za',
+						'title'    => __( 'Textarea Height', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] textarea {height: [val]}',
+					),
+					array(
 						'type'  => 'heading',
 						'title' => __( 'Button', 'pagex' ),
 					),
@@ -211,9 +219,9 @@ function pagex_post_comments( $atts ) {
 	ob_start();
 
 	add_filter( 'comments_template', 'pagex_comments_template' );
-	if ( comments_open() || get_comments_number() ) :
+	if ( comments_open() || get_comments_number() && ! post_password_required() ) {
 		comments_template();
-	endif;
+	}
 	remove_filter( 'comments_template', 'pagex_comments_template' );
 
 	return ob_get_clean();

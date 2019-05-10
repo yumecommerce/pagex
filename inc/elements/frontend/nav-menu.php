@@ -26,6 +26,7 @@ function pagex_register_nav_menu_element( $elements ) {
 		'title'       => __( 'Nav Menu', 'pagex' ),
 		'description' => __( 'Vertical or horizontal nav menu with optional mobile view', 'pagex' ),
 		'type'        => 'dynamic',
+		'info'        => 'https://github.com/yumecommerce/pagex/wiki/Nav-Menu',
 		'callback'    => 'pagex_nav_menu',
 		'options'     => array(
 			array(

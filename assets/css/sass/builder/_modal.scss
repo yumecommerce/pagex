@@ -228,6 +228,12 @@ body:not(.wp-admin) #pagex-params-modal {
     }
   }
 
+  .pagex-params-modal-close {
+    border-left: 1px solid rgba(255,255,255,.3);
+    padding-left: 21px;
+    line-height: 1;
+  }
+
   .pagex-link-attrs {
     margin-right: -5px;
     margin-left: -5px;
@@ -315,6 +321,18 @@ body:not(.wp-admin) #pagex-params-modal {
   .custom-file-input {
     width: 140px;
     height: 32px;
+  }
+
+  a {
+    color: inherit;
+    width: 20px;
+    display: inline-block;
+    text-align: center;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
   }
 }
 

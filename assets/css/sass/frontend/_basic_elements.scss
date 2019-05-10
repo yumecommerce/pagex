@@ -24,38 +24,28 @@ body:not(.pagex-builder-frame-active) .element:empty {
   pointer-events: none;
   z-index: 6;
 
-  .pagex-bc-wrapper {
-    height: 100%;
+  div {
+    position: absolute;
     width: 100%;
+    height: 100%;
+    margin: auto;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    position: absolute;
-    margin: auto;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
 
-    > div {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      margin: auto;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  }
+.pagex-image-bg-ov {
+  z-index: 9;
+  transition: 300ms;
+}
 
-  .pagex-image-bg-ov {
-    z-index: 9;
-    transition: 300ms;
-  }
-  .pagex-image-bg {
-    z-index: 8;
-  }
+.pagex-image-bg {
+  z-index: 8;
 }
 
 .pagex-svg-bg {

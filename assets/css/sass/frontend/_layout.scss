@@ -25,9 +25,19 @@
   -webkit-backface-visibility: hidden;
 }
 
-.pagex-section-position-fixed.pagex-section-fixed {
-  position: fixed !important;
-  top: 0;
+body.home {
+  .pagex-section-position-absolute-home-page,
+  .pagex-section-position-fixed-home-page {
+    @extend .pagex-section-position-fixed;
+  }
+}
+
+.pagex-section-fixed {
+  &.pagex-section-position-fixed-home-page,
+  &.pagex-section-position-fixed {
+    position: fixed !important;
+    top: 0;
+  }
 }
 
 .pagex-section-position-fixed.pagex-position-fixed-transparent:not(.pagex-section-fixed) {

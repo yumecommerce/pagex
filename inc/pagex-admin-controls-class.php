@@ -1038,8 +1038,8 @@ class Pagex_Admin_Controls {
         <div class="pagex-row">
             <button type="button" class="button add-new-font">Add New Font</button>
         </div>
+        <hr>
         <br>
-
         <p>Adobe Fonts (Typekit)</p>
         <p class="description"><?php _e( 'Adobe Fonts (formerly Typekit) is an online service which offers a subscription library
             of high-quality fonts.', 'pagex' ); ?></p>
@@ -1072,6 +1072,11 @@ class Pagex_Admin_Controls {
             </div>
         </div>
         <br>
+<!--        <hr>-->
+<!--        <br>-->
+<!--        <label><input type="checkbox" name="pagex_settings[design][self_hosted_fonts]" value="true" --><?php //checked( true, isset($settings['design']['self_hosted_fonts']) ); ?><!-- ' />--><?php //_e( 'Make selected Adobe and Google Fonts self-hosted', 'pagex' ) ?><!--</label>-->
+<!--        <p class="description">--><?php //_e( 'It will download all chosen fonts to WordPress upload folder.', 'pagex' ); ?><!--</p>-->
+<!--        <br><br>-->
 
 		<?php
 	}

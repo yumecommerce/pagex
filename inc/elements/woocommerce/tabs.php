@@ -137,7 +137,8 @@ function pagex_register_woo_product_data_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .tabs a {padding: [val]}',
+						'selector' => '[el] .tabs a',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'ma',
@@ -145,7 +146,8 @@ function pagex_register_woo_product_data_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .tabs a {margin: [val]}',
+						'selector' => '[el] .tabs a',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'al',

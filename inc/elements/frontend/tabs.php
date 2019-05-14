@@ -117,7 +117,8 @@ function pagex_register_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-tabs-nav-item {padding: [val]}',
+						'selector' => '[el] .pagex-tabs-nav-item',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'margin',
@@ -125,7 +126,8 @@ function pagex_register_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-tabs-nav-item {margin: [val]}',
+						'selector' => '[el] .pagex-tabs-nav-item',
+						'property' => 'margin',
 					),
 					array(
 						'id'         => 'border_radius',
@@ -200,7 +202,8 @@ function pagex_register_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-tabs-nav-item-icon {margin: [val]}',
+						'selector' => '[el] .pagex-tabs-nav-item-icon',
+						'property' => 'margin',
 					),
 				)
 			),
@@ -213,7 +216,8 @@ function pagex_register_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-tabs-panes {padding: [val]}',
+						'selector' => '[el] .pagex-tabs-panes',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'content_margin',
@@ -221,7 +225,8 @@ function pagex_register_tabs_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-tabs-panes {margin: [val]}',
+						'selector' => '[el] .pagex-tabs-panes',
+						'property' => 'margin',
 					),
 					array(
 						'id'         => 'content_border_radius',

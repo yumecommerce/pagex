@@ -459,9 +459,10 @@ var pagexScrollTo = {
             const timeFunction = time * (2 - time);
             window.scroll(0, Math.ceil((timeFunction * (destinationOffsetToScroll - start)) + start));
 
-            if (window.pageYOffset === destinationOffsetToScroll) {
+            if (Math.round(window.pageYOffset) === destinationOffsetToScroll) {
                 return;
             }
+
             requestAnimationFrame(scroll);
         }
 
@@ -1138,7 +1139,9 @@ document.addEventListener('click', function (e) {
         e.preventDefault();
         pagexScrollTo.scroll(el);
     }
+
     let hr = el.closest('[href]');
+
     if (hr) {
         if (hr.getAttribute('href').indexOf('scroll-to') !== -1) {
             e.preventDefault();

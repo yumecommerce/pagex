@@ -198,7 +198,8 @@ function pagex_register_accordion_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-accordion-item-icon {margin: [val]}',
+						'selector' => '[el] .pagex-accordion-item-icon',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'fg',

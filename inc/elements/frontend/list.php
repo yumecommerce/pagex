@@ -106,7 +106,8 @@ function pagex_register_list_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-list-divider {margin: [val]}',
+						'selector' => '[el] .pagex-list-divider',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'rt',

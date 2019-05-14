@@ -58,7 +58,7 @@
   width: 510px;
   height: auto !important;
 
-  button,
+  .btn,
   input[type="text"],
   input[type="number"],
   select,
@@ -79,6 +79,12 @@
     margin: 0;
     letter-spacing: normal !important;
     text-transform: none;
+  }
+
+  .btn:hover {
+    background: #495057;
+    border-color: #495057;
+    color: #fff;
   }
 
   input[type="text"]:focus,
@@ -237,6 +243,8 @@ body:not(.wp-admin) #pagex-params-modal {
   .pagex-link-attrs {
     margin-right: -5px;
     margin-left: -5px;
+    width: auto;
+    min-width: 100%;
   }
 
   .custom-control-input:focus ~ .custom-control-label::before {
@@ -245,6 +253,14 @@ body:not(.wp-admin) #pagex-params-modal {
 
   .custom-checkbox label {
     line-height: 26px;
+  }
+
+  .pagex-responsive-label {
+    cursor: pointer;
+
+    &:hover {
+      color: #007bff !important;
+    }
   }
 
   .pagex-responsive-switchers {
@@ -527,6 +543,15 @@ body:not(.wp-admin) #pagex-params-modal {
       opacity: .8;
       margin-right: 10px;
       font-family: monospace !important;
+      border-radius: 3px;
+      padding: 1px 2px;
+      line-height: 12px;
+      cursor: pointer;
+    }
+
+    &.active:before {
+      color: #fff;
+      background: #007bff;
     }
   }
 
@@ -665,15 +690,15 @@ body:not(.wp-admin) #pagex-params-modal {
 
 /* WP Media Modal */
 
-.media-modal-content {
-  button {
-    min-height: auto !important;
-    letter-spacing: normal !important;
-    line-height: 17px !important;
-    text-transform: none !important;
-    padding: 0 12px 2px !important;
-    font-size: 14px !important;
-  }
-}
+//.media-modal-content {
+//  button {
+//    min-height: auto !important;
+//    letter-spacing: normal !important;
+//    line-height: 17px !important;
+//    text-transform: none !important;
+//    padding: 0 12px 2px !important;
+//    font-size: 14px !important;
+//  }
+//}
 
 

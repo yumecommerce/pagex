@@ -451,8 +451,8 @@ class Pagex_Editor_Control_Attributes {
 					'type'     => 'dimension',
 					'class'    => 'col-6',
 					'action'   => 'css',
-					'selector' => '[el] {padding: [val] !important}',
-					// important to override no-gutter in row columns padding
+					'selector' => '[el]',
+					'property' => 'padding',
 				),
 				array(
 					'id'       => 'pagex_margin',
@@ -460,7 +460,8 @@ class Pagex_Editor_Control_Attributes {
 					'class'    => 'col-6',
 					'type'     => 'dimension',
 					'action'   => 'css',
-					'selector' => '[el] {margin: [val] !important}',
+					'selector' => '[el]',
+					'property' => 'margin',
 				),
 				array(
 					'id'         => 'pagex_display',
@@ -958,11 +959,14 @@ class Pagex_Editor_Control_Attributes {
 					),
 				),
 				array(
-					'id'       => 'pagex_bg_above',
-					'label'    => __( 'Make background layer overlay the content', 'pagex' ),
-					'type'     => 'checkbox',
-					'action'   => 'css',
-					'selector' => '[el] > .pagex-bc {z-index: 11}',
+					'id'        => 'pagex_bg_above',
+					'label'     => __( 'Make background layer overlay the content', 'pagex' ),
+					'type'      => 'checkbox',
+					'action'    => 'css',
+					'selector'  => '[el] > .pagex-bc {z-index: 11}',
+					'condition' => array(
+						'pagex_background' => array( 'color', 'image', 'dynamic', 'video' )
+					),
 				),
 				array(
 					'type' => 'row-end',
@@ -975,10 +979,18 @@ class Pagex_Editor_Control_Attributes {
 					'title' => __( 'Border', 'pagex' ),
 				),
 				array(
+					'id'       => 'pagex_border_radius',
+					'title'    => __( 'Border Radius', 'pagex' ),
+					'type'     => 'text',
+					'class'    => 'col-4',
+					'action'   => 'css',
+					'selector' => '[el], [el] > .pagex-bc {border-radius: [val]}',
+				),
+				array(
 					'id'       => 'pagex_border_style',
 					'title'    => __( 'Border Style', 'pagex' ),
 					'type'     => 'select',
-					'class'    => 'col-3',
+					'class'    => 'col-4',
 					'action'   => 'css',
 					'selector' => '[el] {border-style: [val]}',
 					'options'  => array(
@@ -990,22 +1002,14 @@ class Pagex_Editor_Control_Attributes {
 					)
 				),
 				array(
-					'id'       => 'pagex_border_radius',
-					'title'    => __( 'Border Radius', 'pagex' ),
-					'type'     => 'text',
-					'class'    => 'col-3',
-					'action'   => 'css',
-					'selector' => '[el], [el] > .pagex-bc {border-radius: [val]}',
-				),
-				array(
 					'id'        => 'pagex_border_width',
 					'title'     => __( 'Border Width', 'pagex' ),
-					'class'     => 'col-6',
-					'type'      => 'dimension',
+					'class'     => 'col-4',
+					'type'      => 'text',
 					'action'    => 'css',
 					'selector'  => '[el] {border-width: [val]}',
 					'condition' => array(
-						'pagex_border_style' => array( 'solid', 'double', 'dotted', 'dashed' )
+						'!pagex_border_style' => array( '' )
 					),
 				),
 				array(
@@ -1016,7 +1020,7 @@ class Pagex_Editor_Control_Attributes {
 					'class'     => 'col-4',
 					'selector'  => '[el] {border-color: [val]}',
 					'condition' => array(
-						'pagex_border_style' => array( 'solid', 'double', 'dotted', 'dashed' )
+						'!pagex_border_style' => array( '' )
 					),
 				),
 				array(
@@ -1027,7 +1031,7 @@ class Pagex_Editor_Control_Attributes {
 					'class'     => 'col-8',
 					'selector'  => '[el]:hover {border-color: [val]}',
 					'condition' => array(
-						'pagex_border_style' => array( 'solid', 'double', 'dotted', 'dashed' )
+						'!pagex_border_style' => array( '' )
 					),
 				),
 				array(

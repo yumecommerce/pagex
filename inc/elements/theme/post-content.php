@@ -34,7 +34,8 @@ function pagex_register_post_content_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] p, [el] blockquote {margin: [val]}',
+						'selector' => '[el] p, [el] blockquote',
+						'property' => 'margin',
 					),
 					array(
 						'type'  => 'clear',
@@ -70,7 +71,7 @@ function pagex_register_post_content_element( $elements ) {
 					array(
 						'id'       => 'ty',
 						'type'     => 'typography',
-						'selector' => 'h1, [el] h2, [el] h3, [el] h4, [el] h5, [el] h6',
+						'selector' => '[el] h1, [el] h2, [el] h3, [el] h4, [el] h5, [el] h6',
 					),
 					array(
 						'id'       => 'ew',
@@ -78,7 +79,8 @@ function pagex_register_post_content_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] h1, [el] h2, [el] h3, [el] h4, [el] h5, [el] h6 {margin: [val]}',
+						'selector' => '[el] h1, [el] h2, [el] h3, [el] h4, [el] h5, [el] h6',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'yu',

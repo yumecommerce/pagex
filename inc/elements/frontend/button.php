@@ -146,7 +146,8 @@ function pagex_register_button_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button {padding: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-button-wrapper .pagex-button',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'bw',
@@ -458,7 +459,8 @@ function pagex_register_button_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-modal-window-close {margin: [val]}',
+						'selector' => '[el] .pagex-modal-window-close',
+						'property' => 'margin',
 					),
 					array(
 						'id'      => 'mx',

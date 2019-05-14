@@ -367,7 +367,6 @@ var pagex = {
                                     } else {
                                         paramInput.value = v;
                                     }
-
                                 }
                             });
                         }
@@ -856,11 +855,13 @@ var pagex = {
                         cssRule = '';
                         if (_.isObject(responsiveValue)) {
                             // if it is a dimension
-                            let valOp = that.parseCssNumber(responsiveValue.top) + ' ' + that.parseCssNumber(responsiveValue.right) + ' ' + that.parseCssNumber(responsiveValue.bottom) + ' ' + that.parseCssNumber(responsiveValue.left);
+                            let dimOp = [];
 
-                            if (valOp !== '0 0 0 0') {
-                                cssRule = selector.replace(new RegExp('\\[val\\]', 'g'), valOp);
-                            }
+                            ['top', 'right', 'bottom', 'left'].forEach((v) => {
+                                if (responsiveValue[v].length) dimOp.push(selector + '{' + param.property + '-' + v + ': ' + that.parseCssNumber(responsiveValue[v]) + '}');
+                            });
+
+                            cssRule = dimOp.join('');
                         } else if (responsiveValue.length) {
                             // do not parse css value if it is a select or number input type
                             if (param.type === 'select' || param.type === 'number') {
@@ -1198,11 +1199,11 @@ var pagex = {
         div.classList.toggle('pagex-hide');
     },
 
-    switchDevices: function (el) {
-        let device = el.getAttribute('data-device-switcher');
+    switchDevices: function (el, _device = null) {
+        let device = _device ? _device : el.getAttribute('data-device-switcher');
 
         if (device === 'all') {
-            let formGroup = this.currentSwitcher.closest('.form-group');
+            let formGroup = _device ? el.closest('.form-group') : this.currentSwitcher.closest('.form-group');
             formGroup.classList.toggle('pagex-responsive-switcher-all');
             this.switchersControl.classList.add('pagex-hide');
             return;
@@ -2142,7 +2143,7 @@ var pagex = {
     },
 
     openModalButton: function () {
-      this.currentElement.querySelector('.pagex-modal-trigger').click();
+        this.currentElement.querySelector('.pagex-modal-trigger').click();
     },
 
     uploadLayout: function (input) {
@@ -2284,9 +2285,18 @@ window.parent.document.addEventListener('click', function (e) {
     if (el.matches('.pagex-link-control-insert')) pagex.insertLink(e);
     if (el.matches('.pagex-link-show-attrs')) pagex.showLinkAttrs(e);
 
+    // responsive switcher
+    if (el.matches('.pagex-responsive-label')) pagex.switchDevices(el, 'all');
     if (el.matches('.pagex-device-switcher')) pagex.switchDevices(el);
+    if (el.matches('.pagex-responsive-params')) {
+        // get text (sm,md) from :before style
+        let deviceCodeText = window.getComputedStyle(el, ':before').content.replace(/'|"/gi, "");
+        window.parent.document.querySelector(`[data-device-switcher="${deviceCodeText}"]`).click();
+    }
+
     if (el.matches('.pagex-responsive-switcher-button')) pagex.showSwitcher(e);
     if (el.matches('#pagex-control-responsive-switcher')) pagex.hideSwitcher(e);
+
 
     if (el.matches('.pagex-params-tab-title')) pagex.switchTabsForm(e);
     if (el.matches('.pagex-add-repeater-item')) pagex.addRepeaterParams(e);

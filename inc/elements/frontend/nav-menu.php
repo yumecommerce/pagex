@@ -83,7 +83,8 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {margin: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'er',
@@ -91,7 +92,8 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a {padding: [val]}',
+						'selector' => '[el] > .element-wrap > .pagex-nav-menu-wrapper > .pagex-nav-menu-desktop > ul > li > a',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'rt',
@@ -613,7 +615,8 @@ function pagex_register_nav_menu_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-nav-menu-mobile a {padding: [val]}',
+						'selector' => '[el] .pagex-nav-menu-mobile a',
+						'property' => 'padding',
 					),
 					array(
 						'type' => 'clear',

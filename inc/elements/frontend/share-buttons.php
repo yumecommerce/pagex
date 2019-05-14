@@ -180,7 +180,8 @@ function pagex_register_share_buttons_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-share-button {margin: [val]}',
+						'selector' => '[el] .pagex-share-button',
+						'property' => 'margin',
 					),
 					array(
 						'id'       => 'pa',
@@ -188,7 +189,8 @@ function pagex_register_share_buttons_element( $elements ) {
 						'type'     => 'dimension',
 						'class'    => 'col-6',
 						'action'   => 'css',
-						'selector' => '[el] .pagex-share-button {padding: [val]}',
+						'selector' => '[el] .pagex-share-button',
+						'property' => 'padding',
 					),
 					array(
 						'id'       => 'br',

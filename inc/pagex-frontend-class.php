@@ -42,6 +42,7 @@ class Pagex_Frontend {
 		wp_register_script( 'swiper', PAGEX_PLUGIN_URL . 'assets/js/frontend/vendors/swiper.min.js', array(), PAGEX_VERSION, true );
 		wp_register_script( 'salvattore', PAGEX_PLUGIN_URL . 'assets/js/frontend/vendors/salvattore.js', array(), PAGEX_VERSION, true );
 		wp_register_script( 'waypoints', PAGEX_PLUGIN_URL . 'assets/js/frontend/vendors/waypoints.js', array(), PAGEX_VERSION, true );
+		wp_register_script( 'countup', PAGEX_PLUGIN_URL . 'assets/js/frontend/vendors/countUp.js', array(), PAGEX_VERSION, true );
 
 		// do not enqueue frontend scripts for a frame builder wrapper
 		if ( ! Pagex::is_frontend_builder_active() ) {
@@ -50,6 +51,7 @@ class Pagex_Frontend {
 				'parallax-scroll',
 				'swiper',
 				'waypoints',
+				'countup',
 			), PAGEX_VERSION, true );
 		}
 

@@ -54,6 +54,7 @@ foreach (
 		'column',
 		'container',
 		'countdown',
+		'counter',
 		'child_pages',
 		'document_title',
 		'features',

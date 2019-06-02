@@ -543,6 +543,8 @@ function pagex_get_custom_meta_value( $key, $single = true ) {
 			break;
 	}
 // todo taxonomy meta
+// todo theme options: from options table
+// todo custom meta
 //	if ( $meta[0] == 'taxonomy' ) {
 //		// return meta value based on current taxonomy
 //		if ( isset( get_queried_object()->taxonomy ) && get_queried_object()->taxonomy == $meta[1] ) {

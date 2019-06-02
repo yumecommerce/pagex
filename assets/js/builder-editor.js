@@ -1574,6 +1574,7 @@ var pagex = {
         original.after(cloned);
 
         this.updatePostContent();
+        this.elementSortable();
     },
 
     cloneNewIds: function (cloned) {

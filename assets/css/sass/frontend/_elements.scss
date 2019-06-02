@@ -520,6 +520,14 @@ body .pagex-modal {
   }
 }
 
+/* Counter */
+
+.pagex-counter {
+  &-number {
+    font-size: 140%;
+  }
+}
+
 /* Separator */
 
 .pagex-separator-wrapper {
@@ -1452,6 +1460,7 @@ body .pagex-modal {
 
   .pagex-feature-item-icon {
     margin-right: 20px;
+    overflow: hidden;
   }
 
   .pagex-feature-item-content {

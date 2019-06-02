@@ -940,6 +940,7 @@ var pagexGoogleMaps = {
     },
 
     renderAPIMap: function (el) {
+        if (!el) return;
         if (typeof(google) === 'undefined') {
             this.initAPIscript(el);
             return;
@@ -1032,6 +1033,38 @@ var pagexCookie = {
     }
 };
 
+var pagexCounter = {
+    counters: {},
+
+    initAll: function () {
+        let _this = this,
+            counters = document.querySelectorAll('[data-counter]');
+
+        for (let i = 0; i < counters.length; i++) {
+            let options = JSON.parse(counters[i].getAttribute('data-counter'));
+
+            this.counters[i] = new CountUp(counters[i], options.endVal, options);
+
+            new Waypoint({
+                element: counters[i],
+                handler: function () {
+                    _this.counters[i].start();
+                    this.destroy();
+                },
+                offset: '87%'
+            });
+        }
+    },
+
+    init: function (el) {
+        let options = JSON.parse(el.getAttribute('data-counter')),
+            counter = new CountUp(el, options.endVal, options);
+
+        counter.start();
+    }
+};
+pagexCounter.initAll();
+
 var pagexAccessibility = {
     visuallyImpaired: {
         init: function (on) {
@@ -1088,19 +1121,21 @@ window.addEventListener('pagexElementUpdated', function (data) {
         }, 0);
     }
 
-    if (elName === 'countdown') {
-        pagexCountdown.init(el.querySelector('[data-countdown]'));
-    }
-
-    if (elName === 'google_maps') {
-        if (el.querySelector('[data-google-map]')) {
+    switch (elName) {
+        case 'countdown':
+            pagexCountdown.init(el.querySelector('[data-countdown]'));
+            break;
+        case 'google_maps':
             pagexGoogleMaps.renderAPIMap(el.querySelector('[data-google-map]'));
-        }
+            break;
+        case 'menu_cart':
+            jQuery(document.body).trigger('wc_fragment_refresh');
+            break;
+        case 'counter':
+            pagexCounter.init(el.querySelector('[data-counter]'));
+            break;
     }
 
-    if (elName === 'menu_cart') {
-        jQuery(document.body).trigger('wc_fragment_refresh');
-    }
 
     if (el.querySelector('[data-animate]')) {
         pagexUtils.refreshCurrentElementWaypoint();

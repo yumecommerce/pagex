@@ -1,0 +1,16 @@
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+@import "../../../node_modules/bootstrap/scss/mixins";
+
+// import some bootstrap elements which are not presented in frontend style
+@import "../../../node_modules/bootstrap/scss/badge";
+@import "../../../node_modules/bootstrap/scss/list-group";
+
+@import "basic";
+@import "settings";
+@import "tabs";
+@import "modal";
+@import "sortable";
+@import "options";
+@import "repeater";
+@import "color_picker";

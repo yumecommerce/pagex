@@ -1,0 +1,32 @@
+@import "../../../node_modules/swiper/src/swiper";
+@import "../../../node_modules/swiper/src/components/pagination/pagination";
+@import "../../../node_modules/swiper/src/components/effect-fade/effect-fade";
+
+// swiper navigation
+// remove swiper navigation icons and change arrow width and top offset to transform property
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 50%;
+  width: 27px;
+  height: 44px;
+  margin-top: -22px;
+  z-index: 10;
+  cursor: pointer;
+  &.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: auto;
+    pointer-events: none;
+  }
+}
+.swiper-button-prev, .swiper-container-rtl .swiper-button-next {
+  left: 10px;
+  right: auto;
+}
+.swiper-button-next, .swiper-container-rtl .swiper-button-prev {
+  right: 10px;
+  left: auto;
+}
+
+.swiper-button-lock {
+  display: none;
+}

@@ -4,3 +4,7 @@
 # Files to ignore from release archives
 .* export-ignore
 README.md export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+webpack.mix.js export-ignore
+src/ export-ignore

@@ -191,9 +191,9 @@ class Pagex_Editor {
 		// after saving all fa icons will be replaced with SVG
 		wp_register_style( 'fontawesome', PAGEX_PLUGIN_URL . 'assets/css/fontawesome.css', array(), '5.2.0' );
 
-		wp_register_style( 'pagex-backend', PAGEX_PLUGIN_URL . 'assets/css/pagex-backend.css', array(), PAGEX_VERSION );
-		wp_register_style( 'pagex-admin-page', PAGEX_PLUGIN_URL . 'assets/css/pagex-admin.css', array(), PAGEX_VERSION );
-		wp_register_style( 'pagex-builder', PAGEX_PLUGIN_URL . 'assets/css/pagex-builder.css', array(
+		wp_register_style( 'pagex-backend', PAGEX_PLUGIN_URL . 'assets/css/backend.css', array(), PAGEX_VERSION );
+		wp_register_style( 'pagex-admin-page', PAGEX_PLUGIN_URL . 'assets/css/admin.css', array(), PAGEX_VERSION );
+		wp_register_style( 'pagex-builder', PAGEX_PLUGIN_URL . 'assets/css/builder.css', array(
 			'fontawesome',
 		), PAGEX_VERSION );
 	}

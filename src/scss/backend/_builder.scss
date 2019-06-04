@@ -72,9 +72,9 @@ body.wp-admin #pagex-settings {
 
   .element {
     background: #FFFFFF;
-    margin: 15px 0 0;
+    margin: 15px 0 0 1px;
     outline: 1px solid #d5dadf;
-    min-height: 32px;
+    min-height: 36px;
     display: flex !important;
     align-items: center !important;
     flex-wrap: wrap;
@@ -128,6 +128,19 @@ body.wp-admin #pagex-settings {
     .pagex-button-wrapper,
     .pagex-modal-window-close {
       display: none;
+    }
+  }
+
+  .pagex-modal-builder-area {
+    &:before {
+      display: block;
+      padding: 15px 0 0;
+      opacity: 0.5;
+      font-size: 11px;
+      color: #42527b;
+      font-weight: 500;
+      text-transform: none;
+      letter-spacing: normal;
     }
   }
 }

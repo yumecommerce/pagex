@@ -357,6 +357,9 @@ class Pagex_Backend_Editor {
 			$element_names_style .= '.element[data-type="' . $element['id'] . '"]:before {content: "' . $element['title'] . '"}';
 		}
 
+		// modal window label
+		$element_names_style .= '.pagex-modal-builder-area:before {content: "' . __( 'Modal Window', 'pagex' ) . '"}';
+
 		wp_add_inline_style( 'pagex-backend', $element_names_style );
 	}
 }

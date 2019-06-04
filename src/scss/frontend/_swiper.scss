@@ -1,10 +1,18 @@
-@import "../../../node_modules/swiper/src/swiper";
-@import "../../../node_modules/swiper/src/components/pagination/pagination";
-@import "../../../node_modules/swiper/src/components/effect-fade/effect-fade";
+@import '../../../node_modules/swiper/src/swiper';
+@import '../../../node_modules/swiper/src/components/pagination/pagination';
+@import '../../../node_modules/swiper/src/components/effect-fade/effect-fade';
+
+// change basic pagination-bullet
+.swiper-pagination-bullet {
+  margin: 0 4px;
+  opacity: 1;
+  transition: 240ms;
+}
 
 // swiper navigation
-// remove swiper navigation icons and change arrow width and top offset to transform property
-.swiper-button-prev, .swiper-button-next {
+// remove swiper navigation icons
+.swiper-button-prev,
+.swiper-button-next {
   position: absolute;
   top: 50%;
   width: 27px;

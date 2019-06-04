@@ -32,21 +32,17 @@ ul.product_list_widget {
 
   dl {
     margin: 0;
-    padding-left: 1em;
-    border-left: 2px solid rgba(0, 0, 0, 0.1);
 
     dt,
     dd {
       display: inline-block;
-      float: left;
-      margin-bottom: 1em;
+      margin-bottom: 0;
     }
 
     dt {
       font-weight: 700;
       padding: 0 0 0.25em;
       margin: 0 4px 0 0;
-      clear: left;
     }
 
     dd {

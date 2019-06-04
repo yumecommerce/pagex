@@ -3,6 +3,8 @@ require('laravel-mix-polyfill');
 
 mix.setPublicPath('./assets')
     .js('./src/js/frontend/main.js', './assets/js/frontend')
+    .js('./src/js/admin/admin.js', './assets/js/admin')
+    .js('./src/js/backend/backend.js', './assets/js/backend')
     .sass('./src/scss/frontend/frontend.scss', './assets/css')
     .sass('./src/scss/builder/builder.scss', './assets/css')
     .sass('./src/scss/backend/backend.scss', './assets/css')

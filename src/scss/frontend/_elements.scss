@@ -450,17 +450,12 @@ body .pagex-modal {
   }
 }
 
-.swiper-pagination-bullet {
+.swiper-pagination-bullet:not(.swiper-pagination-bullet-active) {
   background: rgba(0, 0, 0, .1);
-  transition: 240ms;
 
   &:hover {
     background: rgba(0, 0, 0, .4);
   }
-}
-
-.swiper-pagination-bullet-active {
-  background: #007aff;
 }
 
 .pagex-slider-navigation {

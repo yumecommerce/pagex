@@ -47,6 +47,7 @@ body.pagex-preview-mode-hide-controls .pagex-options {
     min-height: auto !important;
     letter-spacing: normal !important;
     line-height: 17px !important;
+    white-space: nowrap;
 
     i {
       pointer-events: none;
@@ -54,10 +55,16 @@ body.pagex-preview-mode-hide-controls .pagex-options {
   }
 }
 
-.pagex-hide-not-element-options {
+.pagex-hide-options {
   // keep section-add-options to prevent page jumping
-  .pagex-options:not(.pagex-element-options):not(.pagex-section-add) {
+  .pagex-options {
     display: none;
+
+    &.pagex-add-element-options,
+    &.pagex-section-add,
+    &:hover {
+      display: flex;
+    }
   }
 }
 

@@ -410,6 +410,7 @@ var pagexModal = {
         }
     }
 };
+window.pagexModal = pagexModal;
 
 var pagexScrollTo = {
     scroll: function (el) {
@@ -534,6 +535,8 @@ var pagexTabs = {
         document.body.setAttribute('data-tabs-active-' + element.closest('[data-type]').getAttribute('data-id'), index + 1);
     }
 };
+
+window.pagexTabs = pagexTabs;
 
 var pagexSlider = {
     builderActive: document.body.matches('.pagex-builder-frame-active'),

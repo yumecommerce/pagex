@@ -1715,6 +1715,9 @@ var pagex = {
         }
 
         this.elementSortable();
+
+        // restore option buttons
+        document.body.classList.remove('pagex-hide-options');
     },
 
     openSaveAsLayoutModal: function (el) {
@@ -2418,7 +2421,8 @@ window.parent.addEventListener('colorPickerChange', function (data) {
 });
 
 (function ($, window, document) {
-    var elementOptions = document.getElementById("pagex-control-element-options-template").innerHTML,
+    var timer,
+        elementOptions = document.getElementById("pagex-control-element-options-template").innerHTML,
         columnOptions = document.getElementById("pagex-control-column-options-template").innerHTML,
         addElementOptions = document.getElementById("pagex-control-add-element-options-template").innerHTML,
         sectionOptions = document.getElementById("pagex-control-section-options-template").innerHTML,
@@ -2497,12 +2501,15 @@ window.parent.addEventListener('colorPickerChange', function (data) {
     }, '.pagex-builder-area [data-type="section"]');
     $(document).on({
         mouseenter: function () {
-            document.body.classList.add('pagex-hide-not-element-options');
+            timer = setTimeout(function() {
+                document.body.classList.add('pagex-hide-options');
+            }, 500);
         },
         mouseleave: function () {
-            document.body.classList.remove('pagex-hide-not-element-options');
+            clearTimeout(timer);
+            document.body.classList.remove('pagex-hide-options');
         }
-    }, '.pagex-element-options');
+    }, '.pagex-options:not(.pagex-add-element-options)');
     $(document).on({
         mouseenter: function () {
             tippy('.pagex-tooltip', {

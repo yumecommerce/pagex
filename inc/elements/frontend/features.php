@@ -14,7 +14,7 @@ function pagex_register_features_element( $elements ) {
 		<% data.features.forEach( function(feature, index) { %>
 			<div class="pagex-feature-item-wrapper" <% if (data.anim) { %> data-animate="<%= data.anim %>" <% } %> <% if (data.anim) { %> data-animate-delay="<% if (index == 0) { print(data.anim_delay) } else { data.anim_delay = data.anim_delay * 1.5; print(data.anim_delay) } %>" <% } %>>
 				<div class="pagex-feature-item">
-					<% if (data.link_block && feature.link) { %><a class="pagex-feature-item-link-block pagex-static-link" <%= feature.link %>></a><% } %>
+					<% if (data.link_block && feature.link || feature.link && !feature.link_text ) { %><a class="pagex-feature-item-link-block pagex-static-link" <%= feature.link %>></a><% } %>
 					<% if (data.position == "title") { %> <div class="pagex-feature-item-content"> <% } %>
 					<% if (feature.icon && feature.icon.length) { %>
 					<div class="pagex-feature-item-icon-wrapper"><div class="pagex-feature-item-icon"><% print(pagex.genIcon("icon", feature)) %></div></div>
@@ -25,7 +25,7 @@ function pagex_register_features_element( $elements ) {
 					<% } %>
 					<% if (data.position == "title") { %> </div> <% } %>
 					<% if (feature.desc) { %>
-					<div class="pagex-feature-item-description pagex-lang-str" contenteditable="true"><%= feature.desc %></div>
+					<div class="pagex-feature-item-description pagex-lang-str" contenteditable="true"><% print(feature.desc.replace(/\n/gi, "<br>")) %></div>
 					<% } %>
 					<% if (feature.link_text) { %>
 					<a class="button pagex-feature-item-link" <%= feature.link %>><%= feature.link_text %></a>
@@ -55,15 +55,14 @@ function pagex_register_features_element( $elements ) {
 							array(
 								'id'       => 'title',
 								'type'     => 'text',
-								'class'    => 'col-6 pagex-repeater-value',
+								'class'    => 'col-12 pagex-repeater-value',
 								'title'    => __( 'Title', 'pagex' ),
 								'action'   => 'content',
 								'selector' => '.pagex-feature-item-title',
 							),
 							array(
 								'id'    => 'desc',
-								'type'  => 'text',
-								'class'    => 'col-6',
+								'type'  => 'textarea',
 								'title' => __( 'Description', 'pagex' ),
 								'action'   => 'content',
 								'selector' => '.pagex-feature-item-description',
@@ -286,9 +285,8 @@ function pagex_register_features_element( $elements ) {
 						'type'     => 'text',
 						'action'   => 'css',
 						'class'    => 'col-4',
-						'selector' => '[el] .pagex-feature-item-icon {border-radius: [val]}',
+						'selector' => '[el] .pagex-feature-item-icon, [el] img.pagex-icon {border-radius: [val]}',
 					),
-
 
 					array(
 						'type'  => 'heading',

@@ -344,7 +344,7 @@ function pagex_register_button_element( $elements ) {
 						'type'        => 'checkbox',
 						'title'       => __( 'Modal Window', 'pagex' ),
 						'label'       => __( 'Use Button to Trigger Modal Window', 'pagex' ),
-						'description' => sprintf(__( 'Modal window content has an inner builder area. To open a modal window click %shere%s or on a button itself.', 'pagex' ), '<a href="#" class="pagex-open-modal-trigger">', '</a>' ),
+						'description' => sprintf( __( 'Modal window content has an inner builder area. To open a modal window click %shere%s or on a button itself.', 'pagex' ), '<a href="#" class="pagex-open-modal-trigger">', '</a>' ),
 					),
 					array(
 						'id'       => 'modal_content',
@@ -463,6 +463,15 @@ function pagex_register_button_element( $elements ) {
 						'property' => 'margin',
 					),
 					array(
+						'id'         => 'dq',
+						'title'      => __( 'Size', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'class'      => 'col-3',
+						'selector'   => '[el] .pagex-modal-window-close .pagex-icon {width: [val]; height: [val]}',
+					),
+					array(
 						'id'      => 'mx',
 						'title'   => __( 'Icon Position', 'pagex' ),
 						'type'    => 'select',
@@ -496,7 +505,7 @@ function pagex_register_button_element( $elements ) {
 						'id'       => 'qw',
 						'title'    => __( 'Color', 'pagex' ) . ' ' . __( 'on Hover', 'pagex' ),
 						'type'     => 'color',
-						'class'    => 'col-8',
+						'class'    => 'col-4',
 						'action'   => 'css',
 						'selector' => '[el] .pagex-modal-window-close:hover {color: [val]}',
 					),

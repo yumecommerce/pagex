@@ -1383,7 +1383,8 @@ class Pagex_Editor {
 			'/pagex-animated/m',
 
 			'/swiper-button-disabled/m',
-			'/swiper-slide-active/m',
+			'/\sswiper-slide-active/m', // only if it is class and space before the name
+			'/\sswiper-slide-duplicate-active/m',
 			'/swiper-slide-next/m',
 			'/ swiper-pagination-bullet-active/m',
 			// space before so we remove only class and do not remove rules from <style>

@@ -35,12 +35,12 @@ body.wp-admin #pagex-settings {
   [data-type] {
     min-height: 40px;
     position: relative !important; // in case position classes
+    overflow: initial !important // in case overflow hidden class
   }
 
   [data-type="section"] {
     margin: 0 0 20px;
     background: #fafafa;
-    position: relative;
   }
 
   [data-type="container"] {

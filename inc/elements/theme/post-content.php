@@ -38,7 +38,7 @@ function pagex_register_post_content_element( $elements ) {
 						'property' => 'margin',
 					),
 					array(
-						'type'  => 'clear',
+						'type' => 'clear',
 					),
 					array(
 						'id'       => 'we',
@@ -111,7 +111,8 @@ function pagex_register_post_content_element( $elements ) {
 						'type'       => 'text',
 						'responsive' => true,
 						'action'     => 'css',
-						'selector'   => '[el] .alignwide {max-width: [val] !important;}', // important to overwrite responsive Content Width option
+						'selector'   => '[el] .alignwide {max-width: [val] !important;}',
+						// important to overwrite responsive Content Width option
 					),
 				),
 			),
@@ -132,6 +133,11 @@ function pagex_post_content( $atts ) {
 	$status = get_post_meta( get_the_ID(), '_pagex_status', true );
 
 	$content = get_the_content();
+
+	// demo preview for content layout
+	if ( isset( $_REQUEST['pagex-content-preview'] ) ) {
+		$content = get_post_field( 'post_content', intval( $_REQUEST['pagex-content-preview'] ) );
+	}
 
 	ob_start();
 

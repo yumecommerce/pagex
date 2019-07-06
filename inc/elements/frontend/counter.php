@@ -16,6 +16,7 @@ separator: data.sep,
 duration: data.duration ? Number(data.duration) : 2,
 };  %>
 <div class="pagex-counter">
+	<% if (data.text_before) {  %><div class="pagex-counter-text-before pagex-lang-str"><%= data.text_before %></div><% } %>
 <div class="pagex-counter-wrapper d-flex">
 	<div class="pagex-counter-prefix pagex-lang-str"><%= data.prefix %></div>
 	<div class="pagex-counter-number" data-counter="<%- JSON.stringify(json) %>"></div>
@@ -73,15 +74,43 @@ duration: data.duration ? Number(data.duration) : 2,
 						'type'  => 'text',
 					),
 					array(
-						'id'    => 'text',
-						'title' => __( 'Text', 'pagex' ),
+						'type' => 'clear',
+					),
+					array(
+						'id'    => 'text_before',
+						'title' => __( 'Text Before', 'pagex' ),
 						'type'  => 'text',
+						'class' => 'col-6',
+					),
+					array(
+						'id'    => 'text',
+						'title' => __( 'Text After', 'pagex' ),
+						'type'  => 'text',
+						'class' => 'col-6',
 					),
 				),
 			),
 			array(
 				'title'  => __( 'Style', 'pagex' ),
 				'params' => array(
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Basic Style', 'pagex' ),
+					),
+					array(
+						'id'       => 'h',
+						'title'    => __( 'Vertical Align', 'pagex' ),
+						'type'     => 'select',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-counter-wrapper {align-items: [val]}',
+						'options'  => array(
+							''         => __( 'Top', 'pagex' ),
+							'center'   => __( 'Center', 'pagex' ),
+							'flex-end' => __( 'Bottom', 'pagex' ),
+						),
+					),
+
 					array(
 						'type'  => 'heading',
 						'title' => __( 'Prefix', 'pagex' ),
@@ -132,8 +161,17 @@ duration: data.duration ? Number(data.duration) : 2,
 						'title'    => __( 'Color', 'pagex' ),
 						'type'     => 'color',
 						'action'   => 'css',
-						'class'    => 'col-4',
+						'class'    => 'col-3',
 						'selector' => '[el] .pagex-counter-number {color: [val]}',
+					),
+					array(
+						'id'         => 'j',
+						'title'      => __( 'Width', 'pagex' ),
+						'type'       => 'text',
+						'action'     => 'css',
+						'responsive' => true,
+						'class'      => 'col-3',
+						'selector'   => '[el] .pagex-counter-number {width: [val]}',
 					),
 
 					array(
@@ -165,7 +203,34 @@ duration: data.duration ? Number(data.duration) : 2,
 
 					array(
 						'type'  => 'heading',
-						'title' => __( 'Text', 'pagex' ),
+						'title' => __( 'Text Before', 'pagex' ),
+					),
+					array(
+						'id'       => 'd',
+						'type'     => 'typography',
+						'selector' => '.pagex-counter-text-before',
+					),
+					array(
+						'id'       => 'f',
+						'title'    => __( 'Margin', 'pagex' ),
+						'action'   => 'css',
+						'type'     => 'dimension',
+						'class'    => 'col-6',
+						'selector' => '[el] .pagex-counter-text-before',
+						'property' => 'margin',
+					),
+					array(
+						'id'       => 'g',
+						'title'    => __( 'Color', 'pagex' ),
+						'type'     => 'color',
+						'action'   => 'css',
+						'class'    => 'col-4',
+						'selector' => '[el] .pagex-counter-text-before {color: [val]}',
+					),
+
+					array(
+						'type'  => 'heading',
+						'title' => __( 'Text After', 'pagex' ),
 					),
 					array(
 						'id'       => 'u',

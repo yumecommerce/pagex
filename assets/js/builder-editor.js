@@ -1447,7 +1447,7 @@ var pagex = {
         e.target.classList.add('active');
     },
 
-    appendNewElement: function (e) {
+    appendElement: function (e) {
         let element = e.target.getAttribute('data-add');
 
         // open all elements modal if we add new custom element
@@ -1536,6 +1536,9 @@ var pagex = {
             this.renderForm();
             this.renderElement();
         }
+
+        // in case inner row or inner row container
+        this.elementSortable();
 
         this.allElementsModal.classList.add('pagex-hide');
     },
@@ -2047,7 +2050,7 @@ var pagex = {
             button_icon.className = 'fas fa-file-import';
 
         }).fail(function () {
-            console.error('Fail to import layout');
+            alert('Fail to import layout');
         });
     },
 
@@ -2083,6 +2086,11 @@ var pagex = {
         }
 
         let newData = {content: content.innerHTML, params: newParams};
+
+        // backend with pagexstyle to avoid issues with default style
+        if (this.postContentArea !== null) {
+            newData.content = newData.content.replace(/(<style.*?id=".*?".*?>)(.*?)(<\/style>)/g, '$1/*pagexstyle $2 pagexstyle*/$3');
+        }
 
         // use jQuery to run inline script if presented
         jQuery(newData.content).insertAfter(jQuery(this.currentSection));
@@ -2263,7 +2271,7 @@ document.addEventListener('click', function (e) {
     // saving section as layout
     if (el.matches('.pagex-save-custom-layout-modal')) pagex.openSaveAsLayoutModal(el);
 
-    if (el.matches('[data-add]')) pagex.appendNewElement(e);
+    if (el.matches('[data-add]')) pagex.appendElement(e);
     if (el.matches('[data-clone]')) pagex.cloneElement(e);
     if (el.matches('[data-remove]')) pagex.removeElement(e);
 
@@ -2386,11 +2394,14 @@ window.parent.document.addEventListener('change', function (e) {
 
     switch (true) {
         case el.matches('.pagex-image-sizes'):
-            // no break since it matches pagex-control-option
             pagex.changeImageUrlSize(e);
+            break;
         case el.matches('.pagex-link-control-field'):
-            // no break since it matches pagex-control-option
             pagex.fillLinkUrl(e);
+            break;
+    }
+
+    switch (true) {
         case el.matches('.pagex-control-option'):
             pagex.currentParam = el;
             setTimeout(pagex.setFormConditions(el), 0);
@@ -2508,6 +2519,12 @@ window.parent.addEventListener('colorPickerChange', function (data) {
         mouseleave: function () {
             clearTimeout(timer);
             document.body.classList.remove('pagex-hide-options');
+        },
+        click: function () {
+            // in case element was removed before mouseleave with clearTimeout
+            setTimeout(function() {
+                document.body.classList.remove('pagex-hide-options');
+            }, 1000);
         }
     }, '.pagex-options:not(.pagex-add-element-options)');
     $(document).on({

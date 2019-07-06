@@ -30,6 +30,17 @@ function pagex_register_section_element( $elements ) {
 						),
 					),
 					array(
+						'id'          => 'pagex_section_tr_bg_ab_home',
+						'label'       => __( 'Transparent Background', 'pagex' ),
+						'description' => __( 'Make background of the section transparent only for Homepage', 'pagex' ),
+						'type'        => 'checkbox',
+						'action'      => 'css',
+						'selector'    => '.home [el] > .pagex-bc {opacity: 0} .home [el] {background: none; box-shadow: none;}',
+						'condition'   => array(
+							'pagex_section_pos' => array( 'pagex-section-position-absolute', 'pagex-section-position-absolute-home-page' )
+						)
+					),
+					array(
 						'id'          => 'pagex_section_tr_bg',
 						'label'       => __( 'Transparent Background', 'pagex' ),
 						'description' => __( 'Make background of the section transparent when section is not fixed', 'pagex' ),

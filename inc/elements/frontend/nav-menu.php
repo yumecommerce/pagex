@@ -406,11 +406,11 @@ function pagex_register_nav_menu_element( $elements ) {
 						'action'     => 'css',
 						'responsive' => true,
 						'class'      => 'col-4',
-						'selector'   => '[el] li.has-mega-menu > .sub-menu {padding: [val]}',
+						'selector'   => '[el] .pagex-nav-menu-desktop li.has-mega-menu > .sub-menu {padding: [val]}',
 					),
 					array(
-						'type'        => 'heading',
-						'title'       => __( 'Style for Desktops', 'pagex' ),
+						'type'  => 'heading',
+						'title' => __( 'Style for Desktops', 'pagex' ),
 					),
 					array(
 						'id'       => 'mn',
@@ -462,8 +462,8 @@ function pagex_register_nav_menu_element( $elements ) {
 					),
 
 					array(
-						'type'        => 'heading',
-						'title'       => __( 'Style for Mobiles', 'pagex' ),
+						'type'  => 'heading',
+						'title' => __( 'Style for Mobiles', 'pagex' ),
 					),
 
 					array(
@@ -696,6 +696,11 @@ function pagex_nav_menu( $atts ) {
 	// remove id from ul and li to prevent duplicates between desktop and mobile menus
 	$menu = preg_replace( '/(<[^>]+) id=".*?"/i', '$1', $menu );
 
+	if ( $data['nav_layout'] == 'pagex-nav-menu-dropdown' ) {
+		// remove has-mega-menu class from li for dropdown so custom style from submenu option will apply
+		$menu = preg_replace( '/has-mega-menu/i', '', $menu );
+	}
+
 	ob_start();
 
 	echo '<div class="pagex-nav-menu-wrapper ' . $data['breakpoint'] . '">';
@@ -705,8 +710,9 @@ function pagex_nav_menu( $atts ) {
 	if ( $data['breakpoint'] ) {
 		echo '<div class="pagex-nav-menu-mobile-trigger-wrapper pagex-breakpoint-mobile pagex-modal-trigger"><div class="pagex-nav-menu-mobile-trigger"><svg class="pagex-icon"><use xlink:href="#pagex-nav-menu-icon" /></svg></div></div>';
 		echo '<div class="pagex-nav-menu-mobile-wrapper">';
+		$mobile_menu = preg_replace( '/has-mega-menu/i', '', $menu );
 		pagex_modal_window_template( array(
-			'content'   => '<div class="pagex-nav-menu-dropdown pagex-nav-menu-mobile">' . $menu . '</div>',
+			'content'   => '<div class="pagex-nav-menu-dropdown pagex-nav-menu-mobile">' . $mobile_menu . '</div>',
 			'offcanvas' => $data['offcanvas_pos']
 		) );
 		echo '</div>';

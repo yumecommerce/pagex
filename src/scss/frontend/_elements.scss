@@ -813,7 +813,6 @@ body .pagex-modal {
   margin: 0;
   padding: 0;
   line-height: normal;
-  font-size: 14px;
 
   .nav-link {
     color: #95979a;
@@ -928,38 +927,56 @@ body .pagex-modal {
   }
 }
 
-.pagex-nav-menu-horizontal {
-  // first submenu level
-  .sub-menu {
-    left: 0;
-    top: 100%;
-    // second and etc submenu levels
+.pagex-nav-menu {
+  // horizontal desktop layout
+  &-horizontal {
+    // first submenu level
     .sub-menu {
-      left: 100%;
-      top: 0;
+      left: 0;
+      top: 100%;
+      // second and etc submenu levels
+      .sub-menu {
+        left: 100%;
+        top: 0;
+      }
+    }
+
+    .sub-menu {
+      .menu-item-has-children > a:after {
+        transform: rotate(-45deg);
+      }
     }
   }
 
-  .sub-menu {
-    .menu-item-has-children > a:after {
-      transform: rotate(-45deg);
+  // vertical desktop menu
+  &-vertical {
+    > ul {
+      .menu-item {
+        width: 100%;
+
+        &.menu-item-has-children > a:after {
+          transform: rotate(-45deg);
+        }
+      }
+
+      .sub-menu {
+        left: 100%;
+        top: 0;
+      }
     }
   }
-}
 
-// vertical desktop menu
-.pagex-nav-menu-vertical > ul {
-  .menu-item {
-    width: 100%;
-
-    &.menu-item-has-children > a:after {
-      transform: rotate(-45deg);
+  // common style for mega menu items
+  // hide non mega menu item from desktop type menus
+  &-horizontal,
+  &-vertical {
+    .has-mega-menu {
+      > .sub-menu {
+        > li:not(.menu-item-object-pagex_layout_builder) {
+          display: none;
+        }
+      }
     }
-  }
-
-  .sub-menu {
-    left: 100%;
-    top: 0;
   }
 }
 
@@ -998,10 +1015,8 @@ body .pagex-modal {
       top: 0;
     }
 
-    &.has-mega-menu {
-      > .sub-menu {
-        padding-left: 0;
-      }
+    .menu-item-object-pagex_layout_builder {
+      display: none;
     }
 
     // open sub menu by click on li.menu-item-has-children

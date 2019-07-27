@@ -36,10 +36,19 @@ class Pagex_Demo_Data_Import {
 			}
 		}
 
-		// prevent clicks while import is in action
-		echo '<style>.pagex-no-click {pointer-events: none}</style>';
+		// check multiple demo previews
+		$demo_previews = '';
+		if ( isset( $import_data['demos'] ) ) {
+			$demo_previews .= '<h4>' . __( 'Select a Demo for Import', 'pagex' ) . '</h4>';
+			for ( $i = 0; $i < count( $import_data['demos'] ); $i ++ ) {
+				$demo_previews .= '<label class="pagex-demo-variation"><input type="radio" name="pagex-demo-selected" value="' . $import_data['demos'][ $i ]['id'] . '" ' . checked( 0, $i, false ) . '><img src="' . $import_data['demos'][ $i ]['image'] . '"></label>';
+			}
+		}
 
-		echo '<div class="notice notice-info" id="pagex_demo_content_import_alert" style="margin: 30px 0;"><h2 style="margin-bottom: 10px; font-size:20px;">' . __( 'Demo Data Import', 'pagex' ) . '</h2><p style="color: #72777c; margin-bottom: 15px;">' . __( 'Great, after you have installed and activated all required plugins, it is time to import demo content.', 'pagex' ) . '<br><br><span style="color: #d20e00"><b>' . __( 'NOTE!', 'pagex' ) . '</b></span> <b>' . __( 'Import demo content only on a fresh WordPress site since some of your existing content might be replaced.', 'pagex' ) . '</b><br><br>' . __( 'This is a required step! Demo Data contains theme templates which are used by WordPress to display initial content of your website.', 'pagex' ) . '<br> ' . __( 'Please be patient and wait for the import process to complete. It can take up to 3-5 minutes.', 'pagex' ) . '</p><form id="pagex-demo-content-import-form"><input type="submit" class="button button-primary button-hero" id="pagex-demo-import-button" data-importing="' . __( 'Importing... Please wait.', 'pagex' ) . '" value="' . __( 'Import Demo Data', 'pagex' ) . '"></form><div style="font-size: 14px;" id="pagex-demo-content-import-form-response"></div><p></p></div>';
+		// prevent clicks while import is in action
+		echo '<style>.pagex-no-click {pointer-events: none} .pagex-demo-variation img {opacity: .6; transition: .2s; border-radius: 10px; width: 200px; margin: 0 15px 10px 5px; } .pagex-demo-variation img:hover {opacity: 1} .pagex-demo-variation input {opacity: 0; position: absolute} .pagex-demo-variation input:checked + img {opacity: 1; box-shadow: 0 0 0 2px #ffffff, 0 0 0 5px #00a0d2}</style>';
+
+		echo '<div class="notice notice-info" id="pagex_demo_content_import_alert" style="margin: 30px 0;"><h2 style="margin-bottom: 10px; font-size:20px;">' . __( 'Demo Data Import', 'pagex' ) . '</h2><p style="color: #72777c; margin-bottom: 15px;">' . __( 'Great, after you have installed and activated all required plugins, it is time to import demo content.', 'pagex' ) . '<br><br><span style="color: #d20e00"><b>' . __( 'NOTE!', 'pagex' ) . '</b></span> <b>' . __( 'Import demo content only on a fresh WordPress site since some of your existing content might be replaced.', 'pagex' ) . '</b><br><br>' . __( 'This is a required step! Demo Data contains theme templates which are used by WordPress to display initial content of your website.', 'pagex' ) . '<br> ' . __( 'Please be patient and wait for the import process to complete. It can take up to 3-5 minutes.', 'pagex' ) . '</p><form id="pagex-demo-content-import-form">' . $demo_previews . '<br><br><input type="submit" class="button button-primary button-hero" id="pagex-demo-import-button" data-importing="' . __( 'Importing... Please wait.', 'pagex' ) . '" value="' . __( 'Import Demo Data', 'pagex' ) . '"></form><div style="font-size: 14px;" id="pagex-demo-content-import-form-response"></div><p></p></div>';
 
 		echo '<script>
 
@@ -74,7 +83,7 @@ class Pagex_Demo_Data_Import {
 			}
 
 			function pagexImportThirdStep() {
-				jQuery.post( "' . admin_url( 'admin-ajax.php' ) . '", {action: "pagex_demo_content_import", step: 3}, function( response ) {
+				jQuery.post( "' . admin_url( 'admin-ajax.php' ) . '", {action: "pagex_demo_content_import", step: 3, demoID: jQuery("input[name=\'pagex-demo-selected\']:checked").val()}, function( response ) {
 					console.log("Import: third step done.");
 					pagexImportBtn.remove();
 					jQuery("body").removeClass("pagex-no-click");
@@ -194,9 +203,9 @@ class Pagex_Demo_Data_Import {
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->posts} SET post_content = REPLACE(post_content, %s, %s)", $from_url_encoded, $to_url_encoded ) );
 		$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE(meta_value, %s, %s)", $from_url_encoded, $to_url_encoded ) );
 
-
 		// after import action
-		do_action( 'pagex_after_import_demo_data' );
+		$selected_demo_id = isset( $_POST['demoID'] ) ? esc_attr( $_POST['demoID'] ) : '';
+		do_action( 'pagex_after_import_demo_data', $selected_demo_id );
 
 		// enable permalink
 		global $wp_rewrite;

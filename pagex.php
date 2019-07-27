@@ -6,10 +6,10 @@ Author: YumeCommerce
 Plugin URI: https://github.com/yumecommerce/pagex
 Text Domain: pagex
 Domain Path: /languages
-Version: 0.1
+Version: 0.2
 */
 
-define( 'PAGEX_VERSION', '0.1' );
+define( 'PAGEX_VERSION', '0.2' );
 define( 'PAGEX_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'PAGEX_FILE', __FILE__ );
 define( 'PAGEX_PLUGIN_BASE', plugin_basename( PAGEX_FILE ) );

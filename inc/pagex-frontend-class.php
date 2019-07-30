@@ -373,6 +373,7 @@ class Pagex_Frontend {
 					'background'     => $settings['design']['button']['bg'],
 					'border-color'   => $settings['design']['button']['border_color'],
 					'min-height'     => $settings['design']['button']['min_height'],
+					'line-height'    => $settings['design']['button']['min_height'],
 					'box-shadow'     => $settings['design']['button']['box_shadow'],
 				)
 			),
@@ -475,7 +476,7 @@ class Pagex_Frontend {
 		}
 
 		// check if main or heading fonts related to google fonts
-        // todo
+		// todo
 //		$google_fonts  = array();
 //		$_google_fonts = Pagex_Editor_Control_Attributes::get_google_fonts();
 //		$main_font     = $settings['design']['main_font']['name'];
@@ -620,16 +621,16 @@ class Pagex_Frontend {
 			if ( $fonts[ $type ]['link'] == $link ) {
 				echo '<style class="pagex-self-hosted-fonts">' . $fonts[ $type ]['style'] . '</style>';
 			} else {
-			    $this->make_font_self_hosted($type, $link);
-            }
+				$this->make_font_self_hosted( $type, $link );
+			}
 		} else {
-			$this->make_font_self_hosted($type, $link);
-        }
+			$this->make_font_self_hosted( $type, $link );
+		}
 	}
 
 	/**
-     * Download font variations from adobe or google and store style with replaced font URLs
-     *
+	 * Download font variations from adobe or google and store style with replaced font URLs
+	 *
 	 * @param $type
 	 * @param $link
 	 */
@@ -655,7 +656,7 @@ class Pagex_Frontend {
 //		foreach ($matches[1] as $key => $value) {
 //			$urls[] = $value;
 //		}
-    }
+	}
 
 	/**
 	 * Custom SVG icons for some elements like slider and etc

@@ -708,7 +708,7 @@ function pagex_nav_menu( $atts ) {
 	// mobile menu
 	// mobile menu should print first so if we have modal window inside mega menu it would not be triggered instead
 	if ( $data['breakpoint'] ) {
-		echo '<div class="pagex-nav-menu-mobile-trigger-wrapper pagex-breakpoint-mobile pagex-modal-trigger"><div class="pagex-nav-menu-mobile-trigger"><svg class="pagex-icon"><use xlink:href="#pagex-nav-menu-icon" /></svg></div></div>';
+		echo '<div class="pagex-nav-menu-mobile-trigger-wrapper pagex-breakpoint-mobile pagex-modal-trigger"><div class="pagex-nav-menu-mobile-trigger d-flex"><svg class="pagex-icon"><use xlink:href="#pagex-nav-menu-icon" /></svg></div></div>';
 		echo '<div class="pagex-nav-menu-mobile-wrapper">';
 		$mobile_menu = preg_replace( '/has-mega-menu/i', '', $menu );
 		pagex_modal_window_template( array(

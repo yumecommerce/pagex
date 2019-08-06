@@ -1038,7 +1038,7 @@ var pagexCounter = {
                     _this.counters[i].start();
                     this.destroy();
                 },
-                offset: '87%'
+                offset: '97%'
             });
         }
     },

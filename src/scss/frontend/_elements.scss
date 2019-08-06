@@ -145,7 +145,7 @@ body .pagex-modal {
   .pagex-modal-window-content {
     border-radius: 0;
     margin: 0;
-    max-width: 300px;
+    max-width: 270px;
   }
 
   .pagex-modal-window-wrapper {
@@ -317,6 +317,8 @@ body .pagex-modal {
 }
 
 .pagex-accordion-toggle {
+  display: flex;
+
   .pagex-icon {
     width: 12px;
     height: 12px;

@@ -123,12 +123,6 @@ class Pagex_Editor_Control_Attributes {
 				'type'        => 'checkbox',
 			),
 			array(
-				'id'          => 'pagex_slider_centeredSlides',
-				'label'       => __( 'Centered Slides', 'pagex' ),
-				'description' => __( 'When slider has multiple slides per view, make active slide be in a center.', 'pagex' ),
-				'type'        => 'checkbox',
-			),
-			array(
 				'id'          => 'pagex_slider_autoplay',
 				'label'       => __( 'Autoplay', 'pagex' ),
 				'class'       => 'col-7',
@@ -184,6 +178,19 @@ class Pagex_Editor_Control_Attributes {
 				'class'       => 'col-4',
 				'type'        => 'number',
 				'responsive'  => true,
+			),
+			array(
+				'id'          => 'pagex_slider_centered',
+				'title'       => __( 'Centered Slides', 'pagex' ),
+				'description' => __( 'Make active slide be in a center for multiple slides per view.', 'pagex' ),
+				'type'        => 'select',
+				'class'       => 'col-4',
+				'responsive'  => true,
+				'options'    => array(
+					''      => __( 'Inherit', 'pagex' ),
+					' 0' => __( 'Not Centered', 'pagex' ),
+					' 1'  => __( 'Centered', 'pagex' ),
+				)
 			),
 			array(
 				'id'          => 'pagex_slider_container_offset',

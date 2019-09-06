@@ -374,6 +374,7 @@ class Pagex_Frontend {
 					'border-color'   => $settings['design']['button']['border_color'],
 					'min-height'     => $settings['design']['button']['min_height'],
 					'line-height'    => $settings['design']['button']['min_height'],
+					'min-width'      => $settings['design']['button']['min_width'],
 					'box-shadow'     => $settings['design']['button']['box_shadow'],
 				)
 			),
@@ -417,13 +418,14 @@ class Pagex_Frontend {
 			),
 
 			array(
-				'selector' => '.select2-container .select2-selection--single, textarea, select, input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"]',
+				'selector' => '.select2-container .select2-selection--single, textarea, select, select.form-control, input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="tel"], input[type="text"], input[type="url"]',
 				'rules'    => array(
 					'font-size'     => $settings['design']['form']['font_size'],
 					'border-width'  => $settings['design']['form']['border_width'],
 					'border-radius' => $settings['design']['form']['border_radius'],
 					'border-color'  => $settings['design']['form']['border_color'],
 					'min-height'    => $settings['design']['form']['min_height'],
+					'padding'       => $settings['design']['form']['padding'],
 				)
 			),
 			array(

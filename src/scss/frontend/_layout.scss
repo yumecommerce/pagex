@@ -164,13 +164,15 @@ textarea.form-control {
   }
 }
 
-.pagex-breakpoint-xl {
-  .pagex-breakpoint-desktop {
-    display: none !important;
-  }
+@media (max-width: 1201px) {
+  .pagex-breakpoint-xl {
+    .pagex-breakpoint-desktop {
+      display: none !important;
+    }
 
-  .pagex-breakpoint-mobile {
-    display: flex;
+    .pagex-breakpoint-mobile {
+      display: flex;
+    }
   }
 }
 

@@ -94,7 +94,7 @@ function pagex_get_builder_layouts() {
 	$data = array();
 	$pts  = get_post_types( array(), 'objects' );
 
-	$post_type = array( 'page', 'pagex_layout_builder' );
+	$post_type = array( 'page', 'pagex_layout_builder', 'pagex_post_tmp' );
 
 	global $post;
 

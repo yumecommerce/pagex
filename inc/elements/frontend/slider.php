@@ -17,8 +17,8 @@ function pagex_register_slider_element( $elements ) {
 		            <div class="swiper-slide pagex-inner-row-holder"><% if (slide.content && slide.content.length) { print(slide.content) } else { %><div class="row" data-id="<%= pagex.genID() %>" data-type="inner-row"><div class="col" data-id="<%= pagex.genID() %>" data-type="column"></div></div><% } %></div>
 		        <% });} %>
 		    </div>
-		    <div class="swiper-pagination pagex-slider-pagination"></div>
 		</div>
+		<div class="swiper-pagination pagex-slider-pagination"></div>
 		
 		<% var type = data.slider_nav_type ? "long-arrow" : "arrow"; %>
 		

@@ -123,7 +123,7 @@ var pagex = {
             loop: !!data.pagex_slider_loop,
             effect: data.pagex_slider_effect,
             autoHeight: !!data.pagex_slider_autoHeight,
-            centeredSlides: !!data.pagex_slider_centeredSlides,
+            centeredSlides: data.pagex_slider_centered.xs ? 1 : 0,
             speed: data.pagex_slider_speed ? Number(data.pagex_slider_speed) : 500,
             spaceBetween: data.pagex_slider_spaceBetween.xs ? Number(data.pagex_slider_spaceBetween.xs) : 0,
             slidesPerView: data.pagex_slider_slidesPerView.xs ? Number(data.pagex_slider_slidesPerView.xs) : 1,
@@ -144,18 +144,22 @@ var pagex = {
         if (data.pagex_slider_spaceBetween.sm) obj.breakpoints[576].spaceBetween = Number(data.pagex_slider_spaceBetween.sm);
         if (data.pagex_slider_slidesPerView.sm) obj.breakpoints[576].slidesPerView = Number(data.pagex_slider_slidesPerView.sm);
         if (data.pagex_slider_slidesPerGroup.sm) obj.breakpoints[576].slidesPerGroup = Number(data.pagex_slider_slidesPerGroup.sm);
+        if (data.pagex_slider_centered.sm) obj.breakpoints[576].centeredSlides = Number(data.pagex_slider_centered.sm);
 
         if (data.pagex_slider_spaceBetween.md) obj.breakpoints[768].spaceBetween = Number(data.pagex_slider_spaceBetween.md);
         if (data.pagex_slider_slidesPerView.md) obj.breakpoints[768].slidesPerView = Number(data.pagex_slider_slidesPerView.md);
         if (data.pagex_slider_slidesPerGroup.md) obj.breakpoints[768].slidesPerGroup = Number(data.pagex_slider_slidesPerGroup.md);
+        if (data.pagex_slider_centered.md) obj.breakpoints[768].centeredSlides = Number(data.pagex_slider_centered.md);
 
         if (data.pagex_slider_spaceBetween.lg) obj.breakpoints[992].spaceBetween = Number(data.pagex_slider_spaceBetween.lg);
         if (data.pagex_slider_slidesPerView.lg) obj.breakpoints[992].slidesPerView = Number(data.pagex_slider_slidesPerView.lg);
         if (data.pagex_slider_slidesPerGroup.lg) obj.breakpoints[992].slidesPerGroup = Number(data.pagex_slider_slidesPerGroup.lg);
+        if (data.pagex_slider_centered.lg) obj.breakpoints[992].centeredSlides = Number(data.pagex_slider_centered.lg);
 
         if (data.pagex_slider_spaceBetween.xl) obj.breakpoints[1200].spaceBetween = Number(data.pagex_slider_spaceBetween.xl);
         if (data.pagex_slider_slidesPerView.xl) obj.breakpoints[1200].slidesPerView = Number(data.pagex_slider_slidesPerView.xl);
         if (data.pagex_slider_slidesPerGroup.xl) obj.breakpoints[1200].slidesPerGroup = Number(data.pagex_slider_slidesPerGroup.xl);
+        if (data.pagex_slider_centered.xl) obj.breakpoints[1200].centeredSlides = Number(data.pagex_slider_centered.xl);
 
         if (_.isEmpty(obj.breakpoints[576])) delete obj.breakpoints[576];
         if (_.isEmpty(obj.breakpoints[768])) delete obj.breakpoints[768];

@@ -1134,6 +1134,12 @@ class Pagex_Admin_Controls {
 				'default' => '',
 			),
 			array(
+				'id'      => 'min_width',
+				'label'   => __( 'Min. Width', 'pagex' ),
+				'type'    => 'text',
+				'default' => '',
+			),
+			array(
 				'id'      => 'border_width',
 				'label'   => __( 'Border Width', 'pagex' ),
 				'type'    => 'text',
@@ -1228,6 +1234,13 @@ class Pagex_Admin_Controls {
 			array(
 				'id'      => 'min_height',
 				'label'   => __( 'Min. Height', 'pagex' ),
+				'type'    => 'text',
+				'default' => '',
+				'clear'   => true,
+			),
+			array(
+				'id'      => 'padding',
+				'label'   => __( 'Padding', 'pagex' ),
 				'type'    => 'text',
 				'default' => '',
 				'clear'   => true,

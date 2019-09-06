@@ -513,6 +513,7 @@ function pagex_register_nav_menu_element( $elements ) {
 							'pagex-breakpoint-sm' => __( 'Mobile', 'pagex' ) . ' < 576px',
 							'pagex-breakpoint-md' => __( 'Tablet', 'pagex' ) . ' < 768px',
 							'pagex-breakpoint-lg' => __( 'Tablet (landscape)', 'pagex' ) . ' < 1024px',
+							'pagex-breakpoint-xl' => __( 'Desktop', 'pagex' ) . ' < 1200px',
 						)
 					),
 					array(
@@ -584,9 +585,29 @@ function pagex_register_nav_menu_element( $elements ) {
 						'selector' => '[el] .pagex-nav-menu-mobile-trigger {background: [val]}',
 					),
 
+
 					array(
 						'type'  => 'heading',
-						'title' => __( 'Menu Position', 'pagex' ),
+						'title' => __( 'Off-Canvas Style', 'pagex' ),
+					),
+					array(
+						'id'       => 'ax',
+						'title'    => __( 'Background', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-modal-window-content {background: [val]}',
+					),
+					array(
+						'id'       => 'mq',
+						'title'    => __( 'Close Icon', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'color',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-modal-window-close {color: [val]}',
+					),
+					array(
+						'type' => 'clear',
 					),
 					array(
 						'id'      => 'offcanvas_pos',
@@ -597,6 +618,22 @@ function pagex_register_nav_menu_element( $elements ) {
 							''      => __( 'Left', 'pagex' ),
 							'right' => __( 'Right', 'pagex' ),
 						)
+					),
+					array(
+						'id'       => 'vq',
+						'title'    => __( 'Max. Width', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-modal-window-content {max-width: [val]}',
+					),
+					array(
+						'id'       => 'lq',
+						'title'    => __( 'Padding', 'pagex' ),
+						'class'    => 'col-4',
+						'type'     => 'text',
+						'action'   => 'css',
+						'selector' => '[el] .pagex-modal-window-content {padding: [val]}',
 					),
 
 

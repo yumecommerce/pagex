@@ -585,7 +585,7 @@ var pagexSlider = {
         }
 
         slider.pagination = {
-            el: slider.pagination_el !== undefined ? slider.pagination_el : '.swiper-pagination',
+            el: slider.pagination_el !== undefined ? slider.pagination_el : el.querySelector('.swiper-pagination'),
             clickable: true,
         };
 

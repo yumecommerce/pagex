@@ -18,19 +18,19 @@
         <shortcode>
             <tag>pagex_post_title</tag>
             <attributes>
-                <attribute encoding="pagex_encoded_json">data</attribute>
+                <attribute type="area" encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
         <shortcode>
             <tag>pagex_form</tag>
             <attributes>
-                <attribute encoding="pagex_encoded_json">data</attribute>
+                <attribute type="area" encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
         <shortcode>
             <tag>pagex_login_form</tag>
             <attributes>
-                <attribute encoding="pagex_encoded_json">data</attribute>
+                <attribute type="area" encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
         <shortcode>

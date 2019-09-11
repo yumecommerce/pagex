@@ -38,46 +38,80 @@ function pagex_register_google_maps_element( $elements ) {
 						),
 					),
 					array(
-						'id'          => 'address',
-						'title'       => __( 'Map Marker', 'pagex' ),
-						'description' => __( 'Enter address or latitude & longitude. For example: 52.291266, 4.964126', 'pagex' ) . ' <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">' . __( 'How to get the coordinates?', 'pagex' ) . '</a>',
-						'type'        => 'text',
-						'condition'   => array(
+						'id'        => 'items',
+						'title'     => __( 'Map Markers', 'pagex' ),
+						'type'      => 'repeater',
+						'condition' => array(
 							'type' => array( 'custom' ),
 						),
+						'params'    => array(
+							array(
+								'id'          => 'address',
+								'title'       => __( 'Map Marker', 'pagex' ),
+								'description' => __( 'Enter address or latitude & longitude. For example: 52.291266, 4.964126', 'pagex' ) . ' <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">' . __( 'How to get the coordinates?', 'pagex' ) . '</a>',
+								'type'        => 'text',
+								'class'       => 'col-12 pagex-repeater-value',
+							),
+							array(
+								'id'          => 'info',
+								'title'       => __( 'Info Window', 'pagex' ),
+								'description' => __( 'Optional', 'pagex' ),
+								'type'        => 'textarea',
+							),
+						),
 					),
-					array(
-						'id'          => 'mode',
-						'title'       => __( 'Mode', 'pagex' ),
-						'description' => __( 'Simple mode embedded the map via an iFrame. Advanced mode uses Maps JavaScript API.', 'pagex' ),
-						'type'        => 'select',
-						'options'     => array(
-							'simple'   => __( 'Simple', 'pagex' ),
-							'advanced' => __( 'Advanced', 'pagex' ),
-						)
-					),
+				),
+			),
+			array(
+				'title'  => __( 'Options', 'pagex' ),
+				'params' => array(
 					array(
 						'id'          => 'zoom',
 						'title'       => __( 'Zoom', 'pagex' ),
 						'description' => __( 'A value from 1 (the world) to 21 (street level).', 'pagex' ),
 						'type'        => 'number',
 						'attributes'  => 'min="1" max="21" step="1"',
-						'class'       => 'col-4',
+						'class'       => 'col-6',
 					),
 					array(
-						'id'        => 'style',
-						'title'     => __( 'Style', 'pagex' ),
-						'type'      => 'select',
-						'class'     => 'col-4',
-						'options'   => array(
+						'id'          => 'center',
+						'title'       => __( 'Center', 'pagex' ),
+						'description' => __( 'Enter address or latitude & longitude. By default center will be equal to marker position.', 'pagex' ),
+						'type'        => 'text',
+						'class'       => 'col-6',
+					),
+					array(
+						'type' => 'clear',
+					),
+					array(
+						'id'    => 'scroll',
+						'label' => __( 'Use Scroll', 'pagex' ),
+						'type'  => 'checkbox',
+						'class' => 'col-auto',
+					),
+					array(
+						'id'    => 'ui',
+						'label' => __( 'Disable default UI', 'pagex' ),
+						'type'  => 'checkbox',
+						'class' => 'col-auto',
+					),
+				)
+			),
+			array(
+				'title'  => __( 'Style', 'pagex' ),
+				'params' => array(
+					array(
+						'id'      => 'style',
+						'title'   => __( 'Style', 'pagex' ),
+						'type'    => 'select',
+						'class'   => 'col-6',
+						'options' => array(
 							''          => __( 'Default', 'pagex' ),
 							'black'     => __( 'Black', 'pagex' ),
 							'darkblue'  => __( 'Dark Blue', 'pagex' ),
 							'greyscale' => __( 'Greyscale', 'pagex' ),
 							'white'     => __( 'White', 'pagex' ),
-						),
-						'condition' => array(
-							'mode' => array( 'advanced' ),
+							'custom'    => __( 'Custom', 'pagex' ),
 						),
 					),
 					array(
@@ -87,28 +121,38 @@ function pagex_register_google_maps_element( $elements ) {
 						'action'     => 'css',
 						'responsive' => true,
 						'selector'   => '[el] .pagex-google-maps {height: [val]}',
-						'class'      => 'col-4',
+						'class'      => 'col-6',
 					),
 					array(
-						'id'        => 'scroll',
-						'label'     => __( 'Use Scroll', 'pagex' ),
-						'type'      => 'checkbox',
-						'class'     => 'col-auto',
-						'condition' => array(
-							'mode' => array( 'advanced' ),
+						'id'          => 'custom_style',
+						'title'       => __( 'Custom Style', 'pagex' ),
+						'description' => __( 'Insert JSON code. You can create custom JSON style on', 'pagex' ) . ' <a href="https://mapstyle.withgoogle.com" target="_blank">mapstyle.withgoogle.com</a>',
+						'type'        => 'textarea',
+						'condition'   => array(
+							'style' => array( 'custom' ),
 						),
 					),
 					array(
-						'id'        => 'ui',
-						'label'     => __( 'Disable default UI', 'pagex' ),
-						'type'      => 'checkbox',
-						'class'     => 'col-auto',
-						'condition' => array(
-							'mode' => array( 'advanced' ),
-						),
+						'id'    => 'icon',
+						'title' => __( 'Icon', 'pagex' ),
+						'type'  => 'image',
+						'sizes' => false,
+						'class' => 'col-4',
 					),
-				),
-			),
+					array(
+						'id'    => 'icon_width',
+						'title' => __( 'Icon Width', 'pagex' ),
+						'type'  => 'number',
+						'class' => 'col-3',
+					),
+					array(
+						'id'    => 'icon_height',
+						'title' => __( 'Icon Height', 'pagex' ),
+						'type'  => 'number',
+						'class' => 'col-3',
+					),
+				)
+			)
 		),
 	);
 
@@ -126,14 +170,19 @@ function pagex_google_maps( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'zoom'     => 15,
-		'scroll'   => false,
-		'ui'       => false,
-		'address'  => 'New York',
-		'mode'     => 'simple',
-		'style'    => '',
-		'meta_key' => '',
-		'type'     => 'custom',
+		'zoom'         => 15,
+		'scroll'       => false,
+		'ui'           => false,
+		'center'       => '',
+		'address'      => 'New York',
+		'items'        => array(),
+		'style'        => '',
+		'icon'         => '',
+		'icon_width'   => 50,
+		'icon_height'  => 50,
+		'custom_style' => '',
+		'meta_key'     => '',
+		'type'         => 'custom',
 	) );
 
 	$settings = Pagex::get_settings();
@@ -149,6 +198,8 @@ function pagex_google_maps( $atts ) {
 		if ( ! $data['address'] ) {
 			return '';
 		}
+	} else {
+		$data['address'] = $data['items'];
 	}
 
 	$map_styles = array(
@@ -159,37 +210,31 @@ function pagex_google_maps( $atts ) {
 		'greyscale' => '[{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}]',
 
 		'white' => '[{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]',
+
+		'custom' => $data['custom_style']
+	);
+
+	if ( $data['style'] ) {
+		$data['style'] = $map_styles[ $data['style'] ];
+	}
+
+	$embed = array(
+		'key'         => $api,
+		'address'     => $data['address'],
+		'zoom'        => $data['zoom'],
+		'center'      => $data['center'],
+		'scroll'      => $data['scroll'],
+		'ui'          => $data['ui'],
+		'style'       => $data['style'],
+		'icon'        => $data['icon'],
+		'icon_width'  => $data['icon_width'],
+		'icon_height' => $data['icon_height'],
 	);
 
 	ob_start();
 
 	echo '<div class="pagex-google-maps">';
-	if ( $data['mode'] == 'simple' ) {
-		$src = 'https://www.google.com/maps/embed/v1/place?key=' . $api . '&q=' . urlencode( $data['address'] ) . '&zoom=' . $data['zoom'];
-
-		if ( wp_doing_ajax() ) {
-			echo '<iframe class="pagex-google-maps-iframe pagex-iframe-lazy" frameborder="0" allowfullscreen src="' . $src . '"></iframe>';
-		} else {
-			echo '<iframe class="pagex-google-maps-iframe pagex-iframe-lazy" frameborder="0" allowfullscreen data-lazy-load="' . $src . '"></iframe>';
-		}
-	} else {
-
-		if ( $data['style'] ) {
-			$data['style'] = $map_styles[ $data['style'] ];
-		}
-
-		$embed = array(
-			'key'     => $api,
-			'address' => $data['address'],
-			'zoom'    => $data['zoom'],
-			'scroll'  => $data['scroll'],
-			'ui'      => $data['ui'],
-			'style'   => $data['style'],
-		);
-
-		echo '<div class="pagex-google-maps-embed" data-google-map="' . urlencode( json_encode( $embed ) ) . '"></div>';
-	}
-
+	echo '<div class="pagex-google-maps-embed" data-google-map="' . rawurlencode( wp_json_encode( $embed ) ) . '"></div>';
 	echo '</div>';
 
 	return ob_get_clean();

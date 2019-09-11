@@ -7,7 +7,19 @@ var salvattore = require('salvattore');
 "use strict";
 
 // closest and matches polyfill
-!function(e){var t=e.Element.prototype;"function"!=typeof t.matches&&(t.matches=t.msMatchesSelector||t.mozMatchesSelector||t.webkitMatchesSelector||function(e){for(var t=(this.document||this.ownerDocument).querySelectorAll(e),o=0;t[o]&&t[o]!==this;)++o;return Boolean(t[o])}),"function"!=typeof t.closest&&(t.closest=function(e){for(var t=this;t&&1===t.nodeType;){if(t.matches(e))return t;t=t.parentNode}return null})}(window);
+!function (e) {
+    var t = e.Element.prototype;
+    "function" != typeof t.matches && (t.matches = t.msMatchesSelector || t.mozMatchesSelector || t.webkitMatchesSelector || function (e) {
+        for (var t = (this.document || this.ownerDocument).querySelectorAll(e), o = 0; t[o] && t[o] !== this;) ++o;
+        return Boolean(t[o])
+    }), "function" != typeof t.closest && (t.closest = function (e) {
+        for (var t = this; t && 1 === t.nodeType;) {
+            if (t.matches(e)) return t;
+            t = t.parentNode
+        }
+        return null
+    })
+}(window);
 
 // Install Swiper modules
 Swiper.use([Navigation, Pagination, Autoplay, EffectFade]);
@@ -945,19 +957,57 @@ var pagexGoogleMaps = {
             mapOptions.styles = JSON.parse(data.style);
         }
 
-        var map = new google.maps.Map(el, mapOptions);
+        let map = new google.maps.Map(el, mapOptions);
 
-        geocoder.geocode({'address': data.address}, function (results, status) {
-            if (status === 'OK') {
-                map.setCenter(results[0].geometry.location);
-                new google.maps.Marker({
-                    map: map,
-                    position: results[0].geometry.location
-                });
-            } else {
-                console.error('Geocode was not successful for the following reason: ' + status);
+        if (typeof data.address === 'string') {
+            placeMarker(data.address)
+        } else {
+            for (var i = 0; i < data.address.length; i++) {
+                data.address[i].address && placeMarker(data.address[i])
             }
-        });
+        }
+
+        function placeMarker(place) {
+            geocoder.geocode({'address': place.address}, function (results, status) {
+                if (status === 'OK') {
+                    if (!data.center) {
+                        map.setCenter(results[0].geometry.location);
+                    }
+
+                    let marker = new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+
+                    if (data.icon) {
+                        marker.setIcon({
+                            url: data.icon,
+                            scaledSize: new google.maps.Size(data.icon_width, data.icon_height),
+                        })
+                    }
+
+                    if (place.info) {
+                        let info = new google.maps.InfoWindow({
+                            content: place.info
+                        });
+
+                        marker.addListener('click', function () {
+                            info.open(map, this);
+                        });
+                    }
+                } else {
+                    console.error('Geocode was not successful for the following reason: ' + status);
+                }
+            });
+        }
+
+        if (data.center) {
+            geocoder.geocode({'address': data.center}, function (results, status) {
+                if (status === 'OK') {
+                    map.setCenter(results[0].geometry.location);
+                }
+            });
+        }
     },
 };
 pagexGoogleMaps.initElements();

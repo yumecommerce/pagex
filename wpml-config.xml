@@ -69,5 +69,11 @@
                 <attribute encoding="pagex_encoded_json">data</attribute>
             </attributes>
         </shortcode>
+        <shortcode>
+            <tag>pagex_google_maps</tag>
+            <attributes>
+                <attribute encoding="pagex_encoded_json">data</attribute>
+            </attributes>
+        </shortcode>
     </shortcodes>
 </wpml-config>

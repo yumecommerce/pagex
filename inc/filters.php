@@ -59,10 +59,12 @@ function pagex_wpml_shortcode_decode( $string, $encoding, $original_string ) {
 								'placeholder',
 								'options',
 
+								// google maps
+								'info',
+
 								// post data
 								'before',
 								'custom_text',
-
 							) ) ) {
 								$string[ $i . '__' . $key . '__' . $k ] = array( 'value' => $v, 'translate' => true );
 							} else {

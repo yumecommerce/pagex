@@ -46,11 +46,17 @@ function pagex_register_google_maps_element( $elements ) {
 						),
 						'params'    => array(
 							array(
+								'id'          => 'label',
+								'title'       => __( 'Label', 'pagex' ),
+								'type'        => 'text',
+								'class'       => 'col-6 pagex-repeater-value',
+							),
+							array(
 								'id'          => 'address',
 								'title'       => __( 'Map Marker', 'pagex' ),
-								'description' => __( 'Enter address or latitude & longitude. For example: 52.291266, 4.964126', 'pagex' ) . ' <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">' . __( 'How to get the coordinates?', 'pagex' ) . '</a>',
+								'description' => __( 'Enter latitude & longitude for example: 52.291266, 4.964126', 'pagex' ) . ' <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en" target="_blank">' . __( 'How to get the coordinates?', 'pagex' ) . '</a>',
 								'type'        => 'text',
-								'class'       => 'col-12 pagex-repeater-value',
+								'class'       => 'col-6',
 							),
 							array(
 								'id'          => 'info',
@@ -76,7 +82,7 @@ function pagex_register_google_maps_element( $elements ) {
 					array(
 						'id'          => 'center',
 						'title'       => __( 'Center', 'pagex' ),
-						'description' => __( 'Enter address or latitude & longitude. By default center will be equal to marker position.', 'pagex' ),
+						'description' => __( 'Enter latitude & longitude. By default center will be equal to marker position.', 'pagex' ),
 						'type'        => 'text',
 						'class'       => 'col-6',
 					),
@@ -174,7 +180,7 @@ function pagex_google_maps( $atts ) {
 		'scroll'       => false,
 		'ui'           => false,
 		'center'       => '',
-		'address'      => 'New York',
+		'address'      => '52.291266, 4.964126',
 		'items'        => array(),
 		'style'        => '',
 		'icon'         => '',

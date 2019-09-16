@@ -968,45 +968,36 @@ var pagexGoogleMaps = {
         }
 
         function placeMarker(place) {
-            geocoder.geocode({'address': place.address}, function (results, status) {
-                if (status === 'OK') {
-                    if (!data.center) {
-                        map.setCenter(results[0].geometry.location);
-                    }
+            let position = {lat: Number(place.address.split(",")[0]), lng: Number(place.address.split(",")[1])},
+                marker = new google.maps.Marker({
+                    position: position,
+                    map: map
+                });
 
-                    let marker = new google.maps.Marker({
-                        map: map,
-                        position: results[0].geometry.location
-                    });
+            if (!data.center) {
+                map.setCenter(position);
+            }
 
-                    if (data.icon) {
-                        marker.setIcon({
-                            url: data.icon,
-                            scaledSize: new google.maps.Size(data.icon_width, data.icon_height),
-                        })
-                    }
+            if (data.icon) {
+                marker.setIcon({
+                    url: data.icon,
+                    scaledSize: new google.maps.Size(data.icon_width, data.icon_height),
+                })
+            }
 
-                    if (place.info) {
-                        let info = new google.maps.InfoWindow({
-                            content: place.info
-                        });
+            if (place.info) {
+                let info = new google.maps.InfoWindow({
+                    content: place.info
+                });
 
-                        marker.addListener('click', function () {
-                            info.open(map, this);
-                        });
-                    }
-                } else {
-                    console.error('Geocode was not successful for the following reason: ' + status);
-                }
-            });
+                marker.addListener('click', function () {
+                    info.open(map, this);
+                });
+            }
         }
 
         if (data.center) {
-            geocoder.geocode({'address': data.center}, function (results, status) {
-                if (status === 'OK') {
-                    map.setCenter(results[0].geometry.location);
-                }
-            });
+            map.setCenter({lat: Number(data.center.split(",")[0]), lng: Number(data.center.split(",")[1])})
         }
     },
 };

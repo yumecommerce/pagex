@@ -944,8 +944,7 @@ var pagexGoogleMaps = {
             return;
         }
 
-        let data = JSON.parse(decodeURIComponent(el.getAttribute('data-google-map'))),
-            geocoder = new google.maps.Geocoder();
+        let data = JSON.parse(decodeURIComponent(el.getAttribute('data-google-map')));
 
         let mapOptions = {
             zoom: Number(data.zoom),

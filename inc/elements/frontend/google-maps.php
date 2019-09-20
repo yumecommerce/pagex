@@ -46,10 +46,10 @@ function pagex_register_google_maps_element( $elements ) {
 						),
 						'params'    => array(
 							array(
-								'id'          => 'label',
-								'title'       => __( 'Label', 'pagex' ),
-								'type'        => 'text',
-								'class'       => 'col-6 pagex-repeater-value',
+								'id'    => 'label',
+								'title' => __( 'Label', 'pagex' ),
+								'type'  => 'text',
+								'class' => 'col-6 pagex-repeater-value',
 							),
 							array(
 								'id'          => 'address',
@@ -98,6 +98,19 @@ function pagex_register_google_maps_element( $elements ) {
 					array(
 						'id'    => 'ui',
 						'label' => __( 'Disable default UI', 'pagex' ),
+						'type'  => 'checkbox',
+						'class' => 'col-auto',
+					),
+					array(
+						'id'    => 'multiple_info',
+						'label' => __( 'Do not allow multiple info windows', 'pagex' ),
+						'type'  => 'checkbox',
+						'class' => 'col-auto',
+					),
+					array(
+						'id'    => 'opened_info',
+						'label' => __( 'Make info windows open', 'pagex' ),
+						'description' => __( 'By default info window will be displayed only by click', 'pagex' ),
 						'type'  => 'checkbox',
 						'class' => 'col-auto',
 					),
@@ -176,19 +189,21 @@ function pagex_google_maps( $atts ) {
 	$data = Pagex::get_dynamic_data( $atts );
 
 	$data = wp_parse_args( $data, array(
-		'zoom'         => 15,
-		'scroll'       => false,
-		'ui'           => false,
-		'center'       => '',
-		'address'      => '52.291266, 4.964126',
-		'items'        => array(),
-		'style'        => '',
-		'icon'         => '',
-		'icon_width'   => 50,
-		'icon_height'  => 50,
-		'custom_style' => '',
-		'meta_key'     => '',
-		'type'         => 'custom',
+		'zoom'          => 15,
+		'scroll'        => false,
+		'ui'            => false,
+		'multiple_info' => false,
+		'opened_info'   => false,
+		'center'        => '',
+		'address'       => '52.291266, 4.964126',
+		'items'         => array(),
+		'style'         => '',
+		'icon'          => '',
+		'icon_width'    => 50,
+		'icon_height'   => 50,
+		'custom_style'  => '',
+		'meta_key'      => '',
+		'type'          => 'custom',
 	) );
 
 	$settings = Pagex::get_settings();
@@ -225,16 +240,18 @@ function pagex_google_maps( $atts ) {
 	}
 
 	$embed = array(
-		'key'         => $api,
-		'address'     => $data['address'],
-		'zoom'        => $data['zoom'],
-		'center'      => $data['center'],
-		'scroll'      => $data['scroll'],
-		'ui'          => $data['ui'],
-		'style'       => $data['style'],
-		'icon'        => $data['icon'],
-		'icon_width'  => $data['icon_width'],
-		'icon_height' => $data['icon_height'],
+		'key'           => $api,
+		'address'       => $data['address'],
+		'zoom'          => $data['zoom'],
+		'center'        => $data['center'],
+		'scroll'        => $data['scroll'],
+		'ui'            => $data['ui'],
+		'multiple_info' => $data['multiple_info'],
+		'opened_info'   => $data['opened_info'],
+		'style'         => $data['style'],
+		'icon'          => $data['icon'],
+		'icon_width'    => $data['icon_width'],
+		'icon_height'   => $data['icon_height'],
 	);
 
 	ob_start();

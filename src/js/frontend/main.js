@@ -956,7 +956,8 @@ var pagexGoogleMaps = {
             mapOptions.styles = JSON.parse(data.style);
         }
 
-        let map = new google.maps.Map(el, mapOptions);
+        let map = new google.maps.Map(el, mapOptions),
+            infoWindow = null;
 
         if (typeof data.address === 'string') {
             placeMarker(data.address)
@@ -989,8 +990,17 @@ var pagexGoogleMaps = {
                     content: place.info
                 });
 
+                if (data.opened_info) {
+                    info.open(map, marker);
+                }
+
                 marker.addListener('click', function () {
+                    if (data.multiple_info && infoWindow) {
+                        infoWindow.close();
+                    }
+
                     info.open(map, this);
+                    infoWindow = info;
                 });
             }
         }

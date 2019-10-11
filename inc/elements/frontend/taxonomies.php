@@ -28,7 +28,7 @@ function pagex_register_taxonomies_element( $elements ) {
 				'params' => array(
 					array(
 						'id'          => 'taxonomy',
-						'title'       => __( 'taxonomy', 'pagex' ),
+						'title'       => __( 'Taxonomy', 'pagex' ),
 						'description' => __( 'Separate terms IDs by comma.', 'pagex' ),
 						'type'        => 'select',
 						'options'     => $taxonomy,
@@ -53,8 +53,8 @@ function pagex_register_taxonomies_element( $elements ) {
 						'class'   => 'col-3',
 						'type'    => 'select',
 						'options' => array(
-							''        => __( 'Name', 'pagex' ),
-							'id'      => 'ID',
+							''        => 'ID',
+							'name'    => __( 'Name', 'pagex' ),
 							'count'   => __( 'Count', 'pagex' ),
 							'include' => __( 'Include', 'pagex' ),
 						)
@@ -139,8 +139,8 @@ function pagex_taxonomies( $atts ) {
 		'taxonomy'       => '',
 		'include'        => '',
 		'exclude'        => '',
-		'orderby'        => '',
-		'order'          => '',
+		'orderby'        => 'id',
+		'order'          => 'ASC',
 		'number'         => '',
 		'offset'         => '',
 		'not_hide_empty' => false,

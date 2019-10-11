@@ -58,6 +58,7 @@ function pagex_wpml_shortcode_decode( $string, $encoding, $original_string ) {
 								'label',
 								'placeholder',
 								'options',
+								'html',
 
 								// google maps
 								'info',

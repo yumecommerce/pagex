@@ -374,7 +374,7 @@ class Pagex_Frontend {
 					'border-color'   => $settings['design']['button']['border_color'],
 					'min-height'     => $settings['design']['button']['min_height'],
 					'line-height'    => $settings['design']['button']['min_height'],
-					'min-width'      => $settings['design']['button']['min_width'],
+					'min-width'      => @$settings['design']['button']['min_width'],
 					'box-shadow'     => $settings['design']['button']['box_shadow'],
 				)
 			),
@@ -425,7 +425,7 @@ class Pagex_Frontend {
 					'border-radius' => $settings['design']['form']['border_radius'],
 					'border-color'  => $settings['design']['form']['border_color'],
 					'min-height'    => $settings['design']['form']['min_height'],
-					'padding'       => $settings['design']['form']['padding'],
+					'padding'       => @$settings['design']['form']['padding'],
 				)
 			),
 			array(

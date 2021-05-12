@@ -35,7 +35,7 @@
     "bootstrap": "^4.3.1",
     "countup.js": "^2.0.4",
     "salvattore": "^1.0.9",
-    "swiper": "^4.5.0",
+    "swiper": "^6.5.1",
     "waypoints": "^4.0.1"
   }
 }

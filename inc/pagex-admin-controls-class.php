@@ -1440,7 +1440,7 @@ class Pagex_Admin_Controls {
 		$settings = Pagex::get_settings();
 		$form     = '<div class="pagex-row">';
 
-		$setting_name = 'pagex_settings[' . implode( $section, '][' ) . ']';
+		$setting_name = 'pagex_settings[' . implode( '][', $section ) . ']';
 
 		if ( isset( $settings[ $section[0] ] ) ) {
 			if ( isset( $section[1] ) && isset( $settings[ $section[0] ][ $section[1] ] ) ) {

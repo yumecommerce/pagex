@@ -88,6 +88,7 @@ foreach (
 		'tabs',
 		'taxonomies',
 		'video',
+		'html'
 	) as $element
 ) {
 	add_filter( 'pagex_elements', 'pagex_register_' . $element . '_element' );
